@@ -9,9 +9,15 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet — added in later phases.\" && exit 0",
-    "seed": "echo \"No content yet — seed script added in Prompt 2.1.\" && exit 0"
+    "seed": "echo \"No content yet — seed script added in Prompt 2.1.\" && exit 0",
+    "db:push": "node scripts/db.mjs push",
+    "db:diff": "node scripts/db.mjs diff",
+    "db:types": "node scripts/db.mjs gen-types",
+    "db:migration:list": "node scripts/db.mjs migration list"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.106.1",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
@@ -23,6 +29,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "supabase": "^2.101.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
