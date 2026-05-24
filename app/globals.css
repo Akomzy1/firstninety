@@ -1,26 +1,250 @@
 @import "tailwindcss";
 
+/* ----------------------------------------------------------------------------
+   FirstNinety design tokens (Design Brief v1.0 §3–§5)
+   Tokens defined as CSS variables on :root; dark-mode overrides via
+   [data-theme="dark"] and prefers-color-scheme: dark. Tokens are exposed
+   to Tailwind via @theme inline below so utilities like bg-paper, text-ink,
+   font-display, p-4 pick them up automatically.
+   ---------------------------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colour — light (§4.1) */
+  --paper: #faf7f2;
+  --paper-2: #f2ede4;
+  --paper-3: #e7e0d2;
+  --ink: #0e1116;
+  --mute: #6f6a60;
+  --mute-2: #a29d90;
+  --accent: #d9532c;
+  --accent-soft: #fbe7de;
+  --success: #3e6d52;
+  --warn: #a66a1f;
+  --danger: #9b2c2c;
+
+  /* Spacing (§5.2) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+  --space-7: 6rem;
+  --space-8: 8rem;
+
+  /* Grid (§5.1) */
+  --max-page: 80rem; /* 1280px */
+  --max-reading: 45rem; /* 720px */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark mode — explicit override via [data-theme="dark"] (§4.2) */
+[data-theme="dark"] {
+  --paper: #0e1116;
+  --paper-2: #191b20;
+  --paper-3: #262830;
+  --ink: #f2ede4;
+  --mute: #a29d90;
+  --mute-2: #6f6a60;
+  --accent: #e97552;
 }
 
+/* Dark mode — system preference fallback when no explicit theme is set */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --paper: #0e1116;
+    --paper-2: #191b20;
+    --paper-3: #262830;
+    --ink: #f2ede4;
+    --mute: #a29d90;
+    --mute-2: #6f6a60;
+    --accent: #e97552;
   }
 }
 
+/* ----------------------------------------------------------------------------
+   Expose tokens to Tailwind. `@theme inline` references CSS vars so dark-mode
+   overrides flow through to all utilities without recompiling.
+   ---------------------------------------------------------------------------- */
+
+@theme inline {
+  /* Colours */
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-mute: var(--mute);
+  --color-mute-2: var(--mute-2);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+
+  /* Fonts */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", "Cascadia Mono", monospace;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Spacing scale (§5.2) — overrides Tailwind defaults for 1–8 */
+  --spacing-1: 0.5rem;
+  --spacing-2: 1rem;
+  --spacing-3: 1.5rem;
+  --spacing-4: 2rem;
+  --spacing-5: 3rem;
+  --spacing-6: 4rem;
+  --spacing-7: 6rem;
+  --spacing-8: 8rem;
+
+  /* Breakpoints — Tailwind v4 defaults are fine; named here for clarity */
+  --breakpoint-md: 48rem; /* 768 */
+  --breakpoint-lg: 64rem; /* 1024 */
+  --breakpoint-xl: 80rem; /* 1280 */
+}
+
+/* ----------------------------------------------------------------------------
+   Typography utilities (Design Brief §3.2) — mobile-first, desktop ≥ 48rem.
+   Each utility sets family, weight, size, line-height, letter-spacing in one
+   shot so consumers don't have to remember the combination.
+   ---------------------------------------------------------------------------- */
+
+@utility text-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+
+  @media (width >= 48rem) {
+    font-size: 4rem;
+  }
+}
+
+@utility text-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+
+  @media (width >= 48rem) {
+    font-size: 3rem;
+  }
+}
+
+@utility text-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+
+  @media (width >= 48rem) {
+    font-size: 2.25rem;
+  }
+}
+
+@utility text-h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+
+  @media (width >= 48rem) {
+    font-size: 1.5rem;
+  }
+}
+
+@utility text-h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+
+  @media (width >= 48rem) {
+    font-size: 1.25rem;
+  }
+}
+
+@utility text-body-l {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.55;
+
+  @media (width >= 48rem) {
+    font-size: 1.25rem;
+  }
+}
+
+@utility text-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.55;
+
+  @media (width >= 48rem) {
+    font-size: 1.0625rem;
+  }
+}
+
+@utility text-body-s {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.55;
+
+  @media (width >= 48rem) {
+    font-size: 0.9375rem;
+  }
+}
+
+@utility text-caption {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+
+  @media (width >= 48rem) {
+    font-size: 0.8125rem;
+  }
+}
+
+@utility text-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+/* ----------------------------------------------------------------------------
+   Base element styles. Body sits on --paper; --ink is the default text colour;
+   Inter is the default body face. Headings keep their natural weight; specific
+   levels should opt into the type utilities above.
+   ---------------------------------------------------------------------------- */
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-feature-settings: "ss01", "cv11";
+}
+
+/* Focus ring — Design Brief §6.3: 2px ink outline at 2px offset. */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Selection colour — soft warm tint, not pure blue. */
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
 }
