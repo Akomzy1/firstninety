@@ -45,3 +45,8 @@ next-env.d.ts
 # Supabase local
 supabase/.branches
 supabase/.temp
+
+# Serwist — generated service worker and source map
+/public/sw.js
+/public/sw.js.map
+/public/swe-worker-*.js
