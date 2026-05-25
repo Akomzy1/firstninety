@@ -1,0 +1,46 @@
+{
+  "slug": "ba-brd-standard",
+  "role": "ba",
+  "artefact_type": "brd",
+  "title": "Business Requirements Document",
+  "variant": "standard",
+  "description": "The everyday BRD — the one you'll write in your first ninety days more than any other. Concise, scannable, defensible. Eight sections that take an hour, not a day.",
+  "empty_template_md": "# [Initiative name] — Business Requirements Document\n\n## 1. Context\n_One paragraph. Why is this work happening? Why now? What is the cost of doing nothing?_\n\n## 2. Scope\n### In scope\n- \n### Out of scope\n- \n\n## 3. Stakeholders\n| Name | Role | Decision rights | Influence |\n|------|------|-----------------|-----------|\n|      |      |                 |           |\n\n## 4. Functional requirements\n1. \n2. \n\n## 5. Non-functional requirements\n- Performance: \n- Security: \n- Accessibility: \n\n## 6. Constraints + assumptions\n- \n\n## 7. Risks\n| Risk | Impact | Mitigation |\n|------|--------|-----------|\n\n## 8. Sign-off\n_Named approvers + dates._\n",
+  "worked_examples": [
+    {
+      "title": "Internal expense-tool migration",
+      "content_md": "# Internal Expense Tool Migration — BRD\n\n## 1. Context\n\nOur current expense tool is being sunsetted by the vendor in March. We need an internal replacement that integrates with our finance system and supports the existing approval workflows. Doing nothing means processing expenses manually from April — finance estimates that's 60 person-hours per month.\n\n## 2. Scope\n\n### In scope\n- Expense capture (web + mobile)\n- Receipt OCR + auto-categorisation\n- Approval workflow with delegation\n- Integration with the finance system's existing API\n- Reporting for finance and budget owners\n\n### Out of scope\n- Travel booking (out — Phase 2 candidate)\n- Per-diem calculation (out — finance handles manually for now)\n- Credit-card reconciliation (out — separate stream)\n\n## 3. Stakeholders\n\n| Name | Role | Decision rights | Influence |\n|------|------|-----------------|-----------|\n| Finance Director | Budget owner | Yes — scope + sign-off | High |\n| Engineering Manager | Delivery owner | Yes — feasibility | High |\n| Operations Lead | Workflow owner | Veto on approval flow | Medium |\n| End-user reps (3) | Daily users | Consult only | Medium |\n\n## 4. Functional requirements\n\n1. Employees can submit expenses with receipts in under 60 seconds for a single-item expense.\n2. Receipts are auto-categorised by the OCR pipeline; categorisation can be overridden.\n3. Approvers can approve, query, or reject with one tap; delegation is supported when an approver is out.\n4. Finance can export to the existing accounting system in the format already in use.\n5. Budget owners can see month-to-date spend against budget without raising a ticket.\n\n## 5. Non-functional requirements\n\n- Performance: P95 page load < 2s on office Wi-Fi.\n- Security: Receipts encrypted at rest. Role-based access; finance can see everything, managers see their reports, employees see only their own.\n- Accessibility: WCAG 2.2 AA.\n\n## 6. Constraints and assumptions\n\n- Must integrate with the existing finance system; no rip-and-replace.\n- Assume OCR accuracy on UK receipts is acceptable; we'll monitor post-launch and add manual triage if it drops below 85%.\n\n## 7. Risks\n\n| Risk | Impact | Mitigation |\n|------|--------|-----------|\n| OCR accuracy drops on non-UK receipts (foreign travel) | Manual triage queue grows | Restrict to UK receipts at launch; foreign travel Phase 2 |\n| Approvers don't adopt the mobile flow | Workflow stays slow | Default approval-flow notifications to email; build mobile preferences over time |\n\n## 8. Sign-off\n\n_Finance Director + Engineering Manager + Operations Lead; dates to follow._\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Context paragraphs that quantify the cost of doing nothing — \"60 person-hours per month\" — get budget approval faster than pages of strategic rationale."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Explicit out-of-scope items, with the rationale per item, save you three meetings each."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Decision-rights column is the single most-skipped column in real BRDs. It's the one stakeholders argue over six months later."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Functional requirements should describe capabilities, not solutions. \"Employees can submit in under 60 seconds\" is testable. \"The system must have a fast UI\" is not."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Stakeholder table without decision rights — the doc cannot settle disputes later. Add the column even when it feels redundant.",
+    "Requirements that describe solutions rather than capabilities. \"The system must use OAuth\" is a solution. \"The customer must authenticate without remembering a separate password\" is a capability — engineering chooses how.",
+    "Out-of-scope section omitted because \"obvious\". Six weeks in, someone will ask for an obvious feature you scoped out. Save yourself the conversation; list them.",
+    "Non-functional requirements as a checkbox list (\"must be secure\"). Always include a measurable threshold or a specific standard reference."
+  ],
+  "variant_patterns": [
+    "Regulatory variant: add §4 Regulatory Context + §8 Audit Trail sections. See ba-brd-regulatory.",
+    "Greenfield variant: add a §1.5 \"Why now\" + §2.3 \"Alternatives considered\" section to anchor the inevitable build-vs-buy conversation."
+  ],
+  "related_scenarios": ["ba-vague-sponsor", "ba-hostile-lead-dev"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

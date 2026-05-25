@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w11-surface-untracked-risk",
+  "role": "ba",
+  "week": 11,
+  "sequence_in_week": 1,
+  "title": "Surface a risk no one's tracking",
+  "why_matters": "There's always one risk the team has half-acknowledged in corridor conversations but hasn't put on the RAID log. By week 11, you've heard enough corridor conversation to know what it is. Naming it formally — in writing, with a proposed mitigation — is one of the higher-leverage moves you can make this quarter.",
+  "steps": [
+    "Spend twenty minutes thinking about what worries the team that nobody's said out loud in a planning meeting. Common candidates: key-person dependency, vendor risk, regulatory change, technical debt the team has stopped seeing.",
+    "Pick one. Open the RAID log playbook. Write it as a single sentence with concrete impact and likelihood.",
+    "Draft a proposed mitigation that costs less than a person-week. If it costs more, it's not a mitigation — it's a separate project.",
+    "Bring it to the person who'd own the response. In writing, with the proposed mitigation, and one question: \"have I miscalibrated this?\"."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-raid-log"],
+    "scenario_slugs": ["ba-compliance-late"]
+  },
+  "success_criteria": "One previously-untracked risk is documented on the RAID log with impact, likelihood, and a costed mitigation. The relevant owner has received it. The conversation about it is logged.",
+  "reflection_prompt": "What kept this risk untracked for so long, and is that pattern likely to repeat?",
+  "estimated_minutes": 60,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

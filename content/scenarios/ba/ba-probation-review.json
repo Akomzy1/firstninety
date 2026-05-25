@@ -1,0 +1,41 @@
+{
+  "slug": "ba-probation-review",
+  "role": "ba",
+  "title": "The Probation Review",
+  "one_liner": "Twenty minutes with your manager. She has feedback. You have evidence. How you handle the next twenty minutes shapes the next twenty months.",
+  "brief": "## The meeting\n\nThe probation review is booked for tomorrow at 3pm with Bea Connors, your line manager. Twenty minutes. Three months in, this is the formal yes/no on whether you stay on past your probation period.\n\nBea has been generally supportive but distant. You've had three 1:1s. You don't know what she'll say. The signals from the team have been good — the engineers respect you, you've shipped two pieces of work the PO is happy with, you held the room in last week's defect-triage meeting.\n\nThere's also a quieter thing. One missed deadline mid-week 7 (you flagged it 48 hours in advance but the project slipped a sprint). One conversation with a stakeholder that didn't land — Liane is still slightly cool with you. You don't know how much of either Bea knows.\n\n## What you have\n\nYou've prepared a one-page self-assessment. You have your evidence portfolio — three pieces of work, with the receipts on each. You have a list of three things you'd want clarity on from Bea about the next six months.\n\n## What you're walking into\n\nProbation reviews land on a spectrum. Best case: confirmed past probation with growth points. Mid case: confirmed but with concerns to address. Worst case: probation extended, or not confirmed. You think you're in the mid range. You're not sure.",
+  "objective": "Walk out of the meeting with: (1) a clear yes/no on probation, (2) explicit named concerns if any, (3) one or two things you specifically asked for that Bea agreed to.",
+  "curveball": "If the user gets the conversation onto the missed deadline early and frames it as something they learned from rather than apologising defensively, around turn 5 Bea reveals her main concern is not the deadline itself but the way the user communicated it — too late, too vague — and offers a specific upgrade for next time. A user who hears the actual feedback walks out with one concrete behaviour to change, not a vague \"work on communication\".",
+  "personas": [
+    {
+      "name": "Bea Connors",
+      "role": "Line Manager / Senior BA",
+      "position": "Generally supportive but understated; gives feedback once, clearly, and expects you to act on it",
+      "fear": "Confirming a junior analyst past probation who'll need outsized support for the next year",
+      "monogram": "BC",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Led with your one-page self-assessment as a frame, didn't waste five minutes on small talk",
+      "Surfaced the missed deadline before Bea had to and named what you'd do differently",
+      "Asked Bea one specific question rather than a generic \"any feedback?\"",
+      "Closed the meeting with an explicit written summary of what was said + what was agreed"
+    ],
+    "yellow": [
+      "Waited for Bea to lead — she's not running this for you",
+      "Brought up the missed deadline only when Bea did; apology was longer than the lesson",
+      "Asked \"what should I work on?\" — Bea now does the thinking for you, and it'll be vague"
+    ],
+    "red": [
+      "Brought no preparation; the meeting felt like a one-way performance review",
+      "Got defensive when Bea raised the missed deadline; she stopped giving you specifics",
+      "Walked out with vague encouragement and no written summary; no one will remember this conversation in six weeks"
+    ]
+  },
+  "estimated_minutes": 18,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

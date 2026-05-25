@@ -1,0 +1,41 @@
+{
+  "slug": "ba-compliance-late",
+  "role": "ba",
+  "title": "Compliance Surfaces a Concern Two Days Before Go-Live",
+  "one_liner": "Forty-eight hours before launch, the compliance lead emails: \"I have concerns about how consent is being captured. Can we talk?\"",
+  "brief": "## The state of things\n\nThe partner-portal launches Thursday morning. It's Tuesday afternoon. Engineering finished hardening yesterday. Marketing has the launch email ready. Operations have briefed the support team.\n\n## The email\n\nMarcus Klein, compliance lead, just emailed: \"I have concerns about how partner consent is being captured for marketing communications under the consent flow we discussed. Can we talk before launch?\"\n\nNo specifics. Marked normal priority. Sent five minutes ago.\n\n## The pressure\n\nIf Marcus's concern is real, this could either be a small copy fix or a full re-architecture of the consent flow. A re-architecture means the launch slips, the partnership director's announced launch date gets walked back, and your reputation as the analyst on this project takes its first major hit.\n\nIf it's a minor fix, treating it as a five-alarm fire wastes everyone's Wednesday. Marcus is meticulous; he doesn't email casually. But he also tends to bury the lede.",
+  "objective": "Surface the actual scope of Marcus's concern in a single conversation today, and either close it out or trigger the right escalation before tomorrow morning.",
+  "curveball": "When the user calls Marcus (rather than going back-and-forth in email), around turn 3 Marcus reveals that the concern is genuinely small — one specific consent string is missing the legitimate-interest disclosure — but he also mentions, in passing, that the same pattern likely affects three other places in the portal he hasn't reviewed yet. A user who only fixes the one issue ships with the other three live; a user who hears the broader pattern triggers the right end-of-day review.",
+  "personas": [
+    {
+      "name": "Marcus Klein",
+      "role": "Compliance Lead",
+      "position": "Meticulous, understated; will bury the headline in paragraph three",
+      "fear": "Being told post-launch that he should have flagged something earlier",
+      "monogram": "MK",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Called rather than emailed",
+      "Asked Marcus to name the worst-case version of his concern before any solutioning",
+      "Caught the \"three other places\" remark and triggered a targeted sweep",
+      "Closed the conversation with a written summary of scope + decision + owner"
+    ],
+    "yellow": [
+      "Asked Marcus by email for specifics — wasted three hours waiting",
+      "Pre-promised the team a fix scope without knowing what the concern actually was",
+      "Looped in your manager before talking to Marcus — your manager has fewer specifics than you do"
+    ],
+    "red": [
+      "Decided the concern was minor without asking Marcus, and shipped",
+      "Panicked and triggered a launch-slip escalation before knowing whether it was warranted",
+      "Asked Marcus to put it in writing — he did, and now there's a paper trail of \"compliance had concerns\" attached to your launch"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

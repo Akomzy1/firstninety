@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w2-shadow-workshop",
+  "role": "ba",
+  "week": 2,
+  "sequence_in_week": 1,
+  "title": "Shadow a workshop end-to-end",
+  "why_matters": "Workshops are where most BAs are made or broken. Before you facilitate one, you need to have watched a good one and a bad one — and to be able to name the difference. Shadowing without participating buys you the slowest, most useful learning available to you in the first month.",
+  "steps": [
+    "Ask your manager which upcoming workshop is worth shadowing this week. Aim for one with at least three stakeholders in different positions.",
+    "Sit in the back. Take notes on the facilitator, not the content: every silence, every redirect, every time they restated something to check understanding.",
+    "Write up a two-paragraph private note within four hours of the workshop ending — one paragraph of what worked, one of what you'd do differently.",
+    "Send the facilitator a brief thank-you with one specific question about a moment in the workshop. They'll remember you."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": ["ba-hostile-lead-dev", "ba-clarifying-question"]
+  },
+  "success_criteria": "Two-paragraph note exists in your private file. The facilitator has had a thoughtful follow-up question from you, addressed to a specific moment in the meeting.",
+  "reflection_prompt": "Pick one moment in the workshop. What would you have done differently, and what's the strongest argument against your own choice?",
+  "estimated_minutes": 75,
+  "prerequisites": ["ba-w1-map-stakeholders"],
+  "career_stage": "first_90_days"
+}

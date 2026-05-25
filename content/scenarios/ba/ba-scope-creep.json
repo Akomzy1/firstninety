@@ -1,0 +1,49 @@
+{
+  "slug": "ba-scope-creep",
+  "role": "ba",
+  "title": "Scope Creep Mid-Sprint",
+  "one_liner": "Day 8 of a two-week sprint. The product owner asks if you can \"just add\" four new fields to the in-flight onboarding form.",
+  "brief": "## Where you are\n\nThe team is mid-build on the partner-onboarding form. Engineering finishes the original 11 fields tomorrow. QA starts on Thursday. Demo Friday.\n\n## The ask\n\nThe product owner, Diego, has just walked over. The compliance team \"casually mentioned\" they'd like four extra fields captured for AML purposes. Diego asks: \"how hard would it be to just add them? Tiny change, right?\"\n\nDiego is well-meaning. He's also done this twice already this sprint. The team's velocity is starting to slip. The lead engineer, Sam, looked at you when Diego said \"tiny change\" and pulled a face you can't unsee.\n\n## What's at stake\n\nIf you say yes and it's hard: you blow the sprint, miss the demo, and the team starts to distrust your scoping. If you say no and it's easy: Diego goes around you to the engineers, the change happens anyway, and you've spent goodwill on nothing.",
+  "objective": "Walk away from this conversation with either a costed yes, a clean no with an alternative path, or a definite \"I'll know by end of day\" that doesn't drag the sprint.",
+  "curveball": "Around turn 4, if the user asks why compliance wants the fields now (rather than during initial scoping), Diego mentions that compliance only just discovered FCA published new AML guidance last Friday — meaning these fields will probably become mandatory at some point regardless. A user who surfaces this can re-frame the request as a pre-emptive de-risk rather than a scope expansion.",
+  "personas": [
+    {
+      "name": "Diego Marquez",
+      "role": "Product Owner",
+      "position": "Energetic; \"just one more thing\" is a verbal tic",
+      "fear": "Being seen as not delivering enough; getting blamed for compliance gaps",
+      "monogram": "DM",
+      "colour": "slate"
+    },
+    {
+      "name": "Sam Palmer",
+      "role": "Senior Engineer",
+      "position": "Knows exactly how much each \"tiny change\" costs",
+      "fear": "Being asked to commit to estimates that get reframed as promises",
+      "monogram": "SP",
+      "colour": "slate"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Got concrete with Diego: which fields, what data type, mandatory or optional",
+      "Pulled Sam in for the estimate before making any commitment",
+      "Surfaced the FCA-guidance context and reframed the change as de-risking",
+      "Closed with a specific decision and a written record of what was agreed"
+    ],
+    "yellow": [
+      "Said \"let me check\" and disappeared into Slack with the engineers without Diego in the loop",
+      "Took the request at face value without asking why now",
+      "Promised an answer \"after stand-up\" without specifying which stand-up"
+    ],
+    "red": [
+      "Said yes in the moment because Diego seemed urgent",
+      "Said no flatly without proposing an alternative; Diego went to the engineers anyway",
+      "Negotiated yourself: \"how about two of the four?\" without asking which two compliance actually needs"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

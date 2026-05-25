@@ -1,0 +1,42 @@
+{
+  "slug": "ba-process-map",
+  "role": "ba",
+  "artefact_type": "process_map",
+  "title": "Process Map (BPMN Basics)",
+  "variant": "standard",
+  "description": "The artefact that proves you actually understand the business. A good process map shows the path, the swimlanes, and the failure modes. A bad one is a flowchart with too many shapes.",
+  "empty_template_md": "## Process map — [process name]\n\n**Purpose:** What does this process exist to do? One sentence.\n\n**Trigger:** What starts it? One sentence.\n\n**Outcome:** What does \"done\" look like? One sentence.\n\n### Swimlanes\n\nList every distinct actor (human or system). One swimlane per actor. Sequence top-to-bottom.\n\n### Steps\n\n_Use BPMN basics — task = rounded rectangle, decision = diamond, message/handoff = arrow. Keep to two pages._\n\n### Failure modes\n\nFor each step, what happens when it doesn't go to plan? Where do exceptions land?\n\n### Pain points\n\nWhich steps cost disproportionately (time, money, customer effort)? Mark with a small symbol.\n",
+  "worked_examples": [
+    {
+      "title": "Partner onboarding — current state",
+      "content_md": "## Process map — Partner onboarding (as-is)\n\n**Purpose:** Take a new partner from initial agreement to live on the platform.\n**Trigger:** Partner relations team marks a deal closed in CRM.\n**Outcome:** Partner can transact through the portal.\n\n### Swimlanes\n\n1. Partner relations (manual, email-heavy)\n2. Compliance (review)\n3. Engineering (provisioning script)\n4. Customer success (onboarding call)\n5. Partner (the actual partner)\n\n### Sequence\n\n1. Partner relations emails compliance a partner pack (PDF, manual). _Median wait: 2 days._\n2. Compliance reviews — checks KYC documents and AML status. _Median wait: 4 days._\n3. Compliance emails partner relations approval. Partner relations forwards to engineering.\n4. Engineering runs the provisioning script. _Median wait: 1 day._\n5. Customer success books a kick-off call with the partner. _Median wait: 3 days._\n6. Partner attends call, receives credentials, logs in.\n\n### Failure modes\n\n- Step 2: 1 in 5 partner packs come back from compliance asking for additional documents. Re-loop adds 3-7 days.\n- Step 4: Provisioning script fails ~10% of the time (script is bespoke per partner type). Engineering re-runs manually.\n- Step 6: 1 in 8 partners can't successfully sign in on first attempt. Loops to customer success for support.\n\n### Pain points\n\n- The 2 + 4 + 3 days of wait between steps. Total median: 10 days for a deal that's already closed.\n- The forward-emails between partner relations, compliance, and engineering have no audit trail. When something goes wrong nobody can reconstruct what happened.\n- The provisioning script is one Sam-Palmer-shaped person away from being un-runnable.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The Purpose / Trigger / Outcome lines at the top force you to write the one-paragraph version of the process before you draw it. If you can't write those three lines, the diagram won't help."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Quantifying wait time at each step — \"median 2 days\" — turns the diagram from descriptive to actionable. The pain points become arithmetic."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Failure modes per step is what distinguishes a real process map from a marketing diagram. The exception paths are where the work actually lives."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Drawing the to-be process before mapping the as-is. The as-is is the part that reveals where the pain actually sits — the to-be is downstream of that understanding.",
+    "Adding so many shapes that the map is unreadable. If a process needs more than two pages of diagram, split it. The reader gives you about thirty seconds.",
+    "Mapping only the happy path. Half the value is in the failure modes — exceptions, retries, manual interventions. If your map doesn't show those, it's a sales diagram, not an analyst's diagram.",
+    "Validating the map only by showing it to the manager who described the process. Validate with the people who do the work — they'll tell you what the manager left out."
+  ],
+  "variant_patterns": [
+    "Lean variant: skip the BPMN shapes; use a value stream map showing process step + lead time + active time per step. Useful when wait times dominate.",
+    "Cross-system variant: when systems are as much actors as people, give each system its own swimlane and treat API calls as messages between lanes."
+  ],
+  "related_scenarios": ["ba-vague-sponsor"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

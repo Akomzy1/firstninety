@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w4-bring-two-stakeholders",
+  "role": "ba",
+  "week": 4,
+  "sequence_in_week": 2,
+  "title": "Bring two stakeholders to the same conversation",
+  "why_matters": "Half the work of a BA is reducing the number of game-of-telephone hops between the people who have the answer and the people who need it. Putting two stakeholders in the same room — for fifteen minutes, on a specific topic — is the single most efficient thing you can do this week. Even when it's awkward. Especially when it's awkward.",
+  "steps": [
+    "Identify two people whose decisions are currently going through you because they don't talk to each other. Common pairs: PO + lead engineer, business sponsor + compliance, designer + customer success.",
+    "Pick one specific question both have a stake in. Avoid generalities (\"alignment\"); pick something concrete and decidable.",
+    "Book fifteen minutes with both. Write the question on the invite description. Don't soften it — the awkwardness is the point.",
+    "Facilitate. Stay quiet for at least the first three minutes. Take notes; send the summary same-day."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-stakeholder-map"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "Two stakeholders have been in the same conversation for at least fifteen minutes. A decision (or a documented next step toward one) exists in writing. Both have received the summary.",
+  "reflection_prompt": "What's the conversation you most want them to have next, and what would have to be true for it to happen without you in the room?",
+  "estimated_minutes": 50,
+  "prerequisites": ["ba-w1-map-stakeholders"],
+  "career_stage": "first_90_days"
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w13-book-pre-review-1on1",
+  "role": "ba",
+  "week": 13,
+  "sequence_in_week": 2,
+  "title": "Book your pre-review 1:1",
+  "why_matters": "The pre-review 1:1 is what makes the review itself boring — which is the outcome you want. Five to seven days before the formal review, you share the self-assessment with your manager and ask whether there's anything they'd flag now that they'd rather not surface in the room. Surprises in the review are a failure of preparation.",
+  "steps": [
+    "Book a fifteen-minute 1:1 with your manager, between five and seven days before your formal review.",
+    "Send the self-assessment 24 hours before the meeting. Ask one specific question in the calendar invite: \"is there anything you'd want to flag that you'd rather not surface in the review itself?\".",
+    "In the meeting, listen. Take notes. Resist the urge to defend.",
+    "Within four hours of the meeting, update your self-assessment based on what you heard. Note in your evidence file what was raised + what you'll do about it."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-probation-pack-prep", "ba-first-1on1"],
+    "scenario_slugs": ["ba-probation-review"]
+  },
+  "success_criteria": "Pre-review meeting is booked and the self-assessment has been shared 24 hours ahead. After the meeting, the assessment has been updated and the discussion is summarised in your evidence file.",
+  "reflection_prompt": "What did your manager say that you didn't anticipate, and what does it change about how you'll go into the formal review?",
+  "estimated_minutes": 45,
+  "prerequisites": ["ba-w13-write-self-assessment"],
+  "career_stage": "first_90_days"
+}

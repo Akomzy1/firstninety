@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w9-document-cross-discipline",
+  "role": "ba",
+  "week": 9,
+  "sequence_in_week": 2,
+  "title": "Document one thing you learned from another discipline",
+  "why_matters": "What you learned from shadowing only matters if it changes how you work. Writing it down — and sharing it back — turns a private observation into a team artefact. The smallest version of this is one paragraph; that's all you need. The act of writing it back to the team is what creates the credit.",
+  "steps": [
+    "Look at your shadowing notes. Pick one observation that has a clear behaviour you could adopt.",
+    "Write a short paragraph: what you observed, why it matters, what you're going to do differently. Three to five sentences total.",
+    "Send it to the person you shadowed first; ask if it's a fair read.",
+    "Adjust based on their feedback, then file it under \"Probation evidence — what I learned from other disciplines\"."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-probation-pack-prep"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "A short paragraph exists in your evidence file. The person you shadowed has reviewed and acknowledged. The behaviour change is specific and testable.",
+  "reflection_prompt": "What's the version of this you weren't ready to write — and what would have to be true for you to write it next month?",
+  "estimated_minutes": 30,
+  "prerequisites": ["ba-w9-cross-discipline-story"],
+  "career_stage": "first_90_days"
+}

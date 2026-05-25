@@ -1,0 +1,41 @@
+{
+  "slug": "ba-clarifying-question",
+  "role": "ba",
+  "title": "Stakeholder Pushback on a Clarifying Question",
+  "one_liner": "You ask a basic clarifying question in a workshop. The senior stakeholder pushes back: \"shouldn't you already know that?\"",
+  "brief": "## The room\n\nSecond requirements workshop on the partner-portal project. The lead business stakeholder is Liane, the Director of Partner Relations. She's been in the role twelve years. She's also been described to you, twice, as \"someone who suffers fools more than she should but eventually doesn't\".\n\n## The moment\n\nYou ask: \"when a partner is offboarded, what happens to their historical transaction data?\" A reasonable question. Half the room nods.\n\nLiane looks up. \"Shouldn't you already know that? It's in every onboarding doc we've sent over.\"\n\nThe room has gone quiet. A junior PM at the end of the table is looking at her hands.",
+  "objective": "Hold ground on the legitimacy of the question without losing the room or escalating into defensiveness — and still get the answer.",
+  "curveball": "If the user is direct without being defensive, around turn 4 Liane softens and reveals that two prior analysts on this project asked the same question and never came back with anything written — she's frustrated by the pattern, not by this user specifically. A user who hears that can reframe their question as \"so let me write it down this time\".",
+  "personas": [
+    {
+      "name": "Liane Okafor",
+      "role": "Director of Partner Relations",
+      "position": "Twelve years in the role; sharp; allergic to wasted time",
+      "fear": "Watching another six months disappear into a project that doesn't deliver",
+      "monogram": "LO",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Acknowledged Liane's frustration without apologising for asking the question",
+      "Named that you'd looked at the onboarding docs and what specifically wasn't clear",
+      "Caught the historical-pattern context when Liane surfaced it and used it to reset",
+      "Walked away with a written one-paragraph answer Liane initialled"
+    ],
+    "yellow": [
+      "Apologised vaguely and moved on — got no answer; same question will come up next workshop",
+      "Doubled down on \"actually it's a reasonable question\" — turned a moment into a fight",
+      "Took notes silently and skipped to the next agenda item"
+    ],
+    "red": [
+      "Backed down completely; Liane's frustration validated her behaviour for the rest of the room",
+      "Tried to make the junior PM answer it instead",
+      "Said \"I'll find out and get back to you\" without ever circling back — Liane will notice"
+    ]
+  },
+  "estimated_minutes": 9,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

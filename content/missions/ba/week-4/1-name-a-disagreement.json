@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w4-name-a-disagreement",
+  "role": "ba",
+  "week": 4,
+  "sequence_in_week": 1,
+  "title": "Name a disagreement in writing",
+  "why_matters": "By week 4 you've noticed the seams in the team — the places where two people have different mental models and have agreed, mostly, to not surface the difference. Naming one disagreement in writing is your first move from observer to participant. It also lets you discover whether the disagreement is real or whether it's about something else entirely.",
+  "steps": [
+    "Identify one disagreement you've watched the team avoid for at least two weeks. Pick something where both positions are defensible.",
+    "Write a half-page private note: position A in two sentences, position B in two sentences, what each side seems to fear losing.",
+    "Decide whether surfacing it is helpful right now or whether the team would handle it better when a specific decision forces the conversation.",
+    "If yes — surface it. In writing, in a low-stakes context (e.g., a 1:1 with the relevant lead). If no — keep the note, and revisit weekly."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-stakeholder-map"],
+    "scenario_slugs": ["ba-uat-blame"]
+  },
+  "success_criteria": "A half-page disagreement note exists. You can articulate both positions without revealing which one you currently lean towards. If surfaced, you have a written record of the conversation that followed.",
+  "reflection_prompt": "Did surfacing this make the disagreement bigger or smaller, and what does that tell you about the team?",
+  "estimated_minutes": 45,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w1-first-1on1",
+  "role": "ba",
+  "week": 1,
+  "sequence_in_week": 2,
+  "title": "First 1:1 with your manager",
+  "why_matters": "The first 1:1 sets the cadence of every 1:1 that follows. Treat it like a working meeting where you arrive with a written agenda and you ask more than you answer. Done well, you walk out with a clearer picture of what \"good\" looks like in this org and one concrete thing you've committed to. Done badly, you've spent thirty minutes on small talk that taught neither of you anything.",
+  "steps": [
+    "Use the first-1:1 playbook to draft a four-section agenda the night before.",
+    "Send the agenda 24 hours ahead so your manager can pre-think (it's a tell about how they prefer to work — note the reaction).",
+    "Run the meeting; listen more than you speak in section 2; be specific in section 3.",
+    "Within an hour of the meeting, write the 5-sentence summary in your private notes — what they care about, what you committed to, what they committed to."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-first-1on1"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "Meeting ends with a written commitment from both sides and a confirmed cadence (weekly or fortnightly). You can write the 5-sentence summary without rereading the agenda.",
+  "reflection_prompt": "What was the most useful thing you learned about how your manager works, and what does it change about how you'll approach the next two weeks?",
+  "estimated_minutes": 35,
+  "prerequisites": ["ba-w1-map-stakeholders"],
+  "career_stage": "first_90_days"
+}

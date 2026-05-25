@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w8-run-without-escalation",
+  "role": "ba",
+  "week": 8,
+  "sequence_in_week": 2,
+  "title": "Run it for two weeks without escalation",
+  "why_matters": "Anyone can deliver the first iteration with adrenaline. The second and third iterations — when the novelty has worn off and nobody's watching — are where ownership actually lives. Run your new recurring activity for two clean weeks before declaring it owned.",
+  "steps": [
+    "Plan iterations two and three of your new responsibility. Calendar them.",
+    "Do each one to the same standard as the first.",
+    "Resist the urge to ask your previous owner whether you're doing it right. Either ship it and ask for feedback after, or trust your read.",
+    "After iteration three, write a one-paragraph note on what you'd change about how the activity is structured. You're not just doing it — you're improving it."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": []
+  },
+  "success_criteria": "Two further iterations have shipped. No escalation has been needed. A one-paragraph note exists with at least one structural improvement you'd propose.",
+  "reflection_prompt": "What were you tempted to escalate that turned out to be solvable on your own?",
+  "estimated_minutes": 60,
+  "prerequisites": ["ba-w8-take-recurring-ownership"],
+  "career_stage": "first_90_days"
+}

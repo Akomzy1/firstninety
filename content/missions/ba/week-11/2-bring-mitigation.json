@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w11-bring-mitigation",
+  "role": "ba",
+  "week": 11,
+  "sequence_in_week": 2,
+  "title": "Bring it to the right person with a proposed mitigation",
+  "why_matters": "Raising a risk without a proposed mitigation is reporting; raising one with a mitigation is contributing. The mitigation doesn't have to be the right one — it has to be specific enough that the person who owns the response can either say yes or counter-propose. This is the move that turns a risk from a worry into work.",
+  "steps": [
+    "Take the risk you surfaced. Identify the person who'd own the response — usually a different person from who'd be affected.",
+    "Write a short paragraph: the risk in one sentence, the proposed mitigation in two, the cost in one.",
+    "Book a fifteen-minute conversation. Don't email and wait; the writing is for the conversation, not instead of it.",
+    "After the conversation, write up what was agreed (mitigation accepted, modified, or declined with reason) and add it to the RAID log."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-raid-log"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "A fifteen-minute conversation has happened with the response owner. The RAID log entry has been updated with the decision (accepted, modified, or declined + reason). You can name the next concrete step.",
+  "reflection_prompt": "What was the response you didn't expect, and what does it tell you about how this organisation handles risk?",
+  "estimated_minutes": 40,
+  "prerequisites": ["ba-w11-surface-untracked-risk"],
+  "career_stage": "first_90_days"
+}

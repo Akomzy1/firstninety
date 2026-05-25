@@ -1,0 +1,59 @@
+{
+  "slug": "ba-hostile-lead-dev",
+  "role": "ba",
+  "title": "The Hostile Lead Dev",
+  "one_liner": "You're facilitating your first requirements workshop. The lead dev does not want to be there.",
+  "brief": "## The room\n\nYou've been at the firm three weeks. Today is your first workshop with the engineering side of the team building out the new customer onboarding portal. You've prepared an agenda. You've sent it round. People are arriving.\n\nSam Palmer — senior dev, ten years on the platform — shipped the last version of this portal. He thinks the new requirements are a rewrite in disguise.\n\nPriya Rao is the business sponsor. She wants the work done but is uncomfortable specifying what she actually needs. Her recurring frame: \"You're the analyst, you tell me what we need to know.\"\n\nMarcus Klein from compliance is here because someone forgot to remove him from the invite list. He's quiet, watching, has a notebook.\n\n## Your turn\n\nYou have 45 minutes. You need top-line requirements out of this room. Open the workshop.",
+  "objective": "Capture the top 5 requirements without losing control of the room.",
+  "curveball": "Marcus from compliance, silent so far, has a major concern about data residency that he hasn't raised. It surfaces around turn 6 if the user doesn't draw it out. If the user has by then promised something specific to Priya that contradicts the data-residency constraint, that's a red flag.",
+  "personas": [
+    {
+      "name": "Sam Palmer",
+      "role": "Senior Developer",
+      "position": "This is a waste of time",
+      "fear": "Being told to rewrite a system he just shipped",
+      "monogram": "SP",
+      "colour": "slate"
+    },
+    {
+      "name": "Priya Rao",
+      "role": "Business Sponsor",
+      "position": "You tell me what you need to know",
+      "fear": "Being seen as not knowing her own department",
+      "monogram": "PR",
+      "colour": "moss"
+    },
+    {
+      "name": "Marcus Klein",
+      "role": "Compliance Lead",
+      "position": "Precise and cautious",
+      "fear": "Regulatory exposure if compliance is skipped",
+      "monogram": "MK",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Redirected Sam without dismissing him",
+      "Used an open question to draw out Priya's actual frustration",
+      "Surfaced the compliance question before it became an email",
+      "Held the room — nobody dominated for more than two turns"
+    ],
+    "yellow": [
+      "Capitulated to Sam's framing in the first three turns",
+      "Asked Priya 'what are the requirements?' (closed question, low yield)",
+      "Moved past Marcus's first interjection without acknowledgement",
+      "Filled silence with your own answers rather than waiting"
+    ],
+    "red": [
+      "Lost the room — Sam took over by turn 5",
+      "Failed to surface the compliance question at all",
+      "Promised something specific to Priya that contradicts the curveball",
+      "Took notes silently for 4+ turns without asking a question"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

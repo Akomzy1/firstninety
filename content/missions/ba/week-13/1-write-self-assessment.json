@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w13-write-self-assessment",
+  "role": "ba",
+  "week": 13,
+  "sequence_in_week": 1,
+  "title": "Write your probation self-assessment",
+  "why_matters": "The self-assessment is the artefact your manager reads first. Three paragraphs — delivered, learned, want next — and a page that fits on one screen. Most BAs write four pages of adjectives. Don't. The discipline of compression is what shows judgement.",
+  "steps": [
+    "Open the probation-pack playbook. Look at the worked example — that's the length and tone to aim for.",
+    "Write the Delivered paragraph first. Be specific; name actual deliverables with the receipts attached. No adjectives where verbs would do.",
+    "Write the Learned paragraph. Include something you misjudged. Show what changed.",
+    "Write the Want-next paragraph. End with one specific thing you want from your manager to make the next 90 days possible."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-probation-pack-prep"],
+    "scenario_slugs": ["ba-probation-review"]
+  },
+  "success_criteria": "A one-page self-assessment exists in the probation-pack format. Three paragraphs, no longer. Manager has not yet seen it (it goes to them in mission 2).",
+  "reflection_prompt": "Which of the three paragraphs was hardest to write honestly, and why?",
+  "estimated_minutes": 60,
+  "prerequisites": ["ba-w12-annotate-portfolio-piece"],
+  "career_stage": "first_90_days"
+}

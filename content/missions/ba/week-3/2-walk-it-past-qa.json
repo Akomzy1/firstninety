@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w3-walk-it-past-qa",
+  "role": "ba",
+  "week": 3,
+  "sequence_in_week": 2,
+  "title": "Walk a story past QA before sprint planning",
+  "why_matters": "QA's job is to find the gap between what was written and what gets built. Showing them a story before it lands in sprint planning costs you fifteen minutes and saves the team a week of defect triage. The BAs who do this end up with quieter sprints. The BAs who don't end up writing apology emails.",
+  "steps": [
+    "Pick a draft story (yours or, if you don't have one, one already in the backlog).",
+    "Walk over to QA in person. Show them the story on a screen. Don't email.",
+    "Ask one direct question: \"is there anything here you wouldn't be able to test?\". Then stop talking.",
+    "Note their answer verbatim if you can. If they suggested rewrites, ask whether they'd phrase the criterion any specific way."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-user-stories"],
+    "scenario_slugs": ["ba-not-testable"]
+  },
+  "success_criteria": "You have spoken to QA face to face about a draft story. The story has been amended based on their input, with the changes noted next to the original.",
+  "reflection_prompt": "What did QA flag that you hadn't seen, and what's the question you could ask yourself next time that would surface it earlier?",
+  "estimated_minutes": 25,
+  "prerequisites": ["ba-w3-draft-first-user-story"],
+  "career_stage": "first_90_days"
+}

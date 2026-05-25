@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w1-map-stakeholders",
+  "role": "ba",
+  "week": 1,
+  "sequence_in_week": 1,
+  "title": "Map your stakeholders",
+  "why_matters": "Your first ninety days are when you have the most permission to ask basic questions and the least credibility to assume. A stakeholder map turns every conversation into something you can come back to later — by week six, the analysts who can name every interest in the room are the analysts who get put on the harder projects.",
+  "steps": [
+    "Open a fresh document. Use the stakeholder-map template from the Playbook library.",
+    "List every named person you have already met (or know of) on your current initiative. Job titles, not assumptions.",
+    "For each row, write one sentence in the Position column — what they appear to be for or against. It's allowed to be wrong; you're going to revise this weekly.",
+    "Spot the rows where Power is high but you've spoken to them for less than ten minutes. Those are your week-2 coffees."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-stakeholder-map"],
+    "scenario_slugs": ["ba-clarifying-question", "ba-vague-sponsor"]
+  },
+  "success_criteria": "By end of day, the document has every named stakeholder, with at least one sentence per Position column. You can name the three people who matter most for the project to land.",
+  "reflection_prompt": "Looking at the map — which Position line are you least sure about, and what would you need to learn to write it more confidently? Two sentences.",
+  "estimated_minutes": 25,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

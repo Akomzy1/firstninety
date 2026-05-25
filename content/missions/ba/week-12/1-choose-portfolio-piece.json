@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w12-choose-portfolio-piece",
+  "role": "ba",
+  "week": 12,
+  "sequence_in_week": 1,
+  "title": "Choose your best piece of work to date",
+  "why_matters": "Two weeks before your probation review, you need to start curating. Not everything you've done is portfolio-worthy. Pick the one piece — out of everything between weeks 1 and 12 — that best shows the kind of analyst you're becoming. Picking is a skill; this exercise is the dress rehearsal for many years of choosing.",
+  "steps": [
+    "Open your evidence file. Read every entry.",
+    "Score each piece on three axes: was the outcome good, was the work specifically yours, would you be proud of someone else doing exactly this?",
+    "Pick the top one. Allow second-place to inform your evidence portfolio later — but commit to one piece first.",
+    "Write a single line at the top of the file: \"the piece of work that best shows what I do is X, because Y\"."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-probation-pack-prep"],
+    "scenario_slugs": ["ba-probation-review"]
+  },
+  "success_criteria": "One specific piece of work is identified as your strongest. Your evidence file has the single-line statement at the top. You can defend the choice in one sentence to your line manager.",
+  "reflection_prompt": "What did you almost pick instead, and why didn't you?",
+  "estimated_minutes": 30,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

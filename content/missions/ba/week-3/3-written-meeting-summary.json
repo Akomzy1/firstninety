@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w3-written-meeting-summary",
+  "role": "ba",
+  "week": 3,
+  "sequence_in_week": 3,
+  "title": "Send a written meeting summary within four hours",
+  "why_matters": "Writing the summary forces you to decide what mattered. Sending it within four hours means the writing is honest — you can't yet remember everything in soft focus, and you have to commit. The BAs who do this build a reputation for being the person who keeps decisions visible. That reputation compounds.",
+  "steps": [
+    "Pick a meeting you attended this week with at least three people and at least one decision.",
+    "Within four hours of the meeting ending, write three short sections: what was decided, what's open, what's the next action and who owns it.",
+    "Keep it to one screen. If it's longer, you're including narrative; cut.",
+    "Send it to everyone who was in the meeting. Add the meeting's name and date in the subject line."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": ["ba-uat-blame"]
+  },
+  "success_criteria": "The summary email is sent within four hours of the meeting. It contains decisions, opens, and an owner per action. At least one person replies with a correction (this is good; absence of correction means nobody read it).",
+  "reflection_prompt": "What got cut between your draft and what you sent, and was the cut a discipline or a duck?",
+  "estimated_minutes": 25,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

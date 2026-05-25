@@ -1,0 +1,50 @@
+{
+  "slug": "ba-probation-pack-prep",
+  "role": "ba",
+  "artefact_type": "probation_pack",
+  "title": "Probation Prep Pack",
+  "variant": "probation",
+  "description": "The composite pack for the final twenty-one days before your probation review. Self-assessment template + pre-review 1:1 agenda + evidence portfolio + the conversation itself, all aligned to a single review date.",
+  "empty_template_md": "## Probation Prep Pack — [name]\n\n**Review date:** [date]\n**Manager:** [name]\n\n### 1. Self-assessment (one page)\n\nThree paragraphs, no more.\n\n**Delivered.** _What I have actually done in 90 days, with the receipts. Specific. Not adjective-heavy._\n\n**Learned.** _What I learned that I didn't know on Day 1. Be honest about misjudgements; show what changed._\n\n**Want next.** _What I'd like to focus on in the next 90 days, with one specific thing I want from my manager to make it possible._\n\n### 2. Pre-review 1:1 agenda (15 minutes, 5-7 days before the review)\n\nThis is the meeting where you de-risk the review meeting.\n\n- _Ask: are there any concerns I haven't heard about yet?_\n- _Share your self-assessment in advance; ask whether the framing matches their read._\n- _Surface anything you already know is a soft spot — own it first._\n\n### 3. Evidence portfolio\n\nThree pieces of work. For each:\n\n- **What it was:** one sentence.\n- **What I did:** one paragraph; specific verbs.\n- **What changed because of it:** one sentence; outcome, not effort.\n- **What I'd do differently:** one sentence; honest.\n\nKeep file links, dates, named (anonymised) collaborators. Make it scannable.\n\n### 4. The review conversation\n\nGo in with:\n- A printed copy of your self-assessment + portfolio.\n- One question you want them to answer (e.g., \"what's the one thing you'd want to see different in the next 90 days?\").\n- A note-taking pad.\n\nLeave with:\n- A clear yes / no / extended on probation.\n- Two or three specific notes — what they liked, what they want different.\n- A written summary you send within 24 hours.\n",
+  "worked_examples": [
+    {
+      "title": "Worked example — BA, day 87",
+      "content_md": "## My probation prep pack — day 87 of 90\n\n**Review date:** Wednesday next week.\n**Manager:** Bea Connors.\n\n### 1. Self-assessment\n\n**Delivered.** In 12 weeks I have written 2 BRDs (partner-portal + expense-tool migration), 23 user stories with acceptance criteria, and run 4 requirements workshops as primary facilitator. I held the room in the defect-triage meeting that the team had been dreading, and surfaced the de-scoping email that reframed three defects. The partner-portal launches on schedule on Thursday.\n\n**Learned.** I came in over-indexed on the BRD as the central artefact. Eight weeks in I realised the stakeholder map was doing more work than any BRD, because it explained why every meeting went the way it did. I also misjudged when to escalate the compliance concern in week 11 — I should have called Marcus on Tuesday, not waited until Wednesday morning. That's the moment I most want to do differently.\n\n**Want next.** In the next 90 days I want to lead a piece of work end-to-end where Bea is observing rather than guiding. Specifically: the partner-onboarding process redesign that's lined up for Q2. I'd like Bea to be the second BA on the project — present but not driving.\n\n### 2. Pre-review 1:1\n\nBooked for Monday, 5 days before the review. Agenda:\n- I'm sharing this self-assessment now. Does the framing match your read?\n- Specifically: I know the way I communicated the week-7 slip wasn't great. I've thought about what I'd do differently — I'd like to talk about whether what I've worked out matches what you'd want.\n- Is there anything you'd want to flag now that you'd rather not surface in the review meeting itself?\n\n### 3. Evidence portfolio\n\n**Partner-portal BRD (week 4).** I wrote the BRD that anchored the partner-portal initiative across 3 stakeholders with conflicting positions. The de-scoping email I prepared in week 5 was referenced 6 weeks later to reset the defect-triage meeting (week 11). What I'd do differently: I'd write the out-of-scope section first, not last — the conversations that matter happened around what wasn't included.\n\n**Defect-triage in week 11.** Facilitated a 60-minute meeting where the PO and lead engineer were openly blaming each other for the UAT defect list. I triaged the list by category (bugs / requirement gaps / de-scoped items) and surfaced the de-scoping email. The meeting closed with every defect owned and categorised; the team avoided the week of recriminations that would otherwise have happened. What I'd do differently: I'd have established the categorisation framework in week 1, not week 11 — the same defect-triage exercise on a smaller project would have built the muscle.\n\n**Compliance escalation in week 11.** Marcus surfaced a concern 48 hours before launch. I called rather than emailed, caught the \"three other places\" remark, and triggered the end-of-day sweep that fixed all four issues before Thursday morning. What I'd do differently: I'd not have waited the half-day before calling him. The email landed at 11am. I called at 3pm. I should have called at 11:15.\n\n### 4. The review conversation\n\nGoing in with the printed pack + this question for Bea: \"If you could choose only one thing I work on in the next 90 days, what would it be?\"\n\nIf the answer is anything other than \"keep doing what you're doing\" — which it won't be — that becomes the focal point of my next 90-day plan.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Three short paragraphs is the discipline. Probation self-assessments that run to four pages of adjectives are not read; one page of specifics is."
+        },
+        {
+          "section_id": "section-1",
+          "note": "The \"Learned\" paragraph is the one that decides probation reviews. Honest learning shows judgement; defensive learning shows the opposite."
+        },
+        {
+          "section_id": "section-1",
+          "note": "The \"want next\" line ends with a specific ask of the manager. \"I'd like Bea to be the second BA on Q2\" beats \"I'd like more autonomy\" every time."
+        },
+        {
+          "section_id": "section-2",
+          "note": "The pre-review meeting is where you flush surprises out. Anything you discover in this meeting is something you don't have to discover in the review meeting itself."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Each portfolio entry has a \"what I'd do differently\" line. Without it, the pack reads as a victory lap. With it, it reads as someone who's still learning."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Writing a self-assessment of three pages instead of three paragraphs. Length signals anxiety, not depth. Cut.",
+    "Skipping the pre-review meeting because \"the review is in 5 days anyway\". The pre-review is what makes the review boring — which is exactly what you want.",
+    "Portfolios that record effort rather than outcome. \"Spent 40 hours on the BRD\" is not evidence. \"BRD shipped, anchored the de-scoping decision in week 11\" is.",
+    "Walking out of the review with vague encouragement and no written summary. If you can't write the five-sentence summary that night, you didn't have the conversation that needed having."
+  ],
+  "variant_patterns": [
+    "Probation extended variant: the conversation about an extended probation needs the same structure but with explicit milestones for the extension period (what changes, what gets reviewed, by when).",
+    "Probation passed-with-concerns variant: leave the meeting with the concerns written down and a follow-up booked. \"Passed with concerns\" is two months of unfinished business if you don't formalise it."
+  ],
+  "related_scenarios": ["ba-probation-review"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

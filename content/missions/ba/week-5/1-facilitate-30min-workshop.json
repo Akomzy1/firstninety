@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w5-facilitate-30min-workshop",
+  "role": "ba",
+  "week": 5,
+  "sequence_in_week": 1,
+  "title": "Facilitate a 30-minute workshop",
+  "why_matters": "Your first facilitated meeting is the moment people stop seeing you as new. Keep it short, keep the agenda visible, and finish on time. The half-page of preparation in advance is what makes the meeting look easy. People will remember how it felt to be in the room; that's the metric.",
+  "steps": [
+    "Pick a topic with one specific decision. Examples: which of three approaches we'll pursue, what the acceptance criteria for story X look like, who owns the post-launch review.",
+    "Write a half-page agenda the day before. List the decision required, the people you've invited, the order of the conversation, and the rough time per section.",
+    "Send the agenda 24 hours ahead. Reread it 30 minutes before. Tweak.",
+    "Facilitate. Stick to time. Send the written summary within four hours."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-first-1on1"],
+    "scenario_slugs": ["ba-hostile-lead-dev", "ba-clarifying-question"]
+  },
+  "success_criteria": "Meeting started on time, ended on time, made the decision it was booked to make. Summary is sent same-day to all attendees. At least one attendee replies acknowledging.",
+  "reflection_prompt": "What was the moment you most wanted to fill silence — and what would have happened if you had?",
+  "estimated_minutes": 60,
+  "prerequisites": ["ba-w2-shadow-workshop"],
+  "career_stage": "first_90_days"
+}

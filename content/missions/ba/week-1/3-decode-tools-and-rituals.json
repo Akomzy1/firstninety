@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w1-decode-tools-and-rituals",
+  "role": "ba",
+  "week": 1,
+  "sequence_in_week": 3,
+  "title": "Decode your team's tools and rituals",
+  "why_matters": "Every team has a hidden operating system — the tool they actually use (versus the one in the onboarding deck), the meeting that runs the planning (versus the one on the calendar), the document everyone treats as gospel (versus the one in the wiki). The faster you can name the real operating system, the faster you stop being the new person.",
+  "steps": [
+    "List every tool you've been added to in the first week. Open each one. Notice which have activity in the last 48 hours and which are ghost towns.",
+    "Sit in on every recurring meeting on the team's calendar at least once. After each, note in two sentences: who actually drove it, and what got decided.",
+    "Find the one document the team's senior IC engineer and the PO both reference unprompted. That's the gospel doc; read it twice.",
+    "Write a half-page private note — the real operating system, as you understand it on Day 5. You'll come back to this in week 6 and laugh."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-process-map"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "By end of week, you can name the team's three most-used tools, the three most-important meetings (with who actually drives each), and the one document that functions as gospel. Half-page note is written.",
+  "reflection_prompt": "Where did the official onboarding diverge most from what the team actually does? One sentence.",
+  "estimated_minutes": 40,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w10-document-outcome",
+  "role": "ba",
+  "week": 10,
+  "sequence_in_week": 2,
+  "title": "Document the outcome with the reasoning",
+  "why_matters": "Most decisions in organisations are made twice — once when they're agreed, once when someone six weeks later wants to know why. The version with the reasoning written down survives. The version without it gets reopened. Be the person whose decisions stay decided.",
+  "steps": [
+    "Take the decision the team made in your contested-decision work. Write a one-page Architecture Decision Record-style note: context, decision, alternatives considered, consequences.",
+    "Don't pretty it up. The reasoning is what matters, not the layout.",
+    "Send it to the decision owner for a sanity-check. Adjust if they push back; keep it if they don't.",
+    "Store it where the team can find it in six weeks. The wiki, a shared drive, a decisions folder — somewhere durable."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": []
+  },
+  "success_criteria": "A one-page decision record exists in a durable location. The decision owner has acknowledged. Six-week future-you would be able to reconstruct the call from the document alone.",
+  "reflection_prompt": "What's the part of the reasoning you almost left out, and what made you decide to keep it?",
+  "estimated_minutes": 45,
+  "prerequisites": ["ba-w10-evidence-for-decision"],
+  "career_stage": "first_90_days"
+}

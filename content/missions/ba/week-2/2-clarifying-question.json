@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w2-clarifying-question",
+  "role": "ba",
+  "week": 2,
+  "sequence_in_week": 2,
+  "title": "Write a clarifying question someone else can answer",
+  "why_matters": "Bad questions are open-ended and require your stakeholder to do all the work (\"what are the requirements?\"). Good questions are specific, answerable, and reveal what you've already done. The skill of asking a better question is the closest thing to a superpower in this role.",
+  "steps": [
+    "Pick one thing you currently don't understand about your initiative. Write the lazy version of the question — the one you'd ask if you were in a hurry.",
+    "Now rewrite it three times. First: name what you've already tried to find out. Second: narrow it to a yes/no question or a multiple choice. Third: name the consequence of not having the answer.",
+    "Send the best version to the right person — in writing if they prefer email, in person if they don't.",
+    "Note their reaction time and the precision of their answer. Both tell you something about the question, not the person."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": ["ba-clarifying-question"]
+  },
+  "success_criteria": "You have asked one written clarifying question and received an answer specific enough to act on. The before/after of your draft is saved in your private notes.",
+  "reflection_prompt": "What changed between draft 1 and the version you sent? One sentence on the technique, one sentence on whether you'd use it again.",
+  "estimated_minutes": 30,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

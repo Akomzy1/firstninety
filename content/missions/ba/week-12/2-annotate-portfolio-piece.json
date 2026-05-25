@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w12-annotate-portfolio-piece",
+  "role": "ba",
+  "week": 12,
+  "sequence_in_week": 2,
+  "title": "Annotate it for your evidence portfolio",
+  "why_matters": "A piece of work without annotation is a document. With annotation — what you did, what changed, what you'd do differently — it's evidence of judgement. The annotation is what your line manager will read; the document itself they'll skim. Write the annotation as if the rest of the work were optional.",
+  "steps": [
+    "Use the probation-pack playbook's evidence portfolio structure: what it was, what you did, what changed, what you'd do differently.",
+    "Write each section in one or two sentences. Resist the urge to lavish. The discipline is in the cutting.",
+    "Add links / file references to the actual artefacts. Make it scannable.",
+    "Show it to your line manager in your next 1:1 (or send ahead if their preference). Ask one question: \"is this the version you'd want to see in the review?\"."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-probation-pack-prep"],
+    "scenario_slugs": ["ba-probation-review"]
+  },
+  "success_criteria": "The portfolio entry exists in the probation-pack format. It is one screen long. Your line manager has reviewed it and either endorsed or amended.",
+  "reflection_prompt": "What did your manager react to that you didn't expect, and what does it tell you about how they read evidence?",
+  "estimated_minutes": 45,
+  "prerequisites": ["ba-w12-choose-portfolio-piece"],
+  "career_stage": "first_90_days"
+}

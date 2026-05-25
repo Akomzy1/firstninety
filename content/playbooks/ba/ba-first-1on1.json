@@ -1,0 +1,50 @@
+{
+  "slug": "ba-first-1on1",
+  "role": "ba",
+  "artefact_type": "meeting_agenda",
+  "title": "First 1:1 with Your Manager — Agenda",
+  "variant": "standard",
+  "description": "The 30-minute meeting that sets the tone for everything that follows. Treat it like an interview where you're already in, and you're the one with the questions.",
+  "empty_template_md": "## First 1:1 — agenda\n\n**Duration:** 30 minutes\n**Goal of this meeting (in one sentence):** \n\n### Before the meeting\n\n- Read your manager's LinkedIn / public bio so you're not asking about their CV.\n- Note one thing you've already observed about how they work (e.g., \"I notice you reply on email but never on Slack\").\n- Draft three questions you actually care about the answer to.\n\n### Agenda (suggested)\n\n#### 1. The first 5 minutes — warm-up\n_Establish presence. State why you're here in one line._\n\n#### 2. Their world (10 minutes)\n_Listen more than you speak. Try to understand:_\n- What's currently keeping them up at night.\n- Who they report into, and what that person measures them on.\n- What \"a great Q1\" would look like.\n\n#### 3. Your world (10 minutes)\n_Be specific. Try to surface:_\n- What you've done already (give one short concrete thing).\n- One thing you've noticed about the team that surprised you.\n- One open question about how the team operates that you can't answer from observation alone.\n\n#### 4. The next two weeks (5 minutes)\n_End with a commitment, not an open-ended \"let's catch up again\"._\n- One concrete thing you'll have done by the next meeting.\n- One question they'll have an answer to for you.\n- Confirm the cadence (weekly? fortnightly?).\n\n### After the meeting\n\n- Write a 5-sentence summary in your private notes — what they care about, what you committed to, what they committed to.\n",
+  "worked_examples": [
+    {
+      "title": "Day 5 — first 1:1 with Bea",
+      "content_md": "## Day 5 1:1 — agenda (Bea Connors)\n\n**Goal:** Establish trust + surface one thing about the team I can't see from outside.\n\n### Before\n\n- Bea has been at the firm 11 years. Started as a BA, now manages a team of four. Public LinkedIn is sparse.\n- Observed already: she sends written summaries after every meeting. She's the only person on the team who does this. Worth understanding why.\n- Three questions I actually care about:\n  1. What's the one thing about this team's process that I should be careful not to change in my first 90 days?\n  2. Where does she draw the line between \"my BA should escalate to me\" and \"my BA should handle it\"?\n  3. How does she define a good probation review at 90 days?\n\n### Agenda\n\n#### Warm-up (5 min)\n\n- Thank her briefly for the introduction email she sent to the team — it landed well. Move on.\n\n#### Her world (10 min)\n\n- \"What's currently taking the most of your attention right now?\"\n- \"You manage four BAs — what do you find yourself spending the most time on that you didn't expect?\"\n- (If natural) \"You always send written summaries — what taught you to do that?\"\n\n#### My world (10 min)\n\n- \"In my first week I've shadowed three workshops and read the BRDs for the two live projects. The thing I noticed: Diego and Sam have very different mental models of what 'done' means for a story. Have you noticed this, and is it on me to bridge it, or is there a team norm I'm not seeing?\"\n- \"I'd like to be writing the first story on the partner-portal project by end of week 2. Realistic?\"\n\n#### Next two weeks (5 min)\n\n- I'll write the first story by Friday week 2.\n- She'll send me the one team document she thinks every new BA should read.\n- Confirm fortnightly Tuesday 10am.\n\n### After\n\n_Write up 5 sentences in private notes:_\n_(Filled in post-meeting.)_\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Stating the goal of the meeting at the top — \"establish trust + surface one thing\" — is for you, not your manager. It stops you from drifting."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Reading their LinkedIn before the meeting is the smallest investment with the highest signal-to-noise ratio. You will not be the first person to ask them where they grew up; don't be the second."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Observing something specific about how they work — \"you always send written summaries\" — and asking about it directly is a fast way to communicate that you pay attention. Don't fake it; only do this if you actually noticed."
+        },
+        {
+          "section_id": "section-1",
+          "note": "The \"one open question that I can't answer from observation alone\" is the move that earns you a real conversation rather than a status check."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Ending with two specific commitments — one of theirs, one of yours — turns this from a meeting into a working relationship."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Opening with your CV. They already read it. You're not interviewing for the role; you have it.",
+    "Asking \"is there anything specific I should be doing differently?\" in the first 1:1. They don't have enough data to answer. You're handing them homework.",
+    "Treating it as a status update. The first 1:1 is not about your tickets. It's about understanding how the person above you thinks.",
+    "Leaving without a written commitment from either side. Without one, the meeting was social — not professional. Both can be valuable, but only one is what you wanted."
+  ],
+  "variant_patterns": [
+    "Remote variant: send the agenda 24 hours ahead in writing. Some managers prefer to pre-think; others don't. The writing version respects both.",
+    "Skip-level variant: a 1:1 with your manager's manager has different shape — focus 80% on listening, ask one question about their priorities, never bring an ask. That earns the second invitation."
+  ],
+  "related_scenarios": ["ba-probation-review"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,42 @@
+{
+  "slug": "ba-vague-sponsor",
+  "role": "ba",
+  "title": "The Vague Sponsor",
+  "one_liner": "Your business sponsor says \"you tell me what we need\" every time you ask a question. You're three weeks in.",
+  "brief": "## The setup\n\nYou've had four 30-minute meetings with Priya, your business sponsor. Each one ends with you taking notes that, when you write them up, contain almost nothing decision-relevant. She's responsive. She turns up. She just won't say what she actually wants.\n\nThe project — a partner-onboarding portal — has a soft deadline at end of quarter. Engineering is starting to ask you for specifics. You've been deflecting with \"I'm still scoping\". You've now run out of deflection.\n\n## Today\n\nYou have one more 30-minute meeting with Priya. After this, your manager expects to see a one-page initial requirements brief. The meeting starts in three minutes.",
+  "objective": "Walk out of this meeting with one specific scenario Priya cares about — a single story she'd tell about why the portal matters, with names and verbs.",
+  "curveball": "Around turn 4, Priya mentions almost in passing that one specific partner — \"Hadley\" — left for a competitor last quarter and the partnership director was livid. If the user notices and pulls on that thread, they get a concrete success story (\"we need to not lose another Hadley\"). If they don't notice, the meeting ends with the same vague output and the curveball surfaces in the debrief.",
+  "personas": [
+    {
+      "name": "Priya Rao",
+      "role": "Business Sponsor",
+      "position": "You tell me what we need to know — that's your job",
+      "fear": "Looking ignorant about her own department's work in front of someone newer",
+      "monogram": "PR",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Asked Priya to tell a specific story rather than describe \"the strategy\"",
+      "Caught the Hadley reference and asked about it directly",
+      "Closed with a written one-paragraph summary Priya could correct in the room",
+      "Resisted the urge to fill silence with your own hypotheses"
+    ],
+    "yellow": [
+      "Asked open-ended questions but accepted equally vague answers without follow-up",
+      "Took a great set of notes nobody else can read or use",
+      "Mentioned Hadley but pivoted away before Priya elaborated",
+      "Started suggesting features before getting to a single concrete story"
+    ],
+    "red": [
+      "Walked out with the same vagueness as the previous three meetings",
+      "Filled silence with your own framing; Priya nodded along; nothing concrete recorded",
+      "Confronted Priya about being vague — she became defensive, meeting ended early"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

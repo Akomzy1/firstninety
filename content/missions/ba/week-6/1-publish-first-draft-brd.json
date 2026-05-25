@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w6-publish-first-draft-brd",
+  "role": "ba",
+  "week": 6,
+  "sequence_in_week": 1,
+  "title": "Publish your first draft BRD",
+  "why_matters": "Week 6 is the bend in the curve. You've been listening, mapping, asking. Now you need a piece of work that survives contact with stakeholders. A BRD is the cleanest test: it's structured enough to defend, public enough to provoke reaction, durable enough to hand to engineering.",
+  "steps": [
+    "Pick a piece of in-scope work you have enough context to scope. Don't pick the biggest; pick the smallest that's worth doing right.",
+    "Use the BRD-standard playbook. Write through every section, including out-of-scope. Aim for two pages, not eight.",
+    "Get one critical pre-read — your line manager or a senior BA. Take their notes; don't dismiss any.",
+    "Publish. Send it to the stakeholders on your map, with a one-line explanation of what you'd like feedback on by when."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-brd-standard", "ba-stakeholder-map"],
+    "scenario_slugs": ["ba-vague-sponsor"]
+  },
+  "success_criteria": "A two-page BRD is published. Three or more stakeholders have received it with a specific feedback ask and a deadline. Manager has pre-read and acknowledged.",
+  "reflection_prompt": "Which section did you most want to leave vague, and what did the discipline of filling it in reveal?",
+  "estimated_minutes": 120,
+  "prerequisites": ["ba-w1-map-stakeholders"],
+  "career_stage": "first_90_days"
+}

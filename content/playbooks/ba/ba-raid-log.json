@@ -1,0 +1,46 @@
+{
+  "slug": "ba-raid-log",
+  "role": "ba",
+  "artefact_type": "raid_log",
+  "title": "RAID Log (Risks, Assumptions, Issues, Dependencies)",
+  "variant": "standard",
+  "description": "The four-letter document that separates the projects that recover from the projects that don't. Keep it dry, keep it dated, keep it true.",
+  "empty_template_md": "## RAID log — [initiative name]\n\nOne table per category. Updated weekly. Items only close when resolved + dated.\n\n### Risks\n\n| ID | Risk (one sentence) | Impact (H/M/L) | Likelihood (H/M/L) | Owner | Mitigation | Status | Last updated |\n|----|---------------------|----------------|---------------------|-------|------------|--------|--------------|\n|    |                     |                |                     |       |            |        |              |\n\n### Assumptions\n\n| ID | Assumption | Validated? | Source of truth | Owner | Status | Last updated |\n|----|-----------|------------|-----------------|-------|--------|--------------|\n|    |           |            |                 |       |        |              |\n\n### Issues\n\n| ID | Issue (one sentence) | Impact | Owner | Resolution path | Status | Last updated |\n|----|----------------------|--------|-------|-----------------|--------|--------------|\n|    |                      |        |       |                 |        |              |\n\n### Dependencies\n\n| ID | Dependency | Source team / system | Needed by | Owner | Status | Last updated |\n|----|-----------|----------------------|-----------|-------|--------|--------------|\n|    |           |                      |           |       |        |              |\n",
+  "worked_examples": [
+    {
+      "title": "Partner-portal — pre-launch week",
+      "content_md": "## RAID log — partner-portal — week 11\n\n### Risks\n\n| ID | Risk | Impact | Likelihood | Owner | Mitigation | Status | Last updated |\n|----|------|--------|------------|-------|------------|--------|--------------|\n| R1 | Document OCR accuracy on non-UK receipts may drop below 85% | M | M | Sam | Restrict to UK at launch; add foreign in Phase 2 | Open | Mon |\n| R2 | Partner onboarding volume on launch day exceeds support team capacity | H | L | Diego | Soft launch to 20% of partners first | Open | Mon |\n| R3 | FCA AML guidance changes between scoping and launch (already added 4 fields once) | M | L | Marcus | Quarterly compliance review baked into roadmap | Open | Mon |\n\n### Assumptions\n\n| ID | Assumption | Validated? | Source | Owner | Status | Last updated |\n|----|-----------|------------|--------|-------|--------|--------------|\n| A1 | OCR vendor's 94% accuracy claim holds in production | No | Vendor proposal | Sam | Test post-launch + monthly audit | Open | Mon |\n| A2 | Partner success team can handle a 4hr manual-review SLA at launch volume | Yes | Capacity model run by ops | Ops | Closed — model validated | Closed | Wed |\n| A3 | The existing identity service can carry the additional load without scaling work | No | Engineering estimate, not load-tested | Sam | Load test booked for Thursday | Open | Mon |\n\n### Issues\n\n| ID | Issue | Impact | Owner | Resolution | Status | Last updated |\n|----|-------|--------|-------|-----------|--------|--------------|\n| I1 | Consent string missing legitimate-interest disclosure (3 places) | M | Me | Copy fix in flight, EOD Tuesday | In progress | Tue |\n| I2 | Stand-up has slipped 15 minutes for three days running | L | Diego | Re-set start time + standing 25-min cap | In progress | Wed |\n\n### Dependencies\n\n| ID | Dependency | From | Needed by | Owner | Status | Last updated |\n|----|-----------|------|-----------|-------|--------|--------------|\n| D1 | Updated AML field schema sign-off | Compliance | Mon | Marcus | Confirmed Friday | Closed | Fri |\n| D2 | Marketing launch email copy approved | Marketing | Wed | Marketing lead | Reviewed; in legal | In progress | Tue |\n| D3 | Support team trained on the new portal flows | Ops | Wed | Ops | One session Mon, one Wed | In progress | Mon |\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Note the Last Updated column on every row. A RAID item without a recent date isn't being managed — it's being collected. Audit your log monthly for stale items."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Risks are framed as one sentence each. If you can't compress the risk to a sentence, you don't understand it yet. Write it long, then cut."
+        },
+        {
+          "section_id": "section-1",
+          "note": "R3 is the regulatory-trend risk — the one that's low-likelihood per quarter but high-impact when it lands. Worth keeping on the log even when it feels distant."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Assumptions are the most-forgotten of the four. A2 here is the kind that should be validated before launch, not after. Closing it deliberately is part of the work."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Writing risks at a level that can't be acted on. \"Things may go wrong with the launch\" is not a risk. \"OCR accuracy may drop below 85% on non-UK receipts\" is.",
+    "Mixing risks and issues. A risk is something that hasn't happened yet. An issue is something that has. When a risk lands, move it to the Issues table — don't leave it in Risks marked \"closed: happened\".",
+    "Letting assumptions live forever. Every assumption should have a date by which it gets validated. \"Yes — closed Wed\" is the goal, not \"Open — for three months\".",
+    "RAID logs that nobody reads. Send the diff weekly, not the whole document. Highlight what's new + what's moved + what's closed."
+  ],
+  "variant_patterns": [
+    "Compliance variant: add a Regulatory Reference column to the Risks table so each risk is tied to the specific regulation or standard it threatens.",
+    "Cross-org variant: split Dependencies into Internal (from teams you can ping) and External (from vendors / partners with their own timelines) — they need different cadences."
+  ],
+  "related_scenarios": ["ba-compliance-late", "ba-scope-creep"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

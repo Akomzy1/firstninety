@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w8-take-recurring-ownership",
+  "role": "ba",
+  "week": 8,
+  "sequence_in_week": 1,
+  "title": "Take ownership of one recurring activity",
+  "why_matters": "You become part of the team's load when you take something off someone else's plate. Owning a recurring activity — a meeting, a report, a stand-up segment — is the cleanest way to do this. Pick something small enough that you can do it well; visible enough that ownership is noticed.",
+  "steps": [
+    "List two or three recurring activities you've watched someone else do for the last six weeks (e.g., weekly status report, retro facilitation, sprint refinement note-taking).",
+    "Pick the one where (a) you have the context, (b) the current owner would be relieved, (c) you can sustain it for a full month.",
+    "Ask the current owner if you can take it. Frame it as you wanting the reps, not them wanting the relief.",
+    "Do it. Send the first week's output back to the previous owner for sanity-check."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": []
+  },
+  "success_criteria": "You have publicly taken ownership of one recurring activity. The first iteration under your ownership has been sent. The previous owner has acknowledged the hand-over.",
+  "reflection_prompt": "What was easier than you expected, and what was harder?",
+  "estimated_minutes": 50,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

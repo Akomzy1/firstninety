@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w9-cross-discipline-story",
+  "role": "ba",
+  "week": 9,
+  "sequence_in_week": 1,
+  "title": "Take a story end-to-end with another role",
+  "why_matters": "Most of what BAs do happens in seams — between product and engineering, between business and ops, between design and dev. Walking a single story from one side of a seam to the other, with whoever owns the other side, is how you stop being a hand-off node and start being someone who can stitch.",
+  "steps": [
+    "Pick one story in the backlog that you don't currently own. Choose one where the other owner is from a discipline you've engaged with less (designer, ops, QA).",
+    "Ask if you can shadow them through their portion of the work — not just the meetings, the actual work.",
+    "Take notes specifically on what they decide that you wouldn't have thought to decide.",
+    "Send them a thank-you note with one concrete observation. \"I hadn't appreciated that you check X before Y\" beats \"thanks for your time\"."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": ["ba-not-testable"]
+  },
+  "success_criteria": "You have shadowed a complete piece of work from another discipline. Notes exist on three decisions they made that you wouldn't have. The other person has received a specific thank-you.",
+  "reflection_prompt": "What surprised you most about how their decisions are made, and what would you do differently in your own work because of it?",
+  "estimated_minutes": 60,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

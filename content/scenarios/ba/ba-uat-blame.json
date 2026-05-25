@@ -1,0 +1,57 @@
+{
+  "slug": "ba-uat-blame",
+  "role": "ba",
+  "title": "UAT Defect Blame Game",
+  "one_liner": "UAT logs 23 defects. The product owner says \"these should have been caught in the requirements\". The lead engineer says \"these were never in the requirements\". Both look at you.",
+  "brief": "## The defects\n\nThe partner-portal made it through dev + QA into User Acceptance Testing last Monday. UAT finished yesterday. The business testers logged 23 defects. About a third are obvious bugs. The rest are split: some are missing functionality, some are functionality that works exactly as written but the business says \"that's not what we meant\".\n\n## The meeting\n\nA 60-minute defect-triage meeting just started. Diego (PO) opens with: \"some of these should never have got this far — they're requirements issues.\" Sam (lead eng) leans back and says: \"none of these were in the requirements doc. I built what was written.\" Both turn to you. You wrote the requirements.\n\n## The room\n\nEight people, half on a screen. The CTO joined ten minutes late \"to listen in\". You have a copy of the requirements doc and the defect list open on your laptop. Triage is supposed to be done by the end of this meeting so engineering can plan the fix-week starting Monday.",
+  "objective": "Get from \"these should have been caught\" to a defect list where every item is either accepted into fix-week, deferred with a specific rationale, or reclassified as a new requirement.",
+  "curveball": "Around turn 5, if the user examines the defect list category-by-category, three of the \"missing functionality\" defects turn out to be features the business explicitly de-scoped in the kick-off two months ago — the user has the email confirming this. A user who finds this can reset the room's frame from \"who's to blame\" to \"what actually happened\".",
+  "personas": [
+    {
+      "name": "Diego Marquez",
+      "role": "Product Owner",
+      "position": "Defensive; \"these should have been requirements\"",
+      "fear": "Looking like he didn't oversee the project tightly enough",
+      "monogram": "DM",
+      "colour": "slate"
+    },
+    {
+      "name": "Sam Palmer",
+      "role": "Lead Engineer",
+      "position": "Factual, slightly cold; \"we built what was written\"",
+      "fear": "Being held responsible for unwritten requirements",
+      "monogram": "SP",
+      "colour": "slate"
+    },
+    {
+      "name": "Adaeze Okonkwo",
+      "role": "CTO (observer)",
+      "position": "Quiet; in listening mode but taking notes",
+      "fear": "Discovering a process gap in front of her team",
+      "monogram": "AO",
+      "colour": "ink"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Triaged the defect list by category rather than line-by-line — bug vs gap vs de-scoped",
+      "Surfaced the de-scoping email and got the room to acknowledge the three reclassified items",
+      "Owned the gaps that were genuinely yours without flinching",
+      "Closed the meeting with every defect categorised and an owner per category"
+    ],
+    "yellow": [
+      "Tried to defend the requirements doc line by line and lost twenty minutes",
+      "Suggested everyone re-read the BRD — the room wasn't going to do that on the spot",
+      "Apologised broadly without distinguishing which defects were actually requirements issues"
+    ],
+    "red": [
+      "Threw QA under the bus (\"these should have been caught in test\")",
+      "Threw the engineers under the bus (\"the requirement was implied\")",
+      "Said nothing while Diego and Sam fought it out for fifteen minutes"
+    ]
+  },
+  "estimated_minutes": 15,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

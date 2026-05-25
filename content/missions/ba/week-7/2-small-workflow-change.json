@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w7-small-workflow-change",
+  "role": "ba",
+  "week": 7,
+  "sequence_in_week": 2,
+  "title": "Make a small change to your workflow",
+  "why_matters": "Insight that doesn't become a behaviour change is decoration. This week, take the lesson from your week-7 mistake note and turn it into one specific change to how you work for the next two weeks. Smaller is better. A consistent small change is worth ten heroic resolutions.",
+  "steps": [
+    "Look at the three-line note from earlier this week. What's the smallest possible change to your routine that would address it?",
+    "Write down the change as a behaviour, not a value. \"I'll send the meeting summary within four hours\" beats \"I'll be more proactive in communication\".",
+    "Set yourself a two-week timebox. At the end, you'll evaluate.",
+    "Tell one person — your line manager or a peer. Public commitment is the cheapest enforcement mechanism."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": []
+  },
+  "success_criteria": "A two-week behaviour change is written down, dated, and someone else knows about it. By the end of week 9 you'll have either kept it or learned why you didn't.",
+  "reflection_prompt": "Is this change something you want to keep forever, or just for the next two weeks? Why?",
+  "estimated_minutes": 20,
+  "prerequisites": ["ba-w7-choose-a-mistake"],
+  "career_stage": "first_90_days"
+}

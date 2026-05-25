@@ -1,0 +1,41 @@
+{
+  "slug": "ba-not-testable",
+  "role": "ba",
+  "title": "'This Isn't Testable' from QA",
+  "one_liner": "QA returns your user story unread with a one-line comment: \"this isn't testable\". You wrote it carefully.",
+  "brief": "## The story you wrote\n\nUser story 47, attached to the partner-portal epic. You spent an hour on it. Three acceptance criteria. Reasonable.\n\n## The comment\n\nFiona, lead QA, has marked it 'rejected' in the tooling. One line in the comment box: \"This isn't testable.\" No detail. No example. She's already moved on to another ticket.\n\n## The pressure\n\nThe sprint planning meeting is at 11am. The team needs to know whether this story is in or out. Your project manager has just pinged you on Slack asking if it's ready. Engineering has started picking up adjacent work and will need this story refined or removed by midday.\n\nYou could escalate to your manager. You could push back on Fiona. You could rewrite the story without understanding what's wrong with it. You could go find Fiona.",
+  "objective": "Get from \"this isn't testable\" to either a story Fiona will accept, or a clear understanding of why it shouldn't exist in this sprint.",
+  "curveball": "If the user finds Fiona in person, Fiona explains around turn 5 that her actual concern is that the story's acceptance criteria describe customer behaviour she has no way to observe in test environments — the data needed for verification isn't generated until production. This is a system-design problem, not a writing problem. A user who tries to rewrite the story will paper over it; a user who hears Fiona out gets to surface the real blocker.",
+  "personas": [
+    {
+      "name": "Fiona Adesina",
+      "role": "Lead QA Engineer",
+      "position": "Direct, busy, doesn't volunteer context",
+      "fear": "Stories landing in production without coverage and the failures landing on her",
+      "monogram": "FA",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Found Fiona in person rather than ping-ponging in tooling",
+      "Asked one specific question (\"which acceptance criterion is the problem?\") rather than \"what do you mean?\"",
+      "Surfaced the test-environment data problem and flagged it for the engineering lead",
+      "Walked away with a written summary both parties could refer back to"
+    ],
+    "yellow": [
+      "Replied in the tool with \"can you elaborate?\" and waited",
+      "Rewrote the story trying to guess what was wrong",
+      "Escalated to your manager without first trying to talk to Fiona"
+    ],
+    "red": [
+      "Pushed the story to sprint without resolution \"we'll figure it out in flight\"",
+      "Removed the story without finding out the real blocker — it'll come back next sprint",
+      "Argued with Fiona about whether the story was, in fact, testable"
+    ]
+  },
+  "estimated_minutes": 11,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

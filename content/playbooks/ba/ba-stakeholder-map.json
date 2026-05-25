@@ -1,0 +1,46 @@
+{
+  "slug": "ba-stakeholder-map",
+  "role": "ba",
+  "artefact_type": "stakeholder_map",
+  "title": "Stakeholder Map (Power × Interest)",
+  "variant": "standard",
+  "description": "A stakeholder map is the artefact you'll secretly refer to most in your first ninety days. Done well, it explains every meeting before it starts. Done badly, it's the corporate cliché that ends up in a drawer.",
+  "empty_template_md": "## Stakeholder map — [initiative name]\n\nLog every named person you interact with on this initiative. One row per person. Update weekly.\n\n| Name | Role | Power | Interest | Position | Open questions |\n|------|------|-------|----------|----------|----------------|\n|      |      |       |          |          |                |\n\n### Notes on each column\n\n- **Power**: ability to say yes / no / not now. High / Medium / Low.\n- **Interest**: how much they care about the outcome. High / Medium / Low.\n- **Position**: in one short sentence, what they're for or against.\n- **Open questions**: what you don't yet know about them that would change how you engage.\n",
+  "worked_examples": [
+    {
+      "title": "Partner-portal initiative — week 4",
+      "content_md": "## Stakeholder map — partner-portal initiative\n\n| Name | Role | Power | Interest | Position | Open questions |\n|------|------|-------|----------|----------|----------------|\n| Priya R. | Business Sponsor | High | Medium | Wants the project to succeed but unwilling to specify what success looks like | What does success look like for *her* career? |\n| Sam P. | Lead Engineer | Medium | High | Believes this is a rewrite, not a new portal | Will he advocate or veto when timelines slip? |\n| Marcus K. | Compliance | Medium | Low currently | Watching; will assert power if data-residency surfaces | What triggers him to escalate? |\n| Liane O. | Partner Relations Director | High | High | Two prior projects in this space died; sceptical | What would prove this isn't a third failure? |\n| Diego M. | Product Owner | Medium | High | Champion; wants to ship | Where does his patience break? |\n| Bea C. | My line manager | High (over me) | Medium (in project) | Wants me to succeed but expects evidence | What does she define as evidence at 90 days? |\n\n## Power × Interest read\n\nLiane is high-power, high-interest. She gets a 30-minute monthly check-in. I do not surprise her — every concern she could raise has been raised by me first.\n\nPriya is high-power, medium-interest. She gets a fortnightly written update of half a page. I do not require her to attend meetings; I require her to read.\n\nSam is medium-power but high-interest. He gets included in the room when scope changes and explicitly asked for his estimate before any commitment. He is also given credit publicly when his work lands.\n\nMarcus is the sleeper. Low interest today, high power if compliance surfaces. He gets a brief monthly note. If he ever asks a question, the rest of the week is mine to answer it.\n\n## Notes\n\n- This map is updated weekly. The version with the dates and signatures is in the shared drive.\n- The names of partners and other third parties are kept anonymised.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The Position column is the one that takes most time and pays back most. \"Wants the project to succeed but unwilling to specify\" is more useful than \"supportive\"."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Open Questions is where you confess what you don't yet know. The questions you write here become the agenda for your next coffee chat with that person."
+        },
+        {
+          "section_id": "section-2",
+          "note": "The Power × Interest read is what makes this a strategy document, not a directory. Sit with it for ten minutes — then act on it."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Marcus is the textbook \"sleeper\" stakeholder. Low interest today, but if his power activates, the meeting cadence has to change overnight."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Building the map once during week 1 and never updating it. Stakeholder positions shift. A static map ages out by week 6.",
+    "Recording only formal roles. Half the people who influence outcomes don't have it in their job title — the senior IC engineer, the executive assistant who guards calendars, the ops lead nobody invites.",
+    "Skipping Open Questions because they feel like admissions of ignorance. They are. That's the point — your map says what you don't know, and the questions become your engagement plan.",
+    "Sharing the map publicly. This is a working document; the act of writing it honestly is what makes it useful. Keep it private to you (and possibly your line manager)."
+  ],
+  "variant_patterns": [
+    "Cross-org variant: when stakeholders span multiple departments, add a Reporting Line column so you can see which approvals chain to which.",
+    "External variant: when the initiative involves vendors or partner organisations, add a Contractual Power column distinct from political power."
+  ],
+  "related_scenarios": ["ba-clarifying-question", "ba-vague-sponsor"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

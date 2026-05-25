@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w13-post-review-summary",
+  "role": "ba",
+  "week": 13,
+  "sequence_in_week": 3,
+  "title": "Send the post-review summary within 24 hours",
+  "why_matters": "The most powerful piece of paper around your probation review is the one you send within 24 hours of the meeting — yes / no / extended, what they liked, what they want different, what was agreed. Without it, two months from now nobody can quite remember what was decided. With it, the conversation has a written shape that survives.",
+  "steps": [
+    "Within 24 hours of the review, draft a five-sentence summary: the decision, the concerns (if any), what you committed to, what your manager committed to, the next checkpoint.",
+    "Email it to your manager. Copy your evidence file.",
+    "If your manager amends — accept the amendment unless it materially changes what you remember being agreed. If it does, push back politely once in writing.",
+    "File the final version under Probation evidence — outcome. This is the document you'll return to at six months."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-probation-pack-prep"],
+    "scenario_slugs": ["ba-probation-review"]
+  },
+  "success_criteria": "A five-sentence summary is sent within 24 hours. Manager has confirmed (or amended). The final version is filed in your evidence directory with the date.",
+  "reflection_prompt": "Looking at the summary — what's the one thing in there that, if you do nothing about it, will quietly become a problem at the six-month mark?",
+  "estimated_minutes": 25,
+  "prerequisites": ["ba-w13-book-pre-review-1on1"],
+  "career_stage": "first_90_days"
+}

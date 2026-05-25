@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w7-choose-a-mistake",
+  "role": "ba",
+  "week": 7,
+  "sequence_in_week": 1,
+  "title": "Choose one mistake and write what you'd do differently",
+  "why_matters": "Halfway through your first ninety days, you have enough material to look back on without flinching. Picking one specific moment that didn't go well — and writing what you'd do differently in two sentences, not two paragraphs — is the move that turns a mistake into evidence of judgement. This is the file you'll return to in your probation review.",
+  "steps": [
+    "Look at your private notes from weeks 1-6. Pick one moment where, with hindsight, you'd make a different call. Not the biggest one; one with a clear lesson.",
+    "Write three lines: what you did, what you'd do differently, why. Avoid \"I should have been more X\" — name a specific behaviour, not a personality trait.",
+    "File it under \"Probation evidence — what I learned\".",
+    "Move on. Don't ruminate. The writing is the work."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-probation-pack-prep"],
+    "scenario_slugs": ["ba-uat-blame", "ba-compliance-late"]
+  },
+  "success_criteria": "One three-line entry exists in your Probation evidence file. The behaviour change is specific enough that a colleague reading it could spot whether you've done it.",
+  "reflection_prompt": "What stops you, normally, from naming the mistake — and is that the same thing now?",
+  "estimated_minutes": 25,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

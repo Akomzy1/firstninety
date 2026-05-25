@@ -1,0 +1,46 @@
+{
+  "slug": "ba-user-stories",
+  "role": "ba",
+  "artefact_type": "user_story",
+  "title": "User Stories with Acceptance Criteria",
+  "variant": "standard",
+  "description": "The user story is the smallest unit of work that survives contact with engineering, QA, and a stakeholder all at once. Get the shape right and the rest of the sprint follows. Get it wrong and you'll re-write it four times.",
+  "empty_template_md": "## User story\n\n**As a** [type of user]  \n**I want** [some capability]  \n**So that** [some business value]\n\n## Acceptance criteria\n\n**Given** [some context]  \n**When** [some action]  \n**Then** [some testable outcome]\n\n_Add additional Given/When/Then blocks for edge cases — keep each one focused on a single behaviour._\n\n## Notes\n\n- Dependencies: \n- Out of scope for this story: \n- Designer / engineer questions: \n",
+  "worked_examples": [
+    {
+      "title": "Forgot-password flow",
+      "content_md": "## User story\n\n**As a** customer who has forgotten their password,\n**I want** to reset it without contacting support,\n**so that** I can get back into my account today rather than tomorrow.\n\n## Acceptance criteria\n\n**Given** I am on the sign-in page and have entered no password,\n**When** I tap \"forgot password\" and enter my registered email,\n**Then** I receive a reset link at that email within 60 seconds, valid for one hour.\n\n**Given** I receive the reset link,\n**When** I open it within the hour and enter a new password meeting the password rules,\n**Then** my password is updated and I am signed in.\n\n**Given** I open the reset link more than one hour after it was sent,\n**When** I attempt to use it,\n**Then** I see a message that the link has expired, with a clear path to request a new one.\n\n**Given** I enter an email address that is not registered,\n**When** I submit the form,\n**Then** I see the same confirmation message as if the email were registered — no information is disclosed about whether the email exists in our system.\n\n## Notes\n\n- Dependencies: transactional email service (existing). Rate limiting on reset requests per IP per hour.\n- Out of scope: SMS-based reset; security-question fallback; manual reset by support.\n- Engineer questions: do we burn the token immediately on first use or allow re-use until expiry? Recommend burn-on-use.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The \"so that\" line is the one that gets cut for word count. Don't cut it — it's the line that explains to engineering why the edge cases matter."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Notice that every Given/When/Then is independently testable. QA can run them one at a time. If you can't write the test, the criterion is unclear."
+        },
+        {
+          "section_id": "section-2",
+          "note": "The fourth criterion — registered vs unregistered email — is a security requirement that almost always gets missed when stories are written purely from the user's perspective. Audit your stories for these."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Explicit out-of-scope items at the story level prevent scope creep at sprint planning. \"Out of scope: SMS-based reset\" stops the inevitable \"oh, can we just add SMS\" mid-sprint."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Acceptance criteria written as feature descriptions rather than behaviours. \"The system has a forgot-password link\" is not a criterion; \"when I tap forgot-password, X happens\" is.",
+    "Multiple behaviours bundled into a single Given/When/Then. If the criterion has the word \"and\" in the Then clause, it's two criteria.",
+    "Edge cases missed because the story focuses on the happy path. For every story, ask: what does the unregistered user see, what does the expired link do, what does the rate-limit case look like.",
+    "User stories that smuggle in implementation. \"As a user, I want OAuth so I can…\" is bound to a solution. The user wants to sign in without remembering a password — the team chooses OAuth."
+  ],
+  "variant_patterns": [
+    "Discovery variant: skip acceptance criteria entirely; instead document the open questions and the experiments that would close them. Useful in the first two weeks of a feature.",
+    "Spike variant: use a story shape but flip the \"so that\" to learning value — \"so that we know whether to commit to approach X\". Always time-boxed."
+  ],
+  "related_scenarios": ["ba-not-testable"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

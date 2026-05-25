@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w5-summary-within-4hr",
+  "role": "ba",
+  "week": 5,
+  "sequence_in_week": 2,
+  "title": "Send every summary within four hours, for one week",
+  "why_matters": "The summary you send within four hours is qualitatively different from the one you send the next morning. Same-day writing is hot; you can still remember the texture of the disagreement. Next-day writing smooths over the moments that mattered. Make same-day your default.",
+  "steps": [
+    "For every meeting this week where you're the senior BA in the room (or the only BA), commit to sending a summary within four hours.",
+    "Use the three-section structure: decided, open, next action + owner.",
+    "Note the time the meeting ended and the time you sent the summary. Track for the whole week.",
+    "At week's end, look at the summaries that took longest. Why? That's your week-6 improvement target."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": []
+  },
+  "success_criteria": "Every meeting summary this week sent within four hours of the meeting ending. The tracking log shows the time-to-send per meeting. You can name the meeting type that took longest.",
+  "reflection_prompt": "Which meeting was hardest to summarise within four hours, and what does that tell you about it?",
+  "estimated_minutes": 30,
+  "prerequisites": ["ba-w3-written-meeting-summary"],
+  "career_stage": "first_90_days"
+}

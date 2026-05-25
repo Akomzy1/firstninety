@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w2-sketch-process-from-memory",
+  "role": "ba",
+  "week": 2,
+  "sequence_in_week": 3,
+  "title": "Sketch the team's process from memory",
+  "why_matters": "Two weeks in, you've heard the team describe their delivery process at least three times — at onboarding, in stand-up, in 1:1s. If you can't sketch it on a single sheet of paper without referring to anything, you don't actually understand it yet. Sketching first, then validating, is faster than reading.",
+  "steps": [
+    "Take a blank sheet of paper or a single doc. Set a 15-minute timer.",
+    "Draw the team's end-to-end process from \"work arrives\" to \"work ships\". Swimlanes, decisions, handoffs. Use the BPMN basics from the process-map playbook.",
+    "When the timer ends, stop. Look at it. Note the parts you guessed.",
+    "Show it to two people on the team — one senior IC, one PM. Ask: where am I wrong?"
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-process-map"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "A single-page sketch exists. At least two people have marked it up. You can name the three things you got wrong and why.",
+  "reflection_prompt": "Where were you most confidently wrong? One sentence on what made you confident, one sentence on what would have warned you.",
+  "estimated_minutes": 45,
+  "prerequisites": ["ba-w1-decode-tools-and-rituals"],
+  "career_stage": "first_90_days"
+}

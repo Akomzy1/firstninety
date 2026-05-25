@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w3-draft-first-user-story",
+  "role": "ba",
+  "week": 3,
+  "sequence_in_week": 1,
+  "title": "Draft your first user story",
+  "why_matters": "Three weeks in, you should have done enough listening to write a story that holds up. The first one is the hardest — not because writing is hard, but because committing to a specific framing in writing requires you to decide what you actually believe. After this, every story is easier.",
+  "steps": [
+    "Pick one small piece of in-scope functionality on the current initiative. Smaller than you think you need.",
+    "Open the user-story playbook and draft the As-a / I want / So-that line. Then draft three Given-When-Then acceptance criteria — one happy path, one edge case, one security or boundary case.",
+    "Read it out loud. If it sounds like you're describing a feature rather than a behaviour, rewrite.",
+    "Send it to QA before sprint planning. Ask one specific question: which criterion will be hardest to test, and why?"
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-user-stories"],
+    "scenario_slugs": ["ba-not-testable"]
+  },
+  "success_criteria": "One user story written with three acceptance criteria covering happy path / edge / boundary. QA has acknowledged it and named at least one concern.",
+  "reflection_prompt": "What was the criterion you almost left out, and why did you almost leave it out?",
+  "estimated_minutes": 40,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

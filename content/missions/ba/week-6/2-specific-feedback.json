@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w6-specific-feedback",
+  "role": "ba",
+  "week": 6,
+  "sequence_in_week": 2,
+  "title": "Get specific feedback from two stakeholders",
+  "why_matters": "Vague feedback (\"looks good\") tells you nothing. Specific feedback (\"section 4 is unclear about how we handle X\") tells you what to fix. Asking for specific feedback is a skill; the wording you use changes what you get back. After this exercise you'll know what to ask, and the rhythm of how often.",
+  "steps": [
+    "Pick two stakeholders who pre-read your BRD. Choose one who reads carefully and one who reacts more emotionally — both are useful, in different ways.",
+    "Book fifteen minutes with each. In the meeting, ask one question: \"is there anything in the document you'd want to push back on, and why?\".",
+    "Stay quiet after asking. Write down what they say verbatim where you can.",
+    "Send each a written summary of what they raised + what you'll do about it. Don't promise to fix anything you don't actually plan to fix."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-brd-standard"],
+    "scenario_slugs": ["ba-clarifying-question"]
+  },
+  "success_criteria": "Two short conversations have happened. You can name two specific things each stakeholder raised. Each has received a written summary with your response.",
+  "reflection_prompt": "Whose feedback was harder to receive, and what was the part you wanted to argue with?",
+  "estimated_minutes": 60,
+  "prerequisites": ["ba-w6-publish-first-draft-brd"],
+  "career_stage": "first_90_days"
+}

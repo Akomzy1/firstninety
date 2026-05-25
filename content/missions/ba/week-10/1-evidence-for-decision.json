@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w10-evidence-for-decision",
+  "role": "ba",
+  "week": 10,
+  "sequence_in_week": 1,
+  "title": "Bring evidence to a contested decision",
+  "why_matters": "Halfway through the second half of your probation, you should be able to do more than collect requirements — you should be able to shape a decision with data. Pick a contested decision the team is currently making by gut and bring even one piece of evidence that re-frames it. This is what shifts you from analyst to trusted analyst.",
+  "steps": [
+    "Find one open decision the team has been going back-and-forth on without resolving. Could be technical, process, or business-side.",
+    "Identify what evidence would actually help. Sometimes it's a number; sometimes it's a worked example; sometimes it's a precedent from another team or industry.",
+    "Get the evidence. Write it up in half a page — what the data says, what it doesn't say, what would change if it were different.",
+    "Bring it into the room (or the thread) where the decision is being argued. Don't tell people what to decide; tell them what the evidence shows."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-raid-log"],
+    "scenario_slugs": ["ba-uat-blame"]
+  },
+  "success_criteria": "A half-page evidence document exists. It has been brought into the relevant conversation. The conversation has changed in a way you can describe in one sentence.",
+  "reflection_prompt": "What's the strongest argument against the conclusion the evidence pointed to, and did you account for it?",
+  "estimated_minutes": 90,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}
