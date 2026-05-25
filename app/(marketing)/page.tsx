@@ -531,47 +531,55 @@ function PlaybookCard() {
 function MissionTrackCard() {
   return (
     <div
-      className="bg-paper-2 border border-paper-3 p-5 md:p-6 flex flex-col gap-3"
+      className="bg-paper-2 border border-paper-3 p-4 md:p-5 flex flex-col gap-3"
       style={{ borderRadius: "10px" }}
     >
-      <div className="text-caption text-mute font-mono text-right">week 4 · BA</div>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="text-caption text-mute font-mono text-right">
+        week 4 · BA
+      </div>
+      <div className="grid grid-cols-3 gap-2 md:gap-3">
         <article
-          className="bg-paper border border-paper-3 p-3 flex flex-col gap-2 opacity-70"
+          className="bg-paper border border-paper-3 p-3 flex flex-col gap-2 opacity-70 min-h-[200px]"
           style={{ borderRadius: "8px" }}
         >
-          <p className="text-caption text-mute">Mon · day 22</p>
-          <p className="font-display text-body text-ink">Send the workshop agenda</p>
-          <p className="text-caption text-mute mt-auto">15 min · done</p>
+          <p className="text-caption text-mute leading-tight">Mon · day 22</p>
+          <p className="font-display text-body-s text-ink leading-snug">
+            Send the workshop agenda
+          </p>
+          <p className="text-caption text-mute mt-auto leading-tight">
+            15 min · done
+          </p>
           <div className="size-5 rounded-full bg-ink text-paper grid place-items-center text-caption">
             ✓
           </div>
         </article>
         <article
-          className="bg-paper border-2 border-ink p-3 flex flex-col gap-2"
+          className="bg-paper border-2 border-ink p-3 flex flex-col gap-2 min-h-[200px]"
           style={{ borderRadius: "8px" }}
         >
-          <p className="text-caption text-accent font-medium">
+          <p className="text-caption text-accent font-medium leading-tight">
             Tue · day 23 · today
           </p>
-          <p className="font-display text-body text-ink">
+          <p className="font-display text-body-s text-ink leading-snug">
             Run your first requirements workshop
           </p>
-          <p className="text-caption text-mute mt-auto">30 min · simulator</p>
+          <p className="text-caption text-mute mt-auto leading-tight">
+            30 min · simulator
+          </p>
           <span
             className="size-4 rounded-full border-2 border-ink bg-paper"
             aria-hidden
           />
         </article>
         <article
-          className="bg-paper border border-paper-3 p-3 flex flex-col gap-2 opacity-50"
+          className="bg-paper border border-paper-3 p-3 flex flex-col gap-2 opacity-50 min-h-[200px]"
           style={{ borderRadius: "8px" }}
         >
-          <p className="text-caption text-mute">Wed · day 24</p>
-          <p className="font-display text-body text-mute">
+          <p className="text-caption text-mute leading-tight">Wed · day 24</p>
+          <p className="font-display text-body-s text-mute leading-snug">
             Debrief and circulate
           </p>
-          <p className="text-caption text-mute mt-auto">15 min</p>
+          <p className="text-caption text-mute mt-auto leading-tight">15 min</p>
           <span
             className="size-4 rounded-full border border-mute-2 bg-paper"
             aria-hidden
