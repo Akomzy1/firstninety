@@ -1,14 +1,13 @@
 /**
  * FirstNinety wordmark.
  *
- * Set in Fraunces: italic 400 "First" + 600 "90" with a coral dot accent
- * floating top-right. This matches the prototype lockup across every
- * surface (Daily Home, Navigation Chrome, Marketing Landing, etc.) and
- * is the canonical brand mark.
+ * Per the Marketing Landing v2.0 prototype, the canonical lockup is
+ * `First • 90` — italic Fraunces "First", coral separator dot, regular
+ * Fraunces "90". The dot reads as the typographic separator between
+ * the two words, not as a top-right accent.
  *
- * The Design Brief §9 text describes a "FirstNinety with elevated N"
- * lockup; the prototypes show the First90 numeric lockup instead. We
- * follow the prototypes per the docs-reconciliation call.
+ * Sizes: sm/md/lg for chrome; pass a `className` overriding font-size
+ * for hero use.
  */
 import type { ComponentProps } from "react";
 
@@ -16,7 +15,7 @@ type WordmarkProps = {
   className?: string;
   tone?: "ink" | "paper";
   size?: "sm" | "md" | "lg";
-  /** When true, hides the coral accent dot — useful inside dense chrome. */
+  /** Hides the coral dot — rare; mostly for monochrome contexts. */
   noAccent?: boolean;
 } & ComponentProps<"span">;
 
@@ -43,17 +42,17 @@ export function Wordmark({
   return (
     <span
       {...rest}
-      className={`inline-flex items-start gap-1 font-display ${SIZE_TO_FONT_CLASS[size]} ${tonalClass} ${className}`.trim()}
+      className={`inline-flex items-center gap-1.5 font-display ${SIZE_TO_FONT_CLASS[size]} ${tonalClass} ${className}`.trim()}
       aria-label="FirstNinety"
     >
       <span className="font-normal italic">First</span>
-      <span className="font-semibold">90</span>
       {noAccent ? null : (
         <span
-          className={`mt-1 rounded-full bg-accent ${SIZE_TO_DOT[size]}`}
+          className={`rounded-full bg-accent ${SIZE_TO_DOT[size]}`}
           aria-hidden
         />
       )}
+      <span className="font-semibold">90</span>
     </span>
   );
 }

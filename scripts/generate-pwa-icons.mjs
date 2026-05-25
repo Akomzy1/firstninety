@@ -31,29 +31,31 @@ const FONT_STACK = "'Fraunces', Georgia, 'Times New Roman', serif";
 
 function wordmarkSvg({ size, padding = 0 }) {
   const inner = size - padding * 2;
-  // Empirically tuned: "First90" sits well at ~0.27 of the inner width.
+  // "First • 90" lockup with the coral dot AS the separator between First
+  // and 90 (per the Marketing Landing prototype). The text alignment +
+  // accent positioning are tuned empirically against the rendered output.
   const fontSize = Math.round(inner * 0.27);
   const cx = size / 2;
   const cy = size / 2;
-  // The accent dot floats to the upper-right of the text. Roughly half the
-  // text width to the right of the centre, then up by ~0.55 em.
-  const accentOffsetX = fontSize * 1.45;
-  const accentOffsetY = fontSize * 0.55;
-  const accentR = Math.max(3, Math.round(fontSize * 0.09));
+  // The accent dot sits on the lowercase x-height baseline between the
+  // two text runs. Tspan dx pushes "90" to the right of the dot.
+  const accentR = Math.max(3, Math.round(fontSize * 0.08));
+  // Centre-shift approximate: the "First •" group is wider than "90"; we
+  // anchor the lockup at the visual centre by leaning slightly left.
+  const accentDx = fontSize * 0.18;
+  const ninetyDx = fontSize * 0.32;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
   <rect width="${size}" height="${size}" fill="${INK}"/>
-  <text
-    x="${cx}"
-    y="${cy}"
-    text-anchor="middle"
-    dominant-baseline="central"
-    font-family="${FONT_STACK}"
-    font-weight="600"
-    font-size="${fontSize}"
-    fill="${PAPER}"
-  ><tspan font-style="italic" font-weight="400">First</tspan>90</text>
-  <circle cx="${cx + accentOffsetX}" cy="${cy - accentOffsetY}" r="${accentR}" fill="${ACCENT}"/>
+  <g transform="translate(${cx} ${cy})" text-anchor="middle" dominant-baseline="central">
+    <text
+      font-family="${FONT_STACK}"
+      font-weight="600"
+      font-size="${fontSize}"
+      fill="${PAPER}"
+    ><tspan font-style="italic" font-weight="400">First</tspan><tspan dx="${ninetyDx}">90</tspan></text>
+    <circle cx="${accentDx}" cy="0" r="${accentR}" fill="${ACCENT}"/>
+  </g>
 </svg>`;
 }
 
