@@ -14,11 +14,12 @@ export default async function OnboardingStep3Page() {
   const state = await ensureOnboardingStep(3);
 
   return (
-    <div className="flex flex-col gap-5 py-6 md:py-8">
-      <header>
-        <p className="text-eyebrow">Step 3 of 4</p>
-        <h1 className="text-h1 mt-2 text-balance">Where you&rsquo;re starting.</h1>
-        <p className="text-body-l text-mute mt-3 max-w-prose">
+    <div className="flex flex-col gap-6 py-2">
+      <header className="text-center">
+        <h1 className="text-display text-balance">
+          Where you&rsquo;re starting.
+        </h1>
+        <p className="text-body-l text-mute mt-3 max-w-prose mx-auto">
           A few details so the missions and playbooks fit your week.
           Anything you skip is editable later from Settings &raquo; Memory.
         </p>

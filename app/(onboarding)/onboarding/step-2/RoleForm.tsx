@@ -29,17 +29,19 @@ export function RoleForm({ roles, initialValue }: RoleFormProps) {
   );
 
   return (
-    <form action={action} className="flex flex-col gap-5">
-      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    <form action={action} className="flex flex-col gap-6">
+      {/* Prototype: cards in a 2-col grid on tablet, 3-col on desktop.
+          Selected card flips to --ink filled with --paper text. */}
+      <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {roles.map((role) => {
           const checked = selected === role.value;
           return (
             <li key={role.value}>
               <label
-                className={`flex h-full cursor-pointer flex-col gap-1 border bg-paper p-4 transition-colors ${
+                className={`flex aspect-square cursor-pointer flex-col gap-1 p-4 transition-colors ${
                   checked
-                    ? "border-ink bg-paper-2"
-                    : "border-paper-3 hover:border-mute"
+                    ? "bg-ink text-paper"
+                    : "bg-paper border border-paper-3 hover:border-mute"
                 }`}
                 style={{ borderRadius: "8px" }}
               >
@@ -51,10 +53,16 @@ export function RoleForm({ roles, initialValue }: RoleFormProps) {
                   onChange={() => setSelected(role.value)}
                   className="sr-only"
                 />
-                <span className="font-display text-h4 text-ink">
+                <span
+                  className={`font-display text-h4 ${checked ? "text-paper" : "text-ink"}`}
+                >
                   {role.label}
                 </span>
-                <span className="text-body-s text-mute">{role.description}</span>
+                <span
+                  className={`text-body-s mt-auto ${checked ? "text-paper/70" : "text-mute"}`}
+                >
+                  {role.description}
+                </span>
               </label>
             </li>
           );
@@ -62,22 +70,30 @@ export function RoleForm({ roles, initialValue }: RoleFormProps) {
       </ul>
 
       {state?.error ? (
-        <p role="alert" className="text-body-s text-danger">
+        <p role="alert" className="text-body-s text-danger text-center">
           {state.error}
         </p>
       ) : null}
 
-      <Button
-        type="submit"
-        variant="primary"
-        size="lg"
-        disabled={!selected}
-        loading={pending}
-        loadingText="Saving…"
-        className="self-start"
-      >
-        Continue
-      </Button>
+      <div className="relative self-center">
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          disabled={!selected}
+          loading={pending}
+          loadingText="Saving…"
+          className="min-w-[240px]"
+        >
+          Continue
+        </Button>
+        {selected ? (
+          <span
+            className="pointer-events-none absolute -right-2 -top-2 size-2 rounded-full bg-accent"
+            aria-hidden
+          />
+        ) : null}
+      </div>
     </form>
   );
 }

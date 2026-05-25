@@ -49,11 +49,10 @@ export default async function OnboardingStep2Page() {
   const state = await ensureOnboardingStep(2);
 
   return (
-    <div className="flex flex-col gap-5 py-6 md:py-8">
-      <header>
-        <p className="text-eyebrow">Step 2 of 4</p>
-        <h1 className="text-h1 mt-2 text-balance">What are you stepping into?</h1>
-        <p className="text-body-l text-mute mt-3 max-w-prose">
+    <div className="flex flex-col gap-5 py-2">
+      <header className="text-center">
+        <h1 className="text-display text-balance">What&rsquo;s your role?</h1>
+        <p className="text-body-l text-mute mt-3 max-w-prose mx-auto">
           The closest one is fine. You can switch later in Settings &raquo; Account.
         </p>
       </header>

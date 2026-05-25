@@ -84,10 +84,10 @@ export default async function OnboardingStep4Page() {
   }
 
   return (
-    <div className="flex flex-col gap-6 py-6 md:py-8">
+    <div className="flex flex-col gap-6 py-2">
       <header>
-        <p className="text-eyebrow">Step 4 of 4 — Memory</p>
-        <h1 className="text-h1 mt-2 text-balance">
+        <p className="text-eyebrow">Memory</p>
+        <h1 className="text-h2 mt-2 text-balance">
           This is what I&rsquo;ll remember about you.
         </h1>
       </header>
@@ -128,10 +128,14 @@ export default async function OnboardingStep4Page() {
         </div>
       </div>
 
-      <form action={completeOnboardingAction} className="mt-2">
-        <Button type="submit" variant="primary" size="lg">
+      <form action={completeOnboardingAction} className="relative mt-2 self-start">
+        <Button type="submit" variant="primary" size="lg" className="min-w-[240px]">
           Begin Day 1
         </Button>
+        <span
+          className="pointer-events-none absolute -right-2 -top-2 size-2 rounded-full bg-accent"
+          aria-hidden
+        />
       </form>
     </div>
   );
