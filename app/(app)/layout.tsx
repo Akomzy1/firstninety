@@ -14,6 +14,8 @@ import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/marketing/Wordmark";
 import { BottomNav } from "@/components/nav/BottomNav";
 import { Sidebar } from "@/components/nav/Sidebar";
+import { IOSInstallTutorial } from "@/components/pwa/IOSInstallTutorial";
+import { NotificationPermissionPrompt } from "@/components/pwa/NotificationPermissionPrompt";
 import { createClient } from "@/lib/db/server";
 import { getUnreadCounts } from "@/lib/nav/unread";
 
@@ -71,6 +73,9 @@ export default async function AppLayout({
 
         <BottomNav unreadCounts={unreadCounts} />
       </div>
+
+      <NotificationPermissionPrompt />
+      <IOSInstallTutorial />
     </div>
   );
 }

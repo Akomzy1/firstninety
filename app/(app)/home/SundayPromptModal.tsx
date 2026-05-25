@@ -16,6 +16,7 @@ import { useActionState, useEffect, useRef, useState, useTransition } from "reac
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/Button";
+import { dispatchMeaningfulInteraction } from "@/lib/pwa/meaningful-interaction";
 
 import {
   skipSundayPromptAction,
@@ -44,7 +45,10 @@ export function SundayPromptModal({ open }: { open: boolean }) {
   }, [open, closed]);
 
   useEffect(() => {
-    if (state?.saved) handleClose();
+    if (state?.saved) {
+      dispatchMeaningfulInteraction("sunday_prompt_submitted");
+      handleClose();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state?.saved]);
 
