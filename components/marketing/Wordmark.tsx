@@ -1,12 +1,14 @@
 /**
  * FirstNinety wordmark.
  *
- * Per Design Brief §9: Fraunces 600, the "N" in "Ninety" sits 2px above the
- * baseline of the rest of the lockup. Single token (--ink on light, --paper
- * on dark — inverted variant via `tone="paper"`).
+ * Set in Fraunces: italic 400 "First" + 600 "90" with a coral dot accent
+ * floating top-right. This matches the prototype lockup across every
+ * surface (Daily Home, Navigation Chrome, Marketing Landing, etc.) and
+ * is the canonical brand mark.
  *
- * Use the `as` prop when the wordmark should be a link (`as="a"`) versus a
- * standalone label (default). Size scales with parent font-size.
+ * The Design Brief §9 text describes a "FirstNinety with elevated N"
+ * lockup; the prototypes show the First90 numeric lockup instead. We
+ * follow the prototypes per the docs-reconciliation call.
  */
 import type { ComponentProps } from "react";
 
@@ -14,6 +16,8 @@ type WordmarkProps = {
   className?: string;
   tone?: "ink" | "paper";
   size?: "sm" | "md" | "lg";
+  /** When true, hides the coral accent dot — useful inside dense chrome. */
+  noAccent?: boolean;
 } & ComponentProps<"span">;
 
 const SIZE_TO_FONT_CLASS: Record<NonNullable<WordmarkProps["size"]>, string> = {
@@ -22,30 +26,41 @@ const SIZE_TO_FONT_CLASS: Record<NonNullable<WordmarkProps["size"]>, string> = {
   lg: "text-2xl",
 };
 
+const SIZE_TO_DOT: Record<NonNullable<WordmarkProps["size"]>, string> = {
+  sm: "size-1",
+  md: "size-1.5",
+  lg: "size-2",
+};
+
 export function Wordmark({
   className = "",
   tone = "ink",
   size = "md",
+  noAccent = false,
   ...rest
 }: WordmarkProps) {
   const tonalClass = tone === "ink" ? "text-ink" : "text-paper";
   return (
     <span
       {...rest}
-      className={`font-display font-semibold tracking-tight ${SIZE_TO_FONT_CLASS[size]} ${tonalClass} ${className}`.trim()}
+      className={`inline-flex items-start gap-1 font-display ${SIZE_TO_FONT_CLASS[size]} ${tonalClass} ${className}`.trim()}
       aria-label="FirstNinety"
     >
-      First
-      <span className="inline-block -translate-y-[2px]">N</span>
-      inety
+      <span className="font-normal italic">First</span>
+      <span className="font-semibold">90</span>
+      {noAccent ? null : (
+        <span
+          className={`mt-1 rounded-full bg-accent ${SIZE_TO_DOT[size]}`}
+          aria-hidden
+        />
+      )}
     </span>
   );
 }
 
 /**
  * AI-Engineer track variant — wordmark with a small subscript "ai" set in
- * Inter. Used only on the dedicated AI Engineer marketing surface per
- * Design Brief §9 "Reserved variant".
+ * Inter mute. Used only on the dedicated AI Engineer marketing surface.
  */
 export function WordmarkAI(props: Omit<WordmarkProps, "size"> & { size?: WordmarkProps["size"] }) {
   return (

@@ -33,7 +33,7 @@ export function Sidebar({ user, unreadCounts }: SidebarProps) {
 
   return (
     <aside
-      className="hidden md:flex md:w-16 lg:w-60 shrink-0 flex-col border-r border-paper-3 bg-paper-2"
+      className="hidden md:flex md:w-16 lg:w-60 shrink-0 flex-col border-r border-paper-3 bg-paper"
       aria-label="Primary"
     >
       <div className="flex h-16 items-center px-3 lg:px-4">
@@ -42,8 +42,11 @@ export function Sidebar({ user, unreadCounts }: SidebarProps) {
           className="inline-flex items-center"
           aria-label="FirstNinety home"
         >
-          <span className="lg:hidden font-display font-semibold text-h3 text-ink">
-            F
+          {/* Tablet (64px): show a tight italic "F" with the accent dot — the
+              same lockup language as the full mark at lg+. */}
+          <span className="lg:hidden inline-flex items-start gap-1 font-display font-semibold text-h3 text-ink">
+            <span className="font-normal italic">F</span>
+            <span className="mt-1 size-1.5 rounded-full bg-accent" aria-hidden />
           </span>
           <span className="hidden lg:inline-flex">
             <Wordmark size="md" />

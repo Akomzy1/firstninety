@@ -41,7 +41,7 @@ export function DeleteAllMemory() {
         onClick={open}
         className="self-start"
       >
-        Delete everything I&rsquo;ve told you
+        Forget everything
       </Button>
 
       <dialog
@@ -49,7 +49,7 @@ export function DeleteAllMemory() {
         className="bg-paper text-ink border border-paper-3 p-6 max-w-md backdrop:bg-ink/40"
         style={{ borderRadius: "8px" }}
       >
-        <h2 className="text-h3 mb-3">Delete everything you&rsquo;ve told me?</h2>
+        <h2 className="text-h3 mb-3">Forget everything you&rsquo;ve told me?</h2>
         <p className="text-body text-mute mb-5 max-w-prose">
           Your role and start date stay. Everything else — sector, work
           setup, probation date, and the things you&rsquo;ve added — gets

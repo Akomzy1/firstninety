@@ -1,15 +1,15 @@
 /**
  * "What FirstNinety knows about you" — settings/memory.
  *
- * Two sections per Design Brief §10 (signature surface):
- *   1. About your role and start — non-deletable facts on user_context.
- *      Role + start_date can be revised; sector / work setup / probation
- *      date can also be cleared.
- *   2. What you've told me — list of user_responsibilities rows. Each is
- *      editable in place; "Add something else I should know" appends.
+ * Per the Memory Settings prototype:
+ *   - Eyebrow: MEMORY · WHAT I KNOW ABOUT YOU
+ *   - H1: "Read the margins."
+ *   - Subhead in Fraunces italic: "Edit anything. Delete anything."
+ *   - Row-based list with each fact in body L, source eyebrow above
+ *   - Footer: Geist Mono entry counter on the right, "Forget everything"
+ *     destructive link on the left
  *
- * Facts render in Fraunces italic body L. The privacy commitment + a
- * destructive "delete everything" button live at the bottom.
+ * Facts render in Fraunces italic body L. Inline edit + delete per row.
  */
 import { requireAuth } from "@/lib/auth/server";
 import { createClient } from "@/lib/db/server";
@@ -27,6 +27,27 @@ const ROLE_LABEL: Record<string, string> = {
   aie: "AI Engineer",
 };
 
+function formatLastUpdated(value: string | null): string {
+  if (!value) return "no updates yet";
+  try {
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return "no updates yet";
+    const now = new Date();
+    const sameDay = d.toDateString() === now.toDateString();
+    if (sameDay) {
+      return `last updated ${d.toLocaleTimeString(undefined, {
+        hour: "numeric",
+        minute: "2-digit",
+      })}`;
+    }
+    return `last updated ${d.toLocaleDateString(undefined, {
+      weekday: "short",
+    })}`;
+  } catch {
+    return "no updates yet";
+  }
+}
+
 export default async function MemorySettingsPage() {
   const user = await requireAuth();
   const supabase = await createClient();
@@ -39,7 +60,7 @@ export default async function MemorySettingsPage() {
       .single(),
     supabase
       .from("user_responsibilities")
-      .select("id, description, source, created_at")
+      .select("id, description, source, created_at, updated_at")
       .eq("user_id", user.id)
       .eq("is_current", true)
       .order("created_at", { ascending: false }),
@@ -55,12 +76,18 @@ export default async function MemorySettingsPage() {
     timezone: null,
   };
   const responsibilities = responsibilitiesResult.data ?? [];
+  const lastUpdated =
+    responsibilities[0]?.updated_at ?? responsibilities[0]?.created_at ?? null;
+  const entryCount = responsibilities.length;
 
   return (
     <div className="flex flex-col gap-7">
-      <header>
-        <p className="text-eyebrow">What FirstNinety knows about you</p>
-        <h1 className="text-h1 mt-2 text-balance">What I remember.</h1>
+      <header className="flex flex-col gap-2">
+        <p className="text-eyebrow">Memory · What I know about you</p>
+        <h1 className="text-h1 text-balance">Read the margins.</h1>
+        <p className="font-display italic text-h3 text-mute">
+          Edit anything. Delete anything.
+        </p>
       </header>
 
       <section className="flex flex-col gap-4">
@@ -85,7 +112,14 @@ export default async function MemorySettingsPage() {
           your stakeholders, or your employer. To remove something, edit
           it or delete it — it disappears from our memory immediately.
         </p>
-        <DeleteAllMemory />
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <DeleteAllMemory />
+          <p className="font-mono text-caption text-mute">
+            {entryCount} {entryCount === 1 ? "entry" : "entries"}
+            {" · "}
+            {formatLastUpdated(lastUpdated)}
+          </p>
+        </div>
       </section>
     </div>
   );
