@@ -1,11 +1,18 @@
 /**
  * Probation activation cron orchestration.
  *
- * Fires every hour. Two passes per user:
+ * Fires daily at 14:00 UTC (Hobby-tier compatible). Two passes per user:
  *   1. Auto-deactivate anyone past their review date with Probation Mode
  *      still on (cleanup; the spec says mode is time-bound).
  *   2. Find users in the activation window who haven't been prompted
- *      yet and whose local time is 09:00 — push + email them a nudge.
+ *      yet and whose local time is in waking hours — push + email them.
+ *
+ * The local-hour window is intentionally wide (08:00-22:00) because a
+ * single daily UTC firing only catches one timezone if the window is
+ * narrow. Wide window + the `probation_activation_prompted_at` once-per-
+ * user gate means at most one nudge ever lands per user, on the first
+ * daily tick that catches their waking-hours window. Revisit narrowing
+ * if/when we upgrade Vercel to Pro and can fire hourly again.
  */
 import "server-only";
 
@@ -26,6 +33,9 @@ type Row = {
     | null;
 };
 
+const TARGET_HOUR_MIN = 8;
+const TARGET_HOUR_MAX = 22;
+
 function isNinePmInZone(now: Date, timezone: string): boolean {
   try {
     const parts = new Intl.DateTimeFormat("en-US", {
@@ -34,7 +44,8 @@ function isNinePmInZone(now: Date, timezone: string): boolean {
       hour12: false,
     }).formatToParts(now);
     const hour = Number(parts.find((p) => p.type === "hour")?.value ?? NaN);
-    return hour === 9;
+    if (Number.isNaN(hour)) return false;
+    return hour >= TARGET_HOUR_MIN && hour <= TARGET_HOUR_MAX;
   } catch {
     return false;
   }

@@ -1,12 +1,18 @@
 /**
  * Sunday recap prompt orchestration.
  *
- * The cron route fires every hour. For each user whose local time is
- * Sunday 18:00 (± the cron tick window) and who hasn't been prompted in
- * the last 24h, we send a push notification (if they have subscriptions)
- * AND an email. The recipient list is small per tick — at most one
- * timezone's worth of Pro users — so the per-user round trips are fine
- * for MVP scale.
+ * The cron route fires weekly on Sunday at 22:00 UTC. The handler picks
+ * up any onboarded user whose local Sunday afternoon-or-evening window
+ * (16:00-22:00 local) is currently active AND who hasn't been prompted
+ * in the last 24h. A weekly UTC firing catches both UK (Sun 22:00
+ * local) and US (Sun 14:00-18:00 local) launch markets in a single
+ * pass, which is the Hobby-tier-compatible compromise — the original
+ * design fired hourly so each timezone hit its local Sunday 18:00
+ * exactly. Revisit if/when we upgrade Vercel to Pro.
+ *
+ * Per user we send a push notification (if they have subscriptions)
+ * AND an email. The recipient list is small per tick so the per-user
+ * round trips are fine for MVP scale.
  */
 import "server-only";
 
@@ -20,7 +26,8 @@ type Candidate = {
   timezone: string;
 };
 
-const TARGET_HOUR = 18;
+const TARGET_HOUR_MIN = 16;
+const TARGET_HOUR_MAX = 22;
 const TARGET_WEEKDAY = "Sun";
 
 function isSundayEveningInZone(now: Date, timezone: string): boolean {
@@ -35,7 +42,9 @@ function isSundayEveningInZone(now: Date, timezone: string): boolean {
     const weekday = parts.find((p) => p.type === "weekday")?.value;
     const hourStr = parts.find((p) => p.type === "hour")?.value;
     const hour = hourStr ? Number(hourStr) : NaN;
-    return weekday === TARGET_WEEKDAY && hour === TARGET_HOUR;
+    if (weekday !== TARGET_WEEKDAY) return false;
+    if (Number.isNaN(hour)) return false;
+    return hour >= TARGET_HOUR_MIN && hour <= TARGET_HOUR_MAX;
   } catch {
     // Unknown timezone — skip rather than crash.
     return false;
