@@ -7,6 +7,10 @@ import Link from "next/link";
 
 import { Wordmark } from "@/components/marketing/Wordmark";
 
+// Onboarding pages all call requireAuth + write to the user_context
+// table — pure dynamic surfaces.
+export const dynamic = "force-dynamic";
+
 export default function OnboardingLayout({
   children,
 }: {

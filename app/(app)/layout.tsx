@@ -20,6 +20,10 @@ import { createClient } from "@/lib/db/server";
 import { getDayState } from "@/lib/home/day-state";
 import { getUnreadCounts } from "@/lib/nav/unread";
 
+// Every authenticated surface depends on request-time cookies + DB
+// state; never prerender any of it at build time.
+export const dynamic = "force-dynamic";
+
 export default async function AppLayout({
   children,
 }: {

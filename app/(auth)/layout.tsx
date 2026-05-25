@@ -6,6 +6,10 @@ import Link from "next/link";
 
 import { Wordmark } from "@/components/marketing/Wordmark";
 
+// Login / register / callback all read or set auth cookies — never
+// prerender.
+export const dynamic = "force-dynamic";
+
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col items-center bg-paper px-4 py-7">
