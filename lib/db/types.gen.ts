@@ -174,6 +174,8 @@ export type Database = {
             | Database["public"]["Enums"]["probation_outcome_enum"]
             | null;
           probation_outcome_captured_at: string | null;
+          // Set when the daily cron first nudges the user (migration 00004).
+          probation_activation_prompted_at: string | null;
           timezone: string | null;
           created_at: string;
           updated_at: string;
@@ -195,6 +197,7 @@ export type Database = {
             | Database["public"]["Enums"]["probation_outcome_enum"]
             | null;
           probation_outcome_captured_at?: string | null;
+          probation_activation_prompted_at?: string | null;
           timezone?: string | null;
           created_at?: string;
           updated_at?: string;
@@ -216,6 +219,7 @@ export type Database = {
             | Database["public"]["Enums"]["probation_outcome_enum"]
             | null;
           probation_outcome_captured_at?: string | null;
+          probation_activation_prompted_at?: string | null;
           timezone?: string | null;
           created_at?: string;
           updated_at?: string;

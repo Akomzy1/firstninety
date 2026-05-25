@@ -8,6 +8,7 @@ import Link from "next/link";
 
 const SETTINGS_LINKS = [
   { href: "/settings/memory", label: "Memory" },
+  { href: "/settings/probation", label: "Probation" },
   { href: "/settings/billing", label: "Billing" },
   { href: "/settings/privacy", label: "Privacy" },
   { href: "/settings/account", label: "Account" },
