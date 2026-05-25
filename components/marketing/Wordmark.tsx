@@ -58,14 +58,23 @@ export function Wordmark({
 }
 
 /**
- * AI-Engineer track variant — wordmark with a small subscript "ai" set in
- * Inter mute. Used only on the dedicated AI Engineer marketing surface.
+ * AI-Engineer track variant — wordmark with a small subscript "_ai" set in
+ * Inter 600 in the coral accent. Per the For-AI-Engineers prototype the
+ * subscript reads as a typographic suffix, baseline-aligned to "90".
  */
-export function WordmarkAI(props: Omit<WordmarkProps, "size"> & { size?: WordmarkProps["size"] }) {
+const SIZE_TO_SUB_CLASS: Record<NonNullable<WordmarkProps["size"]>, string> = {
+  sm: "text-[9px]",
+  md: "text-[11px]",
+  lg: "text-[13px]",
+};
+
+export function WordmarkAI({ size = "md", ...rest }: Omit<WordmarkProps, "size"> & { size?: WordmarkProps["size"] }) {
   return (
-    <span className="inline-flex items-baseline gap-[2px]">
-      <Wordmark {...props} />
-      <span className="font-body text-mute text-body-s lowercase tracking-tight">
+    <span className="inline-flex items-baseline gap-[1px]">
+      <Wordmark {...rest} size={size} />
+      <span
+        className={`font-body font-semibold text-accent leading-none tracking-tight ${SIZE_TO_SUB_CLASS[size]}`}
+      >
         _ai
       </span>
     </span>

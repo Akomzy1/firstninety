@@ -26,6 +26,8 @@ export type MissionCardProps = {
   status: MissionStatus;
   /** "Completed 3 days ago" / "Available Day 8" etc. — surface-specific copy. */
   statusLabel?: string;
+  /** Renders the coral "Probation" chip on the eyebrow line. */
+  isProbation?: boolean;
   className?: string;
 };
 
@@ -37,6 +39,7 @@ export function MissionCard({
   estimatedMinutes,
   status,
   statusLabel,
+  isProbation = false,
   className = "",
 }: MissionCardProps) {
   const tone =
@@ -61,8 +64,18 @@ export function MissionCard({
       style={{ borderRadius: "10px" }}
       aria-label={`${title} — ${status}`}
     >
-      <div className="flex items-baseline justify-between gap-3">
-        <p className="text-eyebrow">{eyebrow}</p>
+      <div className="flex items-baseline justify-between gap-3 flex-wrap">
+        <p className="text-eyebrow inline-flex items-center gap-2">
+          {eyebrow}
+          {isProbation ? (
+            <span
+              className="inline-flex items-center text-accent bg-accent-soft border border-accent-soft px-1.5 py-px text-[10px] font-semibold uppercase tracking-wider not-italic"
+              style={{ borderRadius: "3px" }}
+            >
+              Probation
+            </span>
+          ) : null}
+        </p>
         {status === "completed" ? (
           <span className="inline-flex items-center gap-1 text-caption text-mute">
             <Check className="size-3" strokeWidth={1.5} aria-hidden />
@@ -79,8 +92,15 @@ export function MissionCard({
         ) : null}
       </div>
 
-      <h3 className={`font-display text-h3 ${tone}`}>{title}</h3>
-      <p className="text-body text-mute max-w-prose">{description}</p>
+      <h3
+        className={`font-display font-normal text-balance ${tone}`}
+        style={{ fontSize: "22px", lineHeight: 1.25, letterSpacing: "-0.01em" }}
+      >
+        {title}
+      </h3>
+      <p className="text-body-s text-mute max-w-prose leading-snug">
+        {description}
+      </p>
 
       <div className="mt-2 flex items-center gap-3">
         {status === "active" ? (

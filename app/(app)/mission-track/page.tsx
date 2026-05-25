@@ -1,12 +1,22 @@
 /**
- * Mission Track index — prototype's two-line italic headline + horizontal
- * 90-day timeline + the user's current-week missions stacked below.
+ * Mission Track week view.
  *
- * The week navigator + "view whole 90-day map" cross-link from Build
- * Prompt 2.3 collapse into the timeline itself; the timeline is the map.
- * Week selection is via the ?week=N query param; default = current week.
+ * Layout follows the Mission Track prototype:
+ *   - `.week-head` strip with role-eyebrow ("Mission Track" + role-mark
+ *     with persona-slate left rule), Fraunces 32px week title, and a
+ *     navigator (· Prev · current · Next ·) on the right.
+ *   - `.mission-row` grid: 4 columns @ desktop, 2 @ tablet, 1 @ mobile.
+ *   - `.reflection-strip` with eyebrow + Fraunces italic prompt and a
+ *     text-link to the journal on the right.
+ *   - `.week-foot` "View whole 90-day map →" muted text link.
+ *
+ * The MissionTimeline lives below the week-foot as an in-page 90-day
+ * map — same source of truth as the timeline rendered in /home Day-1
+ * mode, exposing the rest of the journey without leaving the page.
  */
 import Link from "next/link";
+
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { MissionCard } from "@/components/mission/MissionCard";
 import { MissionTimeline } from "@/components/mission/MissionTimeline";
@@ -17,6 +27,47 @@ import { getMissionTrackState, pickWeekMissions } from "@/lib/mission-track/stat
 
 type PageProps = {
   searchParams: Promise<{ week?: string }>;
+};
+
+const ROLE_LABEL: Record<string, string> = {
+  ba: "Business Analyst",
+  pm: "Project Manager",
+  sm: "Scrum Master",
+  po: "Product Owner",
+  da: "Data Analyst",
+  aie: "AI Engineer",
+};
+
+const WEEK_THEMES: Record<number, string> = {
+  1: "Land softly.",
+  2: "Find your rhythm.",
+  3: "Make your first deliverable visible.",
+  4: "Find the disagreement.",
+  5: "Run a meeting on your own terms.",
+  6: "Lead from the front.",
+  7: "Turn a mistake into a small system.",
+  8: "Carry a piece of the team load.",
+  9: "Show your range.",
+  10: "Anchor a decision with evidence.",
+  11: "Surface a risk.",
+  12: "Build a portfolio piece.",
+  13: "Make the case.",
+};
+
+const REFLECTION_PROMPTS: Record<number, string> = {
+  1: "What surprised you most this week?",
+  2: "Which question are you still afraid to ask?",
+  3: "What did you have to defend that you didn't expect to?",
+  4: "What was harder than you expected this week?",
+  5: "Where did your judgement diverge from your manager's?",
+  6: "What was harder than you expected this week?",
+  7: "What small system did you build out of a mistake?",
+  8: "What part of the team load are you carrying that you didn't last month?",
+  9: "Where did your range surprise you?",
+  10: "What decision do you wish you'd anchored sooner?",
+  11: "What risk did you surface that nobody else was tracking?",
+  12: "Which piece of work would you show outside the company?",
+  13: "What did you learn this quarter that you didn't deliver?",
 };
 
 function parseWeekParam(raw: string | undefined, fallback: number): number {
@@ -46,33 +97,48 @@ export default async function MissionTrackPage({ searchParams }: PageProps) {
     .filter((m) => m.status === "completed")
     .map((m) => m.display_day);
 
+  const roleLabel = state.role ? (ROLE_LABEL[state.role] ?? state.role) : null;
+  const theme = WEEK_THEMES[week] ?? "Keep going.";
+  const reflectionPrompt =
+    REFLECTION_PROMPTS[week] ?? "What was harder than you expected this week?";
+
   return (
-    <section className="mx-auto flex max-w-(--max-page) flex-col gap-7 px-4 py-7 md:px-6 md:py-8">
-      <header className="flex flex-col gap-2 max-w-3xl">
-        <p className="text-eyebrow">Mission Track</p>
-        <h1 className="text-display text-balance leading-[1.05]">
-          90 days. Six chapters.
-          <br />
-          <span className="font-display italic">One mission at a time.</span>
-        </h1>
-      </header>
+    <section className="mx-auto flex max-w-(--max-page) flex-col gap-10 px-4 py-7 md:px-6 md:py-10">
+      <header className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-col gap-3">
+          <div className="inline-flex items-center gap-3">
+            <span className="text-eyebrow">Mission Track</span>
+            {roleLabel ? (
+              <span
+                className="text-eyebrow"
+                style={{
+                  color: "#6F7A86",
+                  borderLeft: "2px solid #6F7A86",
+                  paddingLeft: "10px",
+                }}
+              >
+                {roleLabel}
+              </span>
+            ) : null}
+          </div>
+          <h1
+            className="font-display font-normal text-balance text-ink"
+            style={{ fontSize: "32px", lineHeight: 1.2, letterSpacing: "-0.015em" }}
+          >
+            Week {week} &mdash; {theme}
+          </h1>
+        </div>
 
-      <MissionTimeline currentDay={dayState.day} completedDays={completedDays} />
-
-      <div className="flex flex-wrap items-baseline justify-between gap-2 max-w-3xl">
-        <h2 className="text-h3">
-          Week {week}{" "}
-          <span className="text-mute font-normal text-body-l">
-            of 13
-          </span>
-        </h2>
         <WeekNavigator week={week} />
-      </div>
+      </header>
 
       {state.role === null ? (
         <p className="text-body text-mute">
           Pick a role from{" "}
-          <Link href="/settings/account" className="text-ink underline-offset-4 hover:underline">
+          <Link
+            href="/settings/account"
+            className="text-ink underline-offset-4 hover:underline"
+          >
             Settings &raquo; Account
           </Link>{" "}
           to unlock missions.
@@ -80,34 +146,77 @@ export default async function MissionTrackPage({ searchParams }: PageProps) {
       ) : weekMissions.length === 0 ? (
         <EmptyWeek week={week} role={state.role} />
       ) : (
-        <ul className="flex flex-col gap-4 max-w-3xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
           {weekMissions.map((mission) => (
-            <li key={mission.id}>
-              <MissionCard
-                missionSlug={mission.slug}
-                title={mission.title}
-                description={mission.why_matters}
-                day={mission.display_day}
-                estimatedMinutes={mission.estimated_minutes}
-                status={
-                  mission.status === "completed"
-                    ? "completed"
-                    : mission.status === "locked"
-                      ? "locked"
-                      : "active"
-                }
-                statusLabel={
-                  mission.status === "locked"
-                    ? `Unlocks after ${mission.prerequisites.length} prior mission${mission.prerequisites.length === 1 ? "" : "s"}`
-                    : mission.completed_at
-                      ? `Completed ${formatRelative(mission.completed_at)}`
-                      : undefined
-                }
-              />
-            </li>
+            <MissionCard
+              key={mission.id}
+              missionSlug={mission.slug}
+              title={mission.title}
+              description={mission.why_matters}
+              day={mission.display_day}
+              estimatedMinutes={mission.estimated_minutes}
+              status={
+                mission.status === "completed"
+                  ? "completed"
+                  : mission.status === "locked"
+                    ? "locked"
+                    : "active"
+              }
+              statusLabel={
+                mission.status === "locked"
+                  ? `Unlocks Day ${mission.display_day}`
+                  : mission.completed_at
+                    ? `Completed ${formatRelative(mission.completed_at)}`
+                    : undefined
+              }
+              className="h-full"
+            />
           ))}
-        </ul>
+        </div>
       )}
+
+      <section
+        aria-label="Weekly reflection"
+        className="flex flex-wrap items-baseline justify-between gap-4 pt-7 border-t border-paper-3"
+      >
+        <div className="flex flex-col gap-2 max-w-[56ch]">
+          <p className="text-eyebrow">Reflection</p>
+          <p
+            className="font-display italic text-ink text-balance"
+            style={{ fontSize: "20px", lineHeight: 1.4 }}
+          >
+            {reflectionPrompt}
+          </p>
+        </div>
+        <Link
+          href="/situation-room"
+          className="inline-flex items-center gap-1.5 text-body-s font-medium text-ink hover:text-mute transition-colors group"
+        >
+          Open journal
+          <ArrowRight
+            className="size-3.5 transition-transform group-hover:translate-x-0.5"
+            strokeWidth={1.5}
+            aria-hidden
+          />
+        </Link>
+      </section>
+
+      <details className="border-t border-paper-3 pt-6 group">
+        <summary className="cursor-pointer text-body-s font-medium text-mute hover:text-ink transition-colors inline-flex items-center gap-1.5">
+          View whole 90-day map
+          <ArrowRight
+            className="size-3.5 group-open:rotate-90 transition-transform"
+            strokeWidth={1.5}
+            aria-hidden
+          />
+        </summary>
+        <div className="mt-5">
+          <MissionTimeline
+            currentDay={dayState.day}
+            completedDays={completedDays}
+          />
+        </div>
+      </details>
     </section>
   );
 }
@@ -116,23 +225,53 @@ function WeekNavigator({ week }: { week: number }) {
   const prev = Math.max(1, week - 1);
   const next = Math.min(13, week + 1);
   return (
-    <nav className="flex items-center gap-1 text-body-s" aria-label="Week navigator">
-      <Link
-        href={week > 1 ? `/mission-track?week=${prev}` : "#"}
-        className={`px-2 py-1 ${week > 1 ? "text-ink hover:bg-paper-2" : "text-mute-2 pointer-events-none"}`}
-        style={{ borderRadius: "4px" }}
-        aria-disabled={week === 1}
+    <nav
+      className="inline-flex flex-wrap items-center gap-1 text-body-s"
+      aria-label="Week navigation"
+    >
+      {week > 1 ? (
+        <Link
+          href={`/mission-track?week=${prev}`}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-ink hover:bg-paper-2 transition-colors"
+          style={{ borderRadius: "999px" }}
+        >
+          <ArrowLeft className="size-3.5" strokeWidth={1.5} aria-hidden />
+          Week {prev}
+        </Link>
+      ) : (
+        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-mute-2">
+          <ArrowLeft className="size-3.5" strokeWidth={1.5} aria-hidden />
+          Week {prev}
+        </span>
+      )}
+      <span aria-hidden className="text-mute-2 px-1">
+        ·
+      </span>
+      <span
+        className="inline-flex items-center px-3 py-1.5 font-semibold text-ink bg-paper-2 border border-paper-3"
+        style={{ borderRadius: "999px" }}
+        aria-current="page"
       >
-        ← Week {prev}
-      </Link>
-      <Link
-        href={week < 13 ? `/mission-track?week=${next}` : "#"}
-        className={`px-2 py-1 ${week < 13 ? "text-ink hover:bg-paper-2" : "text-mute-2 pointer-events-none"}`}
-        style={{ borderRadius: "4px" }}
-        aria-disabled={week === 13}
-      >
-        Week {next} →
-      </Link>
+        Week {week}
+      </span>
+      <span aria-hidden className="text-mute-2 px-1">
+        ·
+      </span>
+      {week < 13 ? (
+        <Link
+          href={`/mission-track?week=${next}`}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-ink hover:bg-paper-2 transition-colors"
+          style={{ borderRadius: "999px" }}
+        >
+          Week {next}
+          <ArrowRight className="size-3.5" strokeWidth={1.5} aria-hidden />
+        </Link>
+      ) : (
+        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-mute-2">
+          Week {next}
+          <ArrowRight className="size-3.5" strokeWidth={1.5} aria-hidden />
+        </span>
+      )}
     </nav>
   );
 }
@@ -140,17 +279,19 @@ function WeekNavigator({ week }: { week: number }) {
 function EmptyWeek({ week, role }: { week: number; role: string }) {
   return (
     <div
-      className="flex flex-col gap-2 border border-paper-3 bg-paper p-5 md:p-6 max-w-3xl"
+      className="flex flex-col gap-2 border border-paper-3 bg-paper p-5 md:p-6"
       style={{ borderRadius: "10px" }}
     >
       <p className="text-eyebrow">Week {week}</p>
-      <p className="font-display text-h3 text-ink">
+      <p
+        className="font-display font-normal text-ink"
+        style={{ fontSize: "22px", lineHeight: 1.25 }}
+      >
         No missions seeded for this week yet.
       </p>
-      <p className="text-body text-mute">
-        Content for the {role.toUpperCase()} role lands in Prompt 2.6;
-        once seeded, the week&rsquo;s missions show up here in
-        sequence-order.
+      <p className="text-body-s text-mute">
+        Content for the {role.toUpperCase()} role lands once seeded; the
+        week&rsquo;s missions show up here in sequence-order.
       </p>
     </div>
   );

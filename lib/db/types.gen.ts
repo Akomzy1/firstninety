@@ -177,6 +177,8 @@ export type Database = {
           // Set when the daily cron first nudges the user (migration 00004).
           probation_activation_prompted_at: string | null;
           timezone: string | null;
+          disable_real_name_advisory: boolean;
+          viewed_post_90_home_at: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -199,6 +201,8 @@ export type Database = {
           probation_outcome_captured_at?: string | null;
           probation_activation_prompted_at?: string | null;
           timezone?: string | null;
+          disable_real_name_advisory?: boolean;
+          viewed_post_90_home_at?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -221,6 +225,8 @@ export type Database = {
           probation_outcome_captured_at?: string | null;
           probation_activation_prompted_at?: string | null;
           timezone?: string | null;
+          disable_real_name_advisory?: boolean;
+          viewed_post_90_home_at?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -594,6 +600,7 @@ export type Database = {
           user_id: string;
           topic_title: string;
           is_archived: boolean;
+          flagged_for_safety: boolean;
           last_message_at: string;
           created_at: string;
           updated_at: string;
@@ -603,6 +610,7 @@ export type Database = {
           user_id: string;
           topic_title: string;
           is_archived?: boolean;
+          flagged_for_safety?: boolean;
           last_message_at?: string;
           created_at?: string;
           updated_at?: string;
@@ -612,6 +620,7 @@ export type Database = {
           user_id?: string;
           topic_title?: string;
           is_archived?: boolean;
+          flagged_for_safety?: boolean;
           last_message_at?: string;
           created_at?: string;
           updated_at?: string;
@@ -874,7 +883,7 @@ export type Database = {
       work_setup_enum: "remote" | "hybrid" | "office";
       mission_status_enum: "in_progress" | "completed" | "skipped";
       scenario_run_status_enum: "active" | "completed" | "abandoned";
-      situation_entry_type_enum: "prep" | "is_this_normal" | "debrief";
+      situation_entry_type_enum: "prep" | "is_this_normal" | "debrief" | "probation";
       coach_message_role_enum: "user" | "assistant" | "tool" | "system";
       probation_outcome_enum:
         | "continued"

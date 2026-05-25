@@ -16,32 +16,32 @@ const ROLES: ReadonlyArray<{
   {
     value: "ba",
     label: "Business Analyst",
-    description: "Bridging requirements between business and engineering.",
+    description: "Requirements, stakeholders, BRDs, workshops.",
   },
   {
     value: "pm",
     label: "Project Manager",
-    description: "Holding schedule, scope, and stakeholders together.",
+    description: "Schedule, scope, status, hard conversations.",
   },
   {
     value: "sm",
     label: "Scrum Master",
-    description: "Removing blockers; coaching the team through delivery.",
+    description: "Ceremonies, blockers, team health, retros.",
   },
   {
     value: "po",
     label: "Product Owner",
-    description: "Owning the backlog and the value the product delivers.",
+    description: "Backlog, priorities, defending the no.",
   },
   {
     value: "da",
     label: "Data Analyst",
-    description: "Turning questions into queries, queries into answers.",
+    description: "Dashboards, SQL, the question behind the question.",
   },
   {
     value: "aie",
-    label: "Junior / Associate AI Engineer",
-    description: "Shipping ML and AI features in real production.",
+    label: "AI Engineer",
+    description: "Evals, hallucinations, RAG, costs.",
   },
 ];
 
@@ -50,9 +50,15 @@ export default async function OnboardingStep2Page() {
 
   return (
     <div className="flex flex-col gap-5 py-2">
-      <header className="text-center">
+      <header className="text-center flex flex-col gap-3">
+        <p className="text-eyebrow">
+          <span className="font-mono text-mute-2 mr-3" style={{ fontSize: "11px" }}>
+            02 / 04
+          </span>
+          Your role
+        </p>
         <h1 className="text-display text-balance">What&rsquo;s your role?</h1>
-        <p className="text-body-l text-mute mt-3 max-w-prose mx-auto">
+        <p className="text-body-l text-mute mt-1 max-w-prose mx-auto">
           The closest one is fine. You can switch later in Settings &raquo; Account.
         </p>
       </header>

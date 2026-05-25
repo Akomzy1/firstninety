@@ -188,3 +188,53 @@ export async function loadCoachPromptsFromDisk(): Promise<LoadedItem<CoachPrompt
   }
   return out;
 }
+
+/* ----------------------------------------------------------------------- *
+ * Runtime coach-prompt loader (used by the Coach engine + safety wrapper)
+ *
+ * `loadCoachPromptsFromDisk()` above enforces the seed-script schema
+ * (id / surface / role / version). The Coach engine just needs the
+ * markdown body keyed by filename — voice.md, role-ba.md, etc. — so we
+ * expose a separate cached loader that doesn't apply the strict schema.
+ * ----------------------------------------------------------------------- */
+
+export type LoadedPromptBody = {
+  /** The filename without extension, e.g. `voice` or `role-ba`. */
+  name: string;
+  /** The markdown body, with the frontmatter block stripped. */
+  body: string;
+  /** The frontmatter as a loose record. May be empty if no frontmatter. */
+  frontmatter: Record<string, unknown>;
+};
+
+const bodyCache = new Map<string, LoadedPromptBody>();
+
+/**
+ * Load a single coach-prompt by its bare name (no `.md`). Cached
+ * in-memory after first read. Throws if the file is missing.
+ */
+export async function loadCoachPromptByName(
+  name: string,
+): Promise<LoadedPromptBody> {
+  const cached = bodyCache.get(name);
+  if (cached) return cached;
+  const filePath = join(contentRoot, "coach-prompts", `${name}.md`);
+  const raw = await readFile(filePath, "utf8");
+  const { meta, body } = parseFrontmatter(raw);
+  const result: LoadedPromptBody = {
+    name,
+    body: body.trim(),
+    frontmatter: meta as Record<string, unknown>,
+  };
+  bodyCache.set(name, result);
+  return result;
+}
+
+/**
+ * Convenience: return just the body string. Most runtime callers
+ * (system-prompt composer, safety wrapper) only need the body.
+ */
+export async function loadCoachPromptBody(name: string): Promise<string> {
+  const { body } = await loadCoachPromptByName(name);
+  return body;
+}

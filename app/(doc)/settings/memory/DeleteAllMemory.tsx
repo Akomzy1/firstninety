@@ -1,9 +1,9 @@
 /**
- * "Delete everything I've told you" — destructive ghost button with a
- * native <dialog> confirmation. Calls deleteAllMemoryAction which
- * soft-deletes every user_responsibilities row and clears the editable
- * user_context fields (sector / work_setup / probation_review_date /
- * focus_areas). Role + start_date stay.
+ * "Delete everything I've told you" — Fraunces italic 22px danger-coloured
+ * link styled per the Memory Settings prototype's `.destructive-link`.
+ * Opens a native <dialog> confirmation before firing deleteAllMemoryAction
+ * (soft-deletes all user_responsibilities rows and clears editable
+ * user_context fields). Role + start_date stay.
  */
 "use client";
 
@@ -11,7 +11,7 @@ import { useRef, useTransition } from "react";
 
 import { Button } from "@/components/ui/Button";
 
-import { deleteAllMemoryAction } from "../actions";
+import { deleteAllMemoryAction } from "@/app/(app)/settings/actions";
 
 export function DeleteAllMemory() {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -34,15 +34,14 @@ export function DeleteAllMemory() {
 
   return (
     <>
-      <Button
+      <button
         type="button"
-        variant="ghost"
-        tone="destructive"
         onClick={open}
-        className="self-start"
+        className="font-display italic text-danger text-left border-b border-dashed border-transparent hover:border-danger transition-colors"
+        style={{ fontSize: "22px", lineHeight: 1.4, letterSpacing: "-0.005em" }}
       >
-        Forget everything
-      </Button>
+        Delete everything I&rsquo;ve told you
+      </button>
 
       <dialog
         ref={dialogRef}

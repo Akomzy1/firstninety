@@ -67,7 +67,10 @@ export function UserMenu({ user }: { user: UserMenuUser | null }) {
         className="flex h-12 cursor-pointer list-none items-center gap-2 px-2 text-body-s hover:bg-paper-3 transition-colors"
         style={{ borderRadius: "4px" }}
       >
-        <span className="grid size-8 shrink-0 place-items-center rounded-full bg-paper-3 font-display text-body-s text-ink">
+        <span
+          className="grid size-8 shrink-0 place-items-center rounded-full font-body font-semibold tracking-wider text-paper"
+          style={{ background: "#6F7A86", fontSize: "11px", letterSpacing: "0.04em" }}
+        >
           {monogram(label).toUpperCase()}
         </span>
         <span className="hidden lg:flex flex-1 flex-col text-left min-w-0">
@@ -76,7 +79,13 @@ export function UserMenu({ user }: { user: UserMenuUser | null }) {
         </span>
       </summary>
 
-      <div className="absolute bottom-full left-0 right-0 mb-2 flex flex-col bg-paper border border-paper-3 shadow-sm">
+      <div
+        className="absolute bottom-full left-0 right-0 mb-2 flex flex-col bg-paper border border-paper-3 overflow-hidden"
+        style={{
+          borderRadius: "8px",
+          boxShadow: "0 8px 24px rgba(14, 17, 22, 0.06)",
+        }}
+      >
         <Link
           href="/settings/account"
           className="px-3 py-2 text-body-s text-ink hover:bg-paper-2"

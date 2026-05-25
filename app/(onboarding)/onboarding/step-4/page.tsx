@@ -6,7 +6,7 @@
  */
 import Link from "next/link";
 
-import { Pencil } from "lucide-react";
+import { ArrowRight, Pencil } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { ensureOnboardingStep } from "@/lib/onboarding/state";
@@ -84,35 +84,43 @@ export default async function OnboardingStep4Page() {
   }
 
   return (
-    <div className="flex flex-col gap-6 py-2">
-      <header>
-        <p className="text-eyebrow">Memory</p>
-        <h1 className="text-h2 mt-2 text-balance">
-          This is what I&rsquo;ll remember about you.
+    <div className="flex flex-col gap-7 py-2">
+      <header className="flex flex-col gap-3">
+        <p className="text-eyebrow">
+          <span className="font-mono text-mute-2 mr-3" style={{ fontSize: "11px" }}>
+            04 / 04
+          </span>
+          What we&rsquo;ll remember
+        </p>
+        <h1 className="text-h2 text-balance">
+          Here&rsquo;s what FirstNinety knows about you so far.
         </h1>
       </header>
 
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col list-none p-0 m-0 border-t border-paper-3">
         {facts.map((fact, idx) => (
           <li
             key={idx}
-            className="group flex items-baseline gap-3 text-balance"
+            className="group flex items-baseline justify-between gap-4 py-5 border-b border-paper-3"
           >
-            <span className="font-display italic text-body-l text-ink">
+            <span className="font-display italic text-ink flex-1 text-balance"
+                  style={{ fontSize: "20px", lineHeight: 1.4 }}
+            >
               {fact.text}
             </span>
             <Link
               href={fact.editHref}
-              className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 text-mute hover:text-ink transition-opacity"
+              className="shrink-0 inline-flex items-center gap-1.5 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 text-mute hover:text-ink transition-opacity text-body-s font-medium"
               aria-label={`Edit: ${fact.text}`}
             >
-              <Pencil className="size-4" strokeWidth={1.5} aria-hidden />
+              <Pencil className="size-3.5" strokeWidth={1.5} aria-hidden />
+              Edit
             </Link>
           </li>
         ))}
       </ul>
 
-      <div className="border-t border-paper-3 pt-5">
+      <section className="mt-2">
         <p className="text-eyebrow">Privacy</p>
         <div className="flex flex-col gap-3 text-body text-mute mt-3 max-w-prose">
           <p>
@@ -126,16 +134,19 @@ export default async function OnboardingStep4Page() {
             time, and the change takes effect immediately.
           </p>
         </div>
-      </div>
+      </section>
 
-      <form action={completeOnboardingAction} className="relative mt-2 self-start">
-        <Button type="submit" variant="primary" size="lg" className="min-w-[240px]">
+      <form action={completeOnboardingAction} className="flex flex-col gap-2 mt-2 self-start">
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          className="min-w-[240px] gap-2"
+        >
           Begin Day 1
+          <ArrowRight className="size-4" strokeWidth={1.5} aria-hidden />
         </Button>
-        <span
-          className="pointer-events-none absolute -right-2 -top-2 size-2 rounded-full bg-accent"
-          aria-hidden
-        />
+        <p className="text-caption text-mute">Day 1 of 90.</p>
       </form>
     </div>
   );

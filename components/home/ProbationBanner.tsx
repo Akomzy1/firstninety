@@ -1,14 +1,16 @@
 /**
  * Probation banner — rendered on /home when probation_mode_active.
  *
- * Per the Daily Home (Probation Active) prototype: eyebrow with coral
- * pip + "Probation — N days to review", a short directive headline that
- * shifts by phase of probation, a meta line linking to settings.
+ * Per the Daily Home (Probation Active) prototype: eyebrow with coral pip
+ * + "Probation — N days to review" (eyebrow is mute by default; flips to
+ * accent when daysToReview ≤ 3 via the urgent variant), a short
+ * directive headline that shifts by phase of probation, and a meta line
+ * linking to Settings.
  *
- * The banner does NOT colour-flood; it sits as a subtle paper-2 card
- * with a left ink rule (consistent with the prototype's "we're saying
- * probation matters and the user doesn't need to perform panic to prove
- * it" voice).
+ * The banner does NOT colour-flood. It sits as a subtle paper-2 card
+ * with a left ink rule (consistent with the SKILL §10.4 counterweight:
+ * "probation matters and the user doesn't need to perform panic to
+ * prove it").
  */
 import Link from "next/link";
 
@@ -22,8 +24,8 @@ function chooseDirective(days: number | null, briefGenerated: boolean): string {
   if (days <= 0) return "Your review is today. The work is already done. Bring the brief.";
   if (days <= 3) {
     return briefGenerated
-      ? "Re-read the brief. Edit one sentence so it sounds like you."
-      : "Generate your probation brief. Three sentences each, no headings.";
+      ? "Three days. Re-read the brief and edit one sentence so it sounds like you. That's enough."
+      : "Three days. Generate your Brief and edit it once. That's enough.";
   }
   if (days <= 7) {
     return "This week: rehearse the conversation. Once out loud is worth ten in your head.";
@@ -38,6 +40,8 @@ export function ProbationBanner({
   daysToReview,
   briefGenerated,
 }: ProbationBannerProps) {
+  const urgent = daysToReview !== null && daysToReview <= 3;
+
   const eyebrow =
     daysToReview === null
       ? "Probation — review date not set"
@@ -47,12 +51,19 @@ export function ProbationBanner({
 
   return (
     <section
-      className="bg-paper-2 border border-paper-3 border-l-2 border-l-ink p-5 md:p-6 flex flex-col gap-2 max-w-3xl"
+      className="bg-paper-2 border border-paper-3 border-l-2 border-l-ink p-5 md:p-6 flex flex-col gap-2"
       style={{ borderRadius: "10px" }}
       aria-label="Probation status"
     >
-      <p className="text-eyebrow inline-flex items-center gap-2">
-        <span className="size-1.5 rounded-full bg-accent" aria-hidden />
+      <p
+        className={`text-eyebrow inline-flex items-center gap-2 ${
+          urgent ? "text-accent" : ""
+        }`}
+      >
+        <span
+          aria-hidden
+          className={`block size-1.5 rounded-full ${urgent ? "bg-accent" : "bg-mute-2"}`}
+        />
         {eyebrow}
       </p>
       <p className="font-display text-h3 text-ink text-balance">

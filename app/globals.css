@@ -48,6 +48,21 @@
   --accent: #e97552;
 }
 
+/* Light mode — explicit re-assertion of the :root tokens. Use this on
+   a child element to flip back inside a dark ancestor (e.g. the
+   Simulator active session, which lives under the same cinematic
+   layout as the dark brief). Without this block, a nested
+   `data-theme="light"` would just inherit the parent's dark variables. */
+[data-theme="light"] {
+  --paper: #faf7f2;
+  --paper-2: #f2ede4;
+  --paper-3: #e7e0d2;
+  --ink: #0e1116;
+  --mute: #6f6a60;
+  --mute-2: #a29d90;
+  --accent: #d9532c;
+}
+
 /* Dark mode — system preference fallback when no explicit theme is set */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {

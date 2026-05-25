@@ -73,7 +73,10 @@ function resolveDbUrl(env) {
 
 function runSupabase(args, { captureStdoutTo } = {}) {
   return new Promise((resolveRun, reject) => {
-    const child = spawn("pnpm", ["exec", "supabase", ...args], {
+    // Use `npx --no-install` so this works whether the consumer
+    // package manager is npm, pnpm, or yarn — npx resolves
+    // `node_modules/.bin/supabase` first and never auto-downloads.
+    const child = spawn("npx", ["--no-install", "supabase", ...args], {
       cwd: repoRoot,
       stdio: captureStdoutTo
         ? ["inherit", "pipe", "inherit"]

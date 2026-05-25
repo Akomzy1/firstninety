@@ -130,6 +130,27 @@ export async function exportUserDataAction(): Promise<{
   };
 }
 
+/**
+ * Per-PRD §9.6 / SKILL §5: some sectors use anonymised proper names
+ * that look like real names (legal redactions, healthcare studies).
+ * The advisory is a soft nudge; the user can opt out. PII + crisis
+ * checks remain mandatory and cannot be disabled.
+ */
+export async function setRealNameAdvisoryAction(
+  formData: FormData,
+): Promise<void> {
+  const user = await requireAuth();
+  const disable = formData.get("disable") === "true";
+
+  const service = createServiceClient();
+  await service
+    .from("user_context")
+    .update({ disable_real_name_advisory: disable })
+    .eq("user_id", user.id);
+
+  revalidatePath("/settings/privacy");
+}
+
 export type DeleteAccountInitState = {
   error?: string;
   token?: string;

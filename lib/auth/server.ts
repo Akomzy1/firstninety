@@ -3,8 +3,8 @@
  * route handlers. Each helper creates its own Supabase server client (cheap;
  * cookies-bound) so the per-request user identity is always fresh.
  *
- * `requirePro` and `getTierAllowance` are stubbed for Phase 1 — full tier
- * enforcement wires up in Build Prompt 3.2.
+ * Tier enforcement lives in lib/billing/tier.ts (built in Prompt 3.2).
+ * Import `checkTierAllowance` from there instead of asking auth helpers.
  */
 import "server-only";
 
@@ -31,33 +31,4 @@ export async function requireAuth() {
     redirect("/login");
   }
   return user;
-}
-
-/**
- * Throws (via redirect to /pricing) if the user is not on the Pro tier.
- * Phase 1 stub — the production check reads subscriptions.tier and lands in
- * Build Prompt 3.2.
- */
-export async function requirePro() {
-  const user = await requireAuth();
-  // TODO(phase 3.2): read public.subscriptions.tier; redirect to /pricing if free.
-  return user;
-}
-
-export type TierAllowance =
-  | { allowed: true }
-  | { allowed: false; reason: string; limit: number; used: number };
-
-/**
- * Returns the user's remaining allowance for a tier-gated AI surface. Phase
- * 3.2 wires this against usage_limits + subscriptions.tier; until then any
- * caller will throw if it relies on the result.
- */
-export async function getTierAllowance(
-  _userId: string,
-  _surface: "simulator" | "situation_room" | "coach_adhoc",
-): Promise<TierAllowance> {
-  throw new Error(
-    "getTierAllowance is not implemented yet — wired up in Build Prompt 3.2.",
-  );
 }

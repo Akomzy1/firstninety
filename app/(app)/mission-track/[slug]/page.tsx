@@ -80,7 +80,7 @@ export default async function MissionDetailPage({ params }: PageProps) {
   const scenarioSlugs = resourceRefs.scenario_slugs ?? [];
 
   return (
-    <article className="mx-auto max-w-(--max-reading) py-7 md:py-8 px-4 md:px-6 flex flex-col gap-7">
+    <article className="mx-auto max-w-(--max-reading) py-7 md:py-8 px-4 md:px-6 flex flex-col gap-6">
       <p className="text-body-s text-mute">
         <Link
           href="/mission-track"
@@ -118,7 +118,7 @@ export default async function MissionDetailPage({ params }: PageProps) {
               <ResourceLink key={`p:${s}`} href={`/playbook/${s}`} label={`Playbook: ${s}`} />
             ))}
             {scenarioSlugs.map((s) => (
-              <ResourceLink key={`s:${s}`} href={`/simulator/${s}`} label={`Scenario: ${s}`} />
+              <ResourceLink key={`s:${s}`} href={`/simulator/${s}/brief`} label={`Scenario: ${s}`} />
             ))}
           </ul>
         </Section>

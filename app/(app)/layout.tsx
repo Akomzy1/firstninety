@@ -17,6 +17,7 @@ import { Sidebar } from "@/components/nav/Sidebar";
 import { IOSInstallTutorial } from "@/components/pwa/IOSInstallTutorial";
 import { NotificationPermissionPrompt } from "@/components/pwa/NotificationPermissionPrompt";
 import { createClient } from "@/lib/db/server";
+import { getDayState } from "@/lib/home/day-state";
 import { getUnreadCounts } from "@/lib/nav/unread";
 
 export default async function AppLayout({
@@ -35,6 +36,7 @@ export default async function AppLayout({
     display_name: string | null;
     primary_role: string | null;
   } | null = null;
+  let sidebarMode: "default" | "post-90" = "default";
 
   if (user) {
     const { data: row } = await supabase
@@ -51,6 +53,14 @@ export default async function AppLayout({
       display_name: row?.display_name ?? null,
       primary_role: row?.primary_role ?? null,
     };
+
+    const { data: ctx } = await supabase
+      .from("user_context")
+      .select("start_date")
+      .eq("user_id", user.id)
+      .single();
+    const dayState = getDayState(ctx?.start_date ?? null);
+    if (dayState.mode === "post-90") sidebarMode = "post-90";
   }
 
   const unreadCounts = user
@@ -59,7 +69,11 @@ export default async function AppLayout({
 
   return (
     <div className="flex min-h-screen bg-paper">
-      <Sidebar user={userMenuUser} unreadCounts={unreadCounts} />
+      <Sidebar
+        user={userMenuUser}
+        unreadCounts={unreadCounts}
+        mode={sidebarMode}
+      />
 
       <div className="flex flex-1 flex-col">
         {/* Mobile top bar — minimal wordmark only. */}

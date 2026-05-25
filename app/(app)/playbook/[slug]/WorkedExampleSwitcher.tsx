@@ -71,6 +71,17 @@ function TwoColumnReader({ example }: { example: Example }) {
     return map;
   }, [example.annotations]);
 
+  // Build a map from section_id -> { index, title } so annotations can
+  // render the prototype's numbered editorial eyebrow ("01 On the
+  // summary" etc.).
+  const sectionMeta = useMemo(() => {
+    const map = new Map<string, { index: number; title: string }>();
+    for (const s of example.rendered.sections) {
+      map.set(s.id, { index: s.index, title: s.title });
+    }
+    return map;
+  }, [example.rendered.sections]);
+
   // Slice the rendered HTML into per-section chunks so each section
   // can sit in its own grid row alongside its annotation.
   const sectionChunks = useMemo(
@@ -88,40 +99,70 @@ function TwoColumnReader({ example }: { example: Example }) {
         </div>
       ) : null}
 
-      {sectionChunks.sections.map((chunk) => (
-        <div key={chunk.id} className="contents">
-          <div className="prose-readable" id={chunk.id}>
-            <div dangerouslySetInnerHTML={{ __html: chunk.html }} />
-            {/* Mobile-only inline annotations */}
-            {(annotationMap.get(chunk.id) ?? []).length > 0 ? (
-              <aside className="lg:hidden mt-3 border-l-2 border-paper-3 pl-3">
-                {(annotationMap.get(chunk.id) ?? []).map((note, idx) => (
-                  <p
-                    key={idx}
-                    className="font-display italic text-body-s text-mute mt-2 first:mt-0"
-                  >
-                    {note}
-                  </p>
-                ))}
-              </aside>
-            ) : null}
-          </div>
+      {sectionChunks.sections.map((chunk) => {
+        const notes = annotationMap.get(chunk.id) ?? [];
+        const meta = sectionMeta.get(chunk.id);
+        return (
+          <div key={chunk.id} className="contents">
+            <div className="prose-readable" id={chunk.id}>
+              <div dangerouslySetInnerHTML={{ __html: chunk.html }} />
+              {/* Mobile-only inline annotations */}
+              {notes.length > 0 ? (
+                <aside className="lg:hidden mt-3 border-l-2 border-paper-3 pl-3">
+                  <AnnotationEyebrow meta={meta} />
+                  {notes.map((note, idx) => (
+                    <p
+                      key={idx}
+                      className="font-display italic text-body-s text-mute mt-2 first:mt-1"
+                    >
+                      {note}
+                    </p>
+                  ))}
+                </aside>
+              ) : null}
+            </div>
 
-          <aside className="hidden lg:block border-l border-paper-3 pl-4 pt-2">
-            {(annotationMap.get(chunk.id) ?? []).length > 0 ? (
-              (annotationMap.get(chunk.id) ?? []).map((note, idx) => (
-                <p
-                  key={idx}
-                  className="font-display italic text-body-s text-mute mt-3 first:mt-0"
-                >
-                  {note}
-                </p>
-              ))
-            ) : null}
-          </aside>
-        </div>
-      ))}
+            <aside className="hidden lg:block border-l border-paper-3 pl-4 pt-2">
+              {notes.length > 0 ? (
+                <>
+                  <AnnotationEyebrow meta={meta} />
+                  {notes.map((note, idx) => (
+                    <p
+                      key={idx}
+                      className="font-display italic text-body-s text-mute mt-2 first:mt-1"
+                    >
+                      {note}
+                    </p>
+                  ))}
+                </>
+              ) : null}
+            </aside>
+          </div>
+        );
+      })}
     </div>
+  );
+}
+
+function AnnotationEyebrow({
+  meta,
+}: {
+  meta: { index: number; title: string } | undefined;
+}) {
+  if (!meta) return null;
+  const num = String(meta.index).padStart(2, "0");
+  // The eyebrow reads like the prototype's "01 On the summary" — section
+  // title trimmed and prefixed with "On". Keep it short; truncate long
+  // section titles to keep the eyebrow scannable.
+  const trimmed = meta.title.replace(/[.!?]+$/, "").trim();
+  const lead = trimmed.length > 40 ? `${trimmed.slice(0, 38)}…` : trimmed;
+  return (
+    <p className="text-eyebrow text-mute-2">
+      <span className="font-mono mr-2" style={{ fontSize: "11px" }}>
+        {num}
+      </span>
+      <span>On {lead.toLowerCase()}</span>
+    </p>
   );
 }
 

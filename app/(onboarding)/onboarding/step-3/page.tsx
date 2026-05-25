@@ -15,11 +15,17 @@ export default async function OnboardingStep3Page() {
 
   return (
     <div className="flex flex-col gap-6 py-2">
-      <header className="text-center">
+      <header className="text-center flex flex-col gap-3">
+        <p className="text-eyebrow">
+          <span className="font-mono text-mute-2 mr-3" style={{ fontSize: "11px" }}>
+            03 / 04
+          </span>
+          Where you&rsquo;re starting
+        </p>
         <h1 className="text-display text-balance">
           Where you&rsquo;re starting.
         </h1>
-        <p className="text-body-l text-mute mt-3 max-w-prose mx-auto">
+        <p className="text-body-l text-mute mt-1 max-w-prose mx-auto">
           A few details so the missions and playbooks fit your week.
           Anything you skip is editable later from Settings &raquo; Memory.
         </p>

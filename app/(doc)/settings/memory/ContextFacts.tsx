@@ -21,7 +21,7 @@ import { Input } from "@/components/ui/Input";
 import {
   updateUserContextFactAction,
   type SettingsActionState,
-} from "../actions";
+} from "@/app/(app)/settings/actions";
 
 type Field = "sector" | "work_setup" | "start_date" | "probation_review_date";
 

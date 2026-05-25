@@ -21,7 +21,7 @@ import {
   deleteUserResponsibilityAction,
   updateUserResponsibilityAction,
   type SettingsActionState,
-} from "../actions";
+} from "@/app/(app)/settings/actions";
 
 type Responsibility = {
   id: string;
@@ -183,7 +183,8 @@ function AddResponsibility() {
       <button
         type="button"
         onClick={() => setAdding(true)}
-        className="self-start inline-flex items-center gap-2 text-body text-mute hover:text-ink transition-colors"
+        className="self-start inline-flex items-center gap-2 border border-dashed border-paper-3 bg-transparent px-4 py-3 text-body-s font-medium text-mute hover:text-ink hover:border-ink hover:bg-paper-2 transition-colors"
+        style={{ borderRadius: "4px" }}
       >
         <Plus className="size-4" strokeWidth={1.5} aria-hidden />
         Tell FirstNinety something else
@@ -192,10 +193,7 @@ function AddResponsibility() {
   }
 
   return (
-    <div
-      className="flex flex-col gap-3 border border-paper-3 bg-paper-2 p-4"
-      style={{ borderRadius: "8px" }}
-    >
+    <div className="flex flex-col gap-3">
       <form
         action={(formData) => {
           startTransition(() => {
@@ -212,8 +210,8 @@ function AddResponsibility() {
           autoFocus
           required
           maxLength={500}
-          className="w-full bg-paper border border-paper-3 p-3 text-body text-ink placeholder:text-mute"
-          style={{ borderRadius: "6px" }}
+          className="w-full min-h-[96px] bg-paper-2 border border-paper-3 px-4 py-3.5 text-body text-ink placeholder:text-mute resize-y focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2"
+          style={{ borderRadius: "8px" }}
         />
         <div className="flex items-center justify-end gap-2">
           <Button

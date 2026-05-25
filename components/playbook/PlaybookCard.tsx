@@ -25,6 +25,8 @@ type PlaybookCardProps = {
   artefactType: string;
   description: string;
   annotationCount: number;
+  workedExampleCount?: number;
+  estimatedMinutes?: number;
   isProbationPack?: boolean;
 };
 
@@ -33,19 +35,28 @@ export function PlaybookCard({
   role,
   title,
   variant,
-  artefactType,
+  artefactType: _artefactType,
   description,
   annotationCount,
+  workedExampleCount = 1,
+  estimatedMinutes,
   isProbationPack = false,
 }: PlaybookCardProps) {
   const eyebrow = isProbationPack
     ? "Probation prep"
     : `${ROLE_LABEL[role] ?? role.toUpperCase()}${variant ? ` — ${variant} variant` : ""}`;
 
+  // Prototype metadata format: "2 worked examples · 8 min".
+  // Reading time falls back to ~2 min per annotation if not provided.
+  const minutes =
+    estimatedMinutes ??
+    Math.max(5, Math.round(annotationCount * 2));
+  const exampleLabel = `${workedExampleCount} worked example${workedExampleCount === 1 ? "" : "s"}`;
+
   return (
     <Link
       href={`/playbook/${slug}`}
-      className="group relative flex h-full flex-col gap-3 border border-paper-3 bg-paper p-5 md:p-6 transition-colors hover:border-mute focus-visible:border-ink"
+      className="group relative flex h-full flex-col gap-3 border border-paper-3 bg-paper p-5 md:p-6 transition-colors hover:border-ink focus-visible:border-ink"
       style={{ borderRadius: "10px" }}
     >
       {/* left "margin" rule — the doc-card signature stroke */}
@@ -54,26 +65,31 @@ export function PlaybookCard({
         aria-hidden
       />
 
-      {/* coral side stripe — annotation hint, top-right */}
+      {/* coral eyebrow bar — annotation hint, top-right.
+          Featured (probation pack) gets a wider accent bar per prototype. */}
       {annotationCount > 0 ? (
         <span
-          className="absolute right-3 top-6 w-1 h-16 bg-accent/20"
+          className={`absolute right-3 top-6 h-16 ${
+            isProbationPack ? "w-[18px] bg-accent/30" : "w-[14px] bg-accent/15"
+          }`}
           aria-label={`${annotationCount} margin annotation${annotationCount === 1 ? "" : "s"}`}
         />
       ) : null}
 
-      <div className="pl-3">
+      <div className="pl-3 pr-8">
         <p className="text-eyebrow">{eyebrow}</p>
-        <h3 className="font-display text-h4 text-ink mt-2">{title}</h3>
+        <h3
+          className="font-display font-normal text-balance text-ink mt-2"
+          style={{ fontSize: "22px", lineHeight: 1.25, letterSpacing: "-0.005em" }}
+        >
+          {title}
+        </h3>
         <p className="text-body-s text-mute mt-2 line-clamp-4">{description}</p>
       </div>
 
-      <div className="mt-auto pl-3 flex items-center justify-between gap-3">
+      <div className="mt-auto pl-3 flex items-center gap-3">
         <span className="text-caption text-mute">
-          {artefactType.toUpperCase()}
-        </span>
-        <span className="text-caption text-mute group-hover:text-ink transition-colors">
-          Read with worked example →
+          {exampleLabel} &middot; {minutes} min
         </span>
       </div>
     </Link>

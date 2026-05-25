@@ -12,7 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import { Menu } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 
 import {
   MOBILE_BOTTOM_PRIMARY,
@@ -91,7 +91,7 @@ export function BottomNav({ unreadCounts }: BottomNavProps) {
                 aria-hidden
               />
             ) : null}
-            <Menu
+            <MoreHorizontal
               className={`size-5 ${moreItemsActive ? "text-ink" : "text-mute"}`}
               strokeWidth={1.5}
               aria-hidden

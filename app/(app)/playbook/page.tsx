@@ -27,6 +27,11 @@ function countAnnotations(workedExamples: unknown): number {
   return total;
 }
 
+function countWorkedExamples(workedExamples: unknown): number {
+  if (!Array.isArray(workedExamples)) return 0;
+  return workedExamples.length;
+}
+
 export default async function PlaybookLibraryPage() {
   const user = await requireAuth();
   const supabase = await createClient();
@@ -67,11 +72,36 @@ export default async function PlaybookLibraryPage() {
     playbooks = data ?? [];
   }
 
+  const roleLabel = role
+    ? ({
+        ba: "BA",
+        pm: "PM",
+        sm: "Scrum Master",
+        po: "PO",
+        da: "Data Analyst",
+        aie: "AI Engineer",
+      }[role] ?? role.toUpperCase())
+    : null;
+
   return (
     <section className="mx-auto flex max-w-(--max-page) flex-col gap-7 px-4 py-7 md:px-6 md:py-8">
-      <header className="flex flex-col gap-2 max-w-3xl">
+      {/* Top breadcrumb strip — quiet, just nav context. */}
+      {roleLabel ? (
+        <p className="text-eyebrow text-mute-2">
+          {roleLabel} track{" "}
+          <span aria-hidden className="mx-2">
+            /
+          </span>{" "}
+          Playbook Library
+        </p>
+      ) : null}
+
+      <header
+        className="flex flex-col gap-2 max-w-3xl"
+        style={{ textWrap: "balance" }}
+      >
         <p className="text-eyebrow">Playbook Library</p>
-        <h1 className="text-display text-balance leading-[1.05]">
+        <h1 className="text-display text-balance leading-[1.05] max-w-[20ch]">
           Documents,
           <br />
           <span className="font-display italic">with the margins kept in.</span>
@@ -97,7 +127,7 @@ export default async function PlaybookLibraryPage() {
       ) : playbooks.length === 0 ? (
         <EmptyLibrary role={role} probationActive={probationActive} />
       ) : (
-        <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 list-none p-0">
           {playbooks.map((p) => (
             <li key={p.slug}>
               <PlaybookCard
@@ -108,6 +138,7 @@ export default async function PlaybookLibraryPage() {
                 artefactType={p.artefact_type}
                 description={p.description}
                 annotationCount={countAnnotations(p.worked_examples)}
+                workedExampleCount={countWorkedExamples(p.worked_examples)}
                 isProbationPack={
                   probationActive && p.slug.includes("probation-prep")
                 }
@@ -121,6 +152,14 @@ export default async function PlaybookLibraryPage() {
         More playbooks are added every week.{" "}
         <span className="text-mute-2">Suggest one — coming soon.</span>
       </p>
+
+      <footer className="mt-10 pt-6 border-t border-paper-3 flex flex-wrap items-center justify-between gap-3 font-mono text-mute-2 uppercase tracking-wider" style={{ fontSize: "11px" }}>
+        <span>
+          FirstNinety &middot; Playbook Library
+          {roleLabel ? ` · ${roleLabel} track` : ""}
+        </span>
+        <span>Design Brief §7 — annotated artefacts</span>
+      </footer>
     </section>
   );
 }

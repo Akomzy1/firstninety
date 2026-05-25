@@ -12,6 +12,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import {
+  ArrowDownToLine,
+  ArrowRight,
+  MessageCircle,
+  RotateCcw,
+} from "lucide-react";
+
 import { requireAuth } from "@/lib/auth/server";
 import { createClient } from "@/lib/db/server";
 import { renderPlaybookMarkdown } from "@/lib/playbooks/markdown";
@@ -64,14 +71,21 @@ export default async function PlaybookDetailPage({ params }: PageProps) {
     rendered: renderPlaybookMarkdown(example.content_md),
   }));
 
+  const roleLabel =
+    ROLE_LABEL[playbook.role] ?? playbook.role.toUpperCase();
+
   return (
     <article className="mx-auto max-w-(--max-page) px-4 py-7 md:px-6 md:py-8 flex flex-col gap-7">
-      <p className="text-body-s text-mute">
+      <p className="text-eyebrow text-mute-2">
         <Link
           href="/playbook"
-          className="hover:text-ink underline-offset-4 hover:underline"
+          className="hover:text-ink transition-colors"
         >
-          ← Playbook Library
+          {roleLabel} track{" "}
+          <span aria-hidden className="mx-2 text-mute-2">
+            /
+          </span>{" "}
+          Playbook Library
         </Link>
       </p>
 
@@ -85,13 +99,21 @@ export default async function PlaybookDetailPage({ params }: PageProps) {
           {playbook.description}
         </p>
         <p className="text-caption text-mute">
+          ~{Math.max(5, Math.round(workedExamples.length * 5 + (workedExamples[0]?.annotations?.length ?? 0) * 1.5))} minutes to read
+          {" · "}
           Updated{" "}
-          {new Date(playbook.updated_at).toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          {formatUpdatedAt(playbook.updated_at)}
+          {" · "}
+          Annotated by a senior practitioner
         </p>
+
+        <div className="flex flex-wrap items-center gap-1 mt-3">
+          <ActionBtn Icon={ArrowDownToLine}>Download empty template</ActionBtn>
+          <ActionBtn Icon={ArrowDownToLine}>Download worked example</ActionBtn>
+          <ActionBtn Icon={MessageCircle} href="/coach">
+            Discuss with the Coach
+          </ActionBtn>
+        </div>
       </header>
 
       <WorkedExampleSwitcher examples={examplesPrepared} />
@@ -120,25 +142,116 @@ export default async function PlaybookDetailPage({ params }: PageProps) {
         </section>
       ) : null}
 
-      {playbook.related_scenarios && playbook.related_scenarios.length > 0 ? (
-        <section className="max-w-(--max-reading) flex flex-col gap-3 border-t border-paper-3 pt-7">
-          <p className="text-eyebrow">What to do next</p>
-          <ul className="flex flex-col gap-2">
-            {playbook.related_scenarios.map((scenarioSlug) => (
-              <li key={scenarioSlug}>
-                <Link
-                  href={`/simulator/${scenarioSlug}`}
-                  className="block border border-paper-3 bg-paper p-4 hover:border-mute transition-colors"
-                  style={{ borderRadius: "8px" }}
-                >
-                  <p className="text-eyebrow">Scenario</p>
-                  <p className="text-body text-ink mt-1">{scenarioSlug}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+      <section className="flex flex-col gap-4 border-t border-paper-3 pt-7">
+        <p className="text-eyebrow">What to do next</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {(playbook.related_scenarios ?? []).slice(0, 3).map((scenarioSlug) => (
+            <Link
+              key={scenarioSlug}
+              href={`/simulator/${scenarioSlug}/brief`}
+              className="group flex items-center justify-between gap-3 border border-paper-3 bg-paper p-4 hover:border-ink transition-colors"
+              style={{ borderRadius: "8px" }}
+            >
+              <span className="text-body-s text-ink line-clamp-2">
+                Run scenario: {scenarioSlug.replace(/-/g, " ")}
+              </span>
+              <ArrowRight
+                className="size-4 text-mute group-hover:text-ink shrink-0 transition-colors"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+            </Link>
+          ))}
+          {(playbook.related_scenarios?.length ?? 0) < 3 ? (
+            <Link
+              href="/coach"
+              className="group flex items-center justify-between gap-3 border border-paper-3 bg-paper p-4 hover:border-ink transition-colors"
+              style={{ borderRadius: "8px" }}
+            >
+              <span className="text-body-s text-ink">
+                Talk this through with the Coach
+              </span>
+              <MessageCircle
+                className="size-4 text-mute group-hover:text-ink shrink-0 transition-colors"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+            </Link>
+          ) : null}
+          {(playbook.related_scenarios?.length ?? 0) < 2 ? (
+            <Link
+              href="/playbook"
+              className="group flex items-center justify-between gap-3 border border-paper-3 bg-paper p-4 hover:border-ink transition-colors"
+              style={{ borderRadius: "8px" }}
+            >
+              <span className="text-body-s text-ink">
+                Back to the Library
+              </span>
+              <RotateCcw
+                className="size-4 text-mute group-hover:text-ink shrink-0 transition-colors"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+            </Link>
+          ) : null}
+        </div>
+      </section>
+
+      <footer
+        className="mt-6 pt-6 border-t border-paper-3 flex flex-wrap items-center justify-between gap-3 font-mono text-mute-2 uppercase tracking-wider"
+        style={{ fontSize: "11px" }}
+      >
+        <span>
+          FirstNinety &middot; Playbook Library &middot; {roleLabel} track
+        </span>
+        <span>Design Brief §7 — annotated artefacts</span>
+      </footer>
     </article>
   );
+}
+
+function ActionBtn({
+  Icon,
+  href,
+  children,
+}: {
+  Icon: React.ElementType;
+  href?: string;
+  children: React.ReactNode;
+}) {
+  const className =
+    "inline-flex items-center gap-1.5 px-3 py-1.5 text-body-s font-medium text-mute hover:text-ink hover:bg-paper-2 transition-colors";
+  const style = { borderRadius: "4px" };
+  if (href) {
+    return (
+      <Link href={href} className={className} style={style}>
+        <Icon className="size-3.5" strokeWidth={1.5} aria-hidden />
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <button type="button" className={className} style={style}>
+      <Icon className="size-3.5" strokeWidth={1.5} aria-hidden />
+      {children}
+    </button>
+  );
+}
+
+function formatUpdatedAt(timestamp: string): string {
+  try {
+    const then = new Date(timestamp);
+    const now = new Date();
+    const diffDays = Math.floor(
+      (now.getTime() - then.getTime()) / (24 * 60 * 60 * 1000),
+    );
+    if (diffDays < 14) return "this week";
+    if (diffDays < 30) return "this month";
+    return then.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+    });
+  } catch {
+    return "recently";
+  }
 }

@@ -60,3 +60,18 @@ export async function skipSundayPromptAction(): Promise<void> {
     .eq("user_id", user.id);
   revalidatePath("/home");
 }
+
+/**
+ * Stamps `viewed_post_90_home_at` so the one-time "What changed?"
+ * callout on the post-Day-90 Daily Home does not show again. Per Prompt
+ * 3.16 / PRD v1.8 §7.4.
+ */
+export async function dismissPost90WelcomeAction(): Promise<void> {
+  const user = await requireAuth();
+  const supabase = await createClient();
+  await supabase
+    .from("user_context")
+    .update({ viewed_post_90_home_at: new Date().toISOString() })
+    .eq("user_id", user.id);
+  revalidatePath("/home");
+}

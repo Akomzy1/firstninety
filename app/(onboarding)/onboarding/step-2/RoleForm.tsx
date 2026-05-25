@@ -6,6 +6,8 @@
 
 import { useActionState, useState } from "react";
 
+import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/Button";
 
 import { saveStep2Action, type OnboardingFormState } from "../actions";
@@ -38,12 +40,12 @@ export function RoleForm({ roles, initialValue }: RoleFormProps) {
           return (
             <li key={role.value}>
               <label
-                className={`flex aspect-square cursor-pointer flex-col gap-1 p-4 transition-colors ${
+                className={`flex cursor-pointer flex-col gap-2 p-5 transition-colors ${
                   checked
                     ? "bg-ink text-paper"
-                    : "bg-paper border border-paper-3 hover:border-mute"
+                    : "bg-paper border border-paper-3 hover:border-ink"
                 }`}
-                style={{ borderRadius: "8px" }}
+                style={{ borderRadius: "8px", aspectRatio: "4/3" }}
               >
                 <input
                   type="radio"
@@ -75,7 +77,7 @@ export function RoleForm({ roles, initialValue }: RoleFormProps) {
         </p>
       ) : null}
 
-      <div className="relative self-center">
+      <div className="flex flex-col items-center gap-2 self-center">
         <Button
           type="submit"
           variant="primary"
@@ -83,16 +85,14 @@ export function RoleForm({ roles, initialValue }: RoleFormProps) {
           disabled={!selected}
           loading={pending}
           loadingText="Saving…"
-          className="min-w-[240px]"
+          className="min-w-[240px] gap-2"
         >
           Continue
+          <ArrowRight className="size-4" strokeWidth={1.5} aria-hidden />
         </Button>
-        {selected ? (
-          <span
-            className="pointer-events-none absolute -right-2 -top-2 size-2 rounded-full bg-accent"
-            aria-hidden
-          />
-        ) : null}
+        <p className="text-caption text-mute">
+          {selected ? "Press Enter to continue" : "Pick one to continue"}
+        </p>
       </div>
     </form>
   );

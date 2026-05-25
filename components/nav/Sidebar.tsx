@@ -15,12 +15,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Wordmark } from "@/components/marketing/Wordmark";
-import { PRIMARY_NAV, type NavItem } from "@/components/nav/nav-items";
+import {
+  ARCHIVE_NAV,
+  PRIMARY_NAV,
+  PRIMARY_NAV_POST_90,
+  type NavItem,
+} from "@/components/nav/nav-items";
 import { UserMenu, type UserMenuUser } from "@/components/nav/UserMenu";
 
 type SidebarProps = {
   user: UserMenuUser | null;
   unreadCounts: { situation_room: number };
+  /**
+   * `post-90` switches the primary nav to PRIMARY_NAV_POST_90 (no Mission
+   * Track) and surfaces an Archive section beneath the divider.
+   */
+  mode?: "default" | "post-90";
 };
 
 function isActive(pathname: string, href: string) {
@@ -28,8 +38,10 @@ function isActive(pathname: string, href: string) {
   return pathname.startsWith(`${href}/`);
 }
 
-export function Sidebar({ user, unreadCounts }: SidebarProps) {
+export function Sidebar({ user, unreadCounts, mode = "default" }: SidebarProps) {
   const pathname = usePathname();
+  const isPost90 = mode === "post-90";
+  const primary = isPost90 ? PRIMARY_NAV_POST_90 : PRIMARY_NAV;
 
   return (
     <aside
@@ -55,7 +67,7 @@ export function Sidebar({ user, unreadCounts }: SidebarProps) {
       </div>
 
       <nav className="flex flex-1 flex-col gap-1 px-2 py-2">
-        {PRIMARY_NAV.map((item) => (
+        {primary.map((item) => (
           <SidebarLink
             key={item.href}
             item={item}
@@ -64,17 +76,44 @@ export function Sidebar({ user, unreadCounts }: SidebarProps) {
           />
         ))}
 
-        <div className="mt-auto border-t border-paper-3 pt-2">
+        {isPost90 ? (
+          <div className="mt-4">
+            <p className="hidden lg:block text-eyebrow text-mute-2 px-2 mb-1.5">
+              Archive
+            </p>
+            <div className="lg:hidden border-t border-paper-3 mx-2 my-2" />
+            <div className="flex flex-col gap-1">
+              {ARCHIVE_NAV.map((item) => (
+                <SidebarLink
+                  key={item.href}
+                  item={item}
+                  active={isActive(pathname, item.href)}
+                  unread={false}
+                  muted
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        <div className="mt-auto pt-3">
           <Link
             href="/settings/memory"
-            className={`block px-2 py-2 font-display italic text-body-s transition-colors ${
-              isActive(pathname, "/settings")
-                ? "text-ink"
-                : "text-mute hover:text-ink"
+            className={`flex flex-col gap-0.5 px-3 py-3 transition-colors group ${
+              isActive(pathname, "/settings/memory")
+                ? "bg-paper-3"
+                : "hover:bg-paper-3"
             }`}
+            style={{ borderRadius: "6px" }}
+            aria-label="What I know about you"
           >
-            <span className="hidden lg:inline">What I know about you</span>
-            <span className="lg:hidden" aria-label="What I know about you">
+            <span className="hidden lg:inline text-body-s font-medium text-ink">
+              What I know about you
+            </span>
+            <span className="hidden lg:inline font-display italic text-caption text-mute">
+              read the margins
+            </span>
+            <span className="lg:hidden text-ink text-body-s font-medium" aria-hidden>
               ·
             </span>
           </Link>
@@ -92,17 +131,22 @@ function SidebarLink({
   item,
   active,
   unread,
+  muted = false,
 }: {
   item: NavItem;
   active: boolean;
   unread: boolean;
+  muted?: boolean;
 }) {
   const { Icon } = item;
+  const inactiveText = muted
+    ? "text-mute-2 hover:text-ink"
+    : "text-mute hover:bg-paper-3 hover:text-ink";
   return (
     <Link
       href={item.href}
       className={`relative flex h-10 items-center gap-3 px-2 text-body-s font-medium transition-colors ${
-        active ? "bg-paper-3 text-ink" : "text-ink hover:bg-paper-3"
+        active ? "bg-paper-3 text-ink" : inactiveText
       }`}
       style={{ borderRadius: "4px" }}
       title={item.label}
