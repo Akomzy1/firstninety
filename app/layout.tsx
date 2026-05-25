@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter, Geist_Mono } from "next/font/google";
+
+import { PostHogProvider } from "@/components/providers/PostHogProvider";
+
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -63,7 +66,9 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-paper text-ink font-body">{children}</body>
+      <body className="min-h-full bg-paper text-ink font-body">
+        <PostHogProvider>{children}</PostHogProvider>
+      </body>
     </html>
   );
 }
