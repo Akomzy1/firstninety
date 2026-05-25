@@ -28,9 +28,13 @@ export default function ResetPasswordPage() {
 
   useEffect(() => {
     const supabase = createClient();
+    let cancelled = false;
     supabase.auth.getUser().then(({ data }) => {
-      setMode(data.user ? "update" : "request");
+      if (!cancelled) setMode(data.user ? "update" : "request");
     });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (mode === "loading") {

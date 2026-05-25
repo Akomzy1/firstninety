@@ -8,6 +8,7 @@
  * tablet-hover labels lands in Build Prompt 1.4.
  */
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import {
   Book,
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 
 import { Wordmark } from "@/components/marketing/Wordmark";
+import { createClient } from "@/lib/db/server";
 
 const SIDEBAR_ITEMS = [
   { href: "/home", label: "Home", Icon: Home },
@@ -37,7 +39,28 @@ const BOTTOM_NAV_ITEMS = [
   { href: "/more", label: "More", Icon: Book },
 ] as const;
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function AppLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  // Middleware has already verified the user is authenticated. We just need
+  // to redirect anyone who hasn't finished onboarding back into the flow.
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) {
+    const { data: row } = await supabase
+      .from("users")
+      .select("onboarding_completed_at")
+      .eq("id", user.id)
+      .single();
+    if (row && !row.onboarding_completed_at) {
+      redirect("/onboarding/step-1");
+    }
+  }
+
   return (
     <div className="flex min-h-screen bg-paper">
       {/* Sidebar — hidden < md, 64px md, 240px lg */}

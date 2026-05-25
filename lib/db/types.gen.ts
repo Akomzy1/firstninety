@@ -31,6 +31,8 @@ export type Database = {
           primary_role: Database["public"]["Enums"]["role_enum"] | null;
           secondary_role: Database["public"]["Enums"]["role_enum"] | null;
           signup_source: string | null;
+          // Set on step 4 submission (migration 00003).
+          onboarding_completed_at: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -41,6 +43,7 @@ export type Database = {
           primary_role?: Database["public"]["Enums"]["role_enum"] | null;
           secondary_role?: Database["public"]["Enums"]["role_enum"] | null;
           signup_source?: string | null;
+          onboarding_completed_at?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -51,6 +54,7 @@ export type Database = {
           primary_role?: Database["public"]["Enums"]["role_enum"] | null;
           secondary_role?: Database["public"]["Enums"]["role_enum"] | null;
           signup_source?: string | null;
+          onboarding_completed_at?: string | null;
           created_at?: string;
           updated_at?: string;
         };
