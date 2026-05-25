@@ -27,7 +27,8 @@ export type Database = {
           id: string;
           email: string;
           display_name: string | null;
-          primary_role: Database["public"]["Enums"]["role_enum"];
+          // Nullable since migration 00002 — set in onboarding step 2.
+          primary_role: Database["public"]["Enums"]["role_enum"] | null;
           secondary_role: Database["public"]["Enums"]["role_enum"] | null;
           signup_source: string | null;
           created_at: string;
@@ -37,7 +38,7 @@ export type Database = {
           id: string;
           email: string;
           display_name?: string | null;
-          primary_role: Database["public"]["Enums"]["role_enum"];
+          primary_role?: Database["public"]["Enums"]["role_enum"] | null;
           secondary_role?: Database["public"]["Enums"]["role_enum"] | null;
           signup_source?: string | null;
           created_at?: string;
@@ -47,7 +48,7 @@ export type Database = {
           id?: string;
           email?: string;
           display_name?: string | null;
-          primary_role?: Database["public"]["Enums"]["role_enum"];
+          primary_role?: Database["public"]["Enums"]["role_enum"] | null;
           secondary_role?: Database["public"]["Enums"]["role_enum"] | null;
           signup_source?: string | null;
           created_at?: string;
