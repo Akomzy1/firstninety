@@ -1,0 +1,23 @@
+{
+  "slug": "ba-w1-d1-listening-loop",
+  "role": "ba",
+  "week": 1,
+  "sequence_in_week": 1,
+  "title": "Start your listening loop",
+  "why_matters": "Your first ninety days are when you have the most permission to ask basic questions and the least credibility to assume. A listening loop — a single document where you capture what you're hearing, from whom, and what you don't yet understand — turns every conversation into evidence. The analysts who keep one are the ones who, by week six, can point at the document and say \"this is what people have been telling me\". The analysts who don't keep one are the ones doing the same intro meeting for the fifth time.",
+  "steps": [
+    "Open a new document. Call it your listening loop. No clever name needed.",
+    "Make three columns: who I talked to, what they're worried about, what I don't yet understand.",
+    "Add an entry after every conversation today — even the corridor ones. Two sentences each.",
+    "At the end of the day, look at the third column. Pick one thing you don't understand. Note who you'd ask tomorrow."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["ba-listening-loop-template"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "By the end of Day 1, the document has at least three entries and at least one question marked for follow-up tomorrow.",
+  "reflection_prompt": "Looking at today's entries — what's the question you most don't want to ask, and who do you most need to ask it of? Two sentences.",
+  "estimated_minutes": 15,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

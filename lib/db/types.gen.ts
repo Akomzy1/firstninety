@@ -251,6 +251,7 @@ export type Database = {
           career_stage: string;
           is_published: boolean;
           version: number;
+          content_hash: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -270,6 +271,7 @@ export type Database = {
           career_stage?: string;
           is_published?: boolean;
           version?: number;
+          content_hash?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -289,6 +291,7 @@ export type Database = {
           career_stage?: string;
           is_published?: boolean;
           version?: number;
+          content_hash?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -311,6 +314,7 @@ export type Database = {
           career_stage: string;
           is_published: boolean;
           version: number;
+          content_hash: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -330,6 +334,7 @@ export type Database = {
           career_stage?: string;
           is_published?: boolean;
           version?: number;
+          content_hash?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -349,6 +354,7 @@ export type Database = {
           career_stage?: string;
           is_published?: boolean;
           version?: number;
+          content_hash?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -371,6 +377,7 @@ export type Database = {
           prerequisites: string[] | null;
           career_stage: string;
           is_published: boolean;
+          content_hash: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -390,6 +397,7 @@ export type Database = {
           prerequisites?: string[] | null;
           career_stage?: string;
           is_published?: boolean;
+          content_hash?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -409,6 +417,7 @@ export type Database = {
           prerequisites?: string[] | null;
           career_stage?: string;
           is_published?: boolean;
+          content_hash?: string | null;
           created_at?: string;
           updated_at?: string;
         };

@@ -9,7 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test": "echo \"No tests yet — added in later phases.\" && exit 0",
-    "seed": "echo \"No content yet — seed script added in Prompt 2.1.\" && exit 0",
+    "seed": "tsx scripts/seed-content.ts",
     "db:push": "node scripts/db.mjs push",
     "db:diff": "node scripts/db.mjs diff",
     "db:types": "node scripts/db.mjs gen-types",
@@ -29,7 +29,8 @@
     "resend": "^6.12.3",
     "server-only": "^0.0.1",
     "serwist": "^9.5.11",
-    "web-push": "^3.6.7"
+    "web-push": "^3.6.7",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -42,6 +43,7 @@
     "sharp": "^0.34.5",
     "supabase": "^2.101.0",
     "tailwindcss": "^4",
+    "tsx": "^4.22.3",
     "typescript": "^5"
   }
 }

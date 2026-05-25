@@ -1,0 +1,46 @@
+{
+  "slug": "ba-brd-regulatory",
+  "role": "ba",
+  "artefact_type": "brd",
+  "title": "Business Requirements Document",
+  "variant": "regulatory",
+  "description": "A BRD for work governed by regulatory constraints (financial services, healthcare, public sector). Closer to the standard BRD shape, with two extra sections most analysts skip — Regulatory Context and Audit Trail — that save weeks of rework downstream.",
+  "empty_template_md": "# [Initiative name] — Business Requirements Document\n\n## 1. Context\n_One paragraph. Why is this work happening? Why now?_\n\n## 2. Scope\n### In scope\n- \n### Out of scope\n- \n\n## 3. Stakeholders\n| Name | Role | Decision rights | Influence |\n|------|------|-----------------|-----------|\n|      |      |                 |           |\n\n## 4. Regulatory context\n_Which regulations / standards govern this work? Cite. What does each require in evidence?_\n\n## 5. Functional requirements\n1. \n2. \n\n## 6. Non-functional requirements\n- Performance: \n- Security: \n- Accessibility: \n\n## 7. Constraints + assumptions\n- \n\n## 8. Audit trail\n_How will the team prove, six months from now, that each requirement was met?_\n\n## 9. Risks\n| Risk | Impact | Mitigation |\n|------|--------|-----------|\n\n## 10. Sign-off\n_Named approvers + dates._\n",
+  "worked_examples": [
+    {
+      "title": "Customer onboarding portal — payments firm",
+      "content_md": "# Customer Onboarding Portal — Business Requirements Document\n\n## 1. Context\n\nOur existing customer-onboarding flow takes 9 working days end-to-end. Competitors are quoting 48 hours. The new portal needs to compress the manual KYC steps to under 24 hours of total wall-clock time without compromising regulatory standing.\n\n## 2. Scope\n\n### In scope\n- New customer KYC capture flow (UK + US)\n- Document upload + auto-classification\n- Status dashboard for the customer success team\n- Audit log of every state transition\n\n### Out of scope\n- Existing customer re-verification (Phase 2)\n- Mobile native app (web-only at launch)\n- Onboarding for corporate customers (separate stream)\n\n## 3. Stakeholders\n\n| Name | Role | Decision rights | Influence |\n|------|------|-----------------|-----------|\n| Priya Rao | Customer Success Director | Yes — scope owner | High |\n| Sam Palmer | Engineering Lead | Yes — feasibility owner | High |\n| Marcus Klein | Compliance Lead | Veto rights on KYC flow | High |\n| Lin Chen | Design Lead | No — consult | Medium |\n\n## 4. Regulatory context\n\nFCA SUP 11 (customer due diligence), GDPR Art. 6 + Art. 9, ICO age-of-consent guidance. Audit evidence required for every KYC decision; retention 7 years.\n\n## 5. Functional requirements\n\n1. New customers can submit identity documents via a mobile-web flow that meets WCAG 2.2 AA.\n2. Documents are auto-classified (passport / driving licence / utility bill / other) with confidence scores; below-threshold classifications route to manual review.\n3. The customer can see their submission status in plain language — never a status code.\n4. Compliance staff can flag a submission for additional checks without breaking the customer-facing timeline.\n5. Every state transition is recorded with timestamp + actor + reason.\n\n## 6. Non-functional requirements\n\n- Performance: P95 page load < 2.5s on mid-tier mobile devices over UK 4G.\n- Security: Documents encrypted at rest using AES-256; transit TLS 1.3; document URLs single-use, 24h TTL.\n- Accessibility: WCAG 2.2 AA. Keyboard-navigable.\n- Data residency: UK customer data in eu-west-2; US in us-east-1. No cross-border replication.\n\n## 7. Constraints and assumptions\n\n- Build on existing identity service (no new auth stack).\n- We assume the document-classifier vendor's accuracy claim of 94% holds; if it falls below 90% in production we add a manual triage step.\n\n## 8. Audit trail\n\nState-transition log retained 7 years. Each entry: timestamp, actor (customer or staff ID), state before, state after, reason. Exportable to CSV on demand for FCA review.\n\n## 9. Risks\n\n| Risk | Impact | Mitigation |\n|------|--------|-----------|\n| Document classifier accuracy degrades under adversarial submissions | Delayed approvals; customer complaints | Manual triage fallback + monthly accuracy audit |\n| Customer success team can't keep up with manual-review queue at launch volume | Onboarding bottleneck reverts to 9-day baseline | Pre-launch capacity model + auto-escalation when queue > 4h |\n\n## 10. Sign-off\n\n_Priya Rao + Marcus Klein + Sam Palmer; date to follow at hand-off._\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Context paragraphs that lead with a number — \"9 days vs 48 hours\" — get read. Vague \"we want to modernise the customer experience\" intros do not."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Explicit out-of-scope items save you three meetings each. Always list them."
+        },
+        {
+          "section_id": "section-4",
+          "note": "This is the section everyone skips. Don't. Cite the regulation by section number; engineers cannot push back on a number."
+        },
+        {
+          "section_id": "section-8",
+          "note": "Audit trail spec at BRD time is what stops compliance from rewriting the doc post-hoc."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Stakeholder table without decision rights — leaves the document unable to settle disputes.",
+    "Requirements written as solutions (\"the system must use OAuth\") instead of capabilities (\"the customer must authenticate without remembering a separate password\").",
+    "Missing the regulatory-context section because nobody asked for it. Six months in, when an audit lands, this is the section that should have existed.",
+    "Audit-trail spec deferred to engineering — engineering builds what's specified; if you don't spec what to log, they log what's convenient."
+  ],
+  "variant_patterns": [
+    "Standard variant: drop §4 Regulatory Context, drop §8 Audit Trail, fold security under non-functional. Keep the rest.",
+    "Greenfield variant: add §1.5 \"Why now\" and §2.3 \"Alternatives considered\" to anchor the build-vs-buy conversation that almost always derails greenfield work."
+  ],
+  "related_scenarios": ["ba-hostile-lead-dev", "ba-vague-sponsor"],
+  "career_stage": "first_90_days",
+  "version": 1
+}
