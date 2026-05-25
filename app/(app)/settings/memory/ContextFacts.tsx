@@ -1,11 +1,13 @@
 /**
- * Inline-editable user_context facts.
+ * Section 1 — Role + start facts as a divider-ruled list.
  *
- * Each row is two states: read (Fraunces italic body L with a hover pencil)
- * and edit (input + save/cancel). Save fires updateUserContextFactAction;
- * revalidation on the server re-renders this surface with the fresh value.
+ * Per the Memory Settings prototype each row is "[Sentence with one
+ * underlined editable value]." in Fraunces italic body L, with the
+ * editable value carrying a dashed underline on row hover, and the
+ * pencil affordance fading in on the right.
  *
- * Role is shown but not editable here — changing role requires re-onboarding.
+ * Save fires updateUserContextFactAction; revalidation re-renders the
+ * row server-side with the new value.
  */
 "use client";
 
@@ -24,7 +26,7 @@ import {
 type Field = "sector" | "work_setup" | "start_date" | "probation_review_date";
 
 type ContextFactsProps = {
-  roleLabel: string;
+  roleLabel: string | null;
   startDate: string | null;
   sector: string | null;
   workSetup: "remote" | "hybrid" | "office" | null;
@@ -41,9 +43,8 @@ function formatDate(value: string | null): string | null {
   if (!value) return null;
   try {
     return new Date(`${value}T00:00:00Z`).toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "long",
       day: "numeric",
+      month: "long",
     });
   } catch {
     return value;
@@ -58,11 +59,15 @@ export function ContextFacts({
   probationDate,
 }: ContextFactsProps) {
   return (
-    <ul className="flex flex-col gap-2">
-      <li className="font-display italic text-body-l text-ink">
-        You&rsquo;re starting as a {roleLabel}.{" "}
-        <span className="font-body not-italic text-body-s text-mute">
-          Role changes go through re-onboarding.
+    <ul className="flex flex-col border-t border-paper-3 list-none p-0 m-0">
+      {/* Role — read-only; changes require re-onboarding. */}
+      <li className="border-b border-paper-3 py-4">
+        <span className="font-display italic text-body-l text-ink">
+          You&rsquo;re working as a{" "}
+          <span className="underline decoration-mute-2 decoration-dashed underline-offset-4">
+            {roleLabel ?? "—"}
+          </span>
+          .
         </span>
       </li>
 
@@ -70,52 +75,40 @@ export function ContextFacts({
         field="start_date"
         type="date"
         inputValue={startDate}
-        readonly={false}
-        display={
-          startDate
-            ? `You start on ${formatDate(startDate)}.`
-            : "You haven't told me when you start."
-        }
-        emptyLabel="Add a start date"
+        prefix="You started on"
+        suffix="."
+        displayValue={formatDate(startDate)}
+        placeholder="a date"
       />
 
       <EditableContextFactRow
         field="sector"
         type="text"
         inputValue={sector}
-        readonly={false}
-        display={
-          sector
-            ? `You're working in the ${sector} sector.`
-            : "You haven't told me a sector."
-        }
-        emptyLabel="Add a sector"
+        prefix={"You’re working in"}
+        suffix="."
+        displayValue={sector}
+        placeholder="a sector"
       />
 
       <EditableContextFactRow
         field="work_setup"
         type="select"
         inputValue={workSetup}
-        readonly={false}
-        display={
-          workSetup
-            ? `You're working ${WORK_SETUP_LABEL[workSetup] ?? workSetup}.`
-            : "You haven't told me your work setup."
-        }
-        emptyLabel="Add a work setup"
+        prefix={"You’re working in a"}
+        suffix=" setup."
+        displayValue={workSetup ? (WORK_SETUP_LABEL[workSetup] ?? workSetup) : null}
+        placeholder="setup"
       />
 
       <EditableContextFactRow
         field="probation_review_date"
         type="date"
         inputValue={probationDate}
-        readonly={false}
-        display={
-          probationDate
-            ? `Your probation review is on ${formatDate(probationDate)}.`
-            : "You haven't told me your probation review date."
-        }
-        emptyLabel="Add a probation review date"
+        prefix="Your probation review is on"
+        suffix="."
+        displayValue={formatDate(probationDate)}
+        placeholder="a date"
       />
     </ul>
   );
@@ -125,16 +118,20 @@ type EditableContextFactRowProps = {
   field: Field;
   type: "text" | "date" | "select";
   inputValue: string | null;
-  readonly: boolean;
-  display: string;
-  emptyLabel: string;
+  prefix: string;
+  suffix: string;
+  displayValue: string | null;
+  placeholder: string;
 };
 
 function EditableContextFactRow({
   field,
   type,
   inputValue,
-  display,
+  prefix,
+  suffix,
+  displayValue,
+  placeholder,
 }: EditableContextFactRowProps) {
   const [editing, setEditing] = useState(false);
   const [pending, startTransition] = useTransition();
@@ -143,76 +140,87 @@ function EditableContextFactRow({
     null,
   );
 
-  if (!editing) {
+  if (editing) {
     return (
-      <li className="group flex items-baseline gap-3">
-        <span className="font-display italic text-body-l text-ink">
-          {display}
-        </span>
-        <button
-          type="button"
-          onClick={() => setEditing(true)}
-          className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 text-mute hover:text-ink transition-opacity"
-          aria-label="Edit"
+      <li className="border-b border-paper-3 py-4 flex flex-col gap-2">
+        <form
+          action={(formData) => {
+            startTransition(() => {
+              action(formData);
+              setEditing(false);
+            });
+          }}
+          className="flex flex-col gap-2 sm:flex-row sm:items-center"
         >
-          <Pencil className="size-4" strokeWidth={1.5} aria-hidden />
-        </button>
+          <input type="hidden" name="field" value={field} />
+          {type === "select" ? (
+            <select
+              name="value"
+              defaultValue={inputValue ?? ""}
+              className="h-12 bg-paper-2 border border-paper-3 px-3 text-body text-ink"
+              style={{ borderRadius: "8px" }}
+            >
+              <option value="">(clear)</option>
+              <option value="remote">Remote</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="office">In-office</option>
+            </select>
+          ) : (
+            <Input
+              type={type}
+              name="value"
+              defaultValue={inputValue ?? ""}
+              className="sm:flex-1"
+              autoFocus
+            />
+          )}
+          <div className="flex gap-2">
+            <Button type="submit" variant="primary" size="sm" loading={pending}>
+              Save
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => setEditing(false)}
+            >
+              <X className="size-4" strokeWidth={1.5} aria-hidden />
+              <span className="sr-only">Cancel</span>
+            </Button>
+          </div>
+        </form>
+        {state?.error ? (
+          <p role="alert" className="text-body-s text-danger">
+            {state.error}
+          </p>
+        ) : null}
       </li>
     );
   }
 
   return (
-    <li className="flex flex-col gap-2">
-      <form
-        action={(formData) => {
-          startTransition(() => {
-            action(formData);
-            setEditing(false);
-          });
-        }}
-        className="flex flex-col gap-2 sm:flex-row sm:items-center"
+    <li className="group border-b border-paper-3 py-4 flex items-baseline gap-3 justify-between">
+      <span className="font-display italic text-body-l text-ink flex-1">
+        {prefix}{" "}
+        <button
+          type="button"
+          onClick={() => setEditing(true)}
+          className="font-display italic underline decoration-mute-2 decoration-dashed underline-offset-4 hover:decoration-ink hover:decoration-solid focus-visible:decoration-ink focus-visible:decoration-solid transition-colors cursor-text"
+        >
+          {displayValue ?? (
+            <span className="text-mute italic">{placeholder}</span>
+          )}
+        </button>
+        {suffix}
+      </span>
+      <button
+        type="button"
+        onClick={() => setEditing(true)}
+        className="shrink-0 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 text-mute hover:text-ink transition-opacity"
+        aria-label={`Edit ${field}`}
       >
-        <input type="hidden" name="field" value={field} />
-        {type === "select" ? (
-          <select
-            name="value"
-            defaultValue={inputValue ?? ""}
-            className="h-12 bg-paper-2 border border-paper-3 px-3 text-body text-ink"
-            style={{ borderRadius: "8px" }}
-          >
-            <option value="">(clear)</option>
-            <option value="remote">Remote</option>
-            <option value="hybrid">Hybrid</option>
-            <option value="office">In-office</option>
-          </select>
-        ) : (
-          <Input
-            type={type}
-            name="value"
-            defaultValue={inputValue ?? ""}
-            className="sm:flex-1"
-          />
-        )}
-        <div className="flex gap-2">
-          <Button type="submit" variant="primary" size="sm" loading={pending}>
-            Save
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setEditing(false)}
-          >
-            <X className="size-4" strokeWidth={1.5} aria-hidden />
-            <span className="sr-only">Cancel</span>
-          </Button>
-        </div>
-      </form>
-      {state?.error ? (
-        <p role="alert" className="text-body-s text-danger">
-          {state.error}
-        </p>
-      ) : null}
+        <Pencil className="size-4" strokeWidth={1.5} aria-hidden />
+      </button>
     </li>
   );
 }

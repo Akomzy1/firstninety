@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety — Component Library, Product Surfaces</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("f5c51c27-5c7f-4bbd-89b0-7ed2e5af0373") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("1f6d916b-9469-49c7-a3a8-20c1eb259440") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("ff29e0ca-d318-4e57-9175-bf7dd00e4f48") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("4f5e1401-280c-40f5-b0b0-b7cb4bdf34dd") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("b88238c6-e970-4abb-8e6a-59f718e14641") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("22200844-04bc-4586-b8fc-2e5402d10a04") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("42e996ae-3fe5-485e-bc8b-8a53f622a3e6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e015977b-fd12-4d22-8aa0-042cc5ebb4e3") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e5447d3a-cd0f-49a1-bf72-d48e74ec1eec") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("93302f58-9482-4742-8b9d-8ca6369a3da2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("54ac2e84-8033-4368-a745-70ea603f06da") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("2c392fa6-9917-429e-9664-f7d729ac4f29") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("42e996ae-3fe5-485e-bc8b-8a53f622a3e6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e015977b-fd12-4d22-8aa0-042cc5ebb4e3") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e5447d3a-cd0f-49a1-bf72-d48e74ec1eec") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("93302f58-9482-4742-8b9d-8ca6369a3da2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("54ac2e84-8033-4368-a745-70ea603f06da") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("2c392fa6-9917-429e-9664-f7d729ac4f29") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b882644e-f3af-405d-8232-36e26dfb5d20") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8fc5688f-63cf-456a-977e-bff1fa7838cb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("91b5948f-75c2-4c33-aaff-a55c9eeb5403") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("64d7a6e2-8bda-491a-9098-0eed52a1c8b2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("a7d1d863-e198-4039-91d8-9baf5cfdb352") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8509bd56-d20d-4790-aa38-b3e7f3233ea4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("804b8604-e9da-4ef1-b92a-1f81a3cdc82e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b882644e-f3af-405d-8232-36e26dfb5d20") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8fc5688f-63cf-456a-977e-bff1fa7838cb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("91b5948f-75c2-4c33-aaff-a55c9eeb5403") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("64d7a6e2-8bda-491a-9098-0eed52a1c8b2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("a7d1d863-e198-4039-91d8-9baf5cfdb352") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8509bd56-d20d-4790-aa38-b3e7f3233ea4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("804b8604-e9da-4ef1-b92a-1f81a3cdc82e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("b882644e-f3af-405d-8232-36e26dfb5d20") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8fc5688f-63cf-456a-977e-bff1fa7838cb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("91b5948f-75c2-4c33-aaff-a55c9eeb5403") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("64d7a6e2-8bda-491a-9098-0eed52a1c8b2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("a7d1d863-e198-4039-91d8-9baf5cfdb352") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8509bd56-d20d-4790-aa38-b3e7f3233ea4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("804b8604-e9da-4ef1-b92a-1f81a3cdc82e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("b882644e-f3af-405d-8232-36e26dfb5d20") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8fc5688f-63cf-456a-977e-bff1fa7838cb") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("91b5948f-75c2-4c33-aaff-a55c9eeb5403") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("64d7a6e2-8bda-491a-9098-0eed52a1c8b2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("a7d1d863-e198-4039-91d8-9baf5cfdb352") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8509bd56-d20d-4790-aa38-b3e7f3233ea4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("804b8604-e9da-4ef1-b92a-1f81a3cdc82e") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="d3250954-a5c0-48d2-ac1b-b5b4cec31516"></script>
+
+<style>
+  :root {
+    /* Colour — light */
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --success: #3E6D52;
+    --warn: #A66A1F;
+    --danger: #9B2C2C;
+
+    /* Persona palette */
+    --persona-slate: #6F7A86;
+    --persona-moss:  #6C7560;
+    --persona-ochre: #B08A4A;
+    --persona-rose:  #B58383;
+    --persona-teal:  #3F6B6F;
+    --persona-plum:  #7A5F75;
+
+    /* Spacing */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; }
+
+  .font-serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  .font-mono  { font-family: 'Geist Mono', ui-monospace, monospace; }
+
+  /* Type */
+  .t-display { font-family:'Fraunces',serif; font-weight:400; font-size:64px; line-height:1.05; letter-spacing:-0.02em; text-wrap: balance; }
+  .t-h1      { font-family:'Fraunces',serif; font-weight:400; font-size:48px; line-height:1.15; letter-spacing:-0.02em; text-wrap: balance; }
+  .t-h2      { font-family:'Fraunces',serif; font-weight:400; font-size:36px; line-height:1.2;  letter-spacing:-0.015em; text-wrap: balance; }
+  .t-h3      { font-family:'Inter',sans-serif; font-weight:600; font-size:24px; line-height:1.35; letter-spacing:-0.01em; }
+  .t-h4      { font-family:'Inter',sans-serif; font-weight:600; font-size:20px; line-height:1.4; letter-spacing:-0.005em; }
+  .t-bodyL   { font-family:'Inter',sans-serif; font-weight:400; font-size:20px; line-height:1.55; }
+  .t-body    { font-family:'Inter',sans-serif; font-weight:400; font-size:17px; line-height:1.55; }
+  .t-bodyS   { font-family:'Inter',sans-serif; font-weight:400; font-size:15px; line-height:1.55; }
+  .t-caption { font-family:'Inter',sans-serif; font-weight:500; font-size:13px; line-height:1.45; letter-spacing:0.02em; color: var(--mute); }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .mono { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--mute); }
+
+  /* Page shell */
+  .page { max-width: 1280px; margin: 0 auto; padding: 64px 48px 96px; }
+
+  /* Section frame */
+  .section + .section { margin-top: var(--space-7); }
+
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--paper-3);
+  }
+  .section-head .left { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .section-head .num { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--mute); letter-spacing: 0.04em; }
+  .section-head .title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 28px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
+  .section-head .right { font-family:'Geist Mono',monospace; font-size:12px; color: var(--mute); }
+
+  .annotation {
+    margin-top: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; line-height: 1.5;
+    color: var(--mute);
+    max-width: 64ch;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .annotation::before {
+    content: ''; display:inline-block;
+    width: 24px; height: 1px; background: var(--mute-2);
+    margin-top: 10px; flex-shrink: 0;
+  }
+
+  .demo-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--mute-2);
+    margin-bottom: 14px;
+  }
+
+  /* ============== CARD BASE ============== */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    padding: 32px;
+    transition: border-color 240ms var(--ease), background-color 240ms var(--ease);
+  }
+  .card-row {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card-row.two { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px) {
+    .card-row, .card-row.two { grid-template-columns: 1fr; }
+  }
+
+  /* ============== MISSION CARDS ============== */
+  .mission {
+    position: relative;
+    display: flex; flex-direction: column;
+    min-height: 240px;
+  }
+  .mission .mission-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .mission .mission-title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:26px; line-height:1.2;
+    letter-spacing:-0.01em; color: var(--ink);
+    margin-bottom: 12px;
+    max-width: 22ch;
+  }
+  .mission .mission-desc {
+    font-family:'Inter',sans-serif; font-size:15px; line-height:1.55; color: var(--mute);
+    margin-bottom: auto;
+    max-width: 36ch;
+  }
+  .mission .mission-foot {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top: 28px;
+    gap: 16px;
+  }
+  .mission .time {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family:'Inter',sans-serif; font-size:13px; color: var(--mute);
+    font-weight: 500; letter-spacing: 0.01em;
+  }
+  .mission .time .lucide { width: 14px; height: 14px; stroke-width: 1.5; }
+
+  .mission .corner {
+    position: absolute; top: 24px; right: 24px;
+    color: var(--mute-2);
+  }
+  .mission .corner .lucide { width: 18px; height: 18px; stroke-width: 1.5; display: block; }
+
+  /* Completed variant */
+  .mission.completed .mission-eyebrow { color: var(--mute); }
+  .mission.completed .mission-title { color: var(--mute); }
+  .mission.completed .corner { color: var(--success); }
+
+  /* Locked variant — entire card mute */
+  .mission.locked { background: transparent; border-color: var(--paper-3); }
+  .mission.locked .mission-eyebrow { color: var(--mute-2); }
+  .mission.locked .mission-title { color: var(--mute-2); }
+  .mission.locked .corner { color: var(--mute-2); }
+  .mission.locked .mission-foot { margin-top: auto; padding-top: 28px; }
+  .mission.locked .reveal {
+    font-family:'Inter',sans-serif; font-size:13px; color: var(--mute);
+    opacity: 0;
+    transition: opacity 240ms var(--ease);
+    font-weight: 500;
+  }
+  .mission.locked:hover .reveal { opacity: 1; }
+  .mission.locked:hover { border-color: var(--mute-2); }
+
+  /* ============== BUTTONS ============== */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; line-height: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: 44px;
+    transition: background-color 80ms var(--ease), border-color 80ms var(--ease);
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-primary:hover { background: #1B1F26; border-color: #1B1F26; }
+  .btn-primary .lucide { width: 14px; height: 14px; stroke-width: 1.75; }
+
+  /* ============== SCENARIO CARDS ============== */
+  .scenario { display: flex; flex-direction: column; min-height: 280px; }
+  .scenario .scn-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--persona-slate);
+    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .scenario .scn-eyebrow::before {
+    content:''; width: 14px; height: 1px; background: var(--persona-slate);
+  }
+  .scenario .scn-title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:28px; line-height:1.2;
+    letter-spacing:-0.01em; color: var(--ink);
+    margin-bottom: 12px;
+    max-width: 18ch;
+  }
+  .scenario .scn-desc {
+    font-family:'Inter',sans-serif; font-size:15px; line-height:1.55; color: var(--mute);
+    margin-bottom: auto;
+    max-width: 42ch;
+  }
+  .scenario .scn-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 32px;
+    gap: 16px;
+  }
+  .scenario .duration {
+    font-family:'Inter',sans-serif; font-size:13px; color: var(--mute); font-weight: 500;
+  }
+
+  .stack {
+    display: inline-flex; align-items: center;
+  }
+  .stack .mono-avatar {
+    width: 36px; height: 36px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 500; font-size: 13px;
+    color: var(--paper);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--paper-3);
+  }
+  .stack .mono-avatar + .mono-avatar { margin-left: -10px; }
+
+  /* Outcome chip in played scenarios */
+  .scn-header {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; margin-bottom: 14px;
+  }
+  .scn-header .scn-eyebrow { margin-bottom: 0; }
+  .outcome-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family:'Inter',sans-serif; font-weight:500; font-size:12px;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    flex-shrink: 0;
+  }
+  .outcome-chip .lucide { width: 13px; height: 13px; stroke-width: 1.75; }
+  .outcome-chip.yellow .lucide { color: var(--warn); }
+  .outcome-chip.yellow { color: var(--warn); }
+
+  .scn-played-meta {
+    font-family:'Inter',sans-serif; font-size:13px; color: var(--mute); font-weight: 500;
+    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .scn-played-meta .dot { width: 3px; height: 3px; border-radius: 999px; background: var(--mute-2); }
+
+  /* ============== PLAYBOOK CARD ============== */
+  .playbook {
+    position: relative;
+    display: grid; grid-template-columns: 1fr 168px; gap: 32px;
+    align-items: stretch;
+  }
+  @media (max-width: 740px) {
+    .playbook { grid-template-columns: 1fr; }
+    .playbook .pb-margin { display:none; }
+  }
+  .pb-body .pb-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--persona-slate);
+    margin-bottom: 14px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .pb-body .pb-eyebrow::before {
+    content:''; width: 14px; height: 1px; background: var(--persona-slate);
+  }
+  .pb-body .pb-title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:30px; line-height:1.2;
+    letter-spacing:-0.01em;
+    margin-bottom: 12px;
+    max-width: 20ch;
+  }
+  .pb-body .pb-desc {
+    font-family:'Inter',sans-serif; font-size:15px; line-height:1.55; color: var(--mute);
+    margin-bottom: 24px;
+    max-width: 56ch;
+  }
+  .pb-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family:'Inter',sans-serif; font-weight:500; font-size:14px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+  }
+
+  /* Mini margin-annotation visual */
+  .pb-margin {
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 6px;
+    padding: 14px 14px 16px 16px;
+    display: flex; flex-direction: column; gap: 8px;
+    position: relative;
+    min-height: 100%;
+  }
+  .pb-margin .pb-margin-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:10px;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--mute);
+  }
+  .pb-margin .pb-line {
+    height: 4px; border-radius: 2px; background: var(--paper-3);
+  }
+  .pb-margin .pb-line.short { width: 65%; }
+  .pb-margin .pb-line.med { width: 85%; }
+  .pb-margin .pb-margin-note {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 12px; line-height: 1.45; color: var(--ink);
+    border-left: 1.5px solid var(--accent);
+    padding: 2px 0 2px 8px;
+    margin-top: 4px;
+  }
+
+  /* ============== SESSION HISTORY CARD ============== */
+  .session {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .session .sess-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--mute);
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .session .sess-type {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family:'Inter',sans-serif; font-weight:500; font-size:12px;
+    color: var(--ink);
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 3px 9px;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 4px;
+  }
+  .session .sess-quote {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 22px; line-height: 1.4; letter-spacing: -0.005em;
+    color: var(--ink);
+    max-width: 56ch;
+    text-wrap: balance;
+  }
+  .session .sess-quote::before { content: '\201C'; color: var(--mute-2); margin-right: 2px; }
+  .session .sess-quote::after  { content: '\201D'; color: var(--mute-2); margin-left: 2px; }
+  .session .sess-meta {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    margin-top: 8px;
+  }
+  .session .sess-context {
+    font-family:'Inter',sans-serif; font-size:13px; color: var(--mute); font-weight: 500;
+  }
+  .session .sess-reopen {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family:'Inter',sans-serif; font-weight:500; font-size:14px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 2px;
+  }
+
+  /* ============== PERSONA STACK ============== */
+  .monogram {
+    width: 64px; height: 64px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
+    color: var(--paper);
+  }
+  .persona-row {
+    display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap;
+  }
+  .persona-row .monogram {
+    margin-bottom: 14px;
+  }
+  .persona-row .pname {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:15px; color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .persona-row .prole {
+    font-family:'Inter',sans-serif; font-weight:400; font-size:13px; color: var(--mute);
+  }
+  .stack-row { display: flex; flex-direction: column; }
+
+  .overlap-demo {
+    display: inline-flex; align-items: center;
+    margin-bottom: 18px;
+  }
+  .overlap-demo .monogram {
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--paper-3);
+  }
+  .overlap-demo .monogram + .monogram { margin-left: -16px; }
+
+  /* ============== STATUS BADGES ============== */
+  .badge-row {
+    display: flex; flex-wrap: wrap; gap: 12px;
+  }
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-family:'Inter',sans-serif; font-weight:500; font-size:13px;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    color: var(--ink);
+  }
+  .status-badge .lucide { width: 15px; height: 15px; stroke-width: 1.75; }
+  .status-badge.green   { color: var(--success); border-color: rgba(62,109,82,0.25); background: #EEF3EE; }
+  .status-badge.yellow  { color: var(--warn);    border-color: rgba(166,106,31,0.25); background: #F6EFE2; }
+  .status-badge.red     { color: var(--danger);  border-color: rgba(155,44,44,0.22);  background: #F6E7E5; }
+  .status-badge.progress { color: var(--ink); }
+  .status-badge.completed { color: var(--ink); }
+  .status-badge.locked  { color: var(--mute); }
+
+  /* tiny progress spinner-as-dot — three dots filling */
+  .progress-dots {
+    display: inline-flex; gap: 3px;
+  }
+  .progress-dots span {
+    width: 4px; height: 4px; border-radius: 999px; background: var(--ink); display: inline-block;
+    opacity: 0.35;
+  }
+  .progress-dots span:nth-child(1) { opacity: 1; }
+  .progress-dots span:nth-child(2) { opacity: 0.6; }
+
+  /* ============== EMPTY STATE ============== */
+  .empty-card {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    min-height: 420px;
+    display: flex; align-items: center; justify-content: center;
+    padding: 64px;
+  }
+  .empty-inner { text-align: center; max-width: 48ch; }
+  .empty-quote {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 32px; line-height: 1.25; letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 18px;
+    text-wrap: balance;
+  }
+  .empty-sub {
+    font-family:'Inter',sans-serif; font-size:15px; line-height:1.55;
+    color: var(--mute);
+  }
+
+  /* ============== LOADING / STREAMING ============== */
+  .loading-card {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    padding: 48px 56px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .loading-dots {
+    display: inline-flex; gap: 7px;
+    align-items: center;
+  }
+  .loading-dots .d {
+    width: 7px; height: 7px; border-radius: 999px;
+    background: var(--mute);
+    display: inline-block;
+    animation: thinkPulse 1.2s var(--ease) infinite;
+  }
+  .loading-dots .d:nth-child(2) { animation-delay: 0.15s; }
+  .loading-dots .d:nth-child(3) { animation-delay: 0.30s; }
+  @keyframes thinkPulse {
+    0%, 100% { opacity: 0.25; transform: translateY(0); }
+    40%      { opacity: 1; transform: translateY(-1px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .loading-dots .d { animation: none; opacity: 0.6; }
+  }
+  .loading-label {
+    font-family:'Inter',sans-serif; font-size:15px; color: var(--mute);
+    letter-spacing: 0.005em;
+  }
+
+  /* hairline */
+  .hairline { border-top: 1px solid var(--paper-3); }
+
+  /* spec footer per section (small) */
+  .spec {
+    font-family:'Geist Mono', monospace; font-size: 11px; color: var(--mute-2);
+    margin-top: 22px;
+    letter-spacing: 0.02em;
+  }
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <!-- =========================== HEADER =========================== -->
+  <header style="margin-bottom: var(--space-7);">
+    <div class="eyebrow" style="margin-bottom: var(--space-2);">FirstNinety / Component Library</div>
+
+    <h1 class="t-display" style="margin-bottom: var(--space-3); max-width: 22ch;">
+      Product surfaces.
+    </h1>
+
+    <p class="t-bodyL" style="max-width: 64ch; color: var(--ink);">
+      The recurring components that carry the product — missions, scenarios, playbooks, sessions, personas,
+      status, empty, loading. Shown at realistic size, with the language they ship with. References
+      Design Brief v1.0 §6 and SKILL.md.
+    </p>
+
+    <div class="mono" style="margin-top: var(--space-4); display:flex; gap:24px; flex-wrap: wrap;">
+      <span><span style="color: var(--mute);">Version</span>&nbsp;&nbsp;<span style="color: var(--ink);">1.0</span></span>
+      <span><span style="color: var(--mute);">Companion</span>&nbsp;&nbsp;<span style="color: var(--ink);">Design System Reference v1.0</span></span>
+      <span><span style="color: var(--mute);">Components</span>&nbsp;&nbsp;<span style="color: var(--ink);">8 sections · 14 variants</span></span>
+    </div>
+  </header>
+
+  <!-- =========================== 1 — MISSION CARDS =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">01</span>
+        <span class="eyebrow">Mission cards</span>
+        <h2 class="title">Three states. Today, done, not yet.</h2>
+      </div>
+      <div class="right">Mission Track · weekly grid</div>
+    </div>
+
+    <div class="card-row">
+
+      <!-- Active mission -->
+      <article class="card mission" aria-label="Active mission">
+        <div class="mission-eyebrow">Today — Day 6</div>
+        <h3 class="mission-title">Map your stakeholders</h3>
+        <p class="mission-desc">Name everyone who can stop, slow, or help your work. Fifteen minutes, one diagram, your own words.</p>
+        <div class="mission-foot">
+          <span class="time"><i data-lucide="clock"></i>15 min</span>
+          <button class="btn btn-primary" type="button">Begin <i data-lucide="arrow-right"></i></button>
+        </div>
+      </article>
+
+      <!-- Completed mission -->
+      <article class="card mission completed" aria-label="Completed mission">
+        <span class="corner" aria-hidden="true"><i data-lucide="check"></i></span>
+        <div class="mission-eyebrow">Day 4 — Week 1</div>
+        <h3 class="mission-title">Run your first 1:1 with intent</h3>
+        <p class="mission-desc">Three questions worth asking your manager in week one. You logged a reflection — quiet, useful.</p>
+        <div class="mission-foot">
+          <span class="t-caption" style="color: var(--mute);">Completed 2 days ago</span>
+        </div>
+      </article>
+
+      <!-- Locked future mission -->
+      <article class="card mission locked" aria-label="Locked future mission" tabindex="0">
+        <span class="corner" aria-hidden="true"><i data-lucide="lock"></i></span>
+        <div class="mission-eyebrow">Week 2 — Day 12</div>
+        <h3 class="mission-title">Shadow a working session</h3>
+        <div class="mission-foot">
+          <span class="reveal">Available Day 12</span>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="annotation">Used on the Mission Track week grid (PRD §6.7). Active card is the only accent instance on screen; today is always foregrounded over what's next.</p>
+  </section>
+
+  <!-- =========================== 2 — SCENARIO CARDS =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">02</span>
+        <span class="eyebrow">Scenario cards</span>
+        <h2 class="title">Available, and played.</h2>
+      </div>
+      <div class="right">Scenario Simulator · library + history</div>
+    </div>
+
+    <div class="card-row two">
+
+      <!-- Available scenario -->
+      <article class="card scenario" aria-label="Available scenario">
+        <div class="scn-eyebrow">BA — Stakeholder pushback</div>
+        <h3 class="scn-title">The hostile lead dev</h3>
+        <p class="scn-desc">First requirements workshop. The lead developer doesn't want to be there, three stakeholders will arrive late, and you have thirty minutes to land the top five requirements.</p>
+        <div class="scn-foot">
+          <div class="stack" aria-label="Personas: Sam, Priya, Marcus">
+            <span class="mono-avatar" style="background: var(--persona-slate);">SP</span>
+            <span class="mono-avatar" style="background: var(--persona-moss);">PR</span>
+            <span class="mono-avatar" style="background: var(--persona-ochre);">MK</span>
+          </div>
+          <span class="duration">10–15 min</span>
+        </div>
+      </article>
+
+      <!-- Played scenario -->
+      <article class="card scenario" aria-label="Played scenario">
+        <div class="scn-header">
+          <div class="scn-eyebrow">BA — Stakeholder pushback</div>
+          <span class="outcome-chip yellow" aria-label="Last debrief: yellow flag">
+            <i data-lucide="alert-triangle"></i>
+            Yellow flag
+          </span>
+        </div>
+        <div class="scn-played-meta">Played 6 days ago <span class="dot"></span> 2 attempts</div>
+        <h3 class="scn-title">The hostile lead dev</h3>
+        <p class="scn-desc">You held the room. You let Marcus's compliance question slip — in a real workshop that comes back, often after the workshop has ended.</p>
+        <div class="scn-foot">
+          <div class="stack" aria-label="Personas: Sam, Priya, Marcus">
+            <span class="mono-avatar" style="background: var(--persona-slate);">SP</span>
+            <span class="mono-avatar" style="background: var(--persona-moss);">PR</span>
+            <span class="mono-avatar" style="background: var(--persona-ochre);">MK</span>
+          </div>
+          <span class="duration">Replay or read debrief</span>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="annotation">Used in the Simulator library grid and in a user's scenario history. The played variant carries the last debrief outcome as a small chip — never colour alone; always icon + word.</p>
+  </section>
+
+  <!-- =========================== 3 — PLAYBOOK CARD =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">03</span>
+        <span class="eyebrow">Playbook card</span>
+        <h2 class="title">Worked examples, read with the margins.</h2>
+      </div>
+      <div class="right">Playbook Library · index card</div>
+    </div>
+
+    <article class="card playbook" aria-label="Playbook">
+      <div class="pb-body">
+        <div class="pb-eyebrow">BA — Regulatory variant</div>
+        <h3 class="pb-title">Business Requirements Document</h3>
+        <p class="pb-desc">A BRD written for a financial-services regulatory project. Annotated in the margins — every section explains why it's written the way it is, where most juniors get it wrong, and what to bend when the project is greenfield instead.</p>
+        <a class="pb-link" href="#">Read with worked example<i data-lucide="arrow-right" style="width:14px; height:14px; stroke-width:1.75;"></i></a>
+      </div>
+
+      <!-- mini visual hinting at the margin annotation pattern -->
+      <aside class="pb-margin" aria-hidden="true">
+        <span class="pb-margin-eyebrow">Margin</span>
+        <div class="pb-line med"></div>
+        <div class="pb-line short"></div>
+        <div class="pb-line med"></div>
+        <div class="pb-margin-note">Why this section uses RACI, not a stakeholder map.</div>
+        <div class="pb-line short"></div>
+      </aside>
+    </article>
+
+    <p class="annotation">Used on the Playbook Library landing and inside role tracks. The right rail is a literal hint at the differentiator — Playbooks are annotated, not empty templates.</p>
+  </section>
+
+  <!-- =========================== 4 — SESSION HISTORY =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">04</span>
+        <span class="eyebrow">Situation Session history card</span>
+        <h2 class="title">What you brought into the room.</h2>
+      </div>
+      <div class="right">Situation Room · history list</div>
+    </div>
+
+    <article class="card session" aria-label="Past situation session">
+      <div class="sess-eyebrow">
+        <span>Wednesday 2:14 PM</span>
+        <span class="sess-type">Is this normal?</span>
+      </div>
+      <p class="sess-quote">Your manager asked you to redo a piece of work without explanation.</p>
+      <div class="sess-meta">
+        <span class="sess-context">3 follow-ups · 12 minutes · BA track</span>
+        <a class="sess-reopen" href="#">Reopen this session<i data-lucide="arrow-right" style="width:14px; height:14px; stroke-width:1.75;"></i></a>
+      </div>
+    </article>
+
+    <p class="annotation">Used in the Situation Room history list. The user's situation, in their own words, is the entire card — the chrome stays out of the way.</p>
+  </section>
+
+  <!-- =========================== 5 — PERSONA STACK =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">05</span>
+        <span class="eyebrow">Persona avatar stack</span>
+        <h2 class="title">Three monograms, no stock faces.</h2>
+      </div>
+      <div class="right">Scenario cards · brief screen</div>
+    </div>
+
+    <div class="card" style="padding: 40px 48px;">
+      <div class="demo-eyebrow">Overlapping cluster — as used on scenario cards</div>
+      <div class="overlap-demo">
+        <span class="monogram" style="background: var(--persona-slate);">SP</span>
+        <span class="monogram" style="background: var(--persona-moss);">PR</span>
+        <span class="monogram" style="background: var(--persona-ochre);">MK</span>
+      </div>
+
+      <div class="hairline" style="margin: 32px 0;"></div>
+
+      <div class="demo-eyebrow">Named, expanded — as used on the scenario brief screen</div>
+      <div class="persona-row">
+        <div class="stack-row">
+          <span class="monogram" style="background: var(--persona-slate);">SP</span>
+          <div class="pname">Sam Palmer</div>
+          <div class="prole">Senior developer · skeptical, curt</div>
+        </div>
+        <div class="stack-row">
+          <span class="monogram" style="background: var(--persona-moss);">PR</span>
+          <div class="pname">Priya Rao</div>
+          <div class="prole">Business sponsor · vague-corporate</div>
+        </div>
+        <div class="stack-row">
+          <span class="monogram" style="background: var(--persona-ochre);">MK</span>
+          <div class="pname">Marcus Klein</div>
+          <div class="prole">Compliance lead · precise, quiet</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="annotation">Used in compact form on scenario library cards; expanded with names and role descriptors on the scenario brief screen (Design Brief §10, signature moment 3).</p>
+  </section>
+
+  <!-- =========================== 6 — STATUS BADGES =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">06</span>
+        <span class="eyebrow">Status badges</span>
+        <h2 class="title">Icon and text. Never colour alone.</h2>
+      </div>
+      <div class="right">Cross-product · status surfaces</div>
+    </div>
+
+    <div class="card" style="padding: 36px 40px;">
+      <div class="badge-row">
+        <span class="status-badge green">
+          <i data-lucide="check-circle-2"></i>
+          Green flag
+        </span>
+        <span class="status-badge yellow">
+          <i data-lucide="alert-triangle"></i>
+          Yellow flag
+        </span>
+        <span class="status-badge red">
+          <i data-lucide="x-circle"></i>
+          Red flag
+        </span>
+        <span class="status-badge progress">
+          <span class="progress-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+          In progress
+        </span>
+        <span class="status-badge completed">
+          <i data-lucide="check"></i>
+          Completed
+        </span>
+        <span class="status-badge locked">
+          <i data-lucide="lock"></i>
+          Locked
+        </span>
+      </div>
+      <p class="spec">Each badge: 8px / 14px padding · 4px radius · Inter 500 · 13px · icon at 1.5px stroke · colour-blind safe.</p>
+    </div>
+
+    <p class="annotation">Used on scenario debriefs (flags), mission cards (in progress / completed / locked), and anywhere status is communicated. Strict rule: the word carries the meaning; colour reinforces.</p>
+  </section>
+
+  <!-- =========================== 7 — EMPTY STATE =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">07</span>
+        <span class="eyebrow">Empty state pattern</span>
+        <h2 class="title">The signature empty.</h2>
+      </div>
+      <div class="right">Cross-product · zero-data surfaces</div>
+    </div>
+
+    <div class="empty-card">
+      <div class="empty-inner">
+        <p class="empty-quote">Nothing here yet. That's fine.</p>
+        <p class="empty-sub">Your first situation will live here. Bring one in from the Situation Room when you have a minute that matters.</p>
+      </div>
+    </div>
+
+    <p class="annotation">Used wherever a surface has no data yet — Situation Room history, scenario history, journal. Generous whitespace, Fraunces italic, one line of dry context. No illustration, no emoji.</p>
+  </section>
+
+  <!-- =========================== 8 — LOADING / STREAMING =========================== -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="num">08</span>
+        <span class="eyebrow">Loading &amp; streaming</span>
+        <h2 class="title">Three dots, dry language.</h2>
+      </div>
+      <div class="right">Coach · Situation Room · Simulator</div>
+    </div>
+
+    <div class="loading-card" role="status" aria-live="polite">
+      <span class="loading-dots" aria-hidden="true">
+        <span class="d"></span>
+        <span class="d"></span>
+        <span class="d"></span>
+      </span>
+      <span class="loading-label">FirstNinety is thinking…</span>
+    </div>
+
+    <p class="annotation">Used wherever the Coach is generating a response — Situation Room replies, Simulator persona turns, debrief composition. No spinner; dots respect <code class="font-mono">prefers-reduced-motion</code>.</p>
+  </section>
+
+  <!-- =========================== FOOTER =========================== -->
+  <footer style="margin-top: var(--space-8); padding-top: var(--space-5); border-top: 1px solid var(--paper-3);">
+    <div class="mono" style="display:flex; gap: 32px; flex-wrap: wrap; color: var(--mute);">
+      <span>FirstNinety Component Library</span>
+      <span>Product Surfaces · v1.0</span>
+      <span>Companion to Design System Reference v1.0</span>
+      <span>Updated 23 May 2026</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Lucide
+  if (window.lucide) { lucide.createIcons(); }
+</script>
+
+
+
+</body></html>

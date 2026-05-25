@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety — Onboarding Flow</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bc177488-11a1-4cee-8dea-9da3cbf44d39") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6e52c032-5b06-43b5-a62a-f7bc36987b07") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b944a68e-82f7-44bf-91cd-f48719b14469") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bc177488-11a1-4cee-8dea-9da3cbf44d39") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6e52c032-5b06-43b5-a62a-f7bc36987b07") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b944a68e-82f7-44bf-91cd-f48719b14469") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("5d147b96-d136-4f5c-8ae7-f16c8e79fe0c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("8e947bc0-f2f2-4069-96c5-eb6eb1eff0be") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("8b37f7d7-8e36-455c-be8d-a08fb5b5d6a2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5d147b96-d136-4f5c-8ae7-f16c8e79fe0c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8e947bc0-f2f2-4069-96c5-eb6eb1eff0be") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8b37f7d7-8e36-455c-be8d-a08fb5b5d6a2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5d147b96-d136-4f5c-8ae7-f16c8e79fe0c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8e947bc0-f2f2-4069-96c5-eb6eb1eff0be") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8b37f7d7-8e36-455c-be8d-a08fb5b5d6a2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5d147b96-d136-4f5c-8ae7-f16c8e79fe0c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8e947bc0-f2f2-4069-96c5-eb6eb1eff0be") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8b37f7d7-8e36-455c-be8d-a08fb5b5d6a2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("5d147b96-d136-4f5c-8ae7-f16c8e79fe0c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8e947bc0-f2f2-4069-96c5-eb6eb1eff0be") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8b37f7d7-8e36-455c-be8d-a08fb5b5d6a2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f51e8751-d46a-4aed-8541-ed4be5fccd0c") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("a7ff212f-a199-4a95-a0d2-c4fec1a60189") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("36db22da-85a3-415c-81fc-ca27a4f928f4") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("28e7db66-54a7-437c-9cea-5a4f455e2a89") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0a807dc5-e267-4415-841c-fb8ef98d6079") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3372589a-89b6-4c75-bf76-357fcf47c6c4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f51e8751-d46a-4aed-8541-ed4be5fccd0c") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("a7ff212f-a199-4a95-a0d2-c4fec1a60189") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("36db22da-85a3-415c-81fc-ca27a4f928f4") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("28e7db66-54a7-437c-9cea-5a4f455e2a89") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("0a807dc5-e267-4415-841c-fb8ef98d6079") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3372589a-89b6-4c75-bf76-357fcf47c6c4") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("96e6cda4-7086-4ef0-b3f3-ec1dc624be33") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("002d9b49-bb8a-4ff6-9d0c-5f6a41b645c5") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("edd3ef1b-48ae-448b-8d8a-cadf365827ae") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9532f941-34c7-4918-a655-4aa445a7a97d") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("147f0f45-c6cc-42cc-8ed1-62a6a8fb8cc0") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("88e03f21-8dd6-4503-88eb-fd977cb08119") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b3c2c8a9-81fe-484b-8c27-4182e495ead1") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("96e6cda4-7086-4ef0-b3f3-ec1dc624be33") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("002d9b49-bb8a-4ff6-9d0c-5f6a41b645c5") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("edd3ef1b-48ae-448b-8d8a-cadf365827ae") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9532f941-34c7-4918-a655-4aa445a7a97d") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("147f0f45-c6cc-42cc-8ed1-62a6a8fb8cc0") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("88e03f21-8dd6-4503-88eb-fd977cb08119") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b3c2c8a9-81fe-484b-8c27-4182e495ead1") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("96e6cda4-7086-4ef0-b3f3-ec1dc624be33") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("002d9b49-bb8a-4ff6-9d0c-5f6a41b645c5") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("edd3ef1b-48ae-448b-8d8a-cadf365827ae") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("9532f941-34c7-4918-a655-4aa445a7a97d") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("147f0f45-c6cc-42cc-8ed1-62a6a8fb8cc0") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("88e03f21-8dd6-4503-88eb-fd977cb08119") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("b3c2c8a9-81fe-484b-8c27-4182e495ead1") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("96e6cda4-7086-4ef0-b3f3-ec1dc624be33") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("002d9b49-bb8a-4ff6-9d0c-5f6a41b645c5") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("edd3ef1b-48ae-448b-8d8a-cadf365827ae") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("9532f941-34c7-4918-a655-4aa445a7a97d") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("147f0f45-c6cc-42cc-8ed1-62a6a8fb8cc0") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("88e03f21-8dd6-4503-88eb-fd977cb08119") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("b3c2c8a9-81fe-484b-8c27-4182e495ead1") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="ac6486a2-c58b-421f-82db-8de1c51457b0"></script>
+
+<style>
+  :root {
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --success: #3E6D52;
+    --warn: #A66A1F;
+    --danger: #9B2C2C;
+
+    --persona-slate: #6F7A86;
+    --persona-moss:  #6C7560;
+    --persona-ochre: #B08A4A;
+    --persona-rose:  #B58383;
+    --persona-teal:  #3F6B6F;
+    --persona-plum:  #7A5F75;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
+
+    --radius-button: 4px;
+    --radius-card: 8px;
+    --radius-input: 8px;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .font-serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  .font-mono  { font-family: 'Geist Mono', ui-monospace, monospace; }
+
+  /* ------- Type ------- */
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mute);
+  }
+  .t-display { font-family:'Fraunces',serif; font-weight:400; font-size:56px; line-height:1.05; letter-spacing:-0.02em; font-optical-sizing:auto; text-wrap: balance; margin: 0; }
+  .t-h1      { font-family:'Fraunces',serif; font-weight:400; font-size:44px; line-height:1.12; letter-spacing:-0.02em; text-wrap: balance; margin: 0; }
+  .t-h2      { font-family:'Fraunces',serif; font-weight:400; font-size:36px; line-height:1.2;  letter-spacing:-0.015em; text-wrap: balance; margin: 0; }
+  .t-h3      { font-family:'Fraunces',serif; font-weight:400; font-size:22px; line-height:1.3; letter-spacing:-0.01em; margin: 0; }
+  .t-bodyL   { font-family:'Inter',sans-serif; font-weight:400; font-size:19px; line-height:1.55; margin: 0; }
+  .t-body    { font-family:'Inter',sans-serif; font-weight:400; font-size:16px; line-height:1.6; margin: 0; }
+  .t-bodyS   { font-family:'Inter',sans-serif; font-weight:400; font-size:14px; line-height:1.55; margin: 0; }
+  .t-caption { font-family:'Inter',sans-serif; font-weight:500; font-size:13px; line-height:1.45; letter-spacing:0.02em; color: var(--mute); margin: 0; }
+  .mute { color: var(--mute); }
+  .italic-serif { font-family:'Fraunces',serif; font-style: italic; font-weight: 400; }
+
+  /* ------- Wordmark ------- */
+  .wordmark {
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size:22px; line-height:1; letter-spacing:-0.015em;
+    font-optical-sizing:auto; font-variation-settings:'opsz' 144;
+    display:inline-flex; align-items:baseline;
+    color: var(--ink); text-decoration: none;
+  }
+  .wordmark .nudge { display:inline-block; transform: translateY(-2px); }
+  .wordmark .first { font-style: italic; font-weight: 400; }
+  .wordmark .sep {
+    display: inline-block;
+    width: 0.34em; height: 0.34em;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 0.18em;
+    transform: translateY(-0.18em);
+  }
+  .wordmark .ninety { font-weight: 600; font-feature-settings: 'lnum' on; }
+
+  /* ------- Buttons ------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px; line-height: 1;
+    border-radius: 4px;
+    transition: background-color 120ms var(--ease), color 120ms var(--ease), border-color 120ms var(--ease), transform 120ms var(--ease);
+    cursor: pointer;
+    min-height: 48px;
+    border: 1px solid transparent;
+    text-decoration: none;
+  }
+  .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-primary:hover { background: #1B1F26; border-color: #1B1F26; }
+  .btn-primary .lucide { width: 16px; height: 16px; stroke-width: 1.75; }
+
+  /* ------- Page shell ------- */
+  .top-rail {
+    border-bottom: 1px solid var(--paper-3);
+    background: var(--paper);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: saturate(140%) blur(6px);
+  }
+  .top-rail-inner {
+    max-width: 1120px; margin: 0 auto;
+    padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .top-rail .quit {
+    font-family: 'Inter', sans-serif; font-size: 14px; color: var(--mute);
+    text-decoration: none;
+  }
+  .top-rail .quit:hover { color: var(--ink); }
+
+  .doc-note {
+    max-width: 1120px; margin: 0 auto;
+    padding: 32px 32px 0;
+    display: flex; gap: 32px; align-items: baseline; flex-wrap: wrap;
+  }
+  .doc-note .label { color: var(--mute); font-family:'Geist Mono',monospace; font-size:12px; }
+  .doc-note .body { color: var(--mute); font-size: 13px; max-width: 70ch; }
+
+  /* ------- Step container ------- */
+  .steps {
+    max-width: 1120px; margin: 0 auto;
+    padding: 0 32px var(--space-8);
+  }
+  .step {
+    position: relative;
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+  }
+  .step + .step { border-top: 1px solid var(--paper-3); }
+
+  .step-marker {
+    display: block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--mute-2);
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+  .step-marker .marker-note { color: var(--mute-2); }
+
+  .panel {
+    margin: 0 auto;
+  }
+  .panel-640 { max-width: 640px; }
+  .panel-720 { max-width: 720px; }
+  .panel-760 { max-width: 760px; }
+
+  /* ------- STEP 1 — Welcome ------- */
+  .welcome { text-align: center; }
+  .welcome .step-marker { text-align: left; }
+  .welcome .eyebrow { margin-bottom: var(--space-3); }
+  .welcome h1 { margin-bottom: var(--space-4); }
+  .welcome p { color: var(--mute); margin-bottom: var(--space-5); }
+  .welcome .cta-row { display: flex; justify-content: center; margin-bottom: var(--space-3); }
+  .welcome .promise {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 15px; line-height: 1.5; color: var(--mute);
+    max-width: 52ch; margin: 0 auto;
+  }
+
+  /* ------- STEP 2 — Role grid ------- */
+  .role-head { margin-bottom: var(--space-5); }
+  .role-head .eyebrow { margin-bottom: var(--space-2); }
+  .role-head h2 { margin-bottom: var(--space-2); }
+  .role-head p { color: var(--mute); max-width: 56ch; }
+
+  .role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  @media (max-width: 740px) { .role-grid { grid-template-columns: 1fr; } }
+
+  .role-card {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    padding: 22px 22px 24px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 140ms var(--ease), border-color 140ms var(--ease), color 140ms var(--ease), transform 140ms var(--ease);
+    aspect-ratio: 4 / 3;
+    display: flex; flex-direction: column;
+    color: var(--ink);
+    font-family: inherit;
+    width: 100%;
+  }
+  .role-card .role-eyebrow {
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mute);
+    transition: color 140ms var(--ease);
+  }
+  .role-card .role-title {
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
+    line-height: 1.2; letter-spacing: -0.01em;
+    margin-top: 10px;
+  }
+  .role-card .role-desc {
+    margin-top: auto;
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: 14px; line-height: 1.5;
+    color: var(--mute);
+    transition: color 140ms var(--ease);
+  }
+
+  .role-card:hover {
+    border-color: var(--mute-2);
+  }
+  .role-card:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 2px;
+  }
+
+  .role-card.is-selected {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+  .role-card.is-selected .role-eyebrow { color: var(--mute-2); }
+  .role-card.is-selected .role-desc { color: var(--paper-3); }
+
+  @media (max-width: 740px) {
+    .role-card { aspect-ratio: auto; min-height: 120px; }
+  }
+
+  .role-foot {
+    margin-top: var(--space-4);
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 15px; color: var(--mute);
+    text-align: left;
+  }
+
+  /* ------- STEP 3 — Situation ------- */
+  .sit-head { margin-bottom: var(--space-5); }
+  .sit-head .eyebrow { margin-bottom: var(--space-2); }
+  .sit-head h2 { margin-bottom: var(--space-2); }
+  .sit-head p { color: var(--mute); max-width: 52ch; }
+
+  .field-group { margin-bottom: var(--space-5); }
+  .field-label {
+    display: block;
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 14px; color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .field-help {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; color: var(--mute);
+    margin-top: 8px;
+  }
+  .field {
+    display: block; width: 100%;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    min-height: 48px;
+    padding: 12px 14px;
+    font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.4;
+    color: var(--ink);
+    transition: border-color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .field::placeholder { color: var(--mute); }
+  .field:focus { outline: 2px solid var(--ink); outline-offset: 2px; }
+  select.field {
+    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--mute) 50%),
+      linear-gradient(135deg, var(--mute) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 21px, calc(100% - 12px) 21px;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 36px;
+  }
+
+  /* Date row + presets */
+  .date-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .presets {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .preset {
+    background: transparent;
+    border: 1px solid var(--paper-3);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 13px; line-height: 1;
+    padding: 9px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 120ms var(--ease), border-color 120ms var(--ease), color 120ms var(--ease);
+  }
+  .preset:hover { background: var(--paper-2); border-color: var(--mute-2); }
+  .preset:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .preset.is-selected {
+    background: var(--ink); color: var(--paper); border-color: var(--ink);
+  }
+
+  .date-input-wrap { position: relative; }
+  .date-input-wrap .lucide {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--mute); width: 18px; height: 18px; pointer-events: none;
+  }
+  .date-input-wrap .field { padding-right: 44px; }
+
+  /* Pill toggles (work setup) */
+  .pill-group {
+    display: inline-flex;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 999px;
+    padding: 4px;
+    gap: 4px;
+  }
+  .pill {
+    background: transparent;
+    border: none;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 14px; line-height: 1;
+    padding: 11px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 120ms var(--ease), color 120ms var(--ease);
+  }
+  .pill:hover { color: var(--ink); }
+  .pill:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .pill.is-selected {
+    background: var(--ink); color: var(--paper);
+  }
+
+  /* ------- STEP 4 — Memory ------- */
+  .mem-head { margin-bottom: var(--space-5); }
+  .mem-head .eyebrow { margin-bottom: var(--space-3); }
+  .mem-head h1 { margin-bottom: var(--space-3); max-width: 22ch; }
+  .mem-head p { color: var(--mute); max-width: 60ch; }
+
+  .mem-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-5) 0;
+    border-top: 1px solid var(--paper-3);
+  }
+  .mem-list li {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--paper-3);
+  }
+  .mem-fact {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    font-size: 22px; line-height: 1.45; letter-spacing: -0.005em;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .mem-edit {
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: var(--mute-2);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 120ms var(--ease), color 120ms var(--ease), background-color 120ms var(--ease);
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600;
+  }
+  .mem-edit .lucide { width: 14px; height: 14px; stroke-width: 1.5; }
+  .mem-list li:hover .mem-edit { opacity: 1; color: var(--mute); }
+  .mem-edit:hover { color: var(--ink); background: var(--paper-2); }
+  .mem-edit:focus-visible { opacity: 1; outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .mem-body p { color: var(--mute); margin: 0 0 var(--space-3) 0; max-width: 62ch; }
+  .mem-body p strong { color: var(--ink); font-weight: 500; }
+
+  .mem-promise {
+    margin-top: var(--space-5);
+    padding: 24px 28px;
+    border-left: 2px solid var(--ink);
+    background: var(--paper-2);
+    border-radius: 0 4px 4px 0;
+  }
+  .mem-promise p {
+    margin: 0; color: var(--ink);
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    font-size: 18px; line-height: 1.5; letter-spacing: -0.005em;
+    max-width: 60ch;
+  }
+
+  .step-cta {
+    margin-top: var(--space-6);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .step-cta .meta {
+    font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--mute);
+  }
+
+  /* ------- Section separator note (between live steps in this artifact) ------- */
+  .between-note {
+    max-width: 1120px; margin: 0 auto;
+    padding: 0 32px;
+  }
+  .between-note .inner {
+    display: flex; gap: 16px; align-items: center;
+    padding: 14px 18px;
+    background: var(--paper-2);
+    border: 1px dashed var(--paper-3);
+    border-radius: 6px;
+    color: var(--mute);
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .between-note .inner .dot {
+    width: 6px; height: 6px; border-radius: 999px; background: var(--mute-2);
+  }
+
+  /* ------- Footer ------- */
+  .doc-foot {
+    max-width: 1120px; margin: 0 auto;
+    padding: var(--space-5) 32px var(--space-6);
+    color: var(--mute);
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    border-top: 1px solid var(--paper-3);
+  }
+
+  @media (max-width: 600px) {
+    .step-marker { margin-bottom: var(--space-3); }
+    .step { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+    .t-display { font-size: 40px; }
+    .t-h1 { font-size: 34px; }
+    .t-h2 { font-size: 28px; }
+    .mem-fact { font-size: 19px; }
+    .doc-note { padding: 24px 24px 0; }
+    .steps { padding: 0 24px var(--space-7); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Top rail -->
+<div class="top-rail">
+  <div class="top-rail-inner">
+    <a class="wordmark" href="#"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></a>
+    <a class="quit" href="#">Quit setup</a>
+  </div>
+</div>
+
+<!-- Artifact context note -->
+<div class="doc-note">
+  <span class="label">FirstNinety / Onboarding flow v1.0</span>
+  <span class="body">In production, one step is shown at a time. This artifact stacks all four vertically so the sequence reads as a single document. Design Brief v1.0 §10 — memory surface (Step 4) is the signature moment.</span>
+</div>
+
+<main class="steps">
+
+  <!-- ===================== STEP 1 — WELCOME ===================== -->
+  <section class="step" aria-labelledby="step-1-title">
+    <div class="panel panel-640 welcome">
+      <span class="step-marker">01 / 04</span>
+      <div class="eyebrow">Welcome</div>
+      <h1 class="t-display" id="step-1-title">Two minutes. Then you can begin.</h1>
+      <p class="t-bodyL">
+        We need a few things to make this useful. Your role, where you're starting, and what's on your mind this week. Nothing more.
+      </p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" data-jump="2">
+          Get started
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+      <p class="promise">
+        We will never ask for your employer's name, your colleagues' real names, or access to your work systems. Ever.
+      </p>
+    </div>
+  </section>
+
+  <div class="between-note" aria-hidden="true">
+    <div class="inner"><span class="dot"></span>End of Step 1 · in production, the screen advances</div>
+  </div>
+
+  <!-- ===================== STEP 2 — ROLE ===================== -->
+  <section class="step" aria-labelledby="step-2-title">
+    <div class="panel panel-760">
+      <span class="step-marker">02 / 04</span>
+      <div class="role-head">
+        <div class="eyebrow">Step 2 of 4 — Your role</div>
+        <h2 class="t-h2" id="step-2-title">Which role are you stepping into?</h2>
+        <p class="t-body">Pick the one you're hired into. We'll tune the missions, scenarios, and language to it.</p>
+      </div>
+
+      <div class="role-grid" id="role-grid" role="radiogroup" aria-label="Role">
+        <button type="button" class="role-card" role="radio" aria-checked="false" data-role-id="BA" data-role-name="Business Analyst">
+          <span class="role-eyebrow">BA</span>
+          <span class="role-title">Business Analyst</span>
+          <span class="role-desc">Requirements, stakeholders, BRDs, workshops.</span>
+        </button>
+        <button type="button" class="role-card" role="radio" aria-checked="false" data-role-id="PM" data-role-name="Project Manager">
+          <span class="role-eyebrow">PM</span>
+          <span class="role-title">Project Manager</span>
+          <span class="role-desc">Scope, schedule, status, steering committees.</span>
+        </button>
+        <button type="button" class="role-card" role="radio" aria-checked="false" data-role-id="SM" data-role-name="Scrum Master">
+          <span class="role-eyebrow">SM</span>
+          <span class="role-title">Scrum Master</span>
+          <span class="role-desc">Ceremonies, blockers, team health, flow.</span>
+        </button>
+        <button type="button" class="role-card" role="radio" aria-checked="false" data-role-id="PO" data-role-name="Product Owner">
+          <span class="role-eyebrow">PO</span>
+          <span class="role-title">Product Owner</span>
+          <span class="role-desc">Backlog, priorities, trade-offs, the why.</span>
+        </button>
+        <button type="button" class="role-card" role="radio" aria-checked="false" data-role-id="DA" data-role-name="Data Analyst">
+          <span class="role-eyebrow">DA</span>
+          <span class="role-title">Data Analyst</span>
+          <span class="role-desc">Questions, queries, dashboards, defensible numbers.</span>
+        </button>
+        <button type="button" class="role-card" role="radio" aria-checked="false" data-role-id="AIE" data-role-name="AI Engineer">
+          <span class="role-eyebrow">AIE</span>
+          <span class="role-title">AI Engineer</span>
+          <span class="role-desc">Prompts, evals, pipelines, deployable systems.</span>
+        </button>
+      </div>
+
+      <p class="role-foot">Multiple roles? You'll be able to add a secondary later.</p>
+
+      <div class="step-cta">
+        <button type="button" class="btn btn-primary" data-jump="3" id="role-continue">
+          Continue
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <span class="meta" id="role-meta">Pick one to continue</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="between-note" aria-hidden="true">
+    <div class="inner"><span class="dot"></span>End of Step 2 · in production, the screen advances</div>
+  </div>
+
+  <!-- ===================== STEP 3 — SITUATION ===================== -->
+  <section class="step" aria-labelledby="step-3-title">
+    <div class="panel panel-640">
+      <span class="step-marker">03 / 04</span>
+      <div class="sit-head">
+        <div class="eyebrow">Step 3 of 4 — Your situation</div>
+        <h2 class="t-h2" id="step-3-title">Tell us where you're starting.</h2>
+        <p class="t-body">Three short answers. We use these to time the missions to your actual first ninety.</p>
+      </div>
+
+      <!-- Start date -->
+      <div class="field-group">
+        <label class="field-label" for="start-date">When did you start, or when do you start?</label>
+        <div class="date-row">
+          <div class="presets" id="date-presets">
+            <button type="button" class="preset" data-preset="today">Today</button>
+            <button type="button" class="preset" data-preset="this-week">This week</button>
+            <button type="button" class="preset" data-preset="next-week">Next week</button>
+            <button type="button" class="preset" data-preset="custom">Custom</button>
+          </div>
+          <div class="date-input-wrap">
+            <input class="field" type="date" id="start-date">
+            <i data-lucide="calendar"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sector -->
+      <div class="field-group">
+        <label class="field-label" for="sector">What sector?</label>
+        <select class="field" id="sector">
+          <option value="">Choose one</option>
+          <option>Financial services</option>
+          <option>Healthcare</option>
+          <option>Government</option>
+          <option>Consulting</option>
+          <option>E-commerce</option>
+          <option>Other</option>
+        </select>
+        <div class="field-help">Optional. We don't ask for your employer.</div>
+      </div>
+
+      <!-- Work setup -->
+      <div class="field-group">
+        <span class="field-label">Work setup?</span>
+        <div class="pill-group" role="radiogroup" aria-label="Work setup" id="setup-group">
+          <button type="button" class="pill" role="radio" aria-checked="false" data-setup="Remote">Remote</button>
+          <button type="button" class="pill" role="radio" aria-checked="false" data-setup="Hybrid">Hybrid</button>
+          <button type="button" class="pill" role="radio" aria-checked="false" data-setup="Office">Office</button>
+        </div>
+      </div>
+
+      <div class="step-cta">
+        <button type="button" class="btn btn-primary" data-jump="4" id="situation-continue">
+          Continue
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <span class="meta">Takes about thirty seconds</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="between-note" aria-hidden="true">
+    <div class="inner"><span class="dot"></span>End of Step 3 · in production, the screen advances</div>
+  </div>
+
+  <!-- ===================== STEP 4 — MEMORY (signature moment) ===================== -->
+  <section class="step" aria-labelledby="step-4-title">
+    <div class="panel panel-720">
+      <span class="step-marker">04 / 04 &nbsp;·&nbsp; <span class="marker-note">signature moment</span></span>
+      <div class="mem-head">
+        <div class="eyebrow">Step 4 of 4 — What we'll remember</div>
+        <h1 class="t-h1" id="step-4-title">Here's what FirstNinety knows about you so far.</h1>
+        <p class="t-body">A short list. You can change any line, anytime.</p>
+      </div>
+
+      <ul class="mem-list" id="mem-list">
+        <li>
+          <span class="mem-fact" id="mem-role">You're starting as a Business Analyst.</span>
+          <button type="button" class="mem-edit" aria-label="Edit role">
+            <i data-lucide="pencil"></i>
+            Edit
+          </button>
+        </li>
+        <li>
+          <span class="mem-fact" id="mem-start">You start on Monday.</span>
+          <button type="button" class="mem-edit" aria-label="Edit start date">
+            <i data-lucide="pencil"></i>
+            Edit
+          </button>
+        </li>
+        <li>
+          <span class="mem-fact" id="mem-sector">You're working in financial services.</span>
+          <button type="button" class="mem-edit" aria-label="Edit sector">
+            <i data-lucide="pencil"></i>
+            Edit
+          </button>
+        </li>
+        <li>
+          <span class="mem-fact" id="mem-setup">You're hybrid.</span>
+          <button type="button" class="mem-edit" aria-label="Edit setup">
+            <i data-lucide="pencil"></i>
+            Edit
+          </button>
+        </li>
+      </ul>
+
+      <div class="mem-body">
+        <p>
+          You can edit any of this anytime in <strong>Settings → What FirstNinety knows</strong>. We'll add more as you tell us things — never by guessing, never by reading anything we shouldn't.
+        </p>
+      </div>
+
+      <div class="mem-promise">
+        <p>
+          We will not store the names of your colleagues, your manager, your stakeholders, or your employer. When you paste anything from work into FirstNinety, we'll prompt you to anonymise first.
+        </p>
+      </div>
+
+      <div class="step-cta">
+        <button type="button" class="btn btn-primary" id="begin-day-1">
+          Begin Day 1
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <span class="meta">Day 1 of 90</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="doc-foot">
+  <span>FirstNinety · Onboarding flow v1.0 · Design Brief §10</span>
+  <span>Four steps · stacked for review</span>
+</footer>
+
+<script>
+  // ---------- Smooth jump between artifact sections ----------
+  document.querySelectorAll('[data-jump]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-jump');
+      const sections = document.querySelectorAll('.step');
+      const idx = parseInt(target, 10) - 1;
+      if (sections[idx]) {
+        const rect = sections[idx].getBoundingClientRect();
+        const y = window.scrollY + rect.top - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ---------- Role selection ----------
+  const memRole = document.getElementById('mem-role');
+  const roleMeta = document.getElementById('role-meta');
+  let selectedRole = null;
+
+  document.querySelectorAll('#role-grid .role-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#role-grid .role-card').forEach(c => {
+        c.classList.remove('is-selected');
+        c.setAttribute('aria-checked', 'false');
+      });
+      card.classList.add('is-selected');
+      card.setAttribute('aria-checked', 'true');
+      selectedRole = card.getAttribute('data-role-name');
+      memRole.textContent = `You're starting as a ${selectedRole}.`;
+      roleMeta.textContent = `Selected: ${selectedRole}`;
+    });
+  });
+
+  // ---------- Date presets ----------
+  const presetBtns = document.querySelectorAll('#date-presets .preset');
+  const dateInput = document.getElementById('start-date');
+  const memStart = document.getElementById('mem-start');
+
+  const fmt = (d) => {
+    const opts = { weekday: 'long', month: 'long', day: 'numeric' };
+    return d.toLocaleDateString('en-US', opts);
+  };
+  const dayName = (d) => d.toLocaleDateString('en-US', { weekday: 'long' });
+
+  const setDateFromPreset = (preset) => {
+    const today = new Date();
+    let target;
+    if (preset === 'today') {
+      target = today;
+      memStart.textContent = `You start today, ${dayName(today)}.`;
+    } else if (preset === 'this-week') {
+      // Next Monday or today if Monday
+      const day = today.getDay(); // 0 Sun .. 6 Sat
+      const daysUntilMon = (1 - day + 7) % 7;
+      target = new Date(today);
+      target.setDate(today.getDate() + (daysUntilMon === 0 ? 0 : daysUntilMon));
+      memStart.textContent = `You start this week, on ${dayName(target)}.`;
+    } else if (preset === 'next-week') {
+      const day = today.getDay();
+      const daysUntilMon = ((1 - day + 7) % 7) || 7;
+      target = new Date(today);
+      target.setDate(today.getDate() + daysUntilMon);
+      memStart.textContent = `You start next week, on ${dayName(target)}.`;
+    } else {
+      return;
+    }
+    const iso = target.toISOString().slice(0, 10);
+    dateInput.value = iso;
+  };
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      presetBtns.forEach(b => b.classList.remove('is-selected'));
+      btn.classList.add('is-selected');
+      const preset = btn.getAttribute('data-preset');
+      if (preset === 'custom') {
+        dateInput.focus();
+      } else {
+        setDateFromPreset(preset);
+      }
+    });
+  });
+
+  dateInput.addEventListener('change', () => {
+    if (!dateInput.value) return;
+    presetBtns.forEach(b => {
+      if (b.getAttribute('data-preset') === 'custom') b.classList.add('is-selected');
+      else b.classList.remove('is-selected');
+    });
+    const d = new Date(dateInput.value + 'T00:00:00');
+    memStart.textContent = `You start on ${dayName(d)}, ${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}.`;
+  });
+
+  // ---------- Sector ----------
+  const sector = document.getElementById('sector');
+  const memSector = document.getElementById('mem-sector');
+  sector.addEventListener('change', () => {
+    const v = sector.value;
+    if (!v) {
+      memSector.textContent = `You haven't shared a sector — that's fine.`;
+    } else if (v === 'Other') {
+      memSector.textContent = `You're working in a sector you'd rather not categorise.`;
+    } else {
+      memSector.textContent = `You're working in ${v.toLowerCase()}.`;
+    }
+  });
+
+  // ---------- Work setup ----------
+  const memSetup = document.getElementById('mem-setup');
+  document.querySelectorAll('#setup-group .pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#setup-group .pill').forEach(p => {
+        p.classList.remove('is-selected');
+        p.setAttribute('aria-checked', 'false');
+      });
+      pill.classList.add('is-selected');
+      pill.setAttribute('aria-checked', 'true');
+      const v = pill.getAttribute('data-setup');
+      if (v === 'Remote') memSetup.textContent = `You're working remote.`;
+      else if (v === 'Hybrid') memSetup.textContent = `You're hybrid.`;
+      else memSetup.textContent = `You're in an office.`;
+    });
+  });
+
+  // ---------- Default selections so memory panel reads coherently ----------
+  // (matches the brief's example "Business Analyst / Monday / financial services / hybrid")
+  document.querySelector('[data-role-id="BA"]').click();
+  // Pick "Next week" so we get Monday in the memory line
+  document.querySelector('[data-preset="next-week"]').click();
+  // Sector
+  sector.value = 'Financial services';
+  sector.dispatchEvent(new Event('change'));
+  // Setup
+  document.querySelector('[data-setup="Hybrid"]').click();
+
+  // ---------- Lucide icons ----------
+  if (window.lucide && window.lucide.createIcons) {
+    window.lucide.createIcons();
+  }
+
+  // Scroll back to top after auto-init click side-effects
+  window.scrollTo({ top: 0, behavior: 'auto' });
+</script>
+
+
+
+</body></html>

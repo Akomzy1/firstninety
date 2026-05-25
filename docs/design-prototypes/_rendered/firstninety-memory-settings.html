@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety — Memory Settings</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e9788e36-2e8c-48d6-a1ec-ddda0f3915b6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c41da703-7995-474c-a83e-944d8e91a3df") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3386c159-db5a-487e-ba84-68f672746fce") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e9788e36-2e8c-48d6-a1ec-ddda0f3915b6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c41da703-7995-474c-a83e-944d8e91a3df") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3386c159-db5a-487e-ba84-68f672746fce") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("c08e9c6f-351d-4eb3-b2fd-930b652dfadf") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("d1ba1fec-264f-4d6a-ba7d-3a1811fb47f7") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("7381373b-1f08-4d73-a992-0c073353ca78") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c08e9c6f-351d-4eb3-b2fd-930b652dfadf") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d1ba1fec-264f-4d6a-ba7d-3a1811fb47f7") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7381373b-1f08-4d73-a992-0c073353ca78") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c08e9c6f-351d-4eb3-b2fd-930b652dfadf") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d1ba1fec-264f-4d6a-ba7d-3a1811fb47f7") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7381373b-1f08-4d73-a992-0c073353ca78") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("c08e9c6f-351d-4eb3-b2fd-930b652dfadf") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("d1ba1fec-264f-4d6a-ba7d-3a1811fb47f7") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("7381373b-1f08-4d73-a992-0c073353ca78") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("c08e9c6f-351d-4eb3-b2fd-930b652dfadf") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("d1ba1fec-264f-4d6a-ba7d-3a1811fb47f7") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("7381373b-1f08-4d73-a992-0c073353ca78") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9a92e0c1-0fd1-404f-b4f9-dd04bf2cc53f") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fe61349e-e2d6-441d-8ce5-a18845ae7183") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("86645679-4be1-43ea-acb2-13945247ffa5") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5db7ff1b-30ae-462a-8d15-9def3738913e") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("07a11172-9c4c-4e31-81a3-53d06ebf2494") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e1cf05a9-7edc-4825-bf15-50802ef2667f") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9a92e0c1-0fd1-404f-b4f9-dd04bf2cc53f") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fe61349e-e2d6-441d-8ce5-a18845ae7183") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("86645679-4be1-43ea-acb2-13945247ffa5") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5db7ff1b-30ae-462a-8d15-9def3738913e") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("07a11172-9c4c-4e31-81a3-53d06ebf2494") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e1cf05a9-7edc-4825-bf15-50802ef2667f") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f26572e0-6b61-4608-b70a-56e24b9edb3a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e6fd345c-be86-4a3e-b021-224981c27edd") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8848ab40-45ee-4363-b763-d3c686c0321e") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9d018f78-1a4a-499c-bb2a-b531820f3519") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("44cfe898-820f-4d8e-bdef-43e3aa0fad55") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("61bd165d-39de-4ef7-ae7c-54dcdc2e5795") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ee2889c8-49f6-428b-ba53-2f0d56d171cb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f26572e0-6b61-4608-b70a-56e24b9edb3a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e6fd345c-be86-4a3e-b021-224981c27edd") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8848ab40-45ee-4363-b763-d3c686c0321e") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9d018f78-1a4a-499c-bb2a-b531820f3519") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("44cfe898-820f-4d8e-bdef-43e3aa0fad55") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("61bd165d-39de-4ef7-ae7c-54dcdc2e5795") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ee2889c8-49f6-428b-ba53-2f0d56d171cb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f26572e0-6b61-4608-b70a-56e24b9edb3a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("e6fd345c-be86-4a3e-b021-224981c27edd") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8848ab40-45ee-4363-b763-d3c686c0321e") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("9d018f78-1a4a-499c-bb2a-b531820f3519") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("44cfe898-820f-4d8e-bdef-43e3aa0fad55") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("61bd165d-39de-4ef7-ae7c-54dcdc2e5795") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("ee2889c8-49f6-428b-ba53-2f0d56d171cb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("f26572e0-6b61-4608-b70a-56e24b9edb3a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("e6fd345c-be86-4a3e-b021-224981c27edd") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8848ab40-45ee-4363-b763-d3c686c0321e") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("9d018f78-1a4a-499c-bb2a-b531820f3519") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("44cfe898-820f-4d8e-bdef-43e3aa0fad55") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("61bd165d-39de-4ef7-ae7c-54dcdc2e5795") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("ee2889c8-49f6-428b-ba53-2f0d56d171cb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="ca91e148-bf04-416c-99ca-8995779c65ba"></script>
+
+<style>
+  :root {
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --success: #3E6D52;
+    --warn: #A66A1F;
+    --danger: #9B2C2C;
+    --danger-soft: #F4E1E1;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
+
+    --radius-button: 4px;
+    --radius-card: 8px;
+    --radius-input: 8px;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+
+  /* ---------- Type ---------- */
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--mute);
+  }
+  .t-h1     { font-family:'Fraunces',serif; font-weight:400; font-size:64px; line-height:1.05; letter-spacing:-0.025em; text-wrap: balance; margin:0; font-optical-sizing:auto; font-variation-settings:'opsz' 144; }
+  .t-bodyL  { font-family:'Inter',sans-serif; font-weight:400; font-size:19px; line-height:1.55; margin:0; }
+  .t-body   { font-family:'Inter',sans-serif; font-weight:400; font-size:16px; line-height:1.6; margin:0; }
+  .t-bodyS  { font-family:'Inter',sans-serif; font-weight:400; font-size:14px; line-height:1.55; margin:0; }
+  .t-mono   { font-family:'Geist Mono', ui-monospace, monospace; font-size:11px; letter-spacing:0.04em; color: var(--mute); }
+  .italic-serif { font-family:'Fraunces',serif; font-style: italic; font-weight: 400; }
+  .mute { color: var(--mute); }
+  .mute-2 { color: var(--mute-2); }
+
+  /* ---------- Top chrome (not part of the editorial document) ---------- */
+  .chrome {
+    border-bottom: 1px solid var(--paper-3);
+    background: var(--paper);
+    position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(6px);
+  }
+  .chrome-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .chrome-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px;
+    color: var(--mute);
+    padding: 6px 4px;
+    border-radius: 3px;
+    transition: color 120ms var(--ease);
+  }
+  .chrome-link .lucide { width: 14px; height: 14px; stroke-width: 1.5; }
+  .chrome-link:hover { color: var(--ink); }
+  .chrome-link.right { color: var(--mute-2); }
+  .chrome-link.right:hover { color: var(--ink); }
+
+  /* ---------- The editorial document ---------- */
+  .doc {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 96px 32px 160px;
+  }
+
+  /* Eyebrow / breadcrumb at top of doc */
+  .doc-eyebrow {
+    margin-bottom: 28px;
+    color: var(--mute-2);
+    letter-spacing: 0.12em;
+  }
+  .doc-eyebrow .arrow { margin: 0 8px; color: var(--mute-2); }
+
+  /* H1 */
+  .doc-h1 { margin-bottom: var(--space-5); max-width: 14ch; }
+
+  /* Lede / coach-voice intro */
+  .doc-lede {
+    color: var(--mute);
+    max-width: 56ch;
+    margin: 0 0 var(--space-7) 0;
+  }
+
+  /* ---------- Section ---------- */
+  .section { margin-top: var(--space-7); }
+  .section-eyebrow { margin-bottom: var(--space-3); }
+
+  /* ---------- Fact / memory list ---------- */
+  .mem-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--paper-3);
+  }
+  .mem-list > li {
+    position: relative;
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--paper-3);
+  }
+  .mem-fact {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    font-size: 22px; line-height: 1.45; letter-spacing: -0.005em;
+    color: var(--ink);
+    text-wrap: pretty;
+    flex: 1;
+  }
+  .mem-fact .editable {
+    position: relative;
+    cursor: text;
+    transition: border-bottom-color 120ms var(--ease);
+    border-bottom: 1px dashed transparent;
+    padding-bottom: 1px;
+  }
+  .mem-list > li:hover .mem-fact .editable {
+    border-bottom-color: var(--mute-2);
+  }
+  .mem-fact .editable:hover {
+    border-bottom-color: var(--ink) !important;
+  }
+
+  /* Trailing date stamp */
+  .mem-date {
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 12px;
+    color: var(--mute-2);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    margin-left: 12px;
+    flex-shrink: 0;
+    transition: opacity 120ms var(--ease);
+  }
+  .mem-list > li:hover .mem-date { opacity: 0.4; }
+
+  /* Affordances cluster (Edit, Delete, "Obsolete?") on the right */
+  .mem-affordances {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 4px;
+    opacity: 0;
+    transition: opacity 120ms var(--ease);
+  }
+  .mem-list > li:hover .mem-affordances,
+  .mem-list > li:focus-within .mem-affordances { opacity: 1; }
+
+  .mem-icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--mute);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 4px;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .mem-icon-btn .lucide { width: 15px; height: 15px; stroke-width: 1.5; }
+  .mem-icon-btn:hover { color: var(--ink); background: var(--paper-2); }
+  .mem-icon-btn.is-delete:hover { color: var(--danger); background: var(--danger-soft); }
+  .mem-icon-btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .mem-obsolete {
+    font-family: 'Inter', sans-serif; font-weight: 400; font-size: 13px;
+    font-style: italic;
+    color: var(--mute);
+    margin-right: 4px;
+    user-select: none;
+  }
+
+  /* Footnote under list */
+  .section-foot {
+    margin-top: var(--space-3);
+    color: var(--mute);
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+    max-width: 56ch;
+  }
+
+  /* ---------- "Tell us something" trigger ---------- */
+  .tell-row {
+    margin-top: var(--space-4);
+  }
+  .tell-btn {
+    background: transparent;
+    border: 1px dashed var(--paper-3);
+    color: var(--mute);
+    padding: 12px 18px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px;
+    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: color 120ms var(--ease), border-color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .tell-btn:hover { color: var(--ink); border-color: var(--ink); background: var(--paper-2); }
+  .tell-btn .lucide { width: 14px; height: 14px; stroke-width: 1.5; }
+
+  .tell-editor {
+    display: none;
+    margin-top: var(--space-3);
+    padding: 0;
+  }
+  .tell-editor.is-open { display: block; }
+  .tell-editor textarea {
+    width: 100%;
+    min-height: 96px;
+    padding: 14px 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.5;
+    color: var(--ink);
+    resize: vertical;
+  }
+  .tell-editor textarea:focus { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .tell-editor .actions {
+    margin-top: 12px;
+    display: flex; gap: 8px; justify-content: flex-end;
+  }
+  .btn-sm {
+    padding: 8px 16px;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; line-height: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 80ms var(--ease), color 80ms var(--ease), border-color 80ms var(--ease);
+  }
+  .btn-sm.ghost { background: transparent; color: var(--mute); border: 1px solid transparent; }
+  .btn-sm.ghost:hover { color: var(--ink); background: var(--paper-2); }
+  .btn-sm.primary { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
+  .btn-sm.primary:hover { background: #1B1F26; }
+
+  /* ---------- Prose paragraphs (Section 3) ---------- */
+  .prose p {
+    color: var(--mute);
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: 19px; line-height: 1.6;
+    margin: 0 0 var(--space-3) 0;
+    max-width: 60ch;
+  }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose p strong { color: var(--ink); font-weight: 500; }
+
+  /* ---------- Destructive section ---------- */
+  .destructive {
+    margin-top: var(--space-7);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--paper-3);
+  }
+  .destructive .section-eyebrow { color: var(--danger); opacity: 0.85; }
+
+  .destructive-list {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .destructive-list > li {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--paper-3);
+  }
+  .destructive-list > li:last-child { border-bottom: none; }
+
+  .destructive-link {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+    font-size: 22px; line-height: 1.4; letter-spacing: -0.005em;
+    color: var(--danger);
+    cursor: pointer;
+    background: transparent; border: none; padding: 0;
+    text-align: left;
+    display: inline-block;
+    border-bottom: 1px dashed transparent;
+    transition: border-bottom-color 120ms var(--ease);
+  }
+  .destructive-link:hover { border-bottom-color: var(--danger); }
+  .destructive-link:focus-visible { outline: 2px solid var(--danger); outline-offset: 4px; }
+  .destructive-desc {
+    margin-top: 6px;
+    color: var(--mute);
+    max-width: 56ch;
+  }
+
+  /* ---------- Doc colophon ---------- */
+  .colophon {
+    margin-top: var(--space-8);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--paper-3);
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .chrome-inner { padding: 12px 20px; }
+    .chrome-link.right span { display: none; }
+    .doc { padding: 64px 24px 96px; }
+    .t-h1 { font-size: 44px; }
+    .doc-lede { font-size: 17px; }
+    .mem-fact { font-size: 19px; }
+    .destructive-link { font-size: 19px; }
+    .prose p { font-size: 17px; }
+    .mem-affordances { opacity: 1; } /* No hover on mobile — always visible */
+    .mem-list > li { flex-wrap: wrap; }
+    .mem-date { font-size: 11px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ============ TOP CHROME (not part of the editorial document) ============ -->
+<nav class="chrome" aria-label="Settings chrome">
+  <div class="chrome-inner">
+    <a href="#" class="chrome-link" aria-label="Back to Settings">
+      <i data-lucide="arrow-left"></i>
+      Back to Settings
+    </a>
+    <a href="#" class="chrome-link right">
+      Export everything FirstNinety knows about me
+      <i data-lucide="arrow-right"></i>
+    </a>
+  </div>
+</nav>
+
+<!-- ============ THE EDITORIAL DOCUMENT ============ -->
+<main class="doc">
+
+  <!-- Breadcrumb / eyebrow -->
+  <div class="eyebrow doc-eyebrow">
+    Settings <span class="arrow">→</span> Memory
+  </div>
+
+  <!-- H1 -->
+  <h1 class="t-h1 doc-h1">What I remember.</h1>
+
+  <!-- Coach-voice lede -->
+  <p class="t-bodyL doc-lede">
+    Everything below is what I have stored about you. You told me each of these things, and I'm keeping them only because they help me coach you well. You can edit anything. You can delete anything. Nothing here is shared with anyone else.
+  </p>
+
+  <!-- ===== Section 1 — About your role and start ===== -->
+  <section class="section" aria-labelledby="sec-role">
+    <div class="eyebrow section-eyebrow" id="sec-role">About your role and start</div>
+
+    <ul class="mem-list" id="role-list">
+      <li>
+        <span class="mem-fact">
+          You're working as a <span class="editable" data-edit="role">Business Analyst</span>.
+        </span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit role" data-edit-trigger="role">
+            <i data-lucide="pencil"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          You started on <span class="editable" data-edit="start-date">1 June</span>.
+        </span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit start date" data-edit-trigger="start-date">
+            <i data-lucide="pencil"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          You're working in <span class="editable" data-edit="sector">financial services</span>.
+        </span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit sector" data-edit-trigger="sector">
+            <i data-lucide="pencil"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          You're working in a <span class="editable" data-edit="setup">hybrid</span> setup.
+        </span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit setup" data-edit-trigger="setup">
+            <i data-lucide="pencil"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          Your probation review is on <span class="editable" data-edit="review-date">24 August</span>.
+        </span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit review date" data-edit-trigger="review-date">
+            <i data-lucide="pencil"></i>
+          </button>
+        </span>
+      </li>
+    </ul>
+
+    <p class="t-bodyS section-foot">
+      These shape everything I do. If something here is wrong, edit it — it'll change my missions, my Coach voice, and everything in between.
+    </p>
+  </section>
+
+  <!-- ===== Section 2 — What you've told me ===== -->
+  <section class="section" aria-labelledby="sec-told">
+    <div class="eyebrow section-eyebrow" id="sec-told">What you've told me</div>
+
+    <ul class="mem-list" id="told-list">
+      <li>
+        <span class="mem-fact">
+          You said your <span class="editable" data-edit="told-1">lead developer is hostile to BAs in general</span>.
+        </span>
+        <span class="mem-date">Added 14 July</span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit fact" data-edit-trigger="told-1">
+            <i data-lucide="pencil"></i>
+          </button>
+          <button type="button" class="mem-icon-btn is-delete" aria-label="Delete fact" data-delete="">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          You said the <span class="editable" data-edit="told-2">compliance team is your shortest path to a decision</span>.
+        </span>
+        <span class="mem-date">Added 22 July</span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit fact" data-edit-trigger="told-2">
+            <i data-lucide="pencil"></i>
+          </button>
+          <button type="button" class="mem-icon-btn is-delete" aria-label="Delete fact" data-delete="">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          You said the <span class="editable" data-edit="told-3">customer onboarding portal is your main work-stream this quarter</span>.
+        </span>
+        <span class="mem-date">Added Sunday</span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit fact" data-edit-trigger="told-3">
+            <i data-lucide="pencil"></i>
+          </button>
+          <button type="button" class="mem-icon-btn is-delete" aria-label="Delete fact" data-delete="">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          You said your manager is <span class="editable" data-edit="told-4">"remote and busy."</span>
+        </span>
+        <span class="mem-date">Added 14 July</span>
+        <span class="mem-affordances">
+          <button type="button" class="mem-icon-btn" aria-label="Edit fact" data-edit-trigger="told-4">
+            <i data-lucide="pencil"></i>
+          </button>
+          <button type="button" class="mem-icon-btn is-delete" aria-label="Delete fact" data-delete="">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </span>
+      </li>
+      <li>
+        <span class="mem-fact">
+          You said you're <span class="editable" data-edit="told-5">nervous about leading your first workshop</span>.
+        </span>
+        <span class="mem-date">Added 6 June</span>
+        <span class="mem-affordances">
+          <span class="mem-obsolete">Obsolete?</span>
+          <button type="button" class="mem-icon-btn" aria-label="Edit fact" data-edit-trigger="told-5">
+            <i data-lucide="pencil"></i>
+          </button>
+          <button type="button" class="mem-icon-btn is-delete" aria-label="Delete fact" data-delete="">
+            <i data-lucide="trash-2"></i>
+          </button>
+        </span>
+      </li>
+    </ul>
+
+    <div class="tell-row">
+      <button type="button" class="tell-btn" id="tell-toggle">
+        <i data-lucide="plus"></i>
+        Tell FirstNinety something else
+      </button>
+      <div class="tell-editor" id="tell-editor">
+        <textarea placeholder="Tell me something else that would help me coach you better. One thing at a time is best."></textarea>
+        <div class="actions">
+          <button type="button" class="btn-sm ghost" id="tell-cancel">Cancel</button>
+          <button type="button" class="btn-sm primary" id="tell-save">Save</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 3 — What I'll never store ===== -->
+  <section class="section prose" aria-labelledby="sec-never">
+    <div class="eyebrow section-eyebrow" id="sec-never">What I will never store</div>
+
+    <p>
+      <strong>The real names of your colleagues, your manager, your stakeholders, or your employer.</strong> When you paste anything from work into FirstNinety, I'll prompt you to anonymise first.
+    </p>
+    <p>
+      <strong>Content from your employer's systems.</strong> I have no access to Jira, Slack, your work email, or your work calendar — and I won't ask for it.
+    </p>
+    <p>
+      <strong>Anything you ever tell me to forget.</strong> When you delete something, it's gone — from my memory, from our database, from every future conversation we have.
+    </p>
+  </section>
+
+  <!-- ===== Section 4 — Destructive actions ===== -->
+  <section class="section destructive" aria-labelledby="sec-destruct">
+    <div class="eyebrow section-eyebrow" id="sec-destruct">Destructive</div>
+
+    <ul class="destructive-list">
+      <li>
+        <button type="button" class="destructive-link" data-confirm="wipe-told">
+          Delete everything I've told you
+        </button>
+        <p class="t-bodyS destructive-desc">
+          Wipes Section 2 only. Your role, start date, and other immutable facts stay.
+        </p>
+      </li>
+      <li>
+        <button type="button" class="destructive-link" data-confirm="delete-account">
+          Delete my whole FirstNinety account
+        </button>
+        <p class="t-bodyS destructive-desc">
+          Erases everything. Cancels your subscription. There is no undo.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Doc colophon -->
+  <div class="colophon">
+    <span class="t-mono">FirstNinety · /settings/memory · v1.0</span>
+    <span class="t-mono">Design Brief §10 — signature moment</span>
+  </div>
+
+</main>
+
+<script>
+  // ---------- Lucide ----------
+  if (window.lucide && window.lucide.createIcons) {
+    window.lucide.createIcons();
+  }
+
+  // ---------- Editable phrase click → inline-edit affordance (visual only) ----------
+  // Clicking an editable phrase OR its row's pencil shows a small inline
+  // placeholder editor so the affordance reads correctly. No real form here.
+  function showInlineEditPlaceholder(span) {
+    if (!span || span.dataset.editing === 'true') return;
+    span.dataset.editing = 'true';
+
+    const original = span.textContent;
+    const editType = span.dataset.edit || '';
+    const isDate = editType === 'start-date' || editType === 'review-date';
+    const isSelect = ['role', 'sector', 'setup'].includes(editType);
+
+    // Build a tiny inline editor
+    const wrap = document.createElement('span');
+    wrap.className = 'inline-editor';
+    wrap.style.cssText = `
+      display:inline-flex; align-items:center; gap:6px;
+      background: var(--paper-2);
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      padding: 2px 8px;
+      vertical-align: baseline;
+    `;
+
+    let input;
+    if (isDate) {
+      input = document.createElement('input');
+      input.type = 'date';
+      input.style.cssText = `
+        font-family: 'Fraunces', serif; font-style: italic;
+        font-size: 18px; background: transparent; border: none;
+        color: var(--ink); padding: 0; outline: none;
+      `;
+    } else if (isSelect) {
+      input = document.createElement('select');
+      input.style.cssText = `
+        font-family: 'Fraunces', serif; font-style: italic;
+        font-size: 18px; background: transparent; border: none;
+        color: var(--ink); padding: 0 16px 0 0; outline: none;
+        appearance: none; cursor: pointer;
+      `;
+      const opts = {
+        role: ['Business Analyst','Project Manager','Scrum Master','Product Owner','Data Analyst','AI Engineer'],
+        sector: ['financial services','tech','public sector','healthcare','retail','consulting','other'],
+        setup: ['hybrid','fully remote','fully in-office']
+      }[editType] || [];
+      opts.forEach(o => {
+        const opt = document.createElement('option');
+        opt.value = o; opt.textContent = o;
+        if (o === original) opt.selected = true;
+        input.appendChild(opt);
+      });
+    } else {
+      input = document.createElement('input');
+      input.type = 'text';
+      input.value = original;
+      input.style.cssText = `
+        font-family: 'Fraunces', serif; font-style: italic;
+        font-size: 22px; background: transparent; border: none;
+        color: var(--ink); padding: 0; outline: none;
+        min-width: ${Math.max(120, original.length * 11)}px;
+      `;
+    }
+
+    const commit = (val) => {
+      const newVal = val ?? input.value ?? original;
+      span.dataset.editing = 'false';
+      span.textContent = newVal && newVal.trim() ? newVal : original;
+    };
+    const cancel = () => {
+      span.dataset.editing = 'false';
+      span.textContent = original;
+    };
+
+    wrap.appendChild(input);
+    span.textContent = '';
+    span.appendChild(wrap);
+
+    input.focus();
+    if (input.select) input.select();
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); commit(); }
+      if (e.key === 'Escape') { e.preventDefault(); cancel(); }
+    });
+    input.addEventListener('blur', () => commit(), { once: true });
+    if (isSelect || isDate) {
+      input.addEventListener('change', () => commit());
+    }
+  }
+
+  // Click on the editable phrase
+  document.querySelectorAll('.editable').forEach(span => {
+    span.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showInlineEditPlaceholder(span);
+    });
+  });
+
+  // Click on the pencil → trigger the matching editable phrase
+  document.querySelectorAll('[data-edit-trigger]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const key = btn.getAttribute('data-edit-trigger');
+      const span = document.querySelector(`.editable[data-edit="${key}"]`);
+      if (span) showInlineEditPlaceholder(span);
+    });
+  });
+
+  // Delete → fade out the row (visual placeholder)
+  document.querySelectorAll('[data-delete]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const row = btn.closest('li');
+      if (!row) return;
+      row.style.transition = 'opacity 220ms var(--ease), max-height 280ms var(--ease), padding 280ms var(--ease)';
+      row.style.overflow = 'hidden';
+      row.style.maxHeight = row.offsetHeight + 'px';
+      requestAnimationFrame(() => {
+        row.style.opacity = '0';
+        row.style.maxHeight = '0px';
+        row.style.paddingTop = '0px';
+        row.style.paddingBottom = '0px';
+      });
+      setTimeout(() => row.remove(), 320);
+    });
+  });
+
+  // Tell-something toggle
+  const tellToggle = document.getElementById('tell-toggle');
+  const tellEditor = document.getElementById('tell-editor');
+  const tellCancel = document.getElementById('tell-cancel');
+  const tellSave   = document.getElementById('tell-save');
+  if (tellToggle) {
+    tellToggle.addEventListener('click', () => {
+      tellEditor.classList.add('is-open');
+      tellToggle.style.display = 'none';
+      const ta = tellEditor.querySelector('textarea');
+      if (ta) ta.focus();
+    });
+  }
+  const closeTell = () => {
+    tellEditor.classList.remove('is-open');
+    tellToggle.style.display = '';
+    const ta = tellEditor.querySelector('textarea');
+    if (ta) ta.value = '';
+  };
+  if (tellCancel) tellCancel.addEventListener('click', closeTell);
+  if (tellSave) tellSave.addEventListener('click', () => {
+    const ta = tellEditor.querySelector('textarea');
+    const val = (ta && ta.value || '').trim();
+    if (!val) { closeTell(); return; }
+    // Append a new row to the told list
+    const list = document.getElementById('told-list');
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span class="mem-fact">You said <span class="editable italic">${val.replace(/</g,'&lt;')}</span>.</span>
+      <span class="mem-date">Added just now</span>
+      <span class="mem-affordances">
+        <button type="button" class="mem-icon-btn" aria-label="Edit fact"><i data-lucide="pencil"></i></button>
+        <button type="button" class="mem-icon-btn is-delete" aria-label="Delete fact" data-delete><i data-lucide="trash-2"></i></button>
+      </span>
+    `;
+    list.appendChild(li);
+    if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+    // wire up delete on the new row
+    li.querySelector('[data-delete]').addEventListener('click', () => {
+      li.style.transition = 'opacity 220ms var(--ease), max-height 280ms var(--ease), padding 280ms var(--ease)';
+      li.style.overflow = 'hidden';
+      li.style.maxHeight = li.offsetHeight + 'px';
+      requestAnimationFrame(() => {
+        li.style.opacity = '0';
+        li.style.maxHeight = '0px';
+        li.style.paddingTop = '0px';
+        li.style.paddingBottom = '0px';
+      });
+      setTimeout(() => li.remove(), 320);
+    });
+    closeTell();
+  });
+
+  // Destructive triggers — visual confirmation only
+  document.querySelectorAll('[data-confirm]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.animate(
+        [{ transform: 'translateX(0)' }, { transform: 'translateX(-3px)' }, { transform: 'translateX(3px)' }, { transform: 'translateX(0)' }],
+        { duration: 220, easing: 'cubic-bezier(.32,.72,0,1)' }
+      );
+    });
+  });
+</script>
+
+
+
+</body></html>

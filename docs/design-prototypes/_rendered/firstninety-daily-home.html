@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety — Daily Home</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("37812a7e-c549-46ea-a92a-375f8840a5bc") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("28b8247f-9629-40d7-8dfa-7867714aca00") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("c70212b4-0b48-4b48-b831-05520943cdfb") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("c303a11b-eda3-4f96-b917-a683220a61c5") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("3bb47c09-b1a2-4f5c-b36f-139741552296") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("06647eb3-ad84-4daf-a2d7-2e335eddd275") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("62323b51-86eb-4d9c-91ea-d0136700bea6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b2c07daf-d334-4082-9063-65a8bdab8a20") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("563e0b42-c40a-4851-b051-67791d3e9407") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5f69341c-a21c-42c6-b9aa-820dd1526509") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("70b35864-8e24-497e-86b4-811ae483e203") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e5ca4cc9-f615-4390-aefa-f54aad54b8bf") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("62323b51-86eb-4d9c-91ea-d0136700bea6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b2c07daf-d334-4082-9063-65a8bdab8a20") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("563e0b42-c40a-4851-b051-67791d3e9407") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5f69341c-a21c-42c6-b9aa-820dd1526509") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("70b35864-8e24-497e-86b4-811ae483e203") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e5ca4cc9-f615-4390-aefa-f54aad54b8bf") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("db5f737b-5ef8-4a89-9009-ae7bc5857798") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9d478a95-5b8b-468b-b557-dbd13c963dc8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ca8fda3f-dece-465c-851c-fa4580ab049a") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c7247539-b25a-44c0-ac88-fa2ab8e1f523") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d4329647-0409-413c-b3d3-f4bb5715f0c1") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b0c6c36f-c536-4b38-890a-701ee2b38356") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f57a138f-278e-43f7-9599-22cbffe06e4d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("db5f737b-5ef8-4a89-9009-ae7bc5857798") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9d478a95-5b8b-468b-b557-dbd13c963dc8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ca8fda3f-dece-465c-851c-fa4580ab049a") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c7247539-b25a-44c0-ac88-fa2ab8e1f523") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d4329647-0409-413c-b3d3-f4bb5715f0c1") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b0c6c36f-c536-4b38-890a-701ee2b38356") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f57a138f-278e-43f7-9599-22cbffe06e4d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("db5f737b-5ef8-4a89-9009-ae7bc5857798") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("9d478a95-5b8b-468b-b557-dbd13c963dc8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("ca8fda3f-dece-465c-851c-fa4580ab049a") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("c7247539-b25a-44c0-ac88-fa2ab8e1f523") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("d4329647-0409-413c-b3d3-f4bb5715f0c1") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("b0c6c36f-c536-4b38-890a-701ee2b38356") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("f57a138f-278e-43f7-9599-22cbffe06e4d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("db5f737b-5ef8-4a89-9009-ae7bc5857798") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("9d478a95-5b8b-468b-b557-dbd13c963dc8") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("ca8fda3f-dece-465c-851c-fa4580ab049a") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("c7247539-b25a-44c0-ac88-fa2ab8e1f523") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("d4329647-0409-413c-b3d3-f4bb5715f0c1") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("b0c6c36f-c536-4b38-890a-701ee2b38356") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("f57a138f-278e-43f7-9599-22cbffe06e4d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="8fbe4d2c-a7b0-4e3b-83b5-a3c4eb28d5da"></script>
+
+<style>
+  :root {
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --success: #3E6D52;
+    --warn: #A66A1F;
+    --danger: #9B2C2C;
+
+    --persona-slate: #6F7A86;
+    --persona-moss:  #6C7560;
+    --persona-ochre: #B08A4A;
+    --persona-rose:  #B58383;
+    --persona-teal:  #3F6B6F;
+    --persona-plum:  #7A5F75;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--paper-2);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .font-serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  .font-mono  { font-family: 'Geist Mono', ui-monospace, monospace; }
+
+  /* ---------- type ---------- */
+  .t-display { font-family:'Fraunces',serif; font-weight:400; font-size:64px; line-height:1.05; letter-spacing:-0.02em; text-wrap: balance; }
+  .t-h1      { font-family:'Fraunces',serif; font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.02em; text-wrap: balance; }
+  .t-h2      { font-family:'Fraunces',serif; font-weight:400; font-size:36px; line-height:1.2;  letter-spacing:-0.015em; text-wrap: balance; }
+  .t-h3      { font-family:'Inter',sans-serif; font-weight:600; font-size:24px; line-height:1.35; letter-spacing:-0.01em; }
+  .t-h4      { font-family:'Inter',sans-serif; font-weight:600; font-size:20px; line-height:1.4; letter-spacing:-0.005em; }
+  .t-bodyL   { font-family:'Inter',sans-serif; font-weight:400; font-size:20px; line-height:1.55; }
+  .t-body    { font-family:'Inter',sans-serif; font-weight:400; font-size:17px; line-height:1.55; }
+  .t-bodyS   { font-family:'Inter',sans-serif; font-weight:400; font-size:15px; line-height:1.55; }
+  .t-caption { font-family:'Inter',sans-serif; font-weight:500; font-size:13px; line-height:1.45; letter-spacing:0.02em; color: var(--mute); }
+  .eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:12px;
+    letter-spacing:0.08em; text-transform:uppercase; color: var(--mute);
+  }
+  .mono { font-family:'Geist Mono', monospace; font-size:12px; color: var(--mute); }
+
+  /* ---------- artifact shell ---------- */
+  .page-shell { max-width: 1480px; margin: 0 auto; padding: 64px 48px 96px; }
+  .artifact-head { margin-bottom: 56px; }
+  .artifact-head .eyebrow { margin-bottom: 14px; }
+  .artifact-head h1 {
+    font-family:'Fraunces',serif; font-weight:400; font-size:48px; line-height:1.08;
+    letter-spacing:-0.02em; margin:0 0 18px; max-width: 22ch;
+  }
+  .artifact-head p {
+    font-family:'Inter',sans-serif; font-size:17px; line-height:1.55;
+    color: var(--mute); max-width: 64ch; margin: 0;
+  }
+  .artifact-head .meta-row { margin-top: 28px; display:flex; flex-wrap:wrap; gap: 24px; }
+  .artifact-head .meta-row > div { font-family:'Geist Mono',monospace; font-size:12px; }
+  .artifact-head .meta-row .k { color: var(--mute); }
+  .artifact-head .meta-row .v { color: var(--ink); margin-left: 6px; }
+
+  /* ---------- state block ---------- */
+  .state-block + .state-block { margin-top: var(--space-7); }
+  .state-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 24px; margin-bottom: var(--space-3);
+  }
+  .state-header .left {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  }
+  .state-header .num {
+    font-family:'Geist Mono',monospace; font-size:12px; color: var(--mute); letter-spacing:0.04em;
+  }
+  .state-header .title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:28px; line-height:1.2;
+    letter-spacing:-0.01em; color: var(--ink);
+  }
+  .state-header .right {
+    font-family:'Geist Mono',monospace; font-size:12px; color: var(--mute);
+  }
+  .state-note {
+    font-family:'Inter',sans-serif; font-size:13px; line-height:1.55; color: var(--mute);
+    max-width: 72ch; margin: 0 0 24px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .state-note::before {
+    content:''; display:inline-block;
+    width: 24px; height: 1px; background: var(--mute-2);
+    margin-top: 10px; flex-shrink: 0;
+  }
+
+  /* ---------- frame ---------- */
+  .frame {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(14,17,22,0.04);
+    overflow: hidden;
+    position: relative;
+    width: 1320px;
+    max-width: 100%;
+  }
+  .frame-tall { min-height: 880px; }
+
+  /* ---------- A2 chrome sidebar ---------- */
+  .app-shell { display: flex; min-height: 100%; }
+  .app-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--paper-3);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px 16px;
+    background: var(--paper);
+  }
+  .wordmark {
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size: 22px; line-height:1; letter-spacing:-0.015em;
+    font-optical-sizing:auto; font-variation-settings:'opsz' 144;
+    display:inline-flex; align-items:baseline;
+    color: var(--ink); padding: 0 4px; margin-bottom: 28px;
+  }
+  .wordmark .nudge { display:inline-block; transform: translateY(-2px); }
+  .wordmark .first { font-style: italic; font-weight: 400; }
+  .wordmark .sep {
+    display: inline-block;
+    width: 0.34em; height: 0.34em;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 0.18em;
+    transform: translateY(-0.18em);
+  }
+  .wordmark .ninety { font-weight: 600; font-feature-settings: 'lnum' on; }
+
+  .nav-section { display: flex; flex-direction: column; gap: 2px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family:'Inter',sans-serif; font-weight: 500; font-size: 14px; line-height: 1.2;
+    color: var(--mute);
+    cursor: pointer;
+    transition: background-color 80ms var(--ease), color 80ms var(--ease);
+    min-height: 36px;
+  }
+  .nav-item:hover { color: var(--ink); background: rgba(231,224,210,0.5); }
+  .nav-item.is-active { color: var(--ink); background: var(--paper-3); }
+  .nav-item .lucide { width: 18px; height: 18px; stroke-width: 1.5; flex-shrink: 0; }
+  .nav-item .label { flex: 1; }
+  .nav-item .accent-dot {
+    width: 6px; height: 6px; border-radius: 999px; background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .side-divider { height: 1px; background: var(--paper-3); margin: 16px 4px; }
+
+  .know-link {
+    display: flex; flex-direction: column;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    gap: 2px;
+  }
+  .know-link:hover { background: rgba(231,224,210,0.5); }
+  .know-link .know-title {
+    font-family:'Inter',sans-serif; font-weight:500; font-size:14px; color: var(--ink);
+  }
+  .know-link .know-sub {
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size: 12px; color: var(--mute); letter-spacing: 0.005em;
+  }
+
+  .user-menu-wrap { margin-top: auto; padding-top: 12px; }
+  .user-menu-trigger {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .user-menu-trigger:hover { background: rgba(231,224,210,0.5); }
+  .monogram-sm {
+    width: 36px; height: 36px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family:'Fraunces',serif; font-weight: 400; font-size: 14px; color: var(--paper);
+    background: var(--persona-slate);
+    flex-shrink: 0;
+  }
+  .user-id { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .user-id .name { font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color: var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .user-id .role {
+    font-family:'Inter',sans-serif; font-weight:500; font-size:11px;
+    color: var(--mute); letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .user-id .role::before {
+    content:''; width: 2px; height: 10px; background: var(--persona-slate); border-radius: 1px;
+  }
+
+  /* ---------- main canvas ---------- */
+  .app-main {
+    flex: 1;
+    min-width: 0;
+    background: var(--paper);
+    display: flex;
+  }
+  .main-col {
+    flex: 1; min-width: 0;
+    padding: 56px 64px 80px;
+    display: flex; flex-direction: column;
+  }
+  .main-col.with-rail { max-width: calc(100% - 320px); }
+
+  .right-rail {
+    width: 320px; flex-shrink: 0;
+    border-left: 1px solid var(--paper-3);
+    padding: 56px 32px 80px;
+    background: var(--paper);
+    display: flex; flex-direction: column; gap: var(--space-5);
+  }
+
+  /* ---------- daily banner ---------- */
+  .day-banner { display: flex; flex-direction: column; gap: 14px; max-width: 26ch; }
+  .day-banner .day-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:12px;
+    letter-spacing:0.08em; text-transform:uppercase;
+    color: var(--mute);
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .day-banner .day-eyebrow .pip {
+    display: inline-block; width: 6px; height: 6px;
+    border-radius: 999px; background: var(--accent);
+  }
+  .day-banner .day-headline {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 32px; line-height: 1.25; letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+
+  /* ---------- mission card (from A3) ---------- */
+  .mission {
+    position: relative;
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    min-height: 240px;
+    transition: border-color 240ms var(--ease);
+  }
+  .mission .mission-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .mission .mission-title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:26px; line-height:1.2;
+    letter-spacing:-0.01em; color: var(--ink);
+    margin: 0 0 12px;
+    max-width: 22ch;
+  }
+  .mission .mission-desc {
+    font-family:'Inter',sans-serif; font-size:15px; line-height:1.55; color: var(--mute);
+    margin: 0 0 auto;
+    max-width: 36ch;
+  }
+  .mission .mission-foot {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top: 28px;
+    gap: 16px;
+  }
+  .mission .time {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family:'Inter',sans-serif; font-size:13px; color: var(--mute);
+    font-weight: 500;
+  }
+  .mission .time .lucide { width: 14px; height: 14px; stroke-width: 1.5; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px;
+    font-family:'Inter',sans-serif; font-weight: 500; font-size: 14px; line-height: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: 44px;
+    border: 1px solid transparent;
+    transition: background-color 80ms var(--ease), border-color 80ms var(--ease);
+  }
+  .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-primary:hover { background: #1B1F26; border-color: #1B1F26; }
+  .btn-primary .lucide { width: 14px; height: 14px; stroke-width: 1.75; }
+
+  /* ---------- hairline ---------- */
+  .hairline { border-top: 1px solid var(--paper-3); }
+
+  /* ---------- Day 1 footer caption row ---------- */
+  .unlock-row {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--mute);
+    font-family:'Inter',sans-serif; font-size:13px; font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .unlock-row .lucide { width: 14px; height: 14px; stroke-width: 1.5; color: var(--mute-2); }
+
+  /* ---------- Day 1 right-side SR entry (inline link) ---------- */
+  .sr-inline {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 18px; line-height: 1.4; letter-spacing: -0.005em;
+    color: var(--mute);
+    border-bottom: 1px solid transparent;
+    transition: color 120ms var(--ease), border-color 120ms var(--ease);
+    display: inline-flex; align-items: baseline; gap: 8px;
+  }
+  .sr-inline:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .sr-inline .arr {
+    font-family:'Inter',sans-serif; font-style: normal; font-size: 16px;
+  }
+
+  /* aside placement for Day 1 sr inline */
+  .sr-aside {
+    width: 320px; flex-shrink: 0;
+    border-left: 1px solid var(--paper-3);
+    padding: 56px 32px;
+    display: flex; flex-direction: column;
+  }
+  .sr-aside .sr-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--mute);
+    margin-bottom: 18px;
+  }
+
+  /* ---------- Day 38 Situation Room large input ---------- */
+  .sr-surface {
+    margin-top: var(--space-6);
+    padding: 40px 0 24px;
+    border-top: 1px solid var(--paper-3);
+  }
+  .sr-surface .sr-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--mute);
+    margin-bottom: 22px;
+    display: inline-block;
+  }
+  .sr-tabs {
+    display: flex; gap: 28px; margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .sr-tab {
+    font-family:'Inter',sans-serif; font-size: 14px; line-height: 1;
+    font-weight: 500;
+    color: var(--mute);
+    cursor: pointer;
+    padding: 6px 0;
+    border-bottom: 1.5px solid transparent;
+    transition: color 80ms var(--ease), border-color 80ms var(--ease);
+  }
+  .sr-tab:hover { color: var(--ink); }
+  .sr-tab.is-active { color: var(--ink); border-bottom-color: var(--ink); }
+  .sr-input {
+    display: block; width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--paper-3);
+    padding: 18px 0 22px;
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 28px; line-height: 1.3; letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .sr-input::placeholder { color: var(--mute-2); font-style: italic; }
+  .sr-input:focus { outline: none; border-bottom-color: var(--ink); }
+  .sr-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 14px;
+    gap: 16px;
+  }
+  .sr-foot .hint {
+    font-family:'Inter',sans-serif; font-size: 13px; color: var(--mute);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .sr-foot .hint .lucide { width: 14px; height: 14px; stroke-width: 1.5; color: var(--mute-2); }
+  .sr-foot .key {
+    font-family:'Geist Mono',monospace; font-size: 11px; color: var(--mute-2);
+    border: 1px solid var(--paper-3); border-radius: 3px;
+    padding: 2px 6px;
+  }
+
+  /* ---------- right rail (Day 38) ---------- */
+  .rail-section {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .rail-section .rail-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--mute);
+  }
+  .rail-section .rail-title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:18px; line-height:1.25;
+    letter-spacing:-0.005em; color: var(--ink);
+    margin: 0;
+  }
+
+  /* week-at-a-glance */
+  .week-list { display: flex; flex-direction: column; gap: 2px; }
+  .week-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-family:'Inter',sans-serif; font-size: 13px;
+    line-height: 1.35;
+    color: var(--mute);
+  }
+  .week-row .day {
+    font-family:'Geist Mono', monospace; font-size: 11px;
+    color: var(--mute-2); width: 28px; flex-shrink: 0; letter-spacing: 0.04em;
+  }
+  .week-row .row-title {
+    flex: 1; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .week-row .check {
+    width: 14px; height: 14px; color: var(--success); flex-shrink: 0;
+  }
+  .week-row.is-today {
+    background: var(--paper-2);
+  }
+  .week-row.is-today .day { color: var(--ink); }
+  .week-row.is-today .row-title { color: var(--ink); font-weight: 500; }
+  .week-row.is-done .row-title { color: var(--mute); }
+  .week-row.is-future .row-title { color: var(--mute-2); }
+  .week-row.is-future .day { color: var(--mute-2); }
+
+  /* what I know */
+  .know-list { display: flex; flex-direction: column; gap: 12px; }
+  .know-item {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 15px; line-height: 1.45; letter-spacing: 0;
+    color: var(--ink);
+    text-wrap: pretty;
+    border-left: 1.5px solid var(--paper-3);
+    padding-left: 12px;
+  }
+  .see-all {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family:'Inter',sans-serif; font-size: 13px; font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .see-all .lucide { width: 12px; height: 12px; stroke-width: 1.75; }
+
+  /* recent */
+  .recent-list { display: flex; flex-direction: column; gap: 8px; }
+  .recent-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-family:'Inter',sans-serif; font-size: 13px; line-height: 1.45;
+    color: var(--mute);
+  }
+  .recent-row .recent-label {
+    font-family:'Inter',sans-serif; font-weight: 500; font-size: 11px;
+    color: var(--mute-2); letter-spacing: 0.04em; text-transform: uppercase;
+    width: 56px; flex-shrink: 0; padding-top: 2px;
+  }
+  .recent-row .recent-text {
+    flex: 1; min-width: 0;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .recent-row .recent-text .recent-meta {
+    color: var(--mute); display: block; margin-top: 2px; font-size: 12px;
+  }
+
+  /* mission grid for Day 38 */
+  .mission-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  @media (max-width: 980px) {
+    .mission-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- responsive collapse for big frames ---------- */
+  @media (max-width: 1400px) {
+    .frame { width: 100%; }
+  }
+  @media (max-width: 1080px) {
+    .app-sidebar { display: none; }
+    .main-col { padding: 36px 32px 56px; }
+    .main-col.with-rail { max-width: 100%; }
+    .right-rail, .sr-aside { display: none; }
+    .day-banner .day-headline { font-size: 26px; }
+  }
+
+  /* ---------- footer ---------- */
+  .artifact-foot {
+    margin-top: var(--space-7);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--paper-3);
+  }
+  .artifact-foot .mono { display:flex; gap: 32px; flex-wrap: wrap; color: var(--mute); }
+
+</style>
+</head>
+
+<body>
+
+<main class="page-shell">
+
+  <!-- =========================== HEADER =========================== -->
+  <header class="artifact-head">
+    <div class="eyebrow">FirstNinety / Product surfaces · A4</div>
+    <h1>Daily home — Day 1, and Day 38.</h1>
+    <p>
+      The home page on the day a user signs up — and the same page six weeks in. The chrome doesn't change. The temperature does. Day 1 leans into the empty. Day 38 has things to do and a place to ask the question that won't wait.
+    </p>
+    <div class="meta-row">
+      <div><span class="k">Surface</span><span class="v">Home</span></div>
+      <div><span class="k">References</span><span class="v">Design Brief v1.0 §10, SKILL.md §6</span></div>
+      <div><span class="k">Companions</span><span class="v">A2 Navigation chrome, A3 Component library</span></div>
+      <div><span class="k">Content width</span><span class="v">1080 max</span></div>
+    </div>
+  </header>
+
+  <!-- =========================== STATE 1 — DAY 1 =========================== -->
+  <section class="state-block" data-screen-label="01 Day 1 — signature empty">
+
+    <div class="state-header">
+      <div class="left">
+        <span class="num">STATE 01</span>
+        <h2 class="title">Day 1 — the signature empty moment.</h2>
+      </div>
+      <div class="right">Monday 23 May · sign-up + 0h</div>
+    </div>
+
+    <p class="state-note">
+      One mission. A line of italic above it. A long stretch of paper underneath. The brand stance, made visual — we're not throwing 90 days at you, we're starting with today.
+    </p>
+
+    <div class="frame frame-tall">
+
+      <div class="app-shell">
+
+        <!-- A2 chrome sidebar -->
+        <aside class="app-sidebar" aria-label="Primary navigation">
+          <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+
+          <nav class="nav-section" aria-label="Primary">
+            <a class="nav-item is-active" href="#">
+              <i data-lucide="home"></i>
+              <span class="label">Home</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="target"></i>
+              <span class="label">Mission Track</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="radio"></i>
+              <span class="label">Situation Room</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="users"></i>
+              <span class="label">Simulator</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="message-circle"></i>
+              <span class="label">Coach</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="book-open"></i>
+              <span class="label">Playbook</span>
+            </a>
+          </nav>
+
+          <div class="side-divider"></div>
+
+          <a class="know-link" href="#">
+            <span class="know-title">What I know about you</span>
+            <span class="know-sub">read the margins</span>
+          </a>
+
+          <div class="user-menu-wrap">
+            <div class="user-menu-trigger">
+              <span class="monogram-sm">AO</span>
+              <div class="user-id">
+                <span class="name">Adaeze Okafor</span>
+                <span class="role">Business Analyst</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- App main -->
+        <div class="app-main">
+
+          <!-- Main column -->
+          <div class="main-col" style="max-width: 1080px;">
+
+            <!-- Editorial banner -->
+            <div class="day-banner">
+              <div class="day-eyebrow">
+                <span class="pip" aria-hidden="true"></span>
+                Day 1 — Monday, 23 May
+              </div>
+              <p class="day-headline" style="max-width: 26ch; margin: 0;">
+                Today is about landing softly. Not about doing everything.
+              </p>
+            </div>
+
+            <!-- Lots of whitespace before the single mission -->
+            <div style="height: var(--space-7);" aria-hidden="true"></div>
+
+            <!-- Single mission card -->
+            <div style="max-width: 560px;">
+              <article class="mission" aria-label="Today's mission">
+                <div class="mission-eyebrow">Today — Day 1</div>
+                <h3 class="mission-title">Map your stakeholders</h3>
+                <p class="mission-desc">Name everyone who can stop, slow, or help your work. Fifteen minutes, one diagram, your own words.</p>
+                <div class="mission-foot">
+                  <span class="time"><i data-lucide="clock"></i>15 min</span>
+                  <button class="btn btn-primary" type="button">Begin <i data-lucide="arrow-right"></i></button>
+                </div>
+              </article>
+            </div>
+
+            <!-- Tight divider + mute caption -->
+            <div style="max-width: 560px; margin-top: 28px;">
+              <div class="hairline"></div>
+              <div class="unlock-row" style="margin-top: 18px;">
+                <i data-lucide="lock"></i>
+                <span>More missions unlock as you progress this week.</span>
+              </div>
+            </div>
+
+            <!-- Generous whitespace below — and that's the point -->
+            <div style="flex: 1; min-height: var(--space-8);" aria-hidden="true"></div>
+
+          </div>
+
+          <!-- Right side: single inline Situation Room entry -->
+          <aside class="sr-aside" aria-label="Situation Room — entry">
+            <div class="sr-eyebrow">Situation room</div>
+            <a class="sr-inline" href="#">
+              <span>Something happening you need help with?</span>
+              <span class="arr" aria-hidden="true">→</span>
+            </a>
+            <div style="flex:1;"></div>
+            <div class="mono" style="color: var(--mute-2);">A line, not a workspace. The full room is one click away.</div>
+          </aside>
+
+        </div>
+      </div>
+    </div>
+
+    <p class="state-note" style="margin-top: 28px;">
+      Whitespace below the single mission card is intentionally longer than feels right. No "recent activity" card. No streak. No notification badges. The page is allowed to be quiet on Day 1.
+    </p>
+
+  </section>
+
+
+  <!-- =========================== STATE 2 — DAY 38 =========================== -->
+  <section class="state-block" data-screen-label="02 Day 38 — populated mid-journey">
+
+    <div class="state-header">
+      <div class="left">
+        <span class="num">STATE 02</span>
+        <h2 class="title">Day 38 — populated mid-journey.</h2>
+      </div>
+      <div class="right">Monday 30 June · week 6</div>
+    </div>
+
+    <p class="state-note">
+      Same shell, with weight added intentionally. Two missions today. A Situation Room surface large enough to compete with the missions because it should — they're both how the user makes progress. A right rail with quiet context, not a scoreboard.
+    </p>
+
+    <div class="frame frame-tall">
+
+      <div class="app-shell">
+
+        <!-- A2 chrome sidebar (Situation Room has an unread dot now) -->
+        <aside class="app-sidebar" aria-label="Primary navigation">
+          <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+
+          <nav class="nav-section" aria-label="Primary">
+            <a class="nav-item is-active" href="#">
+              <i data-lucide="home"></i>
+              <span class="label">Home</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="target"></i>
+              <span class="label">Mission Track</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="radio"></i>
+              <span class="label">Situation Room</span>
+              <span class="accent-dot" aria-label="unread session result"></span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="users"></i>
+              <span class="label">Simulator</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="message-circle"></i>
+              <span class="label">Coach</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="book-open"></i>
+              <span class="label">Playbook</span>
+            </a>
+          </nav>
+
+          <div class="side-divider"></div>
+
+          <a class="know-link" href="#">
+            <span class="know-title">What I know about you</span>
+            <span class="know-sub">read the margins</span>
+          </a>
+
+          <div class="user-menu-wrap">
+            <div class="user-menu-trigger">
+              <span class="monogram-sm">AO</span>
+              <div class="user-id">
+                <span class="name">Adaeze Okafor</span>
+                <span class="role">Business Analyst</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- App main -->
+        <div class="app-main">
+
+          <!-- Main column -->
+          <div class="main-col with-rail">
+
+            <!-- Editorial banner -->
+            <div class="day-banner" style="max-width: 32ch;">
+              <div class="day-eyebrow">
+                <span>Day 38 · Week 6 · Monday, 30 June</span>
+              </div>
+              <p class="day-headline" style="margin: 0;">
+                This week: lead from the front.
+              </p>
+            </div>
+
+            <!-- Today's missions -->
+            <div style="margin-top: var(--space-5);">
+              <div class="eyebrow" style="margin-bottom: 18px;">Today's missions</div>
+              <div class="mission-grid">
+                <article class="mission" aria-label="Mission — facilitate workshop">
+                  <div class="mission-eyebrow">Today — Day 38</div>
+                  <h3 class="mission-title">Facilitate a requirements workshop</h3>
+                  <p class="mission-desc">Thirty minutes. Five requirements. One skeptical lead dev, two latecomers. Run it the way you'll run the real one on Thursday.</p>
+                  <div class="mission-foot">
+                    <span class="time"><i data-lucide="clock"></i>30 min</span>
+                    <button class="btn btn-primary" type="button">Begin <i data-lucide="arrow-right"></i></button>
+                  </div>
+                </article>
+
+                <article class="mission" aria-label="Mission — first BRD section">
+                  <div class="mission-eyebrow">Today — Day 38</div>
+                  <h3 class="mission-title">Write your first BRD section for review</h3>
+                  <p class="mission-desc">Pick the scope section. Forty-five minutes, against the regulatory worked example. Coach reads it back to you with the margins.</p>
+                  <div class="mission-foot">
+                    <span class="time"><i data-lucide="clock"></i>45 min</span>
+                    <button class="btn btn-primary" type="button">Begin <i data-lucide="arrow-right"></i></button>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Situation Room surface -->
+            <div class="sr-surface" aria-label="Situation Room — entry">
+              <div class="sr-eyebrow">Situation room</div>
+              <div class="sr-tabs" role="tablist">
+                <span class="sr-tab is-active" role="tab" aria-selected="true">I need help with this</span>
+                <span class="sr-tab" role="tab">Is this normal?</span>
+                <span class="sr-tab" role="tab">I just did something</span>
+              </div>
+              <input class="sr-input" type="text" placeholder="Describe what's happening. Anonymise as you go." aria-label="Describe your situation">
+              <div class="sr-foot">
+                <span class="hint">
+                  <i data-lucide="shield"></i>
+                  Use roles, not names. Coach won't see the original.
+                </span>
+                <span><span class="key">↵</span></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right rail -->
+          <aside class="right-rail" aria-label="Context">
+
+            <!-- Week at a glance -->
+            <section class="rail-section">
+              <span class="rail-eyebrow">Week at a glance</span>
+              <div class="week-list" style="margin-top: 4px;">
+                <div class="week-row is-done">
+                  <span class="day">MON</span>
+                  <span class="row-title">Map the workshop room</span>
+                  <i class="check" data-lucide="check"></i>
+                </div>
+                <div class="week-row is-done">
+                  <span class="day">TUE</span>
+                  <span class="row-title">Stakeholder pre-reads</span>
+                  <i class="check" data-lucide="check"></i>
+                </div>
+                <div class="week-row is-today">
+                  <span class="day">WED</span>
+                  <span class="row-title">Facilitate · write BRD</span>
+                </div>
+                <div class="week-row is-future">
+                  <span class="day">THU</span>
+                  <span class="row-title">Real workshop · debrief</span>
+                </div>
+                <div class="week-row is-future">
+                  <span class="day">FRI</span>
+                  <span class="row-title">Hand off the BRD draft</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- What I know -->
+            <section class="rail-section">
+              <span class="rail-eyebrow">What I know</span>
+              <div class="know-list" style="margin-top: 4px;">
+                <p class="know-item">You haven't run a workshop bigger than four people before.</p>
+                <p class="know-item">Marcus, your compliance lead, asks late questions that come back as emails.</p>
+                <p class="know-item">You read better in the morning. Most of your reflections are written before 9am.</p>
+              </div>
+              <a class="see-all" href="#">
+                See all
+                <i data-lucide="arrow-right"></i>
+              </a>
+            </section>
+
+            <!-- Recent -->
+            <section class="rail-section">
+              <span class="rail-eyebrow">Recent</span>
+              <div class="recent-list" style="margin-top: 4px;">
+                <div class="recent-row">
+                  <span class="recent-label">Sim</span>
+                  <span class="recent-text">
+                    The hostile lead dev
+                    <span class="recent-meta">Yellow flag · 2 days ago</span>
+                  </span>
+                </div>
+                <div class="recent-row">
+                  <span class="recent-label">Room</span>
+                  <span class="recent-text">
+                    Sponsor changed scope mid-standup
+                    <span class="recent-meta">Wednesday 2:14pm</span>
+                  </span>
+                </div>
+                <div class="recent-row">
+                  <span class="recent-label">Mission</span>
+                  <span class="recent-text">
+                    Run your first 1:1 with intent
+                    <span class="recent-meta">Completed · Day 36</span>
+                  </span>
+                </div>
+              </div>
+            </section>
+
+          </aside>
+
+        </div>
+      </div>
+    </div>
+
+    <p class="state-note" style="margin-top: 28px;">
+      The Situation Room surface and the mission cards are competing for attention on purpose — both are how the user makes progress. The right rail differentiates days subtly: a paper-2 fill on today, hairlines elsewhere. No badges shouting, no streak in the chrome.
+    </p>
+
+  </section>
+
+
+  <!-- =========================== FOOTER =========================== -->
+  <footer class="artifact-foot">
+    <div class="mono">
+      <span>FirstNinety Daily Home</span>
+      <span>Surface A4 · v1.0</span>
+      <span>Built on Design System Reference v1.0 + Component Library v1.0</span>
+      <span>Updated 24 May 2026</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  if (window.lucide) { lucide.createIcons(); }
+</script>
+
+
+
+</body></html>

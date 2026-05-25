@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety Simulator — Active Session &amp; Debrief</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("f9825140-f3e6-4a2e-aca0-f9de8068338d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("49957248-2fd9-4eb8-9132-00e222bfdfb3") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("fd64cbbc-55ca-449d-9da5-16e81109aa11") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("642c866f-8469-4036-9814-0b2f95c5e96f") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("56bfcf04-8b80-44df-8e14-e12a0aa4a754") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("1ddc7849-318f-4dad-8da3-79693c07cb7a") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("a54b68ac-1e43-47f1-b0cd-6d3b804f85e9") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4b13b45f-953f-4377-b501-6d54423d8e56") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("db45f9af-933d-425f-84f5-e2250044c5ff") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("078f5a93-63fd-4b86-801b-40f6e1347520") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bc1c83b7-d437-43c9-aeb4-7b8dca6b81b5") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("73b64506-a589-41b0-95a2-4c19fc777fdc") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("a54b68ac-1e43-47f1-b0cd-6d3b804f85e9") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4b13b45f-953f-4377-b501-6d54423d8e56") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("db45f9af-933d-425f-84f5-e2250044c5ff") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("078f5a93-63fd-4b86-801b-40f6e1347520") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bc1c83b7-d437-43c9-aeb4-7b8dca6b81b5") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("73b64506-a589-41b0-95a2-4c19fc777fdc") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8cbd25f4-3a3d-470e-92ad-dde3ddf4a315") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e71b656b-d42d-4c81-b811-1430cbea2e04") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("361b8b31-890e-4283-8b80-aad7e2e7accd") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("aa393dfb-f2a2-492c-bde3-d2b7feec5f27") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0c1fb87f-d965-451c-983a-5205eaddd98a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("002980da-0d36-49f7-aa63-feeec9cf56e4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4fba70ee-1b00-4676-9345-03c836bd7f99") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8cbd25f4-3a3d-470e-92ad-dde3ddf4a315") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e71b656b-d42d-4c81-b811-1430cbea2e04") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("361b8b31-890e-4283-8b80-aad7e2e7accd") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("aa393dfb-f2a2-492c-bde3-d2b7feec5f27") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("0c1fb87f-d965-451c-983a-5205eaddd98a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("002980da-0d36-49f7-aa63-feeec9cf56e4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4fba70ee-1b00-4676-9345-03c836bd7f99") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8cbd25f4-3a3d-470e-92ad-dde3ddf4a315") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("e71b656b-d42d-4c81-b811-1430cbea2e04") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("361b8b31-890e-4283-8b80-aad7e2e7accd") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("aa393dfb-f2a2-492c-bde3-d2b7feec5f27") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("0c1fb87f-d965-451c-983a-5205eaddd98a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("002980da-0d36-49f7-aa63-feeec9cf56e4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("4fba70ee-1b00-4676-9345-03c836bd7f99") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8cbd25f4-3a3d-470e-92ad-dde3ddf4a315") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("e71b656b-d42d-4c81-b811-1430cbea2e04") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("361b8b31-890e-4283-8b80-aad7e2e7accd") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("aa393dfb-f2a2-492c-bde3-d2b7feec5f27") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("0c1fb87f-d965-451c-983a-5205eaddd98a") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("002980da-0d36-49f7-aa63-feeec9cf56e4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("4fba70ee-1b00-4676-9345-03c836bd7f99") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="25d7a23c-3c01-4dd2-967a-ae5e24767bc1"></script>
+
+<style>
+  :root {
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --success: #3E6D52;
+    --warn:    #A66A1F;
+    --danger:  #9B2C2C;
+
+    /* Persona palette — mirrors Simulator Brief Screen */
+    --persona-slate: #6F7A86;
+    --persona-moss:  #6C7560;
+    --persona-ochre: #B08A4A;
+    --persona-rose:  #B58383;
+    --persona-teal:  #3F6B6F;
+    --persona-plum:  #7A5F75;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; background: none; border: 0; padding: 0; color: inherit; cursor: pointer; }
+
+  /* ========= TYPE TOKENS ========= */
+  .t-h1 {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 144;
+    font-weight: 400;
+    font-size: clamp(40px, 5.6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .t-h2 { font-family:'Fraunces',serif; font-weight:400; font-size:36px; line-height:1.2; letter-spacing:-0.015em; text-wrap: balance; margin: 0; }
+  .t-bodyL { font-family:'Inter',sans-serif; font-weight:400; font-size:20px; line-height:1.6; }
+  .t-body  { font-family:'Inter',sans-serif; font-weight:400; font-size:17px; line-height:1.65; }
+  .t-bodyS { font-family:'Inter',sans-serif; font-weight:400; font-size:15px; line-height:1.55; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--mute);
+  }
+  .mono { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--mute-2); letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* ========= PAGE SHELL ========= */
+  .surface {
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .surface-720 { max-width: 784px; }   /* 720 + 32 gutters */
+  .surface-880 { max-width: 944px; }   /* 880 + 32 gutters */
+
+  /* Demo divider between states */
+  .state-label {
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    color: var(--mute-2); letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 16px 32px;
+    border-top: 1px solid var(--paper-3);
+    border-bottom: 1px solid var(--paper-3);
+    background: var(--paper);
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin: 0 auto;
+  }
+  .state-label .max-w { color: var(--mute); }
+  .state-label-720 { max-width: 784px; }
+  .state-label-880 { max-width: 944px; }
+
+  /* ============================================================== */
+  /* STATE 1 — ACTIVE SESSION                                        */
+  /* ============================================================== */
+
+  .active-stage {
+    padding: var(--space-6) 32px var(--space-7);
+  }
+
+  /* Header strip */
+  .session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--paper-3);
+    margin-bottom: var(--space-5);
+  }
+  .session-header .eyebrow-strip {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .session-header .eyebrow-strip .turn-meta {
+    color: var(--mute);
+    font-weight: 500;
+    margin-left: 8px;
+    letter-spacing: 0.10em;
+  }
+  .exit-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--mute);
+    letter-spacing: 0.01em;
+    transition: color 120ms var(--ease);
+  }
+  .exit-link .lucide { width: 14px; height: 14px; stroke-width: 1.5; }
+  .exit-link:hover { color: var(--ink); }
+  .exit-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 2px; }
+
+  /* Conversation column — editorial, not chat */
+  .conversation {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+  }
+
+  .turn {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .turn .monogram {
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-variation-settings: 'opsz' 72;
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: var(--paper);
+    user-select: none;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .turn .body { min-width: 0; }
+  .turn .speaker {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .turn .speaker .aside {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--mute);
+    letter-spacing: 0;
+    margin-left: 6px;
+  }
+  .turn .message {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    max-width: 62ch;
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .turn .message em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Input area at the bottom — quieter than Situation Room signature */
+  .reply-wrap {
+    position: relative;
+    margin-top: var(--space-2);
+  }
+  .reply-textarea {
+    display: block;
+    width: 100%;
+    min-height: 120px;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 10px;
+    padding: 18px 22px;
+    padding-right: 64px;
+    padding-bottom: 54px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    resize: vertical;
+    transition: border-color 120ms var(--ease);
+  }
+  .reply-textarea::placeholder {
+    color: var(--mute);
+    font-style: italic;
+  }
+  .reply-textarea:focus {
+    outline: none;
+    border-color: var(--mute-2);
+  }
+  .reply-textarea:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+  .reply-submit {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--mute-2);
+    transition: color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .reply-submit .lucide { width: 18px; height: 18px; stroke-width: 1.6; }
+  .reply-submit:hover { color: var(--ink); background: var(--paper-3); }
+  .reply-submit:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 2px;
+    color: var(--ink);
+  }
+  .reply-submit .kbd {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-2);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 160ms var(--ease);
+    pointer-events: none;
+  }
+  .reply-submit:hover .kbd,
+  .reply-wrap:focus-within .reply-submit .kbd { opacity: 1; }
+
+  .reply-caption {
+    margin: 14px 0 0;
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--mute);
+  }
+  .reply-caption .kbd-inline {
+    font-family: 'Geist Mono', monospace;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--mute);
+    padding: 1px 5px;
+    border: 1px solid var(--paper-3);
+    border-radius: 3px;
+    margin: 0 1px;
+  }
+
+  /* ============================================================== */
+  /* STATE 2 — DEBRIEF                                               */
+  /* ============================================================== */
+
+  .debrief-stage {
+    padding: var(--space-6) 32px var(--space-8);
+  }
+
+  .debrief-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: var(--space-4);
+  }
+  .debrief-eyebrow .sub {
+    color: var(--mute);
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  /* The single load-bearing line */
+  .debrief-headline {
+    margin: 0 0 var(--space-4);
+    max-width: 18ch;
+  }
+
+  .debrief-context {
+    max-width: 62ch;
+    margin: 0 0 var(--space-6);
+    color: var(--ink);
+  }
+  .debrief-context strong { font-weight: 600; }
+
+  /* Flag sections */
+  .flag-section { margin: 0 0 var(--space-5); }
+
+  .flag-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: var(--space-3);
+  }
+  .flag-header .lucide { width: 14px; height: 14px; stroke-width: 1.8; }
+  .flag-header .dot { width: 8px; height: 8px; border-radius: 999px; display: inline-block; }
+
+  .flag-green  { background: rgba(62,109,82,0.06); border-color: rgba(62,109,82,0.22); color: var(--success); }
+  .flag-green  .lucide { color: var(--success); }
+  .flag-green  .dot { background: var(--success); }
+
+  .flag-yellow { background: rgba(166,106,31,0.07); border-color: rgba(166,106,31,0.24); color: var(--warn); }
+  .flag-yellow .lucide { color: var(--warn); }
+  .flag-yellow .dot { background: var(--warn); }
+
+  .flag-red    { background: rgba(155,44,44,0.06); border-color: rgba(155,44,44,0.22); color: var(--danger); }
+  .flag-red    .lucide { color: var(--danger); }
+  .flag-red    .dot { background: var(--danger); }
+
+  .flag-prose {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+    max-width: 62ch;
+    margin: 0;
+    padding: 0;
+  }
+  .flag-prose p {
+    margin: 0;
+    color: var(--ink);
+  }
+  .flag-prose p .num {
+    font-family: 'Geist Mono', monospace;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--mute-2);
+    letter-spacing: 0.02em;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  /* Editorial paragraph: "What this scenario rehearses for" */
+  .rehearses {
+    margin: var(--space-6) 0 var(--space-5);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--paper-3);
+  }
+  .rehearses .eyebrow { display: block; margin-bottom: var(--space-2); }
+  .rehearses p {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 62ch;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* Whats next */
+  .whats-next .eyebrow { display: block; margin-bottom: var(--space-3); }
+  .next-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .next-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    transition: border-color 120ms var(--ease), background-color 120ms var(--ease), transform 160ms var(--ease);
+  }
+  .next-card .label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .next-card .lucide {
+    width: 16px; height: 16px; stroke-width: 1.5;
+    color: var(--mute);
+    flex-shrink: 0;
+    transition: color 120ms var(--ease), transform 120ms var(--ease);
+  }
+  .next-card:hover {
+    border-color: var(--mute-2);
+  }
+  .next-card:hover .lucide { color: var(--ink); transform: translateX(3px); }
+  .next-card:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 2px;
+  }
+
+  /* Ghost button — "Mark debrief read" */
+  .ghost-btn {
+    margin-top: var(--space-6);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    min-height: 44px;
+    background: transparent;
+    color: var(--mute);
+    border: 1px solid var(--paper-3);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 120ms var(--ease), border-color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .ghost-btn .lucide { width: 14px; height: 14px; stroke-width: 1.8; }
+  .ghost-btn:hover { color: var(--ink); border-color: var(--ink); }
+  .ghost-btn:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 2px;
+  }
+
+  /* ========= Reduced motion ========= */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .session-header { flex-wrap: wrap; }
+    .turn { grid-template-columns: 40px 1fr; gap: 14px; }
+    .turn .monogram { width: 40px; height: 40px; font-size: 14px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ====================================================================== -->
+<!-- STATE 1 — ACTIVE SESSION                                                -->
+<!-- ====================================================================== -->
+<div class="state-label state-label-880">
+  <span>State 1 — Active session in progress</span>
+  <span class="max-w">max-width 880px · light mode</span>
+</div>
+
+<section class="surface surface-880 active-stage" data-screen-label="Simulator — Active session" aria-labelledby="active-title">
+  <h2 id="active-title" style="position:absolute; left:-9999px;">Active session — The Hostile Lead Dev</h2>
+
+  <!-- Header strip -->
+  <div class="session-header">
+    <div class="eyebrow-strip">
+      BA — The Hostile Lead Dev<span class="turn-meta">Turn 4 of ~12</span>
+    </div>
+    <a href="#" class="exit-link" aria-label="Exit scenario">
+      <i data-lucide="volume-x"></i>
+      <span>Exit scenario</span>
+    </a>
+  </div>
+
+  <!-- Conversation -->
+  <div class="conversation" role="log" aria-label="Workshop conversation">
+
+    <!-- Sam -->
+    <article class="turn">
+      <span class="monogram" style="background: var(--persona-slate);" aria-hidden="true">SP</span>
+      <div class="body">
+        <p class="speaker">Sam Palmer</p>
+        <p class="message">"Look, I've already built the system. Can we just walk through what's there?"</p>
+      </div>
+    </article>
+
+    <!-- You -->
+    <article class="turn">
+      <span class="monogram" style="background: var(--persona-teal);" aria-hidden="true">YO</span>
+      <div class="body">
+        <p class="speaker">You</p>
+        <p class="message">"We can — but first I need to know if the existing system covers what Priya actually needs. Priya, when a customer comes in today, what's the first thing that frustrates them?"</p>
+      </div>
+    </article>
+
+    <!-- Priya -->
+    <article class="turn">
+      <span class="monogram" style="background: var(--persona-rose);" aria-hidden="true">PR</span>
+      <div class="body">
+        <p class="speaker">Priya Rao</p>
+        <p class="message">"Oh, well. There's a lot. I think it would help if you just talked to some customers and… you know, figured it out?"</p>
+      </div>
+    </article>
+
+    <!-- Marcus -->
+    <article class="turn">
+      <span class="monogram" style="background: var(--persona-ochre);" aria-hidden="true">MK</span>
+      <div class="body">
+        <p class="speaker">Marcus Klein <span class="aside">— suddenly looks up from his laptop</span></p>
+        <p class="message">"Before we go further — what jurisdiction is this portal serving? Because if it's not UK-only there are residency questions."</p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Input -->
+  <div class="reply-wrap">
+    <label for="reply-input" style="position:absolute; left:-9999px;">What do you say next?</label>
+    <textarea id="reply-input" class="reply-textarea" rows="3" placeholder="What do you say next?" spellcheck="true"></textarea>
+    <button class="reply-submit" type="button" id="reply-submit" aria-label="Send reply">
+      <span class="kbd">⌘ + Enter</span>
+      <i data-lucide="arrow-right"></i>
+    </button>
+  </div>
+  <p class="reply-caption">You can pause and resume any time. <span class="kbd-inline">Cmd</span><span class="kbd-inline">K</span> to exit.</p>
+
+</section>
+
+<!-- ====================================================================== -->
+<!-- STATE 2 — DEBRIEF                                                       -->
+<!-- ====================================================================== -->
+<div class="state-label state-label-720">
+  <span>State 2 — Debrief</span>
+  <span class="max-w">max-width 720px · reading column</span>
+</div>
+
+<section class="surface surface-720 debrief-stage" data-screen-label="Simulator — Debrief" aria-labelledby="debrief-title">
+
+  <div class="debrief-eyebrow">
+    Debrief<span class="sub">The Hostile Lead Dev · 11 turns · 14 min</span>
+  </div>
+
+  <!-- The load-bearing line -->
+  <h1 id="debrief-title" class="t-h1 debrief-headline">You held the room. Just.</h1>
+
+  <!-- Context paragraph -->
+  <p class="t-body debrief-context">
+    You made it through eleven turns without losing the workshop. That's harder than it sounds for a first session. Three things to take away.
+  </p>
+
+  <!-- GREEN -->
+  <div class="flag-section">
+    <span class="flag-header flag-green">
+      <i data-lucide="check-circle-2"></i>
+      <span class="dot" aria-hidden="true"></span>
+      Green flags
+    </span>
+    <div class="flag-prose t-body">
+      <p><span class="num">1.</span>You redirected Sam's first objection without dismissing it. That's hard. Most new BAs either capitulate or get defensive.</p>
+      <p><span class="num">2.</span>You used an open question to pull Priya into specifics. She gave you something to work with.</p>
+    </div>
+  </div>
+
+  <!-- YELLOW -->
+  <div class="flag-section">
+    <span class="flag-header flag-yellow">
+      <i data-lucide="alert-triangle"></i>
+      <span class="dot" aria-hidden="true"></span>
+      Yellow flags
+    </span>
+    <div class="flag-prose t-body">
+      <p><span class="num">1.</span>When Marcus surfaced the compliance question on turn 4, you moved past it. In a real workshop that question will come back, often via email to your manager. Learn to land the compliance flag in the room.</p>
+      <p><span class="num">2.</span>You over-relied on Priya for direction. She doesn't have it. Your role is to draw it out, not wait for it.</p>
+    </div>
+  </div>
+
+  <!-- RED -->
+  <div class="flag-section">
+    <span class="flag-header flag-red">
+      <i data-lucide="x-circle"></i>
+      <span class="dot" aria-hidden="true"></span>
+      Not yet
+    </span>
+    <div class="flag-prose t-body">
+      <p><span class="num">1.</span>You didn't manage Sam's frustration — you just routed around it. That works once. Not twice.</p>
+    </div>
+  </div>
+
+  <!-- Rehearses -->
+  <div class="rehearses">
+    <span class="eyebrow">What this scenario rehearses for</span>
+    <p>This is the dynamic you'll meet in any requirements workshop where one stakeholder thinks the meeting is beneath them. The script doesn't change much. The personalities do.</p>
+  </div>
+
+  <!-- What's next -->
+  <div class="whats-next">
+    <span class="eyebrow">What's next</span>
+    <div class="next-cards">
+      <a href="#" class="next-card">
+        <span class="label">Replay this scenario</span>
+        <i data-lucide="rotate-ccw"></i>
+      </a>
+      <a href="#" class="next-card">
+        <span class="label">Read the Stakeholder Pushback playbook</span>
+        <i data-lucide="book-open"></i>
+      </a>
+      <a href="#" class="next-card">
+        <span class="label">Ask the Coach about your specific situation</span>
+        <i data-lucide="message-circle"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Ghost CTA -->
+  <button class="ghost-btn" type="button">
+    <i data-lucide="check"></i>
+    <span>Mark debrief read</span>
+  </button>
+
+</section>
+
+<div style="height: var(--space-7);"></div>
+
+<script>
+  if (window.lucide && lucide.createIcons) lucide.createIcons();
+
+  // Cmd-Enter on reply
+  const ta = document.getElementById('reply-input');
+  const sub = document.getElementById('reply-submit');
+  function nudge() {
+    sub.animate(
+      [{ transform: 'translateX(0)' }, { transform: 'translateX(4px)' }, { transform: 'translateX(0)' }],
+      { duration: 280, easing: 'cubic-bezier(0.32, 0.72, 0, 1)' }
+    );
+  }
+  if (ta) {
+    ta.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        nudge();
+      }
+    });
+  }
+  if (sub) sub.addEventListener('click', nudge);
+</script>
+
+
+
+</body></html>

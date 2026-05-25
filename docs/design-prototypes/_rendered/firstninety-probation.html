@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety — Probation: Activation &amp; Settings</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("c03f8d77-9ed9-4f4a-8ddf-861167934256") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("c0d50546-d47c-4c0a-aa0b-ee45be001452") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("a0d8a651-29c3-4958-8a66-d5f40abc6466") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("3dcb32e4-d901-4394-9973-dc22ef9e474c") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("f38a8555-c315-497e-af60-593c1aa664ff") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("cdc5451a-67d2-4fa7-991a-89c35e4a7a01") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("cf1c9c78-34cc-472e-a7c0-8eb722f8d09a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f318a053-33a7-47c0-b5d0-b8fa8aec64cd") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("cd802715-4dc9-4270-9a80-2d61cb470f05") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0f2da85c-8d4a-489f-bd45-bd8fca049780") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("67acaa53-011a-4449-899e-b27e03032b19") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("3cbf82d7-9f4a-491b-8cc2-5bcbc5bca27a") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("cf1c9c78-34cc-472e-a7c0-8eb722f8d09a") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f318a053-33a7-47c0-b5d0-b8fa8aec64cd") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("cd802715-4dc9-4270-9a80-2d61cb470f05") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("0f2da85c-8d4a-489f-bd45-bd8fca049780") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("67acaa53-011a-4449-899e-b27e03032b19") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("3cbf82d7-9f4a-491b-8cc2-5bcbc5bca27a") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("baf8632c-627a-4913-a992-13b2b295a5c0") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0619188c-f191-47af-8268-1103965d472f") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("59706776-f6c9-482e-9720-bd93b05690a3") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("803e6880-f5d0-4da7-91bc-c725f0461ffc") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("04089ea0-0a33-4844-9a23-fa4e82d541d4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6317723c-5ab6-4ac4-9060-4bdae1042344") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6cda3670-4770-4460-9b57-8237df251281") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("baf8632c-627a-4913-a992-13b2b295a5c0") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("0619188c-f191-47af-8268-1103965d472f") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("59706776-f6c9-482e-9720-bd93b05690a3") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("803e6880-f5d0-4da7-91bc-c725f0461ffc") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("04089ea0-0a33-4844-9a23-fa4e82d541d4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6317723c-5ab6-4ac4-9060-4bdae1042344") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6cda3670-4770-4460-9b57-8237df251281") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("baf8632c-627a-4913-a992-13b2b295a5c0") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("0619188c-f191-47af-8268-1103965d472f") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("59706776-f6c9-482e-9720-bd93b05690a3") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("803e6880-f5d0-4da7-91bc-c725f0461ffc") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("04089ea0-0a33-4844-9a23-fa4e82d541d4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("6317723c-5ab6-4ac4-9060-4bdae1042344") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("6cda3670-4770-4460-9b57-8237df251281") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("baf8632c-627a-4913-a992-13b2b295a5c0") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("0619188c-f191-47af-8268-1103965d472f") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("59706776-f6c9-482e-9720-bd93b05690a3") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("803e6880-f5d0-4da7-91bc-c725f0461ffc") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("04089ea0-0a33-4844-9a23-fa4e82d541d4") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("6317723c-5ab6-4ac4-9060-4bdae1042344") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("6cda3670-4770-4460-9b57-8237df251281") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="f6206404-0d3e-4329-8974-2230bcd12596"></script>
+
+<style>
+  :root {
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --success: #3E6D52;
+    --warn: #A66A1F;
+    --danger: #9B2C2C;
+
+    --persona-slate: #6F7A86;
+    --persona-moss:  #6C7560;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--paper-2);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; }
+
+  .font-serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  .font-mono  { font-family: 'Geist Mono', ui-monospace, monospace; }
+
+  /* ---------- type ---------- */
+  .t-h1        { font-family:'Fraunces',serif; font-weight:400; font-size:44px; line-height:1.15; letter-spacing:-0.02em; text-wrap: balance; }
+  .t-h2        { font-family:'Fraunces',serif; font-weight:400; font-size:36px; line-height:1.2;  letter-spacing:-0.015em; text-wrap: balance; }
+  .t-h3-serif  { font-family:'Fraunces',serif; font-weight:400; font-size:26px; line-height:1.25; letter-spacing:-0.012em; }
+  .t-bodyL     { font-family:'Inter',sans-serif; font-weight:400; font-size:20px; line-height:1.55; }
+  .t-body      { font-family:'Inter',sans-serif; font-weight:400; font-size:17px; line-height:1.55; }
+  .t-bodyS     { font-family:'Inter',sans-serif; font-weight:400; font-size:15px; line-height:1.55; }
+  .t-caption   { font-family:'Inter',sans-serif; font-weight:500; font-size:13px; line-height:1.45; letter-spacing:0.02em; color: var(--mute); }
+  .t-fr-italic { font-family:'Fraunces',serif; font-style:italic; font-weight:400; letter-spacing:-0.005em; }
+
+  .eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:12px;
+    letter-spacing:0.08em; text-transform:uppercase; color: var(--mute);
+  }
+  .mono { font-family:'Geist Mono', monospace; font-size:12px; color: var(--mute); }
+  .mute { color: var(--mute); }
+  .mute-2 { color: var(--mute-2); }
+
+  /* ---------- artifact shell ---------- */
+  .page-shell { max-width: 1480px; margin: 0 auto; padding: 64px 48px 96px; }
+  .artifact-head { margin-bottom: 56px; }
+  .artifact-head .eyebrow { margin-bottom: 14px; }
+  .artifact-head h1 {
+    font-family:'Fraunces',serif; font-weight:400; font-size:48px; line-height:1.08;
+    letter-spacing:-0.02em; margin:0 0 18px; max-width: 22ch;
+  }
+  .artifact-head p {
+    font-family:'Inter',sans-serif; font-size:17px; line-height:1.55;
+    color: var(--mute); max-width: 64ch; margin: 0;
+  }
+  .artifact-head .meta-row { margin-top: 28px; display:flex; flex-wrap:wrap; gap: 24px; }
+  .artifact-head .meta-row > div { font-family:'Geist Mono',monospace; font-size:12px; }
+  .artifact-head .meta-row .k { color: var(--mute); }
+  .artifact-head .meta-row .v { color: var(--ink); margin-left: 6px; }
+
+  /* ---------- state block ---------- */
+  .state-block + .state-block { margin-top: var(--space-7); }
+  .state-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 24px; margin-bottom: var(--space-3);
+  }
+  .state-header .left {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  }
+  .state-header .num {
+    font-family:'Geist Mono',monospace; font-size:12px; color: var(--mute); letter-spacing:0.04em;
+  }
+  .state-header .title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:28px; line-height:1.2;
+    letter-spacing:-0.01em; color: var(--ink);
+    margin: 0;
+  }
+  .state-header .right {
+    font-family:'Geist Mono',monospace; font-size:12px; color: var(--mute);
+  }
+  .state-note {
+    font-family:'Inter',sans-serif; font-size:13px; line-height:1.55; color: var(--mute);
+    max-width: 72ch; margin: 0 0 24px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .state-note::before {
+    content:''; display:inline-block;
+    width: 24px; height: 1px; background: var(--mute-2);
+    margin-top: 10px; flex-shrink: 0;
+  }
+
+  /* ---------- frame ---------- */
+  .frame {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(14,17,22,0.04);
+    overflow: hidden;
+    position: relative;
+    width: 1320px;
+    max-width: 100%;
+  }
+  .frame-tall { min-height: 820px; }
+
+  /* ---------- chrome sidebar ---------- */
+  .app-shell { display: flex; min-height: 100%; }
+  .app-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--paper-3);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px 16px;
+    background: var(--paper);
+  }
+  .wordmark {
+    font-family:'Fraunces',serif; font-weight:600;
+    font-size: 22px; line-height:1; letter-spacing:-0.015em;
+    font-optical-sizing:auto; font-variation-settings:'opsz' 144;
+    display:inline-flex; align-items:baseline;
+    color: var(--ink); padding: 0 4px; margin-bottom: 28px;
+  }
+  .wordmark .nudge { display:inline-block; transform: translateY(-2px); }
+  .wordmark .first { font-style: italic; font-weight: 400; }
+  .wordmark .sep {
+    display: inline-block;
+    width: 0.34em; height: 0.34em;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 0.18em;
+    transform: translateY(-0.18em);
+  }
+  .wordmark .ninety { font-weight: 600; font-feature-settings: 'lnum' on; }
+
+  .nav-section { display: flex; flex-direction: column; gap: 2px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family:'Inter',sans-serif; font-weight: 500; font-size: 14px; line-height: 1.2;
+    color: var(--mute);
+    cursor: pointer;
+    transition: background-color 80ms var(--ease), color 80ms var(--ease);
+    min-height: 36px;
+  }
+  .nav-item:hover { color: var(--ink); background: rgba(231,224,210,0.5); }
+  .nav-item.is-active { color: var(--ink); background: var(--paper-3); }
+  .nav-item .lucide { width: 18px; height: 18px; stroke-width: 1.5; flex-shrink: 0; }
+  .nav-item .label { flex: 1; }
+
+  .side-divider { height: 1px; background: var(--paper-3); margin: 16px 4px; }
+
+  .know-link {
+    display: flex; flex-direction: column;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    gap: 2px;
+  }
+  .know-link:hover { background: rgba(231,224,210,0.5); }
+  .know-link .know-title {
+    font-family:'Inter',sans-serif; font-weight:500; font-size:14px; color: var(--ink);
+  }
+  .know-link .know-sub {
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size: 12px; color: var(--mute); letter-spacing: 0.005em;
+  }
+
+  .user-menu-wrap { margin-top: auto; padding-top: 12px; }
+  .user-menu-trigger {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .user-menu-trigger:hover { background: rgba(231,224,210,0.5); }
+  .monogram-sm {
+    width: 36px; height: 36px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family:'Fraunces',serif; font-weight: 400; font-size: 14px; color: var(--paper);
+    background: var(--persona-slate);
+    flex-shrink: 0;
+  }
+  .user-id { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .user-id .name { font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color: var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .user-id .role {
+    font-family:'Inter',sans-serif; font-weight:500; font-size:11px;
+    color: var(--mute); letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .user-id .role::before {
+    content:''; width: 2px; height: 10px; background: var(--persona-slate); border-radius: 1px;
+  }
+
+  /* ---------- main canvas ---------- */
+  .app-main {
+    flex: 1;
+    min-width: 0;
+    background: var(--paper);
+    display: flex;
+  }
+  .main-col {
+    flex: 1; min-width: 0;
+    padding: 56px 64px 80px;
+    display: flex; flex-direction: column;
+  }
+
+  /* ---------- daily banner (state 1) ---------- */
+  .day-banner { display: flex; flex-direction: column; gap: 14px; }
+  .day-banner .day-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:12px;
+    letter-spacing:0.08em; text-transform:uppercase;
+    color: var(--mute);
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  .day-banner .day-headline {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 30px; line-height: 1.25; letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 26ch;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 22px;
+    font-family:'Inter',sans-serif; font-weight: 500; font-size: 14px; line-height: 1;
+    border-radius: 4px;
+    cursor: pointer;
+    min-height: 44px;
+    border: 1px solid transparent;
+    transition: background-color 80ms var(--ease), border-color 80ms var(--ease), color 80ms var(--ease);
+    background: transparent; color: var(--ink);
+  }
+  .btn-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-primary:hover { background: #1B1F26; border-color: #1B1F26; }
+  .btn-primary .lucide { width: 14px; height: 14px; stroke-width: 1.75; }
+
+  .btn-ghost { color: var(--ink); border: 1px solid transparent; padding: 12px 16px; }
+  .btn-ghost:hover { background: var(--paper-2); }
+
+  .btn-sm {
+    padding: 8px 14px;
+    min-height: 36px;
+    font-size: 13px;
+  }
+
+  /* ---------- activation banner card (state 1) ---------- */
+  .invite {
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    gap: 14px;
+  }
+  .invite .invite-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--mute);
+  }
+  .invite h3 {
+    margin: 0;
+    max-width: 26ch;
+  }
+  .invite p.invite-body {
+    margin: 0;
+    color: var(--mute);
+    max-width: 56ch;
+  }
+  .invite-actions {
+    display: flex; align-items: center; gap: 12px;
+    margin-top: 10px;
+  }
+
+  /* ---------- mission card placeholder ---------- */
+  .mission-stub {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    min-height: 220px;
+  }
+  .mission-stub .mission-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .mission-stub .mission-title {
+    font-family:'Fraunces',serif; font-weight:400; font-size:26px; line-height:1.2;
+    letter-spacing:-0.01em; color: var(--ink);
+    margin: 0 0 12px;
+    max-width: 22ch;
+  }
+  .mission-stub .mission-desc {
+    font-family:'Inter',sans-serif; font-size:15px; line-height:1.55; color: var(--mute);
+    margin: 0 0 auto;
+    max-width: 36ch;
+  }
+  .mission-stub .mission-foot {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top: 28px;
+  }
+  .mission-stub .time {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family:'Inter',sans-serif; font-size:13px; color: var(--mute);
+    font-weight: 500;
+  }
+  .mission-stub .time .lucide { width: 14px; height: 14px; stroke-width: 1.5; }
+
+  /* Situation Room teaser stub */
+  .sr-teaser {
+    border-top: 1px solid var(--paper-3);
+    padding-top: 28px;
+    margin-top: var(--space-5);
+  }
+  .sr-teaser .sr-eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--mute);
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .sr-teaser .sr-line {
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size: 22px; line-height: 1.35; letter-spacing:-0.005em;
+    color: var(--mute);
+    display: inline-flex; align-items: baseline; gap: 10px;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms var(--ease), border-color 120ms var(--ease);
+  }
+  .sr-teaser .sr-line:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .sr-teaser .sr-line .arr {
+    font-family:'Inter',sans-serif; font-style: normal; font-size: 16px;
+  }
+
+  /* ---------- settings reading column (state 2/3) ---------- */
+  .reading-col { max-width: 720px; }
+
+  .settings-head { margin-bottom: var(--space-5); }
+  .settings-head .eyebrow { margin-bottom: 14px; }
+  .settings-head h1 {
+    margin: 0 0 var(--space-2);
+  }
+  .editorial-line {
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size: 22px; line-height: 1.4; letter-spacing:-0.005em;
+    color: var(--ink);
+    margin: 0;
+    max-width: 30ch;
+  }
+
+  /* editorial rows */
+  .ed-rows {
+    margin-top: var(--space-6);
+    border-top: 1px solid var(--paper-3);
+  }
+  .ed-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--paper-3);
+    align-items: start;
+    position: relative;
+  }
+  .ed-row .ed-body { min-width: 0; }
+  .ed-row .ed-label {
+    font-family:'Inter',sans-serif; font-weight:600; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color: var(--mute);
+    margin-bottom: 8px;
+  }
+  .ed-row .ed-text {
+    font-family:'Inter',sans-serif; font-size:16px; line-height:1.55;
+    color: var(--ink);
+  }
+  .ed-row .ed-text .ed-token {
+    color: var(--ink); font-weight: 500;
+    border-bottom: 1px dashed var(--mute-2);
+    padding-bottom: 1px;
+    cursor: pointer;
+    transition: border-color 120ms var(--ease);
+  }
+  .ed-row .ed-text .ed-token:hover { border-bottom-color: var(--ink); }
+  .ed-row .ed-aside {
+    display: flex; align-items: center; gap: 12px;
+    align-self: center;
+  }
+  .ed-row .ed-link {
+    font-family:'Inter',sans-serif; font-weight:500; font-size:13px;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 120ms var(--ease);
+  }
+  .ed-row:hover .ed-link { opacity: 1; }
+  /* Always-visible ed-link variant */
+  .ed-row .ed-link.is-persistent { opacity: 1; }
+
+  .ed-caption {
+    font-family:'Fraunces',serif; font-style:italic; font-weight:400;
+    font-size: 14px; line-height: 1.55; color: var(--mute);
+    margin-top: 10px;
+    max-width: 52ch;
+  }
+
+  /* inline number/date input revealed on click */
+  .inline-edit {
+    display: none;
+    margin-top: 14px;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .inline-edit.is-open { display: flex; }
+  .inline-field {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family:'Inter',sans-serif; font-size: 15px; line-height: 1.4;
+    color: var(--ink);
+    min-height: 40px;
+    transition: border-color 80ms var(--ease);
+  }
+  .inline-field:focus { outline: none; border-color: var(--ink); }
+  .inline-suffix {
+    font-family:'Inter',sans-serif; font-size:14px; color: var(--mute);
+  }
+  .inline-actions { display: inline-flex; gap: 6px; margin-left: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+    border: 1px solid var(--paper-3);
+    background: var(--paper);
+    cursor: pointer;
+    color: var(--ink);
+    transition: background-color 80ms var(--ease), border-color 80ms var(--ease);
+  }
+  .icon-btn:hover { background: var(--paper-2); }
+  .icon-btn.is-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .icon-btn.is-primary:hover { background: #1B1F26; }
+  .icon-btn .lucide { width: 16px; height: 16px; stroke-width: 1.75; }
+
+  /* closing editorial block */
+  .closing-note {
+    margin-top: var(--space-7);
+    font-family:'Inter',sans-serif; font-size:14px; line-height:1.6;
+    color: var(--mute);
+    max-width: 52ch;
+  }
+  .destructive-link {
+    margin-top: var(--space-6);
+    display: inline-flex; align-items: baseline; gap: 8px;
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+    font-size: 15px;
+    color: var(--mute);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms var(--ease), border-color 120ms var(--ease);
+  }
+  .destructive-link:hover { color: var(--danger); border-bottom-color: var(--danger); }
+
+  /* State 3 — empty state */
+  .empty-prompt {
+    font-family:'Inter',sans-serif; font-size: 20px; line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    max-width: 38ch;
+  }
+  .empty-prompt em {
+    font-family:'Fraunces',serif; font-style: italic; font-weight: 400;
+  }
+  .chip-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin-top: 18px;
+  }
+  .chip {
+    display: inline-flex; align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--paper-3);
+    background: var(--paper);
+    font-family:'Inter',sans-serif; font-size:13px; font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background-color 80ms var(--ease), border-color 80ms var(--ease);
+  }
+  .chip:hover { background: var(--paper-2); border-color: var(--mute-2); }
+  .chip.is-mute { color: var(--mute); }
+
+  /* ---------- modal ---------- */
+  .modal-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(14,17,22,0.32);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 10;
+    padding: 24px;
+  }
+  .modal-backdrop.is-open { display: flex; }
+  .modal {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 10px;
+    padding: 28px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(14,17,22,0.12);
+  }
+  .modal h4 {
+    font-family:'Fraunces',serif; font-weight:400; font-size:24px; line-height:1.2;
+    letter-spacing:-0.01em; color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .modal p {
+    font-family:'Inter',sans-serif; font-size:14px; line-height:1.55;
+    color: var(--mute);
+    margin: 0 0 22px;
+  }
+  .modal .modal-actions {
+    display: flex; justify-content: flex-end; gap: 8px;
+  }
+  .btn-danger {
+    background: var(--danger); color: var(--paper); border-color: var(--danger);
+  }
+  .btn-danger:hover { background: #832525; border-color: #832525; }
+
+  /* ---------- artifact foot ---------- */
+  .artifact-foot {
+    margin-top: var(--space-7);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--paper-3);
+  }
+  .artifact-foot .mono { display:flex; gap: 32px; flex-wrap: wrap; color: var(--mute); }
+
+  /* responsive */
+  @media (max-width: 1400px) { .frame { width: 100%; } }
+  @media (max-width: 1080px) {
+    .app-sidebar { display: none; }
+    .main-col { padding: 36px 32px 56px; }
+  }
+  @media (max-width: 640px) {
+    .page-shell { padding: 36px 20px 64px; }
+    .ed-row { grid-template-columns: 1fr; }
+    .ed-row .ed-aside { justify-content: flex-start; }
+    .invite { padding: 24px; }
+    .invite-actions { flex-wrap: wrap; }
+  }
+
+</style>
+</head>
+
+<body>
+
+<main class="page-shell">
+
+  <!-- =========================== HEADER =========================== -->
+  <header class="artifact-head">
+    <div class="eyebrow">FirstNinety / Probation · Activation &amp; Settings</div>
+    <h1>Probation Mode — invitation, not interruption.</h1>
+    <p>
+      Three quiet moments. The day FirstNinety notices a probation review is three weeks away and asks, in passing, whether to focus the work. The settings page where the date lives, edited by hovering a sentence — not by filling a form. And the empty version of that page for the user whose role doesn't have a probation review at all.
+    </p>
+    <div class="meta-row">
+      <div><span class="k">Surface</span><span class="v">Home banner + Settings → Probation</span></div>
+      <div><span class="k">References</span><span class="v">Design Brief v1.0, PRD v1.7 §6.6 &amp; §7.5</span></div>
+      <div><span class="k">Companion</span><span class="v">A4 Daily Home</span></div>
+      <div><span class="k">Tone</span><span class="v">editorial · calm · no coral</span></div>
+    </div>
+  </header>
+
+
+  <!-- =========================== STATE 1 — ACTIVATION BANNER =========================== -->
+  <section class="state-block" data-screen-label="01 Activation banner — Day 70">
+
+    <div class="state-header">
+      <div class="left">
+        <span class="num">STATE 01</span>
+        <h2 class="title">Activation banner on Daily Home.</h2>
+      </div>
+      <div class="right">Day 70 · 21 days before review</div>
+    </div>
+
+    <p class="state-note">
+      The banner sits in line below the day's editorial. No coral, no exclamation. It's an offer — switch on, or carry on. The rest of the page goes on existing underneath it; the day's mission and the Situation Room teaser do not move.
+    </p>
+
+    <div class="frame frame-tall">
+
+      <div class="app-shell">
+
+        <!-- Chrome sidebar -->
+        <aside class="app-sidebar" aria-label="Primary navigation">
+          <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+
+          <nav class="nav-section" aria-label="Primary">
+            <a class="nav-item is-active" href="#"><i data-lucide="home"></i><span class="label">Home</span></a>
+            <a class="nav-item" href="#"><i data-lucide="target"></i><span class="label">Mission Track</span></a>
+            <a class="nav-item" href="#"><i data-lucide="radio"></i><span class="label">Situation Room</span></a>
+            <a class="nav-item" href="#"><i data-lucide="users"></i><span class="label">Simulator</span></a>
+            <a class="nav-item" href="#"><i data-lucide="message-circle"></i><span class="label">Coach</span></a>
+            <a class="nav-item" href="#"><i data-lucide="book-open"></i><span class="label">Playbook</span></a>
+          </nav>
+
+          <div class="side-divider"></div>
+
+          <a class="know-link" href="#">
+            <span class="know-title">What I know about you</span>
+            <span class="know-sub">read the margins</span>
+          </a>
+
+          <div class="user-menu-wrap">
+            <div class="user-menu-trigger">
+              <span class="monogram-sm">AO</span>
+              <div class="user-id">
+                <span class="name">Adaeze Okafor</span>
+                <span class="role">Business Analyst</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main canvas -->
+        <div class="app-main">
+          <div class="main-col" style="max-width: 1080px;">
+
+            <!-- Day banner (standard week banner) -->
+            <div class="day-banner">
+              <div class="day-eyebrow">
+                <span>Day 70 · Tuesday, 2 August</span>
+              </div>
+              <p class="day-headline">
+                This week: hold the room when it pulls in two directions.
+              </p>
+            </div>
+
+            <!-- Activation invitation banner -->
+            <div style="height: 36px;" aria-hidden="true"></div>
+            <div class="invite" role="region" aria-label="Probation Mode invitation">
+              <span class="invite-eyebrow">21 days to your probation review</span>
+              <h3 class="t-h3-serif">Want to switch on Probation Mode?</h3>
+              <p class="invite-body t-bodyL">
+                For the next three weeks, FirstNinety will sharpen everything around the review — missions, scenarios, the Coach. You can switch it off any time.
+              </p>
+              <div class="invite-actions">
+                <button class="btn btn-primary" type="button">Switch on</button>
+                <button class="btn btn-ghost" type="button">Not yet</button>
+              </div>
+            </div>
+
+            <!-- Mission card placeholder (the day continues) -->
+            <div style="margin-top: var(--space-6);">
+              <div class="eyebrow" style="margin-bottom: 18px;">Today's mission</div>
+              <div style="max-width: 560px;">
+                <article class="mission-stub" aria-label="Today's mission (placeholder)">
+                  <div class="mission-eyebrow">Today — Day 70</div>
+                  <h3 class="mission-title">Run the steering committee read-out</h3>
+                  <p class="mission-desc">Fifteen minutes. Three slides, one ask. Practice the open before the room opens.</p>
+                  <div class="mission-foot">
+                    <span class="time"><i data-lucide="clock"></i>15 min</span>
+                    <button class="btn btn-primary" type="button">Begin <i data-lucide="arrow-right"></i></button>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <!-- Situation Room teaser -->
+            <div class="sr-teaser">
+              <span class="sr-eyebrow">Situation room</span>
+              <div>
+                <a class="sr-line" href="#">
+                  <span>Something happening you need help with?</span>
+                  <span class="arr" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+
+            <div style="flex:1; min-height: var(--space-5);" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="state-note" style="margin-top: 28px;">
+      The banner uses <span class="mono" style="color:var(--ink)">--paper-2</span> on <span class="mono" style="color:var(--ink)">--paper</span> — a tonal step, not an alert. Primary action filled, secondary as ghost. No icon, no progress bar, no coral. It reads as a paragraph that happens to have buttons.
+    </p>
+
+  </section>
+
+
+  <!-- =========================== STATE 2 — SETTINGS / PROBATION (date set) =========================== -->
+  <section class="state-block" data-screen-label="02 Settings — review date set, mode not active">
+
+    <div class="state-header">
+      <div class="left">
+        <span class="num">STATE 02</span>
+        <h2 class="title">Settings → Probation, review date set.</h2>
+      </div>
+      <div class="right">Day 49 · review still 28 days away</div>
+    </div>
+
+    <p class="state-note">
+      Editorial, not a form. The facts are a column you can read top to bottom. Each row has a quiet edit affordance — a dashed underline, a hover-link — instead of always-on input chrome. The page tells you what's going to happen, then gets out of your way.
+    </p>
+
+    <div class="frame frame-tall" id="state2-frame" style="position: relative;">
+
+      <div class="app-shell">
+
+        <!-- Chrome sidebar — Settings active -->
+        <aside class="app-sidebar" aria-label="Primary navigation">
+          <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+
+          <nav class="nav-section" aria-label="Primary">
+            <a class="nav-item" href="#"><i data-lucide="home"></i><span class="label">Home</span></a>
+            <a class="nav-item" href="#"><i data-lucide="target"></i><span class="label">Mission Track</span></a>
+            <a class="nav-item" href="#"><i data-lucide="radio"></i><span class="label">Situation Room</span></a>
+            <a class="nav-item" href="#"><i data-lucide="users"></i><span class="label">Simulator</span></a>
+            <a class="nav-item" href="#"><i data-lucide="message-circle"></i><span class="label">Coach</span></a>
+            <a class="nav-item" href="#"><i data-lucide="book-open"></i><span class="label">Playbook</span></a>
+          </nav>
+
+          <div class="side-divider"></div>
+
+          <a class="know-link" href="#">
+            <span class="know-title">What I know about you</span>
+            <span class="know-sub">read the margins</span>
+          </a>
+
+          <div class="user-menu-wrap">
+            <div class="user-menu-trigger">
+              <span class="monogram-sm">AO</span>
+              <div class="user-id">
+                <span class="name">Adaeze Okafor</span>
+                <span class="role">Business Analyst</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main canvas — reading column -->
+        <div class="app-main">
+          <div class="main-col">
+            <div class="reading-col">
+
+              <div class="settings-head">
+                <div class="eyebrow">Settings → Probation</div>
+                <h1 class="t-h1">Your probation review.</h1>
+                <p class="editorial-line">
+                  On Tuesday, 23 August. That's 28 days away.
+                </p>
+              </div>
+
+              <!-- Editorial rows -->
+              <div class="ed-rows">
+
+                <!-- Row 1 — window length -->
+                <div class="ed-row" data-row="window">
+                  <div class="ed-body">
+                    <div class="ed-label">Window length</div>
+                    <div class="ed-text">
+                      Probation Mode will activate
+                      <span class="ed-token" data-toggle="window">21 days</span>
+                      before your review.
+                    </div>
+                    <div class="inline-edit" data-edit="window">
+                      <input class="inline-field" type="number" min="7" max="90" value="21" style="width: 88px;" aria-label="Days before review">
+                      <span class="inline-suffix">days before review</span>
+                      <div class="inline-actions">
+                        <button class="icon-btn is-primary" type="button" data-confirm="window" aria-label="Save"><i data-lucide="check"></i></button>
+                        <button class="icon-btn" type="button" data-cancel="window" aria-label="Cancel"><i data-lucide="x"></i></button>
+                      </div>
+                      <div class="ed-caption" style="flex-basis: 100%; margin-top: 4px;">
+                        Minimum 7 days, maximum 90 days. Adjust if your probation is shorter or longer than usual.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ed-aside">
+                    <a class="ed-link" data-toggle="window">Change</a>
+                  </div>
+                </div>
+
+                <!-- Row 2 — review date -->
+                <div class="ed-row" data-row="date">
+                  <div class="ed-body">
+                    <div class="ed-label">Review date</div>
+                    <div class="ed-text">
+                      <span class="ed-token" data-toggle="date">Tuesday, 23 August</span>. You can change this if it shifts.
+                    </div>
+                    <div class="inline-edit" data-edit="date">
+                      <input class="inline-field" type="date" value="2025-08-23" aria-label="Review date">
+                      <div class="inline-actions">
+                        <button class="icon-btn is-primary" type="button" data-confirm="date" aria-label="Save"><i data-lucide="check"></i></button>
+                        <button class="icon-btn" type="button" data-cancel="date" aria-label="Cancel"><i data-lucide="x"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ed-aside">
+                    <a class="ed-link" data-toggle="date">Edit date</a>
+                  </div>
+                </div>
+
+                <!-- Row 3 — Probation Mode toggle -->
+                <div class="ed-row" data-row="mode">
+                  <div class="ed-body">
+                    <div class="ed-label">Probation Mode</div>
+                    <div class="ed-text">
+                      Not yet active. Will activate automatically on <span style="font-weight:500;">2 August</span>, or you can switch it on now.
+                    </div>
+                  </div>
+                  <div class="ed-aside">
+                    <button class="btn btn-ghost btn-sm" type="button" style="border: 1px solid var(--paper-3);">Switch on now</button>
+                  </div>
+                </div>
+
+              </div>
+
+              <p class="closing-note">
+                FirstNinety will deactivate Probation Mode automatically on the date of your review. You'll be asked how it went a day after.
+              </p>
+
+              <a class="destructive-link" id="remove-trigger">
+                Remove my probation review date <span style="font-style:normal;">→</span>
+              </a>
+
+              <div style="height: var(--space-5);" aria-hidden="true"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirmation modal -->
+      <div class="modal-backdrop" id="remove-modal">
+        <div class="modal" role="dialog" aria-labelledby="remove-title">
+          <h4 id="remove-title">Remove your probation review date?</h4>
+          <p>FirstNinety will stop preparing for it. You can add a new date any time from Settings → Probation.</p>
+          <div class="modal-actions">
+            <button class="btn btn-ghost btn-sm" type="button" data-modal-close="">Keep it</button>
+            <button class="btn btn-danger btn-sm" type="button" data-modal-close="">Remove date</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="state-note" style="margin-top: 28px;">
+      Edit affordances appear on hover — a small "Change" / "Edit date" link to the right, plus a dashed underline on the editable noun in the sentence. Click either, and an inline field replaces the row in place. No modal, no separate edit page.
+    </p>
+
+  </section>
+
+
+  <!-- =========================== STATE 3 — SETTINGS / PROBATION (no date) =========================== -->
+  <section class="state-block" data-screen-label="03 Settings — no review date set">
+
+    <div class="state-header">
+      <div class="left">
+        <span class="num">STATE 03</span>
+        <h2 class="title">Settings → Probation, no review date set.</h2>
+      </div>
+      <div class="right">First visit · empty state</div>
+    </div>
+
+    <p class="state-note">
+      Empty doesn't mean broken. Most of the page is paper. One sentence, one primary action, three shortcuts, and an italic line that says: it's fine if this stays empty. The page acknowledges that not every role has a probation review.
+    </p>
+
+    <div class="frame frame-tall">
+
+      <div class="app-shell">
+
+        <!-- Chrome sidebar -->
+        <aside class="app-sidebar" aria-label="Primary navigation">
+          <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+
+          <nav class="nav-section" aria-label="Primary">
+            <a class="nav-item" href="#"><i data-lucide="home"></i><span class="label">Home</span></a>
+            <a class="nav-item" href="#"><i data-lucide="target"></i><span class="label">Mission Track</span></a>
+            <a class="nav-item" href="#"><i data-lucide="radio"></i><span class="label">Situation Room</span></a>
+            <a class="nav-item" href="#"><i data-lucide="users"></i><span class="label">Simulator</span></a>
+            <a class="nav-item" href="#"><i data-lucide="message-circle"></i><span class="label">Coach</span></a>
+            <a class="nav-item" href="#"><i data-lucide="book-open"></i><span class="label">Playbook</span></a>
+          </nav>
+
+          <div class="side-divider"></div>
+
+          <a class="know-link" href="#">
+            <span class="know-title">What I know about you</span>
+            <span class="know-sub">read the margins</span>
+          </a>
+
+          <div class="user-menu-wrap">
+            <div class="user-menu-trigger">
+              <span class="monogram-sm" style="background: var(--persona-moss);">JL</span>
+              <div class="user-id">
+                <span class="name">Jonas Lindqvist</span>
+                <span class="role" style="--role-color: var(--persona-moss);">Senior Engineer</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main canvas — empty reading column -->
+        <div class="app-main">
+          <div class="main-col">
+            <div class="reading-col">
+
+              <div class="settings-head">
+                <div class="eyebrow">Settings → Probation</div>
+                <h1 class="t-h1">Your probation review.</h1>
+              </div>
+
+              <div style="height: var(--space-3);" aria-hidden="true"></div>
+
+              <p class="t-bodyL" style="margin: 0; max-width: 48ch; color: var(--ink);">
+                If your role has a probation review, tell FirstNinety when it is. We'll switch on Probation Mode three weeks before and help you prepare.
+              </p>
+
+              <div style="margin-top: var(--space-5);">
+                <button class="btn btn-primary" type="button" id="reveal-date-btn">
+                  Tell us your review date
+                </button>
+
+                <!-- Reveals on click -->
+                <div class="inline-edit" data-edit="empty-date" style="margin-top: 22px;">
+                  <input class="inline-field" type="date" aria-label="Review date">
+                  <div class="inline-actions">
+                    <button class="icon-btn is-primary" type="button" aria-label="Save"><i data-lucide="check"></i></button>
+                    <button class="icon-btn" type="button" data-cancel="empty-date" aria-label="Cancel"><i data-lucide="x"></i></button>
+                  </div>
+                </div>
+
+                <div class="chip-row">
+                  <button class="chip" type="button">In 90 days</button>
+                  <button class="chip" type="button">In 3 months</button>
+                  <button class="chip is-mute" type="button">I'll set this later</button>
+                </div>
+              </div>
+
+              <div style="height: var(--space-7);" aria-hidden="true"></div>
+
+              <p class="t-fr-italic" style="font-size: 17px; color: var(--mute); margin: 0; max-width: 44ch;">
+                Not everyone has a probation review. If your role doesn't, this stays empty.
+              </p>
+
+              <div style="flex:1; min-height: var(--space-7);" aria-hidden="true"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="state-note" style="margin-top: 28px;">
+      The empty state pairs a single primary CTA with three preset chips (90 days / 3 months / later) so most users don't even need to open a date picker. The italic mute line at the bottom isn't a footnote — it's permission.
+    </p>
+
+  </section>
+
+
+  <!-- =========================== FOOTER =========================== -->
+  <footer class="artifact-foot">
+    <div class="mono">
+      <span>FirstNinety / Probation · Activation &amp; Settings</span>
+      <span>v0.1 · 24 May 2026</span>
+      <span>1320 × auto · light mode · light only</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Render lucide icons
+  if (window.lucide) lucide.createIcons();
+
+  // ---------- State 2 — inline edit toggles ----------
+  document.querySelectorAll('[data-toggle]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const key = el.getAttribute('data-toggle');
+      const editor = document.querySelector(`[data-edit="${key}"]`);
+      if (editor) {
+        editor.classList.toggle('is-open');
+        const input = editor.querySelector('input');
+        if (editor.classList.contains('is-open') && input) {
+          setTimeout(() => input.focus(), 30);
+        }
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-cancel]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-cancel');
+      const editor = document.querySelector(`[data-edit="${key}"]`);
+      if (editor) editor.classList.remove('is-open');
+    });
+  });
+
+  document.querySelectorAll('[data-confirm]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-confirm');
+      const editor = document.querySelector(`[data-edit="${key}"]`);
+      if (editor) editor.classList.remove('is-open');
+      // (In a real build, the value would be persisted + the token text rewritten.)
+    });
+  });
+
+  // ---------- State 3 — reveal date input ----------
+  const revealBtn = document.getElementById('reveal-date-btn');
+  if (revealBtn) {
+    revealBtn.addEventListener('click', () => {
+      const editor = document.querySelector('[data-edit="empty-date"]');
+      if (editor) {
+        editor.classList.add('is-open');
+        const input = editor.querySelector('input');
+        if (input) setTimeout(() => input.focus(), 30);
+      }
+    });
+  }
+
+  // ---------- State 2 — remove modal ----------
+  const removeTrigger = document.getElementById('remove-trigger');
+  const removeModal = document.getElementById('remove-modal');
+  if (removeTrigger && removeModal) {
+    removeTrigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      removeModal.classList.add('is-open');
+    });
+    removeModal.querySelectorAll('[data-modal-close]').forEach(btn => {
+      btn.addEventListener('click', () => removeModal.classList.remove('is-open'));
+    });
+    removeModal.addEventListener('click', (e) => {
+      if (e.target === removeModal) removeModal.classList.remove('is-open');
+    });
+  }
+</script>
+
+
+
+</body></html>

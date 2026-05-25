@@ -14,7 +14,8 @@
     "db:diff": "node scripts/db.mjs diff",
     "db:types": "node scripts/db.mjs gen-types",
     "db:migration:list": "node scripts/db.mjs migration list",
-    "icons": "node scripts/generate-pwa-icons.mjs"
+    "icons": "node scripts/generate-pwa-icons.mjs",
+    "prototypes:extract": "node scripts/extract-prototypes.mjs"
   },
   "dependencies": {
     "@serwist/next": "^9.5.11",

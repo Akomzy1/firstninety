@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 
 import { Button } from "@/components/ui/Button";
 import { MissionCard } from "@/components/mission/MissionCard";
+import { ProbationBanner } from "@/components/home/ProbationBanner";
 import { RightSidebar } from "@/components/home/RightSidebar";
 import { SituationRoomInput } from "@/components/home/SituationRoomInput";
 import { requireAuth } from "@/lib/auth/server";
@@ -57,7 +58,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     supabase
       .from("user_context")
       .select(
-        "start_date, current_day, current_week, probation_mode_active, probation_review_date, last_sunday_prompt_at",
+        "start_date, current_day, current_week, probation_mode_active, probation_review_date, probation_brief_generated_at, last_sunday_prompt_at",
       )
       .eq("user_id", user.id)
       .single(),
@@ -141,13 +142,20 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     promptOpen = !isRecent(context.last_sunday_prompt_at ?? null);
   }
 
-  const eyebrow = context.probation_mode_active
-    ? `Probation — ${daysToReview(context.probation_review_date)} days to review`
-    : `Day ${dayState.day} of 90 · ${dayState.weekday}`;
+  const probationActive = context.probation_mode_active ?? false;
+  const daysToReviewVal = probationActive
+    ? daysToReview(context.probation_review_date)
+    : null;
+  const briefGenerated = Boolean(context.probation_brief_generated_at);
+
+  // The eyebrow always shows the day; the probation banner sits above
+  // the headline (as a separate card) per the prototype — it's an
+  // invitation, not a header replacement.
+  const eyebrow = `Day ${dayState.day} of 90 · ${dayState.weekday}`;
 
   const headline = chooseHeadline({
     dayState,
-    probationActive: context.probation_mode_active ?? false,
+    probationActive,
     mission: todayMission,
   });
 
@@ -164,6 +172,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             <span className="font-display italic">{headline.line2}</span>
           </h1>
         </header>
+
+        {probationActive ? (
+          <ProbationBanner
+            daysToReview={daysToReviewVal}
+            briefGenerated={briefGenerated}
+          />
+        ) : null}
 
         {todayMission ? (
           <MissionCard

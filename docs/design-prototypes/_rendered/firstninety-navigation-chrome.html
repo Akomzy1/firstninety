@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety — Navigation Chrome</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f6f38246-5107-4797-9ff8-c7ca5f65f599") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("33ef0ae0-45d2-4862-b355-e6eb044c4e79") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7b2571b6-17d7-4b28-9198-80378dcf5167") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f6f38246-5107-4797-9ff8-c7ca5f65f599") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("33ef0ae0-45d2-4862-b355-e6eb044c4e79") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7b2571b6-17d7-4b28-9198-80378dcf5167") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("a0712ecb-33e2-492d-bfe7-1227c22fe8d6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("c25bc10c-ff04-49be-a369-82ecef462627") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("5e138885-29fb-434d-960a-75a288b9ecfe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("a0712ecb-33e2-492d-bfe7-1227c22fe8d6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c25bc10c-ff04-49be-a369-82ecef462627") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5e138885-29fb-434d-960a-75a288b9ecfe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("a0712ecb-33e2-492d-bfe7-1227c22fe8d6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c25bc10c-ff04-49be-a369-82ecef462627") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5e138885-29fb-434d-960a-75a288b9ecfe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("a0712ecb-33e2-492d-bfe7-1227c22fe8d6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("c25bc10c-ff04-49be-a369-82ecef462627") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5e138885-29fb-434d-960a-75a288b9ecfe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("a0712ecb-33e2-492d-bfe7-1227c22fe8d6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("c25bc10c-ff04-49be-a369-82ecef462627") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("5e138885-29fb-434d-960a-75a288b9ecfe") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7651400d-d852-49ee-8657-126afa986a67") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bdc1571c-c62f-430a-b2d2-16a0352d79d0") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6aa3d0ed-dbad-49c9-88b7-bad77655f607") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0c34ab76-784a-45f5-8c53-c4c24043882d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ecd1075a-d1a7-4cbc-9fc2-1df622243809") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("d5dbd145-e21f-4da1-a423-620077c87883") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7651400d-d852-49ee-8657-126afa986a67") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bdc1571c-c62f-430a-b2d2-16a0352d79d0") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6aa3d0ed-dbad-49c9-88b7-bad77655f607") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("0c34ab76-784a-45f5-8c53-c4c24043882d") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ecd1075a-d1a7-4cbc-9fc2-1df622243809") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("d5dbd145-e21f-4da1-a423-620077c87883") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("607cd6c3-7d49-4acc-89d5-c21fe26e42b6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("e5fe435f-868f-4b8a-928c-9139c34a5bd7") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("9cf02166-990d-45e3-9da3-f2d3dd780b04") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("49a60ddb-36a6-42cb-99d7-08909a7e5551") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("1b0db463-9788-4f85-ba34-d36bbad5db07") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("03444227-5052-4402-89b2-a644d67dbe22") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5032e396-d6c3-4510-b1a4-93826e5a41ed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("607cd6c3-7d49-4acc-89d5-c21fe26e42b6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("e5fe435f-868f-4b8a-928c-9139c34a5bd7") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("9cf02166-990d-45e3-9da3-f2d3dd780b04") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("49a60ddb-36a6-42cb-99d7-08909a7e5551") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("1b0db463-9788-4f85-ba34-d36bbad5db07") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("03444227-5052-4402-89b2-a644d67dbe22") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("5032e396-d6c3-4510-b1a4-93826e5a41ed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("607cd6c3-7d49-4acc-89d5-c21fe26e42b6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("e5fe435f-868f-4b8a-928c-9139c34a5bd7") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("9cf02166-990d-45e3-9da3-f2d3dd780b04") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("49a60ddb-36a6-42cb-99d7-08909a7e5551") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("1b0db463-9788-4f85-ba34-d36bbad5db07") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("03444227-5052-4402-89b2-a644d67dbe22") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5032e396-d6c3-4510-b1a4-93826e5a41ed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("607cd6c3-7d49-4acc-89d5-c21fe26e42b6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("e5fe435f-868f-4b8a-928c-9139c34a5bd7") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("9cf02166-990d-45e3-9da3-f2d3dd780b04") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("49a60ddb-36a6-42cb-99d7-08909a7e5551") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("1b0db463-9788-4f85-ba34-d36bbad5db07") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("03444227-5052-4402-89b2-a644d67dbe22") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("5032e396-d6c3-4510-b1a4-93826e5a41ed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="f914eb83-0c8a-4ad3-a505-a10f989d13ad"></script>
+
+<style>
+  :root {
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --persona-slate: #6F7A86;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+
+    --radius-button: 4px;
+    --radius-card: 8px;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  html, body {
+    background: var(--paper-2);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .font-serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; }
+  .font-mono  { font-family: 'Geist Mono', ui-monospace, monospace; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .mono { font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--mute); }
+
+  /* ---------- page chrome ---------- */
+  .page-shell { max-width: 1440px; margin: 0 auto; padding: 64px 48px 96px; }
+
+  .state-block + .state-block { margin-top: var(--space-7); }
+
+  .state-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: var(--space-3);
+    gap: 24px;
+  }
+  .state-header .label { display:flex; align-items:baseline; gap: 16px; flex-wrap: wrap; }
+  .state-header .title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--ink); }
+
+  /* device frame — a soft container that frames the actual viewport width */
+  .frame {
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(14,17,22,0.04);
+    overflow: hidden;
+    position: relative;
+  }
+  .frame-desktop { width: 1280px; max-width: 100%; height: 800px; }
+  .frame-tablet  { width: 768px;  height: 920px; }
+  .frame-mobile  { width: 375px;  height: 740px; }
+
+  .frame-rule {
+    position: absolute; left: 16px; right: 16px; top: 12px;
+    display: flex; align-items: center; gap: 8px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ---------- wordmark ---------- */
+  .wordmark { font-family:'Fraunces',serif; font-weight:600; line-height:1; letter-spacing:-0.015em; font-optical-sizing:auto; font-variation-settings:'opsz' 144; display:inline-flex; align-items:baseline; color: var(--ink); }
+  .wordmark .nudge { display:inline-block; transform: translateY(-2px); }
+  .wordmark .first { font-style: italic; font-weight: 400; }
+  .wordmark .sep {
+    display: inline-block;
+    width: 0.34em; height: 0.34em;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 0.18em;
+    transform: translateY(-0.18em);
+  }
+  .wordmark .ninety { font-weight: 600; font-feature-settings: 'lnum' on; }
+
+  /* ---------- nav item — shared ---------- */
+  .nav-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--mute);
+    cursor: pointer;
+    transition: background-color 80ms var(--ease), color 80ms var(--ease);
+    position: relative;
+    min-height: 36px;
+  }
+  .nav-item:hover { color: var(--ink); background: rgba(231,224,210,0.5); }
+  .nav-item.is-active { color: var(--ink); background: var(--paper-3); }
+  .nav-item .lucide { width: 18px; height: 18px; stroke-width: 1.5; flex-shrink: 0; }
+  .nav-item .label { flex: 1; }
+  .nav-item .accent-dot {
+    width: 6px; height: 6px; border-radius: 999px; background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ---------- main content placeholder ---------- */
+  .placeholder {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .placeholder p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--mute);
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    max-width: 28ch;
+    margin: 0;
+  }
+
+  /* ---------- desktop sidebar ---------- */
+  .desktop-shell { display: flex; height: 100%; }
+  .desktop-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--paper-3);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px 16px;
+    background: var(--paper);
+    position: relative;
+  }
+  .desktop-sidebar .wordmark { font-size: 22px; padding: 0 4px; margin-bottom: 28px; }
+
+  .nav-section { display: flex; flex-direction: column; gap: 2px; }
+
+  .side-divider {
+    height: 1px;
+    background: var(--paper-3);
+    margin: 16px 4px;
+  }
+
+  .know-link {
+    display: flex; flex-direction: column;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 80ms var(--ease);
+    gap: 2px;
+  }
+  .know-link:hover { background: rgba(231,224,210,0.5); }
+  .know-link .know-title {
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; color: var(--ink);
+  }
+  .know-link .know-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--mute);
+    letter-spacing: 0.005em;
+  }
+
+  /* ---------- user menu (desktop) ---------- */
+  .user-menu-wrap { margin-top: auto; padding-top: 12px; position: relative; }
+  .user-menu-trigger {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 80ms var(--ease);
+    width: 100%;
+  }
+  .user-menu-trigger:hover { background: rgba(231,224,210,0.5); }
+  .monogram-sm {
+    width: 36px; height: 36px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 14px; color: var(--paper);
+    background: var(--persona-slate);
+    flex-shrink: 0;
+  }
+  .user-id { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .user-id .name { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .user-id .role {
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 11px;
+    color: var(--mute);
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .user-id .role::before {
+    content: ''; width: 2px; height: 10px; background: var(--persona-slate); border-radius: 1px;
+  }
+
+  /* dropdown — opens upward */
+  .user-dropdown {
+    position: absolute;
+    left: 8px; right: 8px;
+    bottom: calc(100% + 4px);
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(14,17,22,0.04), 0 8px 24px rgba(14,17,22,0.06);
+    padding: 6px;
+    z-index: 10;
+  }
+  .user-dropdown .menu-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .user-dropdown .menu-row:hover { background: var(--paper-2); }
+  .user-dropdown .menu-row .lucide { width: 14px; height: 14px; stroke-width: 1.5; color: var(--mute); }
+  .user-dropdown .menu-sep { height: 1px; background: var(--paper-3); margin: 4px 4px; }
+
+  /* ---------- tablet rail ---------- */
+  .tablet-shell { display: flex; height: 100%; }
+  .tablet-rail {
+    width: 64px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--paper-3);
+    background: var(--paper);
+    display: flex; flex-direction: column;
+    padding: 16px 8px;
+  }
+  .tablet-rail .rail-wordmark {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 22px; line-height: 1; color: var(--ink);
+    text-align: center;
+    padding: 8px 0 24px;
+  }
+  .rail-item {
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+    color: var(--mute);
+    margin: 0 auto 4px;
+    cursor: pointer;
+    transition: background-color 80ms var(--ease), color 80ms var(--ease);
+    position: relative;
+  }
+  .rail-item:hover { color: var(--ink); background: rgba(231,224,210,0.5); }
+  .rail-item.is-active { color: var(--ink); background: var(--paper-3); }
+  .rail-item .lucide { width: 20px; height: 20px; stroke-width: 1.5; }
+
+  /* hover tooltip */
+  .rail-tooltip {
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .rail-tooltip::before {
+    content: '';
+    position: absolute; left: -4px; top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 8px; height: 8px; background: var(--ink);
+  }
+
+  .rail-divider { height: 1px; background: var(--paper-3); margin: 12px 8px; }
+
+  .rail-accent-dot {
+    position: absolute;
+    top: 9px; right: 9px;
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--accent);
+  }
+
+  /* tablet user — pinned bottom */
+  .rail-user { margin-top: auto; padding-top: 8px; }
+  .rail-user .monogram-rail {
+    width: 36px; height: 36px; border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 400; font-size: 14px; color: var(--paper);
+    background: var(--persona-slate);
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
+  /* ---------- mobile ---------- */
+  .mobile-shell { display: flex; flex-direction: column; height: 100%; }
+  .mobile-header {
+    height: 56px;
+    border-bottom: 1px solid var(--paper-3);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px;
+    flex-shrink: 0;
+    background: var(--paper);
+  }
+  .mobile-header .wordmark { font-size: 22px; }
+  .mobile-header .monogram-sm { width: 32px; height: 32px; font-size: 13px; }
+
+  .mobile-bottom-nav {
+    height: 64px;
+    background: var(--paper);
+    border-top: 1px solid var(--paper-3);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    flex-shrink: 0;
+  }
+  .bottom-tab {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    color: var(--mute);
+    position: relative;
+    padding-top: 6px;
+  }
+  .bottom-tab .lucide { width: 22px; height: 22px; stroke-width: 1.5; }
+  .bottom-tab .tab-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    color: var(--mute-2);
+    opacity: 0;
+    height: 0;
+  }
+  .bottom-tab.is-active { color: var(--ink); }
+  .bottom-tab.is-active::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    width: 4px; height: 4px;
+    border-radius: 999px;
+    background: var(--ink);
+  }
+  .bottom-tab .accent-dot-top {
+    position: absolute;
+    top: 10px;
+    margin-left: 14px;
+    width: 5px; height: 5px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  /* mobile drawer */
+  .drawer-overlay {
+    position: absolute; inset: 0;
+    background: rgba(14,17,22,0.32);
+    z-index: 5;
+  }
+  .drawer-panel {
+    position: absolute;
+    top: 0; right: 0; bottom: 64px;
+    width: 300px;
+    background: var(--paper);
+    border-left: 1px solid var(--paper-3);
+    box-shadow: -8px 0 24px rgba(14,17,22,0.06);
+    z-index: 6;
+    display: flex; flex-direction: column;
+    padding: 20px 16px;
+  }
+  .drawer-panel .drawer-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4px 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--paper-3);
+  }
+  .drawer-panel .drawer-title {
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13px;
+    color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .drawer-close {
+    width: 28px; height: 28px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--mute);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .drawer-close:hover { background: var(--paper-2); color: var(--ink); }
+  .drawer-close .lucide { width: 16px; height: 16px; stroke-width: 1.5; }
+
+  .drawer-section { display: flex; flex-direction: column; gap: 2px; }
+
+  /* drawer user block at bottom of drawer */
+  .drawer-user {
+    margin-top: auto;
+    border-top: 1px solid var(--paper-3);
+    padding-top: 12px;
+  }
+
+  /* ---------- annotations ---------- */
+  .anno-row {
+    margin-top: 20px;
+    display: flex; gap: 32px; flex-wrap: wrap;
+  }
+  .anno {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--mute);
+    line-height: 1.5;
+  }
+  .anno b { color: var(--ink); font-weight: 500; }
+  .anno .swatch-dot {
+    width: 10px; height: 10px; border-radius: 2px;
+    margin-top: 4px;
+    flex-shrink: 0;
+    border: 1px solid var(--paper-3);
+  }
+
+  /* width tag above each frame */
+  .width-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    color: var(--mute);
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  /* anchored frame layout: place the frame at its real width, sit annotations alongside on wide screens */
+  .frame-with-notes {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .frame-notes {
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px;
+    padding-top: 8px;
+  }
+  .frame-notes h4 {
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .frame-notes ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .frame-notes li {
+    font-family: 'Inter', sans-serif; font-weight: 400; font-size: 13px; line-height: 1.55;
+    color: var(--mute);
+  }
+  .frame-notes li b { color: var(--ink); font-weight: 500; }
+  .frame-notes code { font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--ink); background: var(--paper); padding: 1px 4px; border-radius: 3px; border: 1px solid var(--paper-3); }
+
+  /* mobile pair layout */
+  .mobile-pair {
+    display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;
+  }
+  .mobile-pair .frame-mobile { flex-shrink: 0; }
+</style>
+</head>
+
+<body>
+
+<main class="page-shell">
+
+  <!-- ===================== HEADER ===================== -->
+  <header style="margin-bottom: 64px;">
+    <div class="eyebrow" style="margin-bottom: 16px;">FirstNinety / Reference · A2</div>
+    <h1 class="font-serif" style="font-weight: 400; font-size: 56px; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 20px; max-width: 22ch;">Navigation chrome — three viewport states.</h1>
+    <p style="font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.55; color: var(--mute); max-width: 62ch; margin: 0;">
+      The app shell at desktop, tablet, and mobile sizes — the bones every product surface hangs off. Linear, Stripe, and Arc are the closest references. Same nav vocabulary across all three; the chrome rearranges, the labels don't.
+    </p>
+    <div class="mono" style="margin-top: 28px; display:flex; flex-wrap:wrap; gap: 24px;">
+      <div><span style="color: var(--mute);">Nav typography</span>&nbsp;&nbsp;<span style="color: var(--ink);">Inter 500 · 14px · sentence-case</span></div>
+      <div><span style="color: var(--mute);">Active</span>&nbsp;&nbsp;<span style="color: var(--ink);">--ink text · --paper-3 fill</span></div>
+      <div><span style="color: var(--mute);">Inactive</span>&nbsp;&nbsp;<span style="color: var(--ink);">--mute text</span></div>
+      <div><span style="color: var(--mute);">Accent use</span>&nbsp;&nbsp;<span style="color: var(--ink);">Situation Room unread dot, only</span></div>
+    </div>
+  </header>
+
+  <!-- ===================== DESKTOP ===================== -->
+  <section class="state-block">
+    <div class="state-header">
+      <div class="label">
+        <div class="eyebrow">Desktop</div>
+        <div class="title">240px sidebar, content right.</div>
+      </div>
+      <span class="width-tag">viewport · 1280 × 800</span>
+    </div>
+
+    <div class="frame-with-notes">
+      <div class="frame frame-desktop">
+        <div class="desktop-shell">
+
+          <!-- Sidebar -->
+          <aside class="desktop-sidebar">
+            <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+
+            <nav class="nav-section">
+              <a class="nav-item is-active" href="#">
+                <i data-lucide="home"></i>
+                <span class="label">Home</span>
+              </a>
+              <a class="nav-item" href="#">
+                <i data-lucide="target"></i>
+                <span class="label">Mission Track</span>
+              </a>
+              <a class="nav-item" href="#">
+                <i data-lucide="radio"></i>
+                <span class="label">Situation Room</span>
+                <span class="accent-dot" aria-label="unread session result"></span>
+              </a>
+              <a class="nav-item" href="#">
+                <i data-lucide="users"></i>
+                <span class="label">Simulator</span>
+              </a>
+              <a class="nav-item" href="#">
+                <i data-lucide="message-circle"></i>
+                <span class="label">Coach</span>
+              </a>
+              <a class="nav-item" href="#">
+                <i data-lucide="book-open"></i>
+                <span class="label">Playbook</span>
+              </a>
+            </nav>
+
+            <div class="side-divider"></div>
+
+            <a class="know-link" href="#">
+              <span class="know-title">What I know about you</span>
+              <span class="know-sub">read the margins</span>
+            </a>
+
+            <!-- User menu pinned bottom -->
+            <div class="user-menu-wrap">
+              <!-- dropdown (visible for spec) -->
+              <div class="user-dropdown">
+                <div class="menu-row">
+                  <i data-lucide="user"></i>
+                  Account
+                </div>
+                <div class="menu-row">
+                  <i data-lucide="credit-card"></i>
+                  Billing
+                </div>
+                <div class="menu-row">
+                  <i data-lucide="shield"></i>
+                  Memory &amp; privacy
+                </div>
+                <div class="menu-sep"></div>
+                <div class="menu-row" style="color: var(--mute);">
+                  <i data-lucide="log-out"></i>
+                  Sign out
+                </div>
+              </div>
+
+              <div class="user-menu-trigger">
+                <span class="monogram-sm">AK</span>
+                <span class="user-id">
+                  <span class="name">Akomzy</span>
+                  <span class="role">BA · 90-day</span>
+                </span>
+                <i data-lucide="chevron-up" style="width: 14px; height: 14px; stroke-width: 1.5; color: var(--mute);"></i>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Content -->
+          <div class="placeholder">
+            <p>Today's mission is loaded here.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <aside class="frame-notes">
+        <h4>Spec notes</h4>
+        <ul>
+          <li><b>Sidebar:</b> 240px, <code>--paper</code> background, 1px right border in <code>--paper-3</code>. Internal padding 24px top / 16px sides.</li>
+          <li><b>Active row:</b> <code>--ink</code> text on a <code>--paper-3</code> fill at 6px radius. No coral accent — the active state is a held breath, not a shout.</li>
+          <li><b>Inactive rows:</b> <code>--mute</code> text. Hover lifts to <code>--ink</code> on a half-opacity fill.</li>
+          <li><b>Situation Room dot:</b> 6px <code>--accent</code> circle, right-aligned. The only place coral is permitted in chrome.</li>
+          <li><b>"What I know about you":</b> sits below the divider with a small Fraunces italic gloss — <em>read the margins</em>. Editorial, not decorative.</li>
+          <li><b>User menu:</b> opens upward, 8px radius, ink-on-paper, soft shadow. Account / Billing / Memory &amp; privacy / Sign out.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== TABLET ===================== -->
+  <section class="state-block">
+    <div class="state-header">
+      <div class="label">
+        <div class="eyebrow">Tablet</div>
+        <div class="title">64px icon rail, labels on hover.</div>
+      </div>
+      <span class="width-tag">viewport · 768 × 920</span>
+    </div>
+
+    <div class="frame-with-notes">
+      <div class="frame frame-tablet">
+        <div class="tablet-shell">
+
+          <aside class="tablet-rail">
+            <div class="rail-wordmark">F<span style="display:inline-block; transform: translateY(-1px);">N</span></div>
+
+            <div class="rail-item is-active" title="Home">
+              <i data-lucide="home"></i>
+            </div>
+            <div class="rail-item" title="Mission Track">
+              <i data-lucide="target"></i>
+            </div>
+            <!-- Situation Room: shows accent dot AND hover tooltip — demonstrating both -->
+            <div class="rail-item" title="Situation Room" style="position: relative;">
+              <i data-lucide="radio"></i>
+              <span class="rail-accent-dot"></span>
+              <span class="rail-tooltip">Situation Room</span>
+            </div>
+            <div class="rail-item" title="Simulator">
+              <i data-lucide="users"></i>
+            </div>
+            <div class="rail-item" title="Coach">
+              <i data-lucide="message-circle"></i>
+            </div>
+            <div class="rail-item" title="Playbook">
+              <i data-lucide="book-open"></i>
+            </div>
+
+            <div class="rail-divider"></div>
+
+            <div class="rail-item" title="What I know about you">
+              <i data-lucide="bookmark"></i>
+            </div>
+
+            <div class="rail-user">
+              <div class="monogram-rail">AK</div>
+            </div>
+          </aside>
+
+          <div class="placeholder">
+            <p>Today's mission is loaded here.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <aside class="frame-notes">
+        <h4>Spec notes</h4>
+        <ul>
+          <li><b>Rail width:</b> 64px. Same vocabulary as desktop, compressed to icons.</li>
+          <li><b>Wordmark:</b> reduces to <code>FN</code> in Fraunces 600. The 2px nudge survives on the <code>N</code>.</li>
+          <li><b>Hover state:</b> text label slides out as an ink-on-paper tooltip 8px to the right. Shown here on Situation Room.</li>
+          <li><b>Active item:</b> still <code>--paper-3</code> fill, same as desktop — the indicator is the fill, not a pill or a left bar.</li>
+          <li><b>Coral dot:</b> 6px circle at top-right of the icon tile when there's an unread Situation Room result.</li>
+          <li><b>User monogram</b> sits at the bottom; tap opens the same dropdown shown on desktop.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================== MOBILE ===================== -->
+  <section class="state-block">
+    <div class="state-header">
+      <div class="label">
+        <div class="eyebrow">Mobile</div>
+        <div class="title">Bottom nav, no hamburger.</div>
+      </div>
+      <span class="width-tag">viewport · 375 × 740</span>
+    </div>
+
+    <div class="mobile-pair">
+
+      <!-- Mobile — default -->
+      <div class="frame frame-mobile">
+        <div class="mobile-shell">
+          <header class="mobile-header">
+            <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+            <span class="monogram-sm">AK</span>
+          </header>
+
+          <div class="placeholder">
+            <p>Today's mission is loaded here.</p>
+          </div>
+
+          <nav class="mobile-bottom-nav">
+            <a class="bottom-tab is-active" href="#">
+              <i data-lucide="home"></i>
+              <span class="tab-label">Home</span>
+            </a>
+            <a class="bottom-tab" href="#">
+              <i data-lucide="target"></i>
+              <span class="tab-label">Track</span>
+            </a>
+            <a class="bottom-tab" href="#" style="position: relative;">
+              <i data-lucide="radio"></i>
+              <span class="accent-dot-top"></span>
+              <span class="tab-label">Situation</span>
+            </a>
+            <a class="bottom-tab" href="#">
+              <i data-lucide="users"></i>
+              <span class="tab-label">Simulator</span>
+            </a>
+            <a class="bottom-tab" href="#">
+              <i data-lucide="more-horizontal"></i>
+              <span class="tab-label">More</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Mobile — More drawer open -->
+      <div class="frame frame-mobile" style="position: relative;">
+        <div class="mobile-shell">
+          <header class="mobile-header">
+            <span class="wordmark"><span class="first">First</span><span class="sep"></span><span class="ninety">90</span></span>
+            <span class="monogram-sm">AK</span>
+          </header>
+
+          <div class="placeholder">
+            <p>Today's mission is loaded here.</p>
+          </div>
+
+          <nav class="mobile-bottom-nav">
+            <a class="bottom-tab" href="#">
+              <i data-lucide="home"></i>
+              <span class="tab-label">Home</span>
+            </a>
+            <a class="bottom-tab" href="#">
+              <i data-lucide="target"></i>
+              <span class="tab-label">Track</span>
+            </a>
+            <a class="bottom-tab" href="#" style="position: relative;">
+              <i data-lucide="radio"></i>
+              <span class="accent-dot-top"></span>
+              <span class="tab-label">Situation</span>
+            </a>
+            <a class="bottom-tab" href="#">
+              <i data-lucide="users"></i>
+              <span class="tab-label">Simulator</span>
+            </a>
+            <a class="bottom-tab is-active" href="#">
+              <i data-lucide="more-horizontal"></i>
+              <span class="tab-label">More</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Drawer overlay + panel -->
+        <div class="drawer-overlay"></div>
+        <aside class="drawer-panel">
+          <div class="drawer-head">
+            <span class="drawer-title">More</span>
+            <span class="drawer-close" aria-label="Close"><i data-lucide="x"></i></span>
+          </div>
+
+          <div class="drawer-section">
+            <a class="nav-item" href="#">
+              <i data-lucide="message-circle"></i>
+              <span class="label">Coach</span>
+            </a>
+            <a class="nav-item" href="#">
+              <i data-lucide="book-open"></i>
+              <span class="label">Playbook</span>
+            </a>
+          </div>
+
+          <div class="side-divider" style="margin: 12px 4px;"></div>
+
+          <a class="know-link" href="#">
+            <span class="know-title">What I know about you</span>
+            <span class="know-sub">read the margins</span>
+          </a>
+
+          <div class="drawer-user">
+            <div class="user-menu-trigger" style="padding: 6px;">
+              <span class="monogram-sm">AK</span>
+              <span class="user-id">
+                <span class="name">Akomzy</span>
+                <span class="role">BA · 90-day</span>
+              </span>
+              <i data-lucide="chevron-right" style="width: 14px; height: 14px; stroke-width: 1.5; color: var(--mute);"></i>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <aside class="frame-notes" style="max-width: 420px;">
+        <h4>Spec notes</h4>
+        <ul>
+          <li><b>Top header:</b> 56px, wordmark left, monogram right. No hamburger — the bottom nav is the navigation.</li>
+          <li><b>Bottom nav:</b> 64px tall, <code>--paper</code> background, 1px top border in <code>--paper-3</code>. Five tabs, equal width.</li>
+          <li><b>Active tab:</b> ink icon with a 4px indicator dot above it. Inactive tabs are <code>--mute</code> icon-only.</li>
+          <li><b>Situation Room dot:</b> 5px <code>--accent</code> circle offset top-right of the icon, present even when the tab is inactive.</li>
+          <li><b>"More" drawer:</b> slides from the right, sits above content but below the bottom nav so navigation stays reachable. Holds Coach, Playbook, the editorial "What I know about you" link, and the user menu.</li>
+        </ul>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ===================== TOKENS USED ===================== -->
+  <section class="state-block" style="margin-top: var(--space-6);">
+    <div class="eyebrow" style="margin-bottom: 16px;">Tokens used</div>
+    <div class="anno-row">
+      <div class="anno"><span class="swatch-dot" style="background: var(--ink);"></span><div><b>--ink</b> #0E1116<br>active text, monogram bg, dropdown text</div></div>
+      <div class="anno"><span class="swatch-dot" style="background: var(--paper);"></span><div><b>--paper</b> #FAF7F2<br>sidebar, rail, mobile header &amp; bottom nav</div></div>
+      <div class="anno"><span class="swatch-dot" style="background: var(--paper-3);"></span><div><b>--paper-3</b> #E7E0D2<br>active fill, all 1px dividers &amp; borders</div></div>
+      <div class="anno"><span class="swatch-dot" style="background: var(--mute);"></span><div><b>--mute</b> #6F6A60<br>inactive nav text, icons, captions</div></div>
+      <div class="anno"><span class="swatch-dot" style="background: var(--accent);"></span><div><b>--accent</b> #D9532C<br>Situation Room unread dot — only chrome use</div></div>
+      <div class="anno"><span class="swatch-dot" style="background: var(--persona-slate);"></span><div><b>--persona-slate</b> #6F7A86<br>monogram bg + role indicator bar</div></div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  if (window.lucide && window.lucide.createIcons) {
+    window.lucide.createIcons();
+  }
+</script>
+
+
+
+</body></html>

@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FirstNinety — Situation Room (Signature Surface)</title>
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("76104271-c842-4dd1-b44d-0ba08c6f109b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("c32e3983-4426-4b63-8ba7-c675612a1122") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("43bfd706-6b6e-4cff-aac0-2d26d33bb77d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("40767885-3c06-4f96-9d94-19e0a3440417") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("7312db97-7829-466d-8c21-2e2dbc48e25c") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("75003a00-0f6f-471c-87ce-592895e28304") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("f0657eba-d7bb-43f3-aae4-a2984c7b4949") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("33e12afa-799d-4b7d-87e1-63ac0b2e6d79") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("257e7cfe-1d81-4453-996c-074739f71e93") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6b81a667-639f-46e7-9030-c7fbde5ac8be") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("62bc9e9f-ed01-4f85-9eaf-45b36aceb326") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("78fad9d0-381a-41f9-a617-bcbd2db3af18") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("f0657eba-d7bb-43f3-aae4-a2984c7b4949") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("33e12afa-799d-4b7d-87e1-63ac0b2e6d79") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* symbols2 */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("257e7cfe-1d81-4453-996c-074739f71e93") format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("6b81a667-639f-46e7-9030-c7fbde5ac8be") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("62bc9e9f-ed01-4f85-9eaf-45b36aceb326") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("78fad9d0-381a-41f9-a617-bcbd2db3af18") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("8c786a26-8dcf-4256-a93a-f5e8d8235499") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("2a606d6e-b899-4bcb-b973-92e2a984e2e2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("aef4026d-c799-42e9-a981-0d69106c4545") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("af021aa6-10ba-4dbe-ad64-81e0f950873b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("486f6fe9-127e-43c0-899f-bc88c336d266") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("92bdd2ee-5b6d-4085-b131-ef41a7493eda") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("81f4880f-8d08-40eb-bedf-d6609842c440") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("8c786a26-8dcf-4256-a93a-f5e8d8235499") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("2a606d6e-b899-4bcb-b973-92e2a984e2e2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("aef4026d-c799-42e9-a981-0d69106c4545") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("af021aa6-10ba-4dbe-ad64-81e0f950873b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("486f6fe9-127e-43c0-899f-bc88c336d266") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("92bdd2ee-5b6d-4085-b131-ef41a7493eda") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("81f4880f-8d08-40eb-bedf-d6609842c440") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("8c786a26-8dcf-4256-a93a-f5e8d8235499") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("2a606d6e-b899-4bcb-b973-92e2a984e2e2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("aef4026d-c799-42e9-a981-0d69106c4545") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("af021aa6-10ba-4dbe-ad64-81e0f950873b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("486f6fe9-127e-43c0-899f-bc88c336d266") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("92bdd2ee-5b6d-4085-b131-ef41a7493eda") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("81f4880f-8d08-40eb-bedf-d6609842c440") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("8c786a26-8dcf-4256-a93a-f5e8d8235499") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("2a606d6e-b899-4bcb-b973-92e2a984e2e2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("aef4026d-c799-42e9-a981-0d69106c4545") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("af021aa6-10ba-4dbe-ad64-81e0f950873b") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("486f6fe9-127e-43c0-899f-bc88c336d266") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("92bdd2ee-5b6d-4085-b131-ef41a7493eda") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("81f4880f-8d08-40eb-bedf-d6609842c440") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<script src="f9e9776e-9b34-4992-b7c7-f223c637f073"></script>
+
+<style>
+  :root {
+    --ink: #0E1116;
+    --paper: #FAF7F2;
+    --paper-2: #F2EDE4;
+    --paper-3: #E7E0D2;
+    --mute: #6F6A60;
+    --mute-2: #A29D90;
+    --accent: #D9532C;
+    --accent-soft: #FBE7DE;
+    --success: #3E6D52;
+    --warn: #A66A1F;
+    --danger: #9B2C2C;
+
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
+
+    --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; background: none; border: 0; padding: 0; color: inherit; cursor: pointer; }
+
+  /* ========= TYPE TOKENS (mirrored from Design System Reference v1.0) ========= */
+  .t-h2      { font-family:'Fraunces',serif; font-weight:400; font-size:36px; line-height:1.2;  letter-spacing:-0.015em; text-wrap: balance; }
+  .t-bodyL   { font-family:'Inter',sans-serif; font-weight:400; font-size:20px; line-height:1.6; }
+  .t-body    { font-family:'Inter',sans-serif; font-weight:400; font-size:17px; line-height:1.65; }
+  .t-bodyS   { font-family:'Inter',sans-serif; font-weight:400; font-size:15px; line-height:1.55; }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 12px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .eyebrow-mute {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; font-size: 14px;
+    color: var(--mute);
+    letter-spacing: 0.01em;
+  }
+
+  .mono { font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--mute-2); letter-spacing: 0.02em; }
+
+  /* ========= PAGE SHELLS ========= */
+  .surface {
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .surface-720 { max-width: 784px; }   /* 720 + 32 gutters */
+  .surface-880 { max-width: 944px; }   /* 880 + 32 gutters */
+
+  /* ========= STATE LABEL (demo divider) ========= */
+  .state-label {
+    font-family: 'Geist Mono', monospace; font-size: 11px;
+    color: var(--mute-2); letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 16px 32px;
+    border-top: 1px solid var(--paper-3);
+    border-bottom: 1px solid var(--paper-3);
+    background: var(--paper);
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin: 0 auto;
+  }
+  .state-label .max-w { color: var(--mute); }
+  .state-label-720 { max-width: 784px; }
+  .state-label-880 { max-width: 944px; }
+
+  /* ============================================================== */
+  /* STATE 01 — INTAKE (the signature surface)                      */
+  /* ============================================================== */
+
+  .intake-stage {
+    /* Generous vertical breathing room. The point of this screen is the empty space. */
+    min-height: 88vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-5);
+  }
+
+  .intake-top { padding-top: var(--space-4); }
+  .intake-bottom {
+    padding-bottom: var(--space-4);
+    display: flex; gap: var(--space-4); flex-wrap: wrap;
+  }
+
+  /* center the input vertically inside its 1fr row */
+  .intake-center {
+    display: flex; flex-direction: column; justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-6) 0;
+  }
+
+  /* The quiet switcher — three labels, not a tab system */
+  .switcher {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .switcher .opt {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--mute);
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms var(--ease), border-color 120ms var(--ease);
+    cursor: pointer;
+    letter-spacing: 0.01em;
+  }
+  .switcher .opt:hover {
+    color: var(--ink);
+    border-bottom-color: var(--paper-3);
+  }
+  .switcher .opt.is-active {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+    border-bottom-width: 1px;
+  }
+  .switcher .opt:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* The single oversized input — the main event */
+  .sr-wrap {
+    position: relative;
+    margin-top: var(--space-2);
+  }
+  .sr-textarea {
+    display: block;
+    width: 100%;
+    min-height: 400px;
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 12px;
+    padding: 32px 32px;
+    padding-right: 80px; /* room for submit glyph */
+    padding-bottom: 80px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--ink);
+    resize: vertical;
+    transition: border-color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .sr-textarea::placeholder {
+    color: var(--mute);
+    font-style: italic;
+  }
+  .sr-textarea:focus {
+    outline: none;
+    border-color: var(--mute-2);
+  }
+  .sr-textarea:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
+  /* The submit glyph — bottom-right of the field. No "Submit" button. */
+  .sr-submit {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 44px; height: 44px;
+    border-radius: 999px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--mute-2);
+    transition: color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .sr-submit .lucide { width: 22px; height: 22px; stroke-width: 1.5; }
+  .sr-submit:hover { color: var(--ink); background: var(--paper-3); }
+  .sr-submit:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 2px;
+    color: var(--ink);
+  }
+  .sr-submit .kbd {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-2);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 160ms var(--ease);
+    pointer-events: none;
+  }
+  .sr-submit:hover .kbd,
+  .sr-wrap:focus-within .sr-submit .kbd { opacity: 1; }
+
+  .sr-caption {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--mute);
+    max-width: 56ch;
+    margin: 0;
+  }
+
+  /* Ghost links at the bottom of intake — both equal weight, no primary CTA */
+  .ghost-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--mute);
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 120ms var(--ease), border-color 120ms var(--ease);
+  }
+  .ghost-link:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+  .ghost-link:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* ============================================================== */
+  /* STATE 02 — ACTIVE SESSION                                       */
+  /* ============================================================== */
+
+  .session-stage {
+    padding: var(--space-6) 0 var(--space-7);
+  }
+  .session-stage .eyebrow { margin-bottom: var(--space-4); }
+
+  /* User's submitted situation — Fraunces italic, accent-soft left border */
+  .situation-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.45;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    border-left: 3px solid var(--accent-soft);
+    padding-left: var(--space-3);
+    margin: 0 0 var(--space-5);
+    max-width: 64ch;
+    text-wrap: pretty;
+  }
+
+  /* Coach response — senior-colleague register */
+  .coach-response {
+    color: var(--mute);
+    max-width: 64ch;
+    margin: 0 0 var(--space-5);
+  }
+  .coach-response p { margin: 0; }
+  .coach-response p + p { margin-top: var(--space-3); }
+
+  /* Response paths */
+  .path-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 760px) {
+    .path-row { grid-template-columns: 1fr; }
+  }
+  .path-card {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px;
+    padding: 24px;
+    background: var(--paper);
+    border: 1px solid var(--paper-3);
+    border-radius: 8px;
+    transition: border-color 120ms var(--ease), background-color 120ms var(--ease);
+  }
+  .path-card .label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .path-card .lucide {
+    width: 16px; height: 16px; stroke-width: 1.5;
+    color: var(--mute);
+    flex-shrink: 0;
+    transition: color 120ms var(--ease), transform 120ms var(--ease);
+  }
+  .path-card:hover {
+    border-color: var(--mute-2);
+    background: var(--paper);
+  }
+  .path-card:hover .lucide { color: var(--ink); transform: translateX(2px); }
+  .path-card:focus-visible {
+    outline: 2px solid var(--ink); outline-offset: 2px;
+  }
+
+  /* ============================================================== */
+  /* STATE 03 — PAST SESSIONS                                        */
+  /* ============================================================== */
+
+  .past-stage { padding: var(--space-6) 0 var(--space-7); }
+  .past-stage .eyebrow { margin-bottom: var(--space-3); }
+  .past-stage h2 { margin: 0 0 var(--space-5); max-width: 22ch; }
+
+  .past-list {
+    list-style: none; margin: 0; padding: 0;
+    border-top: 1px solid var(--paper-3);
+  }
+  .past-row {
+    display: grid;
+    grid-template-columns: 160px 200px 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--paper-3);
+    transition: background-color 120ms var(--ease);
+  }
+  .past-row:hover { background: rgba(231, 224, 210, 0.25); }
+  .past-row .date {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; font-size: 13px;
+    color: var(--mute);
+    letter-spacing: 0.02em;
+  }
+  .past-row .tag {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600; font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mute);
+  }
+  .past-row .summary {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.45;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .past-row .reopen {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; font-size: 14px;
+    color: var(--mute);
+    transition: color 120ms var(--ease);
+    white-space: nowrap;
+  }
+  .past-row .reopen .lucide {
+    width: 14px; height: 14px; stroke-width: 1.5;
+    transition: transform 120ms var(--ease);
+  }
+  .past-row:hover .reopen { color: var(--ink); }
+  .past-row:hover .reopen .lucide { transform: translateX(2px); }
+
+  @media (max-width: 760px) {
+    .past-row {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: var(--space-3) 0;
+    }
+    .past-row .reopen { justify-self: start; }
+  }
+
+  /* ========= Reduced motion ========= */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ====================================================================== -->
+<!-- STATE 01 — INTAKE (signature surface)                                 -->
+<!-- ====================================================================== -->
+<div class="state-label state-label-720">
+  <span>State 01 — Intake (signature surface)</span>
+  <span class="max-w">max-width 720px</span>
+</div>
+
+<section class="surface surface-720 intake-stage" data-screen-label="Situation Room — Intake" aria-labelledby="intake-title">
+  <h2 id="intake-title" style="position:absolute; left:-9999px;">Situation Room — Intake</h2>
+
+  <!-- Top: only one small mark of context -->
+  <div class="intake-top">
+    <div class="eyebrow-mute">Day 38 — Week 6</div>
+  </div>
+
+  <!-- Centre: switcher + the single oversized input -->
+  <div class="intake-center">
+    <div class="switcher" role="tablist" aria-label="Intake type">
+      <button class="opt is-active" role="tab" aria-selected="true" data-intake="help">I need help with this</button>
+      <button class="opt" role="tab" aria-selected="false" data-intake="normal">Is this normal?</button>
+      <button class="opt" role="tab" aria-selected="false" data-intake="did">I just did something</button>
+    </div>
+
+    <div class="sr-wrap">
+      <label for="sr-input" style="position:absolute; left:-9999px;">Describe the situation</label>
+      <textarea id="sr-input" class="sr-textarea" rows="10" placeholder="Describe what’s happening. Anonymise as you go — call them ‘my lead dev’ rather than their name." spellcheck="true"></textarea>
+
+      <button class="sr-submit" type="button" id="sr-submit" aria-label="Send to FirstNinety">
+        <span class="kbd">⌘ + Enter</span>
+        <i data-lucide="arrow-right"></i>
+      </button>
+    </div>
+
+    <p class="sr-caption">FirstNinety will reply in seconds. Anything you type is encrypted, deletable, and never shared.</p>
+  </div>
+
+  <!-- Bottom: two equal ghost links — no primary CTA -->
+  <div class="intake-bottom">
+    <a class="ghost-link" href="#"><span>→</span><span>Skip and roleplay instead</span></a>
+    <a class="ghost-link" href="#"><span>→</span><span>Open your past sessions</span></a>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- STATE 02 — ACTIVE SESSION                                              -->
+<!-- ====================================================================== -->
+<div class="state-label state-label-880">
+  <span>State 02 — Active session in progress</span>
+  <span class="max-w">max-width 880px</span>
+</div>
+
+<section class="surface surface-880 session-stage" data-screen-label="Situation Room — Active session" aria-labelledby="session-title">
+  <h2 id="session-title" style="position:absolute; left:-9999px;">Active session</h2>
+
+  <div class="eyebrow">Situation — Wednesday 2:14 PM</div>
+
+  <blockquote class="situation-quote">
+    “My PM just messaged saying we need to scrap the requirements I spent the last two days on. He wants to talk in 30 minutes. I’m not sure if I should push back or just accept it.”
+  </blockquote>
+
+  <div class="coach-response t-body">
+    <p>Two days of requirements work doesn’t get scrapped without context. Before the call, get one piece of information from him: what changed. Was the scope explicitly redefined by stakeholders, or did he just change his mind? Those are different conversations.</p>
+    <p>Then in the call, don’t litigate the work. Frame it forward: <em>“What’s the new scope, and what can we reuse from what I’ve done.”</em> That keeps you in collaborator mode rather than victim mode.</p>
+  </div>
+
+  <div class="path-row" role="list">
+    <a href="#" class="path-card" role="listitem">
+      <span class="label">Read more on this</span>
+      <i data-lucide="book-open"></i>
+    </a>
+    <a href="#" class="path-card" role="listitem">
+      <span class="label">Roleplay the call now</span>
+      <i data-lucide="arrow-right"></i>
+    </a>
+    <a href="#" class="path-card" role="listitem">
+      <span class="label">Talk it through more</span>
+      <i data-lucide="message-circle"></i>
+    </a>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- STATE 03 — PAST SESSIONS                                               -->
+<!-- ====================================================================== -->
+<div class="state-label state-label-720">
+  <span>State 03 — Past sessions</span>
+  <span class="max-w">max-width 720px</span>
+</div>
+
+<section class="surface surface-720 past-stage" data-screen-label="Situation Room — Past sessions" aria-labelledby="past-title">
+  <div class="eyebrow">Your past sessions</div>
+  <h2 id="past-title" class="t-h2">What you’ve been through.</h2>
+
+  <ul class="past-list">
+    <li>
+      <a class="past-row" href="#">
+        <span class="date">Wednesday 2:14 PM</span>
+        <span class="tag">I need help with this</span>
+        <span class="summary">“My PM just messaged saying we need to scrap the requirements I spent two days on.”</span>
+        <span class="reopen">Reopen <i data-lucide="arrow-right"></i></span>
+      </a>
+    </li>
+    <li>
+      <a class="past-row" href="#">
+        <span class="date">Monday 9:32 AM</span>
+        <span class="tag">Is this normal?</span>
+        <span class="summary">“My manager hasn’t given me feedback on anything I’ve delivered in three weeks.”</span>
+        <span class="reopen">Reopen <i data-lucide="arrow-right"></i></span>
+      </a>
+    </li>
+    <li>
+      <a class="past-row" href="#">
+        <span class="date">Last Friday 4:48 PM</span>
+        <span class="tag">I just did something</span>
+        <span class="summary">“I told my lead dev the deadline was unrealistic and now he’s not replying to my messages.”</span>
+        <span class="reopen">Reopen <i data-lucide="arrow-right"></i></span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<div style="height: var(--space-7);"></div>
+
+<script>
+  // Lucide
+  if (window.lucide && lucide.createIcons) lucide.createIcons();
+
+  // Intake switcher (a quiet toggle, not a tab system that swaps content)
+  const opts = document.querySelectorAll('.switcher .opt');
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      opts.forEach(o => {
+        o.classList.remove('is-active');
+        o.setAttribute('aria-selected', 'false');
+      });
+      opt.classList.add('is-active');
+      opt.setAttribute('aria-selected', 'true');
+    });
+  });
+
+  // Cmd-Enter (or Ctrl-Enter) submit
+  const ta = document.getElementById('sr-input');
+  const sub = document.getElementById('sr-submit');
+  function submit() {
+    // demo only — no-op
+    sub.animate(
+      [{ transform: 'translateX(0)' }, { transform: 'translateX(4px)' }, { transform: 'translateX(0)' }],
+      { duration: 280, easing: 'cubic-bezier(0.32, 0.72, 0, 1)' }
+    );
+  }
+  if (ta) {
+    ta.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        submit();
+      }
+    });
+  }
+  if (sub) sub.addEventListener('click', submit);
+</script>
+
+
+
+</body></html>
