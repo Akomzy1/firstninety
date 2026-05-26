@@ -145,15 +145,19 @@ function SidebarLink({
   return (
     <Link
       href={item.href}
-      className={`relative flex h-10 items-center gap-3 px-2 text-body-s font-medium transition-colors ${
+      className={`relative flex items-center gap-3 px-2 lg:px-3 py-2 text-body-s font-medium transition-colors ${
         active ? "bg-paper-3 text-ink" : inactiveText
       }`}
-      style={{ borderRadius: "4px" }}
+      style={{ borderRadius: "6px" }}
       title={item.label}
       aria-current={active ? "page" : undefined}
     >
       <span className="relative">
-        <Icon className="size-5 shrink-0" strokeWidth={1.5} aria-hidden />
+        <Icon
+          className="size-5 lg:size-[18px] shrink-0"
+          strokeWidth={1.5}
+          aria-hidden
+        />
         {unread ? (
           <span
             className="absolute -right-1 -top-1 size-2 rounded-full bg-accent"
