@@ -102,6 +102,13 @@ export default async function MissionTrackPage({ searchParams }: PageProps) {
   const reflectionPrompt =
     REFLECTION_PROMPTS[week] ?? "What was harder than you expected this week?";
 
+  // State B detection — a past week (week < current) containing at
+  // least one `skipped_pre_signup` mission. Drives the editorial note
+  // above the cards and suppresses the reflection prompt below.
+  const isPastWeek =
+    week < dayState.week &&
+    weekMissions.some((m) => m.status === "skipped_pre_signup");
+
   return (
     <section className="mx-auto flex max-w-(--max-page) flex-col gap-10 px-4 py-7 md:px-6 md:py-10">
       <header className="flex flex-wrap items-end justify-between gap-4">
@@ -146,35 +153,46 @@ export default async function MissionTrackPage({ searchParams }: PageProps) {
       ) : weekMissions.length === 0 ? (
         <EmptyWeek week={week} role={state.role} />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
-          {weekMissions.map((mission) => (
-            <MissionCard
-              key={mission.id}
-              missionSlug={mission.slug}
-              title={mission.title}
-              description={mission.why_matters}
-              day={mission.display_day}
-              estimatedMinutes={mission.estimated_minutes}
-              status={
-                mission.status === "completed"
-                  ? "completed"
-                  : mission.status === "locked"
-                    ? "locked"
-                    : "active"
-              }
-              statusLabel={
-                mission.status === "locked"
-                  ? `Unlocks Day ${mission.display_day}`
-                  : mission.completed_at
-                    ? `Completed ${formatRelative(mission.completed_at)}`
-                    : undefined
-              }
-              className="h-full"
-            />
-          ))}
-        </div>
+        <>
+          {isPastWeek ? (
+            <p className="font-display italic text-eyebrow text-mute-2 max-w-prose -mt-4">
+              This is from a week you lived through before FirstNinety.
+              Read at your own pace.
+            </p>
+          ) : null}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+            {weekMissions.map((mission) => (
+              <MissionCard
+                key={mission.id}
+                missionSlug={mission.slug}
+                title={mission.title}
+                description={mission.why_matters}
+                day={mission.display_day}
+                estimatedMinutes={mission.estimated_minutes}
+                status={
+                  mission.status === "completed"
+                    ? "completed"
+                    : mission.status === "skipped_pre_signup"
+                      ? "skipped_pre_signup"
+                      : mission.status === "locked"
+                        ? "locked"
+                        : "active"
+                }
+                statusLabel={
+                  mission.status === "locked"
+                    ? `Unlocks Day ${mission.display_day}`
+                    : mission.completed_at
+                      ? `Completed ${formatRelative(mission.completed_at)}`
+                      : undefined
+                }
+                className="h-full"
+              />
+            ))}
+          </div>
+        </>
       )}
 
+      {isPastWeek ? null : (
       <section
         aria-label="Weekly reflection"
         className="flex flex-wrap items-baseline justify-between gap-4 pt-7 border-t border-paper-3"
@@ -200,6 +218,7 @@ export default async function MissionTrackPage({ searchParams }: PageProps) {
           />
         </Link>
       </section>
+      )}
 
       <details className="border-t border-paper-3 pt-6 group">
         <summary className="cursor-pointer text-body-s font-medium text-mute hover:text-ink transition-colors inline-flex items-center gap-1.5">

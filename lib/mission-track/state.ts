@@ -14,7 +14,13 @@ import { requireAuth } from "@/lib/auth/server";
 import type { Database } from "@/lib/db/types.gen";
 
 type Role = Database["public"]["Enums"]["role_enum"];
-type MissionStatus = "available" | "in_progress" | "completed" | "skipped" | "locked";
+type MissionStatus =
+  | "available"
+  | "in_progress"
+  | "completed"
+  | "skipped"
+  | "skipped_pre_signup"
+  | "locked";
 
 export type MissionView = {
   id: string;
@@ -84,7 +90,14 @@ export async function getMissionTrackState(): Promise<MissionTrackState> {
   const completedSlugs = new Set<string>();
   for (const m of missionsResult.data ?? []) {
     const c = completionsByMission.get(m.id);
-    if (c?.status === "completed") completedSlugs.add(m.slug);
+    // `skipped_pre_signup` satisfies prereqs the same as `completed` —
+    // the user "lived through" the week, so downstream missions
+    // shouldn't be locked behind it. The mission's own UI status
+    // stays distinct (italic-mute "read-only" treatment vs the
+    // completed-check treatment).
+    if (c?.status === "completed" || c?.status === "skipped_pre_signup") {
+      completedSlugs.add(m.slug);
+    }
   }
 
   const missions: MissionView[] = (missionsResult.data ?? []).map((m) => {
@@ -94,6 +107,7 @@ export async function getMissionTrackState(): Promise<MissionTrackState> {
     if (completion?.status === "completed") status = "completed";
     else if (completion?.status === "in_progress") status = "in_progress";
     else if (completion?.status === "skipped") status = "skipped";
+    else if (completion?.status === "skipped_pre_signup") status = "skipped_pre_signup";
     else if (prereqs.some((slug) => !completedSlugs.has(slug))) status = "locked";
 
     return {

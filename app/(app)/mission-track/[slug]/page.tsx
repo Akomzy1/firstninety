@@ -60,6 +60,8 @@ export default async function MissionDetailPage({ params }: PageProps) {
     .maybeSingle();
 
   const completed = completionRow?.status === "completed";
+  const readOnlyPreSignup =
+    completionRow?.status === "skipped_pre_signup";
 
   const totalMissionsInWeek =
     (
@@ -128,16 +130,24 @@ export default async function MissionDetailPage({ params }: PageProps) {
         <p>{mission.success_criteria}</p>
       </Section>
 
-      <Section eyebrow="Reflection">
-        <p>{mission.reflection_prompt}</p>
-        <CompleteMissionForm
-          missionSlug={mission.slug}
-          initialReflection={completionRow?.reflection_response ?? ""}
-          alreadyCompleted={completed}
-        />
-      </Section>
+      {readOnlyPreSignup ? (
+        <p className="font-display italic text-body-l text-mute pt-5 border-t border-paper-3 max-w-prose">
+          This mission isn&rsquo;t open for completion — you&rsquo;ve
+          already lived through this week. Read it as a reference if
+          it&rsquo;s useful.
+        </p>
+      ) : (
+        <>
+          <Section eyebrow="Reflection">
+            <p>{mission.reflection_prompt}</p>
+            <CompleteMissionForm
+              missionSlug={mission.slug}
+              initialReflection={completionRow?.reflection_response ?? ""}
+              alreadyCompleted={completed}
+            />
+          </Section>
 
-      {!completed ? (
+          {!completed ? (
         <div className="flex flex-wrap gap-3 border-t border-paper-3 pt-5">
           <form action={startMissionAction}>
             <input type="hidden" name="mission_slug" value={mission.slug} />
@@ -159,6 +169,8 @@ export default async function MissionDetailPage({ params }: PageProps) {
             Completed{completionRow?.completed_at ? ` ${new Date(completionRow.completed_at).toLocaleDateString()}` : ""}.
           </p>
         </div>
+      )}
+        </>
       )}
     </article>
   );

@@ -32,6 +32,17 @@ export async function startMissionAction(formData: FormData): Promise<void> {
     .single();
   if (!mission) return;
 
+  // Guard: a `skipped_pre_signup` row is read-only. State B users
+  // have these for missions before their signup week; the UI presents
+  // them as read-only, but a hand-crafted POST shouldn't bypass.
+  const { data: existing } = await supabase
+    .from("mission_completions")
+    .select("status")
+    .eq("user_id", user.id)
+    .eq("mission_id", mission.id)
+    .maybeSingle();
+  if (existing?.status === "skipped_pre_signup") return;
+
   await supabase.from("mission_completions").upsert(
     {
       user_id: user.id,
@@ -64,6 +75,19 @@ export async function completeMissionAction(
     .eq("is_published", true)
     .single();
   if (!mission) return { error: "Mission not found." };
+
+  // Guard: a `skipped_pre_signup` row is read-only.
+  const { data: existing } = await supabase
+    .from("mission_completions")
+    .select("status")
+    .eq("user_id", user.id)
+    .eq("mission_id", mission.id)
+    .maybeSingle();
+  if (existing?.status === "skipped_pre_signup") {
+    return {
+      error: "This mission was skipped at signup and is read-only.",
+    };
+  }
 
   const { error } = await supabase.from("mission_completions").upsert(
     {

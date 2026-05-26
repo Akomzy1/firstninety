@@ -1,10 +1,14 @@
 /**
  * Mission card — used on the daily home and on the Mission Track week
- * view. Three variants matching Build Prompt 2.3 + the prototype:
+ * view. Four variants:
  *
- *   active    — TODAY — DAY N eyebrow, ink title, Begin CTA
- *   completed — same shape but title in --mute, "Completed N days ago"
- *   locked    — fully muted, lock icon, "Available Day N" tooltip
+ *   active             — TODAY — DAY N eyebrow, ink title, Begin CTA
+ *   completed          — same shape but title in --mute, "Completed N days ago"
+ *   locked             — fully muted, lock icon, "Available Day N" tooltip
+ *   skipped_pre_signup — italic-mute treatment, "Read →" link, editorial
+ *                        caption distinguishing "you lived through this"
+ *                        from "this is in your future" (locked). Per
+ *                        Retrofit 2 / MVP Spec v1.3 §3.
  *
  * Layout matches the Daily Home prototype: rounded 10px, --paper bg
  * inside a 2px --paper-3 border, generous internal padding.
@@ -15,7 +19,11 @@ import { Check, Lock } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 
-type MissionStatus = "active" | "completed" | "locked";
+type MissionStatus =
+  | "active"
+  | "completed"
+  | "locked"
+  | "skipped_pre_signup";
 
 export type MissionCardProps = {
   missionSlug: string;
@@ -42,6 +50,40 @@ export function MissionCard({
   isProbation = false,
   className = "",
 }: MissionCardProps) {
+  // skipped_pre_signup renders distinctly — italic-mute treatment with
+  // a small "Read →" link, no Begin / Open button, editorial caption
+  // distinguishing "you lived through this week" from "this is locked".
+  if (status === "skipped_pre_signup") {
+    return (
+      <article
+        className={`flex flex-col gap-2 border border-paper-3 bg-paper-2/40 p-5 md:p-6 ${className}`.trim()}
+        style={{ borderRadius: "10px" }}
+        aria-label={`${title} — read-only (skipped at signup)`}
+      >
+        <p className="text-eyebrow text-mute-2">Day {day}</p>
+        <h3
+          className="font-display italic font-normal text-mute"
+          style={{ fontSize: "17px", lineHeight: 1.4, letterSpacing: "0" }}
+        >
+          {title}
+        </h3>
+        <p className="font-display italic text-caption text-mute-2 max-w-prose">
+          From a week you lived through before FirstNinety. Available to
+          read if you want.
+        </p>
+        <div className="mt-1 flex items-center justify-between gap-3">
+          <span className="text-caption text-mute-2">{estimatedMinutes} min</span>
+          <Link
+            href={`/mission-track/${missionSlug}`}
+            className="text-body-s text-mute hover:text-ink underline-offset-4 hover:underline"
+          >
+            Read &rarr;
+          </Link>
+        </div>
+      </article>
+    );
+  }
+
   const tone =
     status === "active"
       ? "text-ink"
