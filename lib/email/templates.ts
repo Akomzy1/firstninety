@@ -18,8 +18,11 @@
  *                               exists so any custom-flow trigger
  *                               (e.g. forced reset from settings)
  *                               renders consistently with the rest.
+ *
+ * Pure functions — no I/O. Safe to import from Node scripts. The
+ * actual send-side runtime enforcement is at `sendEmail` in
+ * lib/notifications/email.ts.
  */
-import "server-only";
 
 import {
   ctaLink,

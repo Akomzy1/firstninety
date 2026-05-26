@@ -15,7 +15,8 @@
     "db:types": "node scripts/db.mjs gen-types",
     "db:migration:list": "node scripts/db.mjs migration list",
     "icons": "node scripts/generate-pwa-icons.mjs",
-    "prototypes:extract": "node scripts/extract-prototypes.mjs"
+    "prototypes:extract": "node scripts/extract-prototypes.mjs",
+    "test:emails": "tsx scripts/test-emails.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.98.0",

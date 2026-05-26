@@ -14,8 +14,12 @@
  *
  * Each render fn returns `{ subject, html, text }` where text is the
  * plain-text fallback for clients that don't render HTML.
+ *
+ * Pure functions — no I/O, no env-var reads. Safe to import from
+ * Node scripts (e.g. scripts/test-emails.ts) outside the Next.js
+ * runtime. The actual send enforcement (server-only) lives at
+ * `sendEmail` in lib/notifications/email.ts.
  */
-import "server-only";
 
 const PAPER = "#FAF7F2";
 const PAPER_2 = "#F2EDE4";
