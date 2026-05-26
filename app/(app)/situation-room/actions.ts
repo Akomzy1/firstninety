@@ -26,6 +26,7 @@ import {
 } from "@/lib/billing/tier";
 import { createServiceClient } from "@/lib/db/service";
 import { runPreFlightChecks } from "@/lib/safety/guardrails";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 export type SituationEntryType =
   | "prep"
@@ -127,6 +128,20 @@ export async function submitSituationAction(
       message:
         "Something went wrong saving your session. Try again in a moment.",
     };
+  }
+
+  try {
+    await captureServerEvent({
+      distinctId: user.id,
+      event: "situation_session_created",
+      properties: {
+        entry_type: rawType,
+        flagged_for_safety: flaggedForSafety,
+        body_length: rawBody.length,
+      },
+    });
+  } catch (err) {
+    console.warn("[situation-room] event capture failed", err);
   }
 
   // Note: returning is fine for the client, but the build prompt also

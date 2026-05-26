@@ -14,11 +14,11 @@ listed here.
   called.
 - Server-side events (`captureServerEvent`) use the FirstNinety
   `user.id` directly.
-- **Known gap:** `identifyUser()` is defined in `lib/tracing/posthog.ts`
-  but not currently called anywhere on signIn / signUp. As a result,
-  anonymous client-side sessions aren't merged with the user.id once
-  the user authenticates. Worth fixing pre-launch — see "Open
-  follow-ups" at the end.
+- **Merge bridge:** `<IdentifyBridge>` is mounted at the top of
+  `(app)/layout.tsx`. On first mount of the authenticated shell it
+  fires `identifyUser(user.id, {email, role})` — merging the anonymous
+  client distinctId with the user.id so client + server events line up
+  per user. Resets on `userId={null}`.
 
 ---
 
@@ -62,6 +62,91 @@ listed here.
 |---|---|---|
 | `email` | string | Captured for analytics; the user row is then deleted |
 **Powers:** the Acquisition dashboard (net signup growth = signups − deletions).
+
+### `signup_completed`
+**Fired from:** `app/(auth)/actions.ts:signUpAction` after `supabase.auth.signUp` returns successfully.
+**Distinct ID:** the new auth `user.id` from the signUp response.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `signup_source` | string | E.g. `organic`; the source-tracking pipeline (formerly used for Joberlify) |
+| `email_confirmation_pending` | boolean | True if Supabase email confirmation is enabled and the session wasn't established yet |
+**Powers:** the Acquisition dashboard (top-of-funnel growth signal).
+
+### `onboarding_completed`
+**Fired from:** `app/(onboarding)/onboarding/actions.ts:completeOnboardingAction` after the user finishes step 4.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `entry_state` | string | `A` \| `B` \| `C` per MVP Spec v1.3 §3 |
+| `role` | string | `ba` \| `pm` \| `sm` \| `po` \| `da` \| `aie` |
+| `sector` | string\|null | If captured in step 3 |
+| `work_setup` | string\|null | `remote` \| `hybrid` \| `office` |
+| `current_day` | number | Day-state computed at completion |
+| `current_week` | number | Week-state computed at completion |
+**Powers:** the Activation dashboard (step-by-step funnel from signup → onboarding-complete).
+
+### `mission_completed`
+**Fired from:** `app/(app)/mission-track/actions.ts:completeMissionAction`.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `mission_slug` | string | E.g. `ba-w1-map-stakeholders` |
+| `week` | number | Mission's week (1-13) |
+| `sequence_in_week` | number | Position within the week |
+| `had_reflection` | boolean | True if the reflection field was filled |
+**Powers:** the Retention dashboard (Mission Track completion + per-week trajectory). Use PostHog's "first-time matched" filter to derive first-mission-completed for the Activation dashboard.
+
+### `situation_session_created`
+**Fired from:** `app/(app)/situation-room/actions.ts:submitSituationAction` after the situation_sessions row insert.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `entry_type` | string | `prep` \| `is_this_normal` \| `debrief` \| `probation` |
+| `flagged_for_safety` | boolean | Crisis pre-flight result |
+| `body_length` | number | Raw input length in characters |
+**Powers:** Retention (sessions per active user per week); use "first-time matched" for the Activation funnel.
+
+### `simulator_run_started`
+**Fired from:** `app/(app)/simulator/actions.ts:startScenarioRunAction` after the scenario_runs row insert.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `scenario_slug` | string | E.g. `ba-hostile-lead-dev` |
+| `scenario_id` | string | UUID of the scenarios row |
+**Powers:** Retention (runs per active user per week); use "first-time matched" for the Activation funnel.
+
+### `probation_mode_activated`
+**Fired from:** both `app/(app)/probation/actions.ts:activateProbationModeAction` AND `app/(app)/settings/probation/actions.ts:activateProbationModeAction`. The `source` property distinguishes them.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `source` | string | `probation_banner` (the home banner CTA) \| `settings_page` (Settings → Probation toggle) |
+**Powers:** the Probation dashboard.
+
+### `probation_brief_generated`
+**Fired from:** `lib/probation/brief.ts:generateProbationBrief` after the artefact insert + user_context stamp succeed.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `generation_number` | number | 1, 2, or 3 (lifetime cap of 3 per user) |
+| `days_to_review` | number\|null | Computed from current_day; null for users past Day 90 |
+**Powers:** the Probation dashboard (brief generation funnel from activation).
+
+### `probation_outcome_captured`
+**Fired from:** `app/(app)/probation/actions.ts:captureProbationOutcomeAction`.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `outcome` | string | `continued` \| `extended` \| `ended` \| `prefer_not_to_say` |
+**Powers:** the Probation dashboard outcome distribution — the closest thing FirstNinety has to a product-market-fit indicator.
 
 ---
 
@@ -108,14 +193,14 @@ posthog.init(key, {
 
 ## Open follow-ups
 
-Pre-launch worth doing (small):
+Remaining gaps (small, optional):
 
-1. **Wire `identifyUser(user.id)`** into the auth callback / app-shell mount so anonymous client sessions merge with the user.id on signIn. Without this, the `landing_section_viewed` → `account_created` funnel can't link the anonymous pre-signup events to the user once they convert.
+1. **Coach engagement events** — `coach_thread_created` + `coach_message_sent` would add an analytics surface for the Coach (currently visible only via `ai_call_completed` filtered to `surface=coach`). Useful for the Activation dashboard's first-time-Coach-message signal.
 
-2. **Add an explicit `signup_completed` event** in `signUpAction` (or in the auth callback that lands after email confirmation). Today, PostHog only sees `$pageview` traffic; a discrete signup event makes the Acquisition dashboard cleaner. Properties: `signup_source` (already captured on the user row).
+2. **Stripe-driven events with cleaner names** — currently every Stripe webhook fires `stripe_webhook` with `event_type` as a property. Adding aliased events (`subscription_started`, `subscription_canceled`, `trial_will_end`) inside the webhook handler would make PostHog insights simpler to author. The raw `stripe_webhook` stays for completeness.
 
-3. **Add explicit lifecycle events** for the journey: `onboarding_completed`, `first_mission_completed`, `first_situation_room_session`, `first_simulator_run`. These power the Activation dashboard (Day-30-active requires distinguishing 'opened the app' from 'used a surface').
+3. **`scenario_run_completed`** — only `simulator_run_started` is fired today. Adding the completed-event from `completeScenarioRunAction` (when it lands) would let the Retention dashboard show the start-vs-finish ratio per scenario.
 
-4. **Add `probation_mode_activated`, `probation_brief_generated`, `probation_outcome_captured`** events from the probation actions. These power the Probation dashboard; today the Probation surface is invisible to PostHog.
+4. **`mission_skipped` (user-initiated)** — distinguish user-skipped from `skipped_pre_signup` (which is structural backfill from the State B mid-journey path). Lets us see whether users are actively skipping missions vs just inheriting skips.
 
-Each is a 1-2-line `captureServerEvent` call in the relevant action. Together they're the analytics fidelity gap between "we know users visited" and "we know what users actually did".
+None of these are blockers; the wiring done in this commit covers the seven dashboards' core needs.

@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 
 import { requireAuth } from "@/lib/auth/server";
 import { createClient } from "@/lib/db/server";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 export type MissionActionState = { error?: string } | null;
 
@@ -58,7 +59,7 @@ export async function completeMissionAction(
 
   const { data: mission } = await supabase
     .from("missions")
-    .select("id")
+    .select("id, week, sequence_in_week")
     .eq("slug", missionSlug)
     .eq("is_published", true)
     .single();
@@ -75,6 +76,21 @@ export async function completeMissionAction(
     { onConflict: "user_id,mission_id" },
   );
   if (error) return { error: error.message };
+
+  try {
+    await captureServerEvent({
+      distinctId: user.id,
+      event: "mission_completed",
+      properties: {
+        mission_slug: missionSlug,
+        week: mission.week,
+        sequence_in_week: mission.sequence_in_week,
+        had_reflection: reflection.length > 0,
+      },
+    });
+  } catch (err) {
+    console.warn("[mission] event capture failed", err);
+  }
 
   revalidatePath("/home");
   revalidatePath("/mission-track");

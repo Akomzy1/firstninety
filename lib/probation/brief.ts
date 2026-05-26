@@ -20,6 +20,7 @@ import { execute as getProbationEvidence } from "@/lib/coach/tools/get-probation
 import { loadCoachPromptBody } from "@/lib/content/loaders";
 import { createServiceClient } from "@/lib/db/service";
 import { getDayState } from "@/lib/home/day-state";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 export type ProbationBriefData = {
   byline: string;
@@ -194,6 +195,19 @@ export async function generateProbationBrief({
     .from("user_context")
     .update({ probation_brief_generated_at: generatedAt })
     .eq("user_id", userId);
+
+  try {
+    await captureServerEvent({
+      distinctId: userId,
+      event: "probation_brief_generated",
+      properties: {
+        generation_number: usedCount + 1,
+        days_to_review: dayState.day > 90 ? null : 90 - dayState.day,
+      },
+    });
+  } catch (err) {
+    console.warn("[probation-brief] event capture failed", err);
+  }
 
   return { ok: true, artefactId: inserted.id, brief: briefData };
 }

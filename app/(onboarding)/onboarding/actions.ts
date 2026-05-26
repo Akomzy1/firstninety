@@ -14,6 +14,7 @@ import { requireAuth } from "@/lib/auth/server";
 import type { Database } from "@/lib/db/types.gen";
 import { sendEmail } from "@/lib/notifications/email";
 import { welcomeEmail } from "@/lib/email/templates";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 type Role = Database["public"]["Enums"]["role_enum"];
 type WorkSetup = Database["public"]["Enums"]["work_setup_enum"];
@@ -285,6 +286,26 @@ export async function completeOnboardingAction(): Promise<void> {
   }
   if (seedRows.length > 0) {
     await supabase.from("user_responsibilities").insert(seedRows);
+  }
+
+  // onboarding_completed event — fires alongside the welcome email,
+  // for the same reason (we want the analytics event to represent a
+  // user who confirmed + finished step 4, not one who started signup).
+  try {
+    await captureServerEvent({
+      distinctId: user.id,
+      event: "onboarding_completed",
+      properties: {
+        entry_state: entryState,
+        role,
+        sector: contextRow?.sector ?? null,
+        work_setup: contextRow?.work_setup ?? null,
+        current_day: currentDay,
+        current_week: currentWeek,
+      },
+    });
+  } catch (err) {
+    console.warn("[onboarding] event capture failed", err);
   }
 
   // Welcome email — fires after the user is confirmed + committed

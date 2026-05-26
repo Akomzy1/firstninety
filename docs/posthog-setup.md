@@ -20,25 +20,25 @@ project. All dashboard/alert work happens in the UI; no code changes.
 **Insights to add:**
 
 1. **Signups by source.** Insight type: Trend.
-   - Event: `$pageview`, filtered to URL contains `/register` (until the dedicated `signup_completed` event lands per `posthog-events.md` follow-up 2).
-   - Breakdown: `signup_source` user property (set during signUpAction).
+   - Event: `signup_completed`.
+   - Breakdown: `signup_source` property.
    - Time range: last 30 days, daily.
 
-2. **Landing → register conversion.** Insight type: Funnel.
+2. **Landing → signup conversion.** Insight type: Funnel.
    - Step 1: `landing_section_viewed` where `section_id = 'hero'`.
    - Step 2: `$pageview` where path = `/register`.
-   - Step 3: `$pageview` where path matches `/onboarding/step-1`.
+   - Step 3: `signup_completed`.
    - Conversion window: 24 hours.
 
 3. **AIE wedge funnel.** Insight type: Funnel.
    - Step 1: `landing_section_viewed` where `section_id starts with 'aie-'`.
    - Step 2: `landing_section_viewed` where `section_id = 'aie-probation'` (the dedicated probation-section signal).
-   - Step 3: `$pageview` where path = `/register`.
-   - Step 4: `$pageview` where path matches `/onboarding/step-1`.
+   - Step 3: `signup_completed`.
+   - Step 4: `onboarding_completed` where `role = 'aie'`.
    - Tells you whether the AIE landing converts vs the main landing.
 
 4. **Net signup growth.** Insight type: Trend.
-   - Event A: `$pageview` where URL contains `/onboarding/step-4` (proxy for signup-completed until the dedicated event lands).
+   - Event A: `signup_completed`.
    - Event B: `account_deleted` (subtracted).
 
 Note: 'Joberlify cross-sell signups' from the original Prompt 5.7 is **removed** — Joberlify cross-sell is no longer a feature (per the May 2026 decision). The signup_source field stays; it just won't have Joberlify values.
@@ -60,10 +60,10 @@ Note: 'Joberlify cross-sell signups' from the original Prompt 5.7 is **removed**
    - The PRD §10 calls this out as the primary growth metric.
 
 2. **Activation rate (within 48h of signup).** Insight type: Funnel.
-   - Step 1: `$pageview` where path = `/onboarding/step-4` (proxy for signup until dedicated event).
-   - Step 2: `ai_call_completed` (any surface).
+   - Step 1: `signup_completed`.
+   - Step 2: `onboarding_completed`.
+   - Step 3: any of `mission_completed`, `situation_session_created`, `simulator_run_started` (use the "First time" filter so each user only counts once).
    - Conversion window: 48 hours.
-   - Note: this gets cleaner once the `first_mission_completed` / `first_situation_room_session` / `first_simulator_run` events land per posthog-events.md follow-up 3.
 
 3. **Surface-by-surface activation.** Insight type: Trend.
    - Event: `ai_call_completed`, breakdown by `surface`.
@@ -94,8 +94,12 @@ Note: 'Joberlify cross-sell signups' from the original Prompt 5.7 is **removed**
    - Event: `ai_call_completed` where `surface = 'situation_room'`.
    - Math: Total events / Unique users.
 
-4. **Mission Track completion at Day 90.** Insight type: Trend.
-   - Source: needs the `mission_completed` event added per posthog-events.md follow-up 3. Stub: track via direct SQL query for now (mission_completions table count per user vs total missions).
+4. **Mission Track completion.** Insight type: Trend.
+   - Event: `mission_completed`.
+   - Math: Total events.
+   - Breakdown: `week` (1-13).
+   - Time range: last 90 days, weekly.
+   - Tells you which weeks the team's missions are landing vs being skipped.
 
 5. **Retention curve.** Insight type: Retention.
    - Cohortise by: signup week (proxy: first `$pageview` at `/onboarding/step-4`).
@@ -173,14 +177,13 @@ Note: 'Joberlify cross-sell signups' from the original Prompt 5.7 is **removed**
 
 **Create:** Dashboards → New dashboard → "Probation".
 
-**Stub-status note:** the canonical Probation events (`probation_mode_activated`, `probation_brief_generated`, `probation_outcome_captured`) **don't exist in the codebase yet** (per posthog-events.md follow-up 4). Until they're wired, this dashboard's insights have to be sourced from direct SQL queries on `user_context` and `probation_artefacts`. Add the events; then revisit.
+**Insights:**
 
-**Insights once the events are wired:**
-
-1. **Probation activation rate.** Trend of `probation_mode_activated` events per week.
-2. **Brief generation rate.** Funnel: `probation_mode_activated` → `probation_brief_generated`.
-3. **Outcome capture rate.** Funnel: `probation_brief_generated` → `probation_outcome_captured`.
-4. **Outcome distribution.** Trend of `probation_outcome_captured`, breakdown by outcome (`continued` / `extended` / `ended` / `prefer_not_to_say`).
+1. **Probation activation rate.** Trend of `probation_mode_activated` events per week. Breakdown by `source` (`probation_banner` vs `settings_page`) to see which entry-point users prefer.
+2. **Brief generation rate.** Funnel: `probation_mode_activated` → `probation_brief_generated`. Conversion window: 21 days (Probation Mode's window).
+3. **Brief generation depth.** Trend of `probation_brief_generated`, breakdown by `generation_number` (1 / 2 / 3). Shows whether users use their full 3-generation budget or stop at 1.
+4. **Outcome capture rate.** Funnel: `probation_brief_generated` → `probation_outcome_captured`. Conversion window: 30 days.
+5. **Outcome distribution.** Trend of `probation_outcome_captured`, breakdown by `outcome` (`continued` / `extended` / `ended` / `prefer_not_to_say`). The closest thing FirstNinety has to a product-market-fit indicator.
 
 ---
 

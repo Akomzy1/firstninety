@@ -14,6 +14,7 @@ import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/marketing/Wordmark";
 import { BottomNav } from "@/components/nav/BottomNav";
 import { Sidebar } from "@/components/nav/Sidebar";
+import { IdentifyBridge } from "@/components/providers/IdentifyBridge";
 import { IOSInstallTutorial } from "@/components/pwa/IOSInstallTutorial";
 import { NotificationPermissionPrompt } from "@/components/pwa/NotificationPermissionPrompt";
 import { createClient } from "@/lib/db/server";
@@ -94,6 +95,14 @@ export default async function AppLayout({
 
       <NotificationPermissionPrompt />
       <IOSInstallTutorial />
+
+      {/* Merges the anonymous client-side PostHog distinctId with the
+          authenticated user.id. No UI; runs once on mount. */}
+      <IdentifyBridge
+        userId={userMenuUser?.id ?? null}
+        email={userMenuUser?.email ?? null}
+        role={userMenuUser?.primary_role ?? null}
+      />
     </div>
   );
 }

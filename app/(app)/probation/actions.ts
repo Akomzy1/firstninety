@@ -23,6 +23,7 @@ import { redirect } from "next/navigation";
 import { requireAuth } from "@/lib/auth/server";
 import { createServiceClient } from "@/lib/db/service";
 import { generateProbationBrief } from "@/lib/probation/brief";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 export type ProbationOutcome =
   | "continued"
@@ -80,6 +81,16 @@ export async function captureProbationOutcomeAction(
       probation_mode_active: false,
     })
     .eq("user_id", user.id);
+
+  try {
+    await captureServerEvent({
+      distinctId: user.id,
+      event: "probation_outcome_captured",
+      properties: { outcome: raw },
+    });
+  } catch (err) {
+    console.warn("[probation] outcome event capture failed", err);
+  }
 
   // 2. "Prefer not to say" routes straight home — no follow-up thread,
   //    no outcome-specific Coach voice, full respect for the user's
@@ -186,6 +197,17 @@ export async function activateProbationModeAction(): Promise<void> {
     .from("user_context")
     .update({ probation_mode_active: true })
     .eq("user_id", user.id);
+
+  try {
+    await captureServerEvent({
+      distinctId: user.id,
+      event: "probation_mode_activated",
+      properties: { source: "probation_banner" },
+    });
+  } catch (err) {
+    console.warn("[probation] activate event capture failed", err);
+  }
+
   revalidatePath("/home");
   revalidatePath("/settings/probation");
 }

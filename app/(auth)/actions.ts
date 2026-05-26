@@ -13,6 +13,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/lib/db/server";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 export type AuthFormState = {
   error?: string;
@@ -52,7 +53,7 @@ export async function signUpAction(
 
   const supabase = await createClient();
   const origin = await getRedirectOrigin();
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -62,6 +63,24 @@ export async function signUpAction(
   });
 
   if (error) return { error: error.message };
+
+  // Best-effort signup_completed event. distinctId is the new auth user
+  // id if signUp returned one; the session may not exist yet if email
+  // confirmation is on. Never throws.
+  if (data?.user?.id) {
+    try {
+      await captureServerEvent({
+        distinctId: data.user.id,
+        event: "signup_completed",
+        properties: {
+          signup_source: signupSource,
+          email_confirmation_pending: !data.session,
+        },
+      });
+    } catch (err) {
+      console.warn("[auth] signup event capture failed", err);
+    }
+  }
 
   // If email confirmation is enabled in the Supabase project, the user
   // lands on the login page with a notice. If confirmations are disabled,

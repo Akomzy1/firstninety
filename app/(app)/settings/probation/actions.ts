@@ -11,6 +11,7 @@ import { revalidatePath } from "next/cache";
 
 import { requireAuth } from "@/lib/auth/server";
 import { createClient } from "@/lib/db/server";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 export type ProbationActionState = { error?: string; notice?: string } | null;
 
@@ -116,6 +117,17 @@ export async function activateProbationModeAction(): Promise<void> {
     .from("user_context")
     .update({ probation_mode_active: true })
     .eq("user_id", user.id);
+
+  try {
+    await captureServerEvent({
+      distinctId: user.id,
+      event: "probation_mode_activated",
+      properties: { source: "settings_page" },
+    });
+  } catch (err) {
+    console.warn("[probation] settings activate event capture failed", err);
+  }
+
   revalidatePath("/settings/probation");
   revalidatePath("/home");
 }

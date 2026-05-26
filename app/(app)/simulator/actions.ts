@@ -22,6 +22,7 @@ import { redirect } from "next/navigation";
 import { requireAuth } from "@/lib/auth/server";
 import { checkTierAllowance } from "@/lib/billing/tier";
 import { createServiceClient } from "@/lib/db/service";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 import { markDebriefRead } from "@/lib/simulator/debrief";
 
 /**
@@ -125,6 +126,19 @@ export async function startScenarioRunAction(
   if (runErr || !run) {
     console.error("[simulator] scenario_runs insert failed", runErr);
     redirect(`/simulator/${slug}/brief?denied=error`);
+  }
+
+  try {
+    await captureServerEvent({
+      distinctId: user.id,
+      event: "simulator_run_started",
+      properties: {
+        scenario_slug: slug,
+        scenario_id: scenario.id,
+      },
+    });
+  } catch (err) {
+    console.warn("[simulator] event capture failed", err);
   }
 
   redirect(`/simulator/${slug}/run/${run.id}`);
