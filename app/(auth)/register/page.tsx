@@ -14,13 +14,11 @@ import { EmailPasswordForm } from "@/components/auth/EmailPasswordForm";
 
 import { signUpAction } from "../actions";
 
-type RegisterPageProps = {
-  searchParams: Promise<{ source?: string }>;
-};
-
-export default async function RegisterPage({ searchParams }: RegisterPageProps) {
-  const { source } = await searchParams;
-  const signupSource = source === "joberlify_offer_accepted" ? source : "organic";
+export default async function RegisterPage() {
+  // Joberlify cross-sell removed; all signups tag as 'organic'. The
+  // signup_source column on `users` is kept for future source tagging
+  // (referral programmes, ad campaigns, etc.).
+  const signupSource = "organic";
 
   return (
     <div className="flex flex-col gap-5">
