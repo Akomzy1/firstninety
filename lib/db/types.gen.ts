@@ -179,6 +179,8 @@ export type Database = {
           timezone: string | null;
           disable_real_name_advisory: boolean;
           viewed_post_90_home_at: string | null;
+          viewed_mid_journey_welcome_at: string | null;
+          entry_state: Database["public"]["Enums"]["entry_state_enum"];
           created_at: string;
           updated_at: string;
         };
@@ -203,6 +205,8 @@ export type Database = {
           timezone?: string | null;
           disable_real_name_advisory?: boolean;
           viewed_post_90_home_at?: string | null;
+          viewed_mid_journey_welcome_at?: string | null;
+          entry_state?: Database["public"]["Enums"]["entry_state_enum"];
           created_at?: string;
           updated_at?: string;
         };
@@ -227,6 +231,8 @@ export type Database = {
           timezone?: string | null;
           disable_real_name_advisory?: boolean;
           viewed_post_90_home_at?: string | null;
+          viewed_mid_journey_welcome_at?: string | null;
+          entry_state?: Database["public"]["Enums"]["entry_state_enum"];
           created_at?: string;
           updated_at?: string;
         };
@@ -881,7 +887,12 @@ export type Database = {
         | "coach_inferred"
         | "user_manual";
       work_setup_enum: "remote" | "hybrid" | "office";
-      mission_status_enum: "in_progress" | "completed" | "skipped";
+      mission_status_enum:
+        | "in_progress"
+        | "completed"
+        | "skipped"
+        | "skipped_pre_signup";
+      entry_state_enum: "A" | "B" | "C";
       scenario_run_status_enum: "active" | "completed" | "abandoned";
       situation_entry_type_enum: "prep" | "is_this_normal" | "debrief" | "probation";
       coach_message_role_enum: "user" | "assistant" | "tool" | "system";
