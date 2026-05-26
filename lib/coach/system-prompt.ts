@@ -10,8 +10,9 @@
  *
  *   1. Role priming        — content/coach-prompts/role-{role}.md
  *   2. Voice & behaviour   — content/coach-prompts/voice.md
- *   3. Day-state priming   — generated; selects Days-1-90 vs Day-91+
- *                            framing per SKILL §8.2
+ *   3. Day-state priming   — generated; three variants per MVP Spec
+ *                            v1.3 §4.2 — A/B Days 1-90, A/B graduated,
+ *                            and State C (joined post-Day-90)
  *   4. Probation overlay   — content/coach-prompts/probation-voice.md,
  *                            only when probation_mode_active
  *   5. Current context     — generated from user_context + recent rows
@@ -24,8 +25,10 @@ import "server-only";
 import { createServiceClient } from "@/lib/db/service";
 import { loadCoachPromptBody } from "@/lib/content/loaders";
 import { getDayState } from "@/lib/home/day-state";
+import type { Database } from "@/lib/db/types.gen";
 
 type Role = "ba" | "pm" | "sm" | "po" | "da" | "aie";
+type EntryState = Database["public"]["Enums"]["entry_state_enum"];
 
 export type CoachContext = {
   userId: string;
@@ -33,6 +36,8 @@ export type CoachContext = {
   currentWeek: number;
   currentDay: number;
   dayMode: "day-1" | "day-n" | "post-90";
+  /** v1.3: A = fresh, B = mid-journey, C = joined post-Day-90. */
+  entryState: EntryState;
   probationModeActive: boolean;
   probationReviewDate: string | null;
   daysToReview: number | null;
@@ -51,7 +56,7 @@ export async function loadCoachContext(userId: string): Promise<CoachContext> {
     supabase
       .from("user_context")
       .select(
-        "start_date, probation_mode_active, probation_review_date",
+        "start_date, probation_mode_active, probation_review_date, entry_state",
       )
       .eq("user_id", userId)
       .single(),
@@ -62,6 +67,7 @@ export async function loadCoachContext(userId: string): Promise<CoachContext> {
   const dayState = getDayState(startDate);
   const probationModeActive = ctxResult.data?.probation_mode_active ?? false;
   const probationReviewDate = ctxResult.data?.probation_review_date ?? null;
+  const entryState = (ctxResult.data?.entry_state ?? "A") as EntryState;
 
   let daysToReview: number | null = null;
   if (probationReviewDate) {
@@ -80,6 +86,7 @@ export async function loadCoachContext(userId: string): Promise<CoachContext> {
     currentWeek: dayState.week,
     currentDay: dayState.day,
     dayMode: dayState.mode,
+    entryState,
     probationModeActive,
     probationReviewDate,
     daysToReview,
@@ -96,14 +103,20 @@ export async function buildCoachSystemPrompt(
 ): Promise<string> {
   const blocks: string[] = [];
 
-  // 1. Role priming. Day-state determines *which* file we read:
-  //    - Days 1-90 → `role-{role}.md`            (first-90 framing)
-  //    - Day 91+    → `post-90-context.md`        (post-90 framing,
-  //                   single file with six role sections keyed by slug)
+  // 1. Role priming. Entry-state + day-state determine which file we read:
+  //    - State A/B Days 1-90 → `role-{role}.md`            (first-90 framing)
+  //    - State A/B Day 91+    → `post-90-context.md`        (graduated framing)
+  //    - State C              → `post-90-state-c-context.md` (joined post-Day-90)
   //    Falls back to a tight "role unknown" sentence so we never block on
   //    a missing primary_role.
   if (context.role) {
-    blocks.push(await loadRolePrimingBlock(context.role, context.dayMode));
+    blocks.push(
+      await loadRolePrimingBlock(
+        context.role,
+        context.dayMode,
+        context.entryState,
+      ),
+    );
   } else {
     blocks.push(
       "The user has not picked a role yet. Coach them in the senior-colleague register and gently steer them to set their role in Settings → Account so role-specific priming kicks in.",
@@ -113,7 +126,8 @@ export async function buildCoachSystemPrompt(
   // 2. Core voice + behaviour.
   blocks.push(await loadCoachPromptBody("voice"));
 
-  // 3. Day-state priming. Two variants per SKILL §8.2.
+  // 3. Day-state priming. Three variants per MVP Spec v1.3 §4.2 —
+  //    A/B Days 1-90, A/B graduated, and State C (joined post-Day-90).
   blocks.push(buildDayStateBlock(context));
 
   // 4. Probation overlay (only when active).
@@ -133,7 +147,22 @@ export async function buildCoachSystemPrompt(
 async function loadRolePrimingBlock(
   role: Role,
   dayMode: CoachContext["dayMode"],
+  entryState: EntryState,
 ): Promise<string> {
+  // State C — joined post-Day-90, no journey data inside FirstNinety
+  // from the first 90 days. Loads the State-C-specific multi-role file.
+  if (entryState === "C") {
+    try {
+      const body = await loadCoachPromptBody("post-90-state-c-context");
+      const section = extractRoleSection(body, role);
+      if (section) return section;
+    } catch {
+      // fall through to the generic fallback below
+    }
+    return `The user is a ${role.toUpperCase()} who joined FirstNinety after their first 90 days had already passed. You have no journey data from that period — only what they tell you and what they've done in FirstNinety since signup. Treat them as a working professional, not a new starter. Don't reference Mission Track, Survival Report, or "your first 90 days" framing.`;
+  }
+
+  // State A/B graduated — went through the curriculum, now past Day 90.
   if (dayMode === "post-90") {
     try {
       const body = await loadCoachPromptBody("post-90-context");
@@ -145,6 +174,7 @@ async function loadRolePrimingBlock(
     return `The user is a ${role.toUpperCase()} who has completed their first 90 days at this organisation. Treat them as a working professional — not new. Post-90 role-specific priming has not been authored for this role; coach in the senior-colleague register.`;
   }
 
+  // State A/B Days 1-90 — standard role priming.
   try {
     return await loadCoachPromptBody(`role-${role}`);
   } catch {
@@ -181,9 +211,24 @@ function extractRoleSection(body: string, role: Role): string | null {
 }
 
 function buildDayStateBlock(context: CoachContext): string {
+  // Variant C — joined post-Day-90 at signup. No first-90-days framing.
+  // No Mission Track / Survival Report references. Treat as a working
+  // professional with no journey data inside FirstNinety from before
+  // signup. Per MVP Spec v1.3 §4.2.
+  if (context.entryState === "C") {
+    return [
+      "## Day-state priming — State C (joined post-Day-90)",
+      "",
+      `The user is now ${weeksBeyond90(context.currentDay)} weeks into their role at this organisation. They joined FirstNinety after their first 90 days had already passed, so you have no journey data from that period — only what they tell you and what they've done in FirstNinety since signup.`,
+      "",
+      "Do not reference \"your first 90 days\" framing. Do not reference Mission Track or Survival Report — the user never ran the curriculum here. Treat them as a working professional, not a new starter. Reach for the surfaces they have: Situation Room, Playbook Library, Simulator, Coach itself. If they have a probation review coming up, Probation Prep Mode handles that surface; the rest of the time they're here for on-demand workplace help.",
+    ].join("\n");
+  }
+
+  // Variant A/B graduated — went through the curriculum, now past Day 90.
   if (context.dayMode === "post-90") {
     return [
-      "## Day-state priming — post-Day-90",
+      "## Day-state priming — post-Day-90 graduate",
       "",
       `The user completed their first 90 days at this organisation. They are now ${weeksBeyond90(context.currentDay)} weeks into the role beyond probation. They are no longer "new" — treat them as a working professional who is surviving and now wants to be *good* at their job, not just *competent*.`,
       "",
@@ -191,6 +236,7 @@ function buildDayStateBlock(context: CoachContext): string {
     ].join("\n");
   }
 
+  // Variant A/B Days 1-90 — standard first-90-days framing.
   return [
     "## Day-state priming — first 90 days",
     "",
