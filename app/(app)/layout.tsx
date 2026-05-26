@@ -15,6 +15,7 @@ import { Wordmark } from "@/components/marketing/Wordmark";
 import { BottomNav } from "@/components/nav/BottomNav";
 import { Sidebar } from "@/components/nav/Sidebar";
 import { IdentifyBridge } from "@/components/providers/IdentifyBridge";
+import { OfflineBanner } from "@/components/providers/OfflineBanner";
 import { IOSInstallTutorial } from "@/components/pwa/IOSInstallTutorial";
 import { NotificationPermissionPrompt } from "@/components/pwa/NotificationPermissionPrompt";
 import { createClient } from "@/lib/db/server";
@@ -81,6 +82,8 @@ export default async function AppLayout({
       />
 
       <div className="flex flex-1 flex-col">
+        <OfflineBanner />
+
         {/* Mobile top bar — minimal wordmark only. */}
         <header className="flex h-14 items-center justify-between border-b border-paper-3 px-4 md:hidden">
           <Link href="/home" aria-label="FirstNinety home">
