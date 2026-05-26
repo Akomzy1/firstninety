@@ -222,6 +222,13 @@ async function handleEvent(event: Stripe.Event): Promise<void> {
         status: sub.status,
         cancel_at_period_end: sub.cancel_at_period_end,
       });
+      // Friendly alias for the Conversion / Retention dashboards.
+      if (event.type === "customer.subscription.created") {
+        await traceAlias(userId, "subscription_started", {
+          status: sub.status,
+          stripe_subscription_id: sub.id,
+        });
+      }
       return;
     }
 
@@ -243,6 +250,9 @@ async function handleEvent(event: Stripe.Event): Promise<void> {
         }),
       );
       await trace(event, userId, "ok");
+      await traceAlias(userId, "subscription_canceled", {
+        stripe_subscription_id: sub.id,
+      });
       return;
     }
 
@@ -259,6 +269,12 @@ async function handleEvent(event: Stripe.Event): Promise<void> {
       await trace(event, userId, "ok", {
         trial_end: sub.trial_end,
       });
+      if (userId) {
+        await traceAlias(userId, "trial_will_end", {
+          trial_end_iso: isoFromUnix(sub.trial_end),
+          stripe_subscription_id: sub.id,
+        });
+      }
       return;
     }
 
@@ -344,5 +360,25 @@ async function trace(
   } catch (err) {
     // PostHog should never break webhook processing.
     console.warn("[stripe-webhook] posthog capture failed", err);
+  }
+}
+
+/**
+ * Friendly aliased events for the Conversion / Retention dashboards.
+ * The raw `stripe_webhook` event still fires for completeness.
+ */
+async function traceAlias(
+  userId: string,
+  event: "subscription_started" | "subscription_canceled" | "trial_will_end",
+  properties: Record<string, unknown>,
+): Promise<void> {
+  try {
+    await captureServerEvent({
+      distinctId: userId,
+      event,
+      properties,
+    });
+  } catch (err) {
+    console.warn(`[stripe-webhook] alias capture failed (${event})`, err);
   }
 }

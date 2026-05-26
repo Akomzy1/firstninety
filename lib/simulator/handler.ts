@@ -20,6 +20,7 @@ import "server-only";
 
 import { createServiceClient } from "@/lib/db/service";
 import type { StreamEvent } from "@/lib/coach/stream-types";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 import { runCoordinator, HARD_TURN_CAP } from "./coordinator";
 import { streamPersonaTurn, type Persona } from "./persona-handler";
@@ -156,6 +157,22 @@ export async function* handleSimulatorStream(
         duration_seconds: null, // computed off started_at if needed later
       })
       .eq("id", params.runId);
+
+    try {
+      await captureServerEvent({
+        distinctId: params.userId,
+        event: "scenario_run_completed",
+        properties: {
+          run_id: params.runId,
+          scenario_slug: scenarioRef.slug,
+          scenario_id: run.scenario_id,
+          outcome: decision.action,
+          turns: userTurnsCount,
+        },
+      });
+    } catch (err) {
+      console.warn("[simulator] scenario_run_completed capture failed", err);
+    }
 
     yield {
       type: "scenario_end",

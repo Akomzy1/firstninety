@@ -27,6 +27,7 @@ import type {
 } from "@anthropic-ai/sdk/resources/messages";
 
 import { createServiceClient } from "@/lib/db/service";
+import { captureServerEvent } from "@/lib/tracing/posthog-server";
 
 import { streamClaudeResponse } from "./claude";
 import { COACH_MAX_TOOL_CALLS } from "./config";
@@ -80,6 +81,18 @@ export async function* handleCoachStream(
       thread_id: threadId,
       topic_title: topicTitle,
     };
+    try {
+      await captureServerEvent({
+        distinctId: params.userId,
+        event: "coach_thread_created",
+        properties: {
+          thread_id: threadId,
+          probation_mode_active: coachContext.probationModeActive,
+        },
+      });
+    } catch (err) {
+      console.warn("[coach] coach_thread_created capture failed", err);
+    }
   }
 
   // ---- 2. Load message history --------------------------------------- //
@@ -108,6 +121,20 @@ export async function* handleCoachStream(
     role: "user",
     content: params.userMessage,
   });
+  try {
+    await captureServerEvent({
+      distinctId: params.userId,
+      event: "coach_message_sent",
+      properties: {
+        thread_id: threadId,
+        message_length: params.userMessage.length,
+        probation_mode_active: coachContext.probationModeActive,
+        is_new_thread: isNew,
+      },
+    });
+  } catch (err) {
+    console.warn("[coach] coach_message_sent capture failed", err);
+  }
 
   // ---- 5–7. Tool-calling loop ---------------------------------------- //
   const messages: MessageParam[] = [

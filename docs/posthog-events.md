@@ -120,6 +120,70 @@ listed here.
 | `scenario_id` | string | UUID of the scenarios row |
 **Powers:** Retention (runs per active user per week); use "first-time matched" for the Activation funnel.
 
+### `scenario_run_completed`
+**Fired from:** `lib/simulator/handler.ts:handleSimulatorStream` when the coordinator decides `end_success` / `end_yellow` / `end_red` and the `scenario_runs` row has been flipped to `status=completed`.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `run_id` | string | UUID of the scenario_runs row |
+| `scenario_slug` | string | E.g. `ba-hostile-lead-dev` |
+| `scenario_id` | string | UUID of the scenarios row |
+| `outcome` | string | `end_success` \| `end_yellow` \| `end_red` |
+| `turns` | number | User turn count at completion |
+**Powers:** Retention (start-vs-finish ratio per scenario; outcome distribution per role). Pair with `simulator_run_started` for the funnel.
+
+### `coach_thread_created`
+**Fired from:** `lib/coach/handler.ts:handleCoachStream` when a brand-new thread is opened (no `context_id` from the client, or an unknown one).
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `thread_id` | string | UUID of the new coach_threads row |
+| `probation_mode_active` | boolean | True if probation tools were available on this thread |
+**Powers:** Activation dashboard (first-time Coach thread); Retention (threads-per-active-user).
+
+### `coach_message_sent`
+**Fired from:** `lib/coach/handler.ts:handleCoachStream` immediately after the user message is persisted (before the stream completes — so this captures intent, not just completed conversations).
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `thread_id` | string | UUID of the coach_threads row |
+| `message_length` | number | Characters in the user message |
+| `probation_mode_active` | boolean | True if probation tools were available |
+| `is_new_thread` | boolean | True when this message kicked off a new thread |
+**Powers:** Retention (messages-per-active-user-per-week); Activation (first Coach message). Use "first-time matched" for first-Coach-message in the Activation funnel.
+
+### `subscription_started` (aliased)
+**Fired from:** `app/api/stripe/webhook/route.ts` on `customer.subscription.created` — in addition to the canonical `stripe_webhook` event.
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `status` | string | Stripe's subscription status at creation (typically `trialing` or `active`) |
+| `stripe_subscription_id` | string | `sub_...` |
+**Powers:** Conversion dashboard (signups → paid). Cleaner than filtering `stripe_webhook` by event_type.
+
+### `subscription_canceled` (aliased)
+**Fired from:** `app/api/stripe/webhook/route.ts` on `customer.subscription.deleted` (terminal cancellation; intent-to-cancel mid-period stays in the canonical `stripe_webhook` event).
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `stripe_subscription_id` | string | `sub_...` |
+**Powers:** Retention dashboard (churn rate, time-to-cancel).
+
+### `trial_will_end` (aliased)
+**Fired from:** `app/api/stripe/webhook/route.ts` on `customer.subscription.trial_will_end` (Stripe fires this ~3 days before trial end).
+**Distinct ID:** `user.id`.
+**Properties:**
+| Property | Type | Notes |
+|---|---|---|
+| `trial_end_iso` | string\|null | ISO timestamp of trial end |
+| `stripe_subscription_id` | string | `sub_...` |
+**Powers:** Conversion dashboard (trial-end-to-paid retention).
+
 ### `probation_mode_activated`
 **Fired from:** both `app/(app)/probation/actions.ts:activateProbationModeAction` AND `app/(app)/settings/probation/actions.ts:activateProbationModeAction`. The `source` property distinguishes them.
 **Distinct ID:** `user.id`.
@@ -195,12 +259,6 @@ posthog.init(key, {
 
 Remaining gaps (small, optional):
 
-1. **Coach engagement events** — `coach_thread_created` + `coach_message_sent` would add an analytics surface for the Coach (currently visible only via `ai_call_completed` filtered to `surface=coach`). Useful for the Activation dashboard's first-time-Coach-message signal.
+1. **`mission_skipped` (user-initiated)** — distinguish user-skipped from `skipped_pre_signup` (which is structural backfill from the State B mid-journey path). Lets us see whether users are actively skipping missions vs just inheriting skips.
 
-2. **Stripe-driven events with cleaner names** — currently every Stripe webhook fires `stripe_webhook` with `event_type` as a property. Adding aliased events (`subscription_started`, `subscription_canceled`, `trial_will_end`) inside the webhook handler would make PostHog insights simpler to author. The raw `stripe_webhook` stays for completeness.
-
-3. **`scenario_run_completed`** — only `simulator_run_started` is fired today. Adding the completed-event from `completeScenarioRunAction` (when it lands) would let the Retention dashboard show the start-vs-finish ratio per scenario.
-
-4. **`mission_skipped` (user-initiated)** — distinguish user-skipped from `skipped_pre_signup` (which is structural backfill from the State B mid-journey path). Lets us see whether users are actively skipping missions vs just inheriting skips.
-
-None of these are blockers; the wiring done in this commit covers the seven dashboards' core needs.
+Items 1–3 from the original follow-up list (Coach engagement, Stripe aliases, `scenario_run_completed`) are now wired and documented above.
