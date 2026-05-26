@@ -41,6 +41,12 @@ type RightSidebarProps = {
   recent: ReadonlyArray<RecentItem>;
   /** When provided, the week-theme panel is replaced by the glance panel. */
   probation?: ProbationGlance | null;
+  /**
+   * State B only — surfaces "Weeks 1-N available to read" as a quiet
+   * sub-line under the week theme. Suppressed for State A/C and
+   * suppressed in probation mode.
+   */
+  pastWeeksAvailable?: number | null;
 };
 
 export function RightSidebar({
@@ -49,6 +55,7 @@ export function RightSidebar({
   responsibilities,
   recent,
   probation,
+  pastWeeksAvailable,
 }: RightSidebarProps) {
   return (
     <aside
@@ -64,6 +71,13 @@ export function RightSidebar({
           actionLabel="See the whole map"
         >
           <p className="font-display italic text-body-l text-ink">{weekTheme}</p>
+          {pastWeeksAvailable && pastWeeksAvailable >= 1 ? (
+            <p className="font-display italic text-body-s text-mute-2 mt-2">
+              {pastWeeksAvailable === 1
+                ? "Week 1 available to read."
+                : `Weeks 1–${pastWeeksAvailable} available to read.`}
+            </p>
+          ) : null}
         </Panel>
       )}
 

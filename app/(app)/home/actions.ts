@@ -75,3 +75,18 @@ export async function dismissPost90WelcomeAction(): Promise<void> {
     .eq("user_id", user.id);
   revalidatePath("/home");
 }
+
+/**
+ * Stamps `viewed_mid_journey_welcome_at` so the State B one-time
+ * mid-journey welcome card does not show again. Per Retrofit 2 / MVP
+ * Spec v1.3 §9 (State B welcome state).
+ */
+export async function dismissMidJourneyWelcomeAction(): Promise<void> {
+  const user = await requireAuth();
+  const supabase = await createClient();
+  await supabase
+    .from("user_context")
+    .update({ viewed_mid_journey_welcome_at: new Date().toISOString() })
+    .eq("user_id", user.id);
+  revalidatePath("/home");
+}

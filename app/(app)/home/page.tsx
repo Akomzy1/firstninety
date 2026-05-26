@@ -21,6 +21,7 @@ import { redirect } from "next/navigation";
 
 import { Button } from "@/components/ui/Button";
 import { BriefGenerationPrompt } from "@/components/home/BriefGenerationPrompt";
+import { MidJourneyWelcomeCard } from "@/components/home/MidJourneyWelcomeCard";
 import { MissionCard } from "@/components/mission/MissionCard";
 import { Post90Home } from "@/components/home/Post90Home";
 import { ProbationBanner } from "@/components/home/ProbationBanner";
@@ -119,7 +120,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     supabase
       .from("user_context")
       .select(
-        "start_date, current_day, current_week, probation_mode_active, probation_review_date, probation_brief_generated_at, probation_activation_prompted_at, last_sunday_prompt_at, viewed_post_90_home_at",
+        "start_date, current_day, current_week, probation_mode_active, probation_review_date, probation_brief_generated_at, probation_activation_prompted_at, last_sunday_prompt_at, viewed_post_90_home_at, viewed_mid_journey_welcome_at, entry_state",
       )
       .eq("user_id", user.id)
       .single(),
@@ -243,6 +244,16 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       }
     : null;
 
+  // State B first-visit welcome card — renders once for a State B user
+  // (entry_state === 'B') who hasn't yet seen the card. Suppressed in
+  // probation mode (the probation overlay takes precedence) and on
+  // Day 1 (no past weeks to acknowledge).
+  const showMidJourneyWelcome =
+    !probationActive &&
+    context.entry_state === "B" &&
+    !context.viewed_mid_journey_welcome_at &&
+    dayState.mode !== "day-1";
+
   return (
     <section className="mx-auto flex max-w-(--max-page) gap-7 px-4 py-7 md:px-6 md:py-8">
       <div className="flex flex-1 flex-col gap-6 min-w-0">
@@ -268,6 +279,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
             </h1>
           </header>
         )}
+
+        {showMidJourneyWelcome ? (
+          <MidJourneyWelcomeCard currentWeek={dayState.week} />
+        ) : null}
 
         {todayMissions.length > 0 ? (
           <div className="flex flex-col gap-4">
@@ -313,6 +328,11 @@ export default async function HomePage({ searchParams }: HomePageProps) {
         responsibilities={responsibilitiesResult.data ?? []}
         recent={[]}
         probation={probationGlance}
+        pastWeeksAvailable={
+          context.entry_state === "B" && dayState.week > 1
+            ? dayState.week - 1
+            : null
+        }
       />
 
       <SundayPromptModal open={promptOpen} />
