@@ -17,11 +17,22 @@
  */
 import Link from "next/link";
 
+import { ScrollDepthTracker } from "@/components/marketing/ScrollDepthTracker";
+
 export const metadata = {
   title: "FirstNinety_ai — The tradecraft no one is documenting yet.",
   description:
-    "The workplace coach for new AI engineers — evals you can defend, hallucinations you can explain, costs you can justify. Authored, not generated.",
+    "The workplace coach for new AI engineers — evals you can defend, hallucinations you can explain, costs you can justify, and the probation review you can pass. Authored, not generated.",
 };
+
+const TRACKED_SECTIONS = [
+  "aie-hero",
+  "aie-convos",
+  "aie-probation",
+  "aie-whats",
+  "aie-clarify",
+  "aie-pricing",
+] as const;
 
 const CONVOS = [
   {
@@ -57,16 +68,18 @@ export default function AIEngineerPage() {
     <>
       <Hero />
       <Convos />
+      <ProbationConversation />
       <Whats />
       <Clarify />
       <PricingBand />
+      <ScrollDepthTracker sectionIds={TRACKED_SECTIONS} />
     </>
   );
 }
 
 function Hero() {
   return (
-    <section className="pt-24 pb-24 md:pt-32">
+    <section id="aie-hero" className="pt-24 pb-24 md:pt-32">
       <div className="mx-auto w-full max-w-[60rem] px-8 text-center">
         <p className="inline-flex items-center gap-2.5 mb-8 text-caption uppercase tracking-[0.08em] text-mute">
           <span
@@ -83,6 +96,9 @@ function Hero() {
         <p className="font-body text-body-l text-mute mx-auto max-w-[60ch] mb-10 leading-relaxed">
           Evals you can defend. Hallucinations you can explain. Costs you can
           justify.{" "}
+          <strong className="text-ink font-medium">
+            The probation review you can pass.
+          </strong>{" "}
           <strong className="text-ink font-medium">FirstNinety_ai</strong> is
           the workplace coach for new AI engineers, built by people doing this
           work in production.
@@ -129,11 +145,11 @@ function Hero() {
 
 function Convos() {
   return (
-    <section id="convos" className="py-24">
+    <section id="aie-convos" className="py-24">
       <div className="mx-auto w-full max-w-[45rem] px-8">
         <header className="mb-16 flex flex-col gap-3">
           <span className="text-eyebrow">
-            Six conversations you'll have this quarter
+            Six conversations you&rsquo;ll have this quarter
           </span>
           <h2 className="relative font-display font-normal text-balance text-ink inline-block max-w-[22ch] text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.2] pb-4">
             And nobody is teaching you how to have them.
@@ -183,6 +199,77 @@ function Convos() {
             </li>
           ))}
         </ol>
+
+        {/* Climax — seventh conversation, set apart visually. The
+            larger gap + horizontal rule + missing number cue the reader
+            that this is qualitatively different from the daily six. */}
+        <div className="mt-20 pt-12 border-t border-mute-2/30 flex flex-col gap-3">
+          <p
+            className="font-display italic text-ink text-balance"
+            style={{
+              fontSize: "clamp(1.375rem, 2.3vw, 1.625rem)",
+              lineHeight: 1.4,
+            }}
+          >
+            And then, three months in:{" "}
+            <span className="text-ink">
+              &ldquo;How&rsquo;s it going? Should we make this permanent?&rdquo;
+            </span>{" "}
+            — from your manager, with everything riding on the answer.
+          </p>
+          <p className="font-display italic text-caption text-mute leading-relaxed">
+            The probation review is the one conversation that decides whether
+            you keep the job. FirstNinety helps you walk into it ready.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProbationConversation() {
+  return (
+    <section
+      id="aie-probation"
+      className="bg-paper-2 border-t border-b border-paper-3 py-24"
+    >
+      <div className="mx-auto w-full max-w-[45rem] px-8">
+        <span className="text-eyebrow block mb-6">
+          About that seventh conversation
+        </span>
+        <h3 className="font-display font-normal text-ink text-balance max-w-[28ch] mb-8 text-[clamp(1.5rem,2.6vw,2rem)] leading-[1.25]">
+          Three weeks before your probation review, FirstNinety changes.
+        </h3>
+
+        <div className="flex flex-col gap-5 text-body-l text-mute leading-relaxed">
+          <p>
+            You&rsquo;ve been here twelve weeks. You&rsquo;ve shipped two
+            models, written one eval suite, and explained hallucinations to
+            your PM more times than you can count. Now your manager wants a
+            thirty-minute conversation about whether you stay.
+          </p>
+          <p>
+            FirstNinety&rsquo;s{" "}
+            <strong className="text-ink font-medium">
+              Probation Prep Mode
+            </strong>{" "}
+            activates twenty-one days before that conversation. The Coach
+            changes voice. Your missions sharpen around evidence-gathering. A
+            one-page Brief gets drafted from everything you&rsquo;ve shipped,
+            written, and learned — anonymised, exportable, yours to walk into
+            the meeting with.{" "}
+            <em className="font-display italic text-ink">
+              Most probation reviews are decided weeks before the review
+              itself. The work is in the preparation, not the room.
+            </em>
+          </p>
+        </div>
+
+        <p className="font-display italic text-body-s text-mute-2 mt-10 pt-6 border-t border-paper-3 max-w-[60ch]">
+          This works whether your probation is 90 days or 6 months — Probation
+          Mode activates 21 days before your review, regardless of when that
+          is.
+        </p>
       </div>
     </section>
   );
@@ -190,7 +277,7 @@ function Convos() {
 
 function Whats() {
   return (
-    <section id="whats" className="py-24 border-t border-paper-3">
+    <section id="aie-whats" className="py-24 border-t border-paper-3">
       <div className="mx-auto w-full max-w-[67.5rem] px-8">
         <header className="mb-16 flex flex-col gap-3">
           <span className="text-eyebrow">What's different here</span>
@@ -266,7 +353,7 @@ function Whats() {
 
 function Clarify() {
   return (
-    <section className="pt-16 pb-24">
+    <section id="aie-clarify" className="pt-16 pb-24">
       <div className="mx-auto w-full max-w-[45rem] px-8">
         <div className="border-t border-paper-3 pt-16">
           <span className="text-eyebrow block mb-6">One clarification</span>
@@ -293,7 +380,7 @@ function Clarify() {
 function PricingBand() {
   return (
     <section
-      id="pricing"
+      id="aie-pricing"
       className="bg-paper-2 border-t border-b border-paper-3 mt-16 py-24 md:py-32"
     >
       <div className="mx-auto w-full max-w-[45rem] px-8 text-center">
@@ -301,20 +388,27 @@ function PricingBand() {
         <h2 className="font-display font-normal text-ink mx-auto max-w-[18ch] text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.15]">
           $39.99 per month.
         </h2>
-        <p className="text-body-l text-mute mx-auto max-w-[50ch] mt-6 mb-10 leading-relaxed">
-          Less than 20% of one human coaching session, for unlimited access —
-          situation room, scenarios, playbooks, and the 90-day track
-          calibrated to AI engineering.
+        <p className="text-body-l text-mute mx-auto max-w-[60ch] mt-6 mb-10 leading-relaxed">
+          The first three months of FirstNinety cost $120. The difference
+          between losing your first tech job and keeping it costs less than
+          one human coaching session per month.{" "}
+          <strong className="text-ink font-medium">
+            That&rsquo;s the comparison worth making.
+          </strong>
         </p>
 
         <div className="text-left mx-auto max-w-[540px] mb-10 border-t border-paper-3">
-          <CompareRow label="Human AI mentor — one session" value="~ $250" />
-          <CompareRow label="BetterUp Plus" value="$149 / mo" />
           <CompareRow
-            label="FirstNinety_ai Pro"
+            label="One session with a human career coach"
+            value="$150–$300"
+          />
+          <CompareRow label="BetterUp Plus (monthly)" value="$149" />
+          <CompareRow label="ChatGPT Plus (monthly)" value="$20" />
+          <CompareRow
+            label="FirstNinety_ai Pro (monthly)"
             value={
               <>
-                <span className="text-accent">$39.99</span> / mo
+                <span className="text-accent">$39.99</span>
               </>
             }
             highlight
