@@ -1,0 +1,51 @@
+{
+  "slug": "pm-risk-walkthrough",
+  "role": "pm",
+  "title": "The Risk Walkthrough",
+  "one_liner": "Quarterly programme board. Twelve minutes on your slot. The vendor risk is real and you have to name it.",
+  "brief": "## The setup\n\nQuarterly programme board, 9am sharp. Five executives, your director, the chair (the COO). You have a twelve-minute slot to present the programme's status. You're presenting alone — your director will let you run it because, as he told you on Friday, 'you'll be doing these without me by Christmas, may as well start now'.\n\nYour RAID register has nine open risks. One of them is qualitatively different from the others. The vendor delivering the core platform — Synth Logistics — laid off 18% of their engineering team last month. Their account manager is reassuring; their delivery dates are slipping by a week per fortnight. The risk is that the platform doesn't land at all and you have to either insource (which the team doesn't have headcount for) or find another vendor (a 4-month exercise minimum).\n\nThe other eight risks are normal programme risks — staffing, scope ambiguity, integration testing. The vendor risk is the one that could kill the programme.\n\nYou have not yet flagged this risk to the board. Today's the day.\n\n## Your turn\n\nThe chair just said 'over to you'. Open.",
+  "objective": "Name the vendor risk as the most material one in the register without panicking the room or being asked the question you can't answer ('what's your contingency?'). Leave with a board-level decision about what would constitute the trigger to act, even if no immediate action is taken today.",
+  "curveball": "The chair (the COO) was on Synth Logistics' previous board, two roles ago, and considers them friends. If the user opens with 'our biggest risk is Synth Logistics losing the contract' as the headline, the COO will defend them and the conversation will become political. The skill is to land the risk in a way that's about delivery facts, not vendor reputation — 'our delivery dates are slipping by a week per fortnight; if that continues, we hit a hard stop on the 14th of August' lands without making it personal. The user must not be drawn into defending the vendor's ability to recover; that's not their question to answer.",
+  "personas": [
+    {
+      "name": "Yetunde Mbeki",
+      "role": "Chief Operating Officer (board chair)",
+      "position": "I trust this vendor. Walk me through the delivery facts",
+      "fear": "Being told a programme she sponsored is dying because of a vendor she championed",
+      "monogram": "YM",
+      "colour": "plum"
+    },
+    {
+      "name": "Olu Bankole",
+      "role": "Director of Engineering (board member)",
+      "position": "I want to know what triggers contingency, not theatre",
+      "fear": "Being asked to absorb the work into an already-stretched team",
+      "monogram": "OB",
+      "colour": "slate"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Led with delivery facts (slippage rate, hard-stop date) rather than vendor reputation",
+      "Named the risk explicitly as 'most material in the register' — didn't bury it in the list of nine",
+      "Proposed a specific trigger date (the 14th of August) that would force a contingency decision",
+      "Did NOT recommend the contingency option today — left it as a board decision to make at the trigger"
+    ],
+    "yellow": [
+      "Buried the vendor risk in the middle of the RAID walk — board members lose track around risk 4 and miss it",
+      "Opened with 'we have a concerning situation with Synth Logistics' — invites the COO to defend them",
+      "Got dragged into defending the choice of vendor (not your job; the vendor was chosen before you arrived)",
+      "Promised to come back with a contingency plan next month — buys time but doesn't get the board commitment you need"
+    ],
+    "red": [
+      "Did not name the vendor risk at all — left the board to discover it from the slipped dates over the next two months",
+      "Recommended switching vendors today — the room is not ready for that and you'll be sent away to do four months of analysis",
+      "Argued with the COO about the vendor's recovery prospects",
+      "Showed visible frustration when the COO pushed back — board members read defensiveness as 'this PM is over their head'"
+    ]
+  },
+  "estimated_minutes": 16,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

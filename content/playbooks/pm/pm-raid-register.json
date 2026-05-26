@@ -1,0 +1,53 @@
+{
+  "slug": "pm-raid-register",
+  "role": "pm",
+  "artefact_type": "raid_register",
+  "title": "RAID Register",
+  "variant": "standard",
+  "description": "The Risks / Assumptions / Issues / Dependencies register that actually gets used — versus the spreadsheet that lives in a shared drive and is read by no one. Eight columns, ruthlessly maintained, with weekly status changes called out at the top. The discipline is in the curation, not the capture.",
+  "empty_template_md": "# [Programme name] — RAID Register\n_v[N] · last reviewed [date] · owner [name]_\n\n## Changes this week\n_What's new, what's escalated, what's closed. The only section a reader who comes back weekly needs._\n\n## R — Risks\n_Things that might happen. Future tense._\n\n| ID | Risk | Likelihood (L/M/H) | Impact (L/M/H) | Owner | Mitigation | Trigger to act | Status |\n|----|------|-------|--------|-------|------------|----------------|--------|\n|    |      |       |        |       |            |                |        |\n\n## A — Assumptions\n_Things we are assuming to be true. Each needs a fragility note._\n\n| ID | Assumption | Fragile if… | Owner | Status |\n|----|------------|-------------|-------|--------|\n|    |            |             |       |        |\n\n## I — Issues\n_Things that have already happened. Present tense. Each one has an action with an owner._\n\n| ID | Issue | Impact | Owner | Action | Due |\n|----|-------|--------|-------|--------|-----|\n|    |       |        |       |        |     |\n\n## D — Dependencies\n_Things we need someone outside the team to deliver. Each one has a named person, not a team._\n\n| ID | Dependency | We need it by | They've committed to | Status |\n|----|------------|---------------|---------------------|--------|\n|    |            |               |                     |        |\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal programme — RAID at week 6",
+      "content_md": "# Customer Portal — RAID Register\n_v0.4 · 22 April 2026 · Adekunle Bello_\n\n## Changes this week\n\n- **New:** R-09 — UAT environment readiness; data-platform team's staging refresh is now sharing slots with our UAT window.\n- **Escalated:** R-04 — customer data pipeline now red; escalated to Programme Director Friday.\n- **Closed:** I-03 — design review backlog cleared after Theo Park hired.\n\n## R — Risks\n\n| ID | Risk | L | I | Owner | Mitigation | Trigger to act | Status |\n|----|------|---|---|-------|------------|----------------|--------|\n| R-01 | Sponsor changes mid-programme (Janelle promotion conversation in May) | M | H | Adekunle | Continuity briefing prepared, dotted-line sponsor identified | If Janelle's promotion confirmed before 15 May | Open |\n| R-04 | Data-platform team misses customer-data pipeline (week-8 delivery) | H | H | Rohan + Adekunle | Weekly check-in, parallel finance-comms commitment offered | If pipeline not in QA by 1 June | RED — escalated |\n| R-07 | SSO config team has one engineer (Marek) on holiday weeks 5–6 | M | M | Tomasz Wójcik | Work confirmed in-flight before holiday | If status not green by week 5 standup | Amber |\n| R-09 | UAT environment slot collision with data-platform staging refresh | M | M | Adekunle | Conversation booked with Rohan + ops, alternate window identified | If no resolution by 1 July | Open |\n| R-11 | Compliance flags a data-residency question we hadn't anticipated | L | H | Marcus Klein | Briefing booked week 7 | If Marcus raises a new question in the week-7 briefing | Open |\n\n## A — Assumptions\n\n| ID | Assumption | Fragile if… | Owner | Status |\n|----|------------|-------------|-------|--------|\n| A-01 | We are not migrating historical customer data older than 24 months in this programme | CS or Sales pushes for it (likely in week 8 stakeholder review) | Adekunle | Holding |\n| A-02 | Compliance accepts UK + EU data residency for the new portal | Compliance requires UK-only (architecture impact: 4 weeks slip) | Marcus | Holding |\n| A-03 | Customer-success will hard-cutover top-12 customers to the new portal at go-live | CS leadership defers cutover (CS overhead recovery halves) | CS Director | Confirmed in week 4 |\n\n## I — Issues\n\n| ID | Issue | Impact | Owner | Action | Due |\n|----|-------|--------|-------|--------|-----|\n| I-04 | Contractor onboarding delayed 5 days due to background-check process | Two FE engineers idling | Adekunle + HR | Hand-completed admin, working with HR on process for next hires | Resolved 19 April |\n| I-05 | UAT user pool size below target (need 24, have 17) | UAT cycle may not surface enough feedback | Janelle | Janelle reaching out to top-12 sponsor contacts | 1 July |\n\n## D — Dependencies\n\n| ID | Dependency | We need by | They've committed to | Status |\n|----|------------|------------|---------------------|--------|\n| D-01 | SSO config (IT) | 14 June | 14 June | On track |\n| D-02 | Customer data pipeline (data platform) | 28 June | Week 8 (pushed from Friday) | At risk — see R-04 |\n| D-03 | Compliance data-residency sign-off | 8 August | TBC after week-7 briefing | Open |\n| D-04 | Top-12 CS-cutover commitment | 1 September | CS Director, confirmed week 4 | Closed |\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The 'Changes this week' section is the single most-read section by a stakeholder coming back to the RAID. If you only update one part of the document each week, update this. Most rookies update the tables and never write the changes summary; the document then reads as static, the reader skips it, and you lose the early-warning function."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Risks are future tense. If something has happened, it's not a risk anymore — it's an issue. Reclassifying R→I is the most common move missed by new PMs; they leave the row in the risk register marked 'realised' which is just sloppy."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Trigger-to-act column is the column that distinguishes a working RAID from a graveyard. Without it, every amber risk reads the same and stakeholders can't tell when to actually move. Every risk needs a specific, dated trigger."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Assumptions with a 'fragile if' clause are the assumptions that earn their place in the register. 'We assume the team will perform' is not an assumption; it's wishful thinking. 'We assume CS will hard-cutover top-12 at go-live; fragile if CS leadership defers' is an assumption."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Dependencies must name a person, not a team. 'IT' is not a person. The hour you spend in week 1 finding out who specifically owns each dependency is the hour that saves you in week 6 when something needs to move."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Risks register that never closes anything. After three months it has 47 rows, half of which are stale, and stakeholders stop reading. Close aggressively. A risk that hasn't moved status in six weeks is either dead or you've stopped paying attention.",
+    "Assumptions section omitted because 'we'll add it later'. The week you finally add it is the week you'll discover an assumption was wrong six weeks ago. Always start with three to five.",
+    "Issues that don't have an action or an owner. An issue without an owner is a complaint.",
+    "Dependencies marked 'on track' with no evidence. 'On track' means you've confirmed with the named owner this week that they're on track. Otherwise it's 'open' or 'at risk'.",
+    "RAID maintained by the PM in isolation. The discipline of weekly review with the team is what catches the risk you missed because you were close to it. Twenty minutes a week, even when there's 'nothing new'.",
+    "Likelihood + Impact ratings using a 5-point scale. Three points is enough. Most teams can't distinguish between a 'medium-low' and a 'low-medium' risk; they can absolutely distinguish low / medium / high."
+  ],
+  "variant_patterns": [
+    "Multi-vendor variant: add a column to the dependencies table for SLA + escalation path per vendor.",
+    "Programme-of-programmes variant: each constituent project has its own RAID. The portfolio RAID rolls up only the cross-project risks + dependencies, not the within-project ones.",
+    "Regulatory variant: assumptions section grows; risks section often shrinks. The regulatory programme's main job is to track which assumptions about regulator behaviour are holding."
+  ],
+  "related_scenarios": ["pm-risk-walkthrough", "pm-cross-team"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

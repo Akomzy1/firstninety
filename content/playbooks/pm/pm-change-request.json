@@ -1,0 +1,53 @@
+{
+  "slug": "pm-change-request",
+  "role": "pm",
+  "artefact_type": "change_request",
+  "title": "Change Request",
+  "variant": "standard",
+  "description": "The change-request document that closes a scope conversation instead of opening five. Designed to be the thing you send when a sponsor asks for something that's outside the agreed scope. Two pages max. The trade-off in numbers, the decision needed by date, the recommendation. No emotional appeals, no apology for the existence of the change.",
+  "empty_template_md": "# Change Request CR-[N] — [Initiative name]\n_Raised by [name] · sponsor [name] · for decision by [date]_\n\n## 1. The change requested\n_One paragraph. What is the change. Who requested it. What problem it's intended to solve._\n\n## 2. The impact\n| Dimension | Current plan | With this change |\n|-----------|--------------|------------------|\n| End date  |              |                  |\n| Cost      |              |                  |\n| Resource  |              |                  |\n| Scope     |              |                  |\n| Risk      |              |                  |\n\n## 3. Trade-offs the change forces\n_The thing you give up by accepting this change. Be honest. If there's no trade-off, this isn't a change worth raising._\n\n## 4. Options\n- **Accept the change as-is** — implications above.\n- **Accept partially** — what subset is doable and what it costs.\n- **Reject** — what happens to the original requestor's problem.\n- **Defer to Phase 2** — what 'Phase 2' actually means in calendar terms.\n\n## 5. Recommendation\n_Your recommendation, with one paragraph on why over the other options._\n\n## 6. Decision needed\n_By whom, by when, and what happens if the decision isn't made by that date._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal CR-03 — bulk-import upload for the launch demo",
+      "content_md": "# Change Request CR-03 — Customer Portal Programme\n_Raised by Adekunle Bello (PM) on behalf of Janelle Ofori (sponsor) · for decision by 28 April 2026_\n\n## 1. The change requested\n\nAdd the bulk-import customer-upload feature to the launch demo on 9 May. Currently in scope for Phase 2 (post-launch); Janelle requested the change after a Sales call with a prospect (Forrest Bank) who indicated the feature is a deal-breaker for their renewal. Sales's expectation is that the prospect sees the feature working in the 9 May demo.\n\n## 2. The impact\n\n| Dimension | Current plan | With this change |\n|-----------|--------------|------------------|\n| End date | 9 September go-live | 16 September (1-week slip) |\n| Cost | £820k programme cost | £820k + £42k contractor extension |\n| Resource | 2 FE / 2 BE / 1 QA / 0.5 designer | +0.5 BE for 6 weeks |\n| Scope | Self-service password reset in launch | Self-service password reset deferred to Phase 2 (Q4) |\n| Risk | R-04 (data pipeline) is current biggest risk | R-04 unchanged; new R-12 added for bulk-import data-validation complexity |\n\n## 3. Trade-offs the change forces\n\nThe most direct trade-off is the password-reset feature, currently planned for launch. Customer-success has been clear (week 4 sign-off) that password reset is the most-requested feature from the top-12 customers — they receive ~30 password-reset calls per week across the segment. Deferring it to Q4 means CS continues to carry that volume for three additional months.\n\nThe secondary trade-off is the date slip itself. The 16 September date pushes the Customer-Experience team's Q3 OKR (portal go-live in Q3) into Q4 by one working week. Janelle has flagged she can absorb that internally.\n\n## 4. Options\n\n- **Accept as-is** — bulk-import in for launch, password-reset deferred, +1 week, +£42k.\n- **Accept partially** — bulk-import in scope for launch but shown as a static mock-up in the 9 May demo (no functional flow). Live functionality lands two weeks post-launch. Cost +£12k contractor. Date holds.\n- **Reject** — bulk-import remains Phase 2. Sales handles the Forrest Bank objection separately; potential impact to the renewal in November but no impact to the launch.\n- **Defer to Phase 2** — same as reject in effect, with an explicit timeline commitment to Forrest Bank that bulk-import lands by end of January.\n\n## 5. Recommendation\n\nAccept partially (Option B). The 9 May demo can show the bulk-import via a static mock-up with realistic data flow narrated by the demo presenter; Forrest Bank gets to see the feature without committing the build team to a one-week date slip. Live functionality lands two weeks after launch, by which point Forrest Bank's renewal conversation will have benefited from the demo signal. The static-mock approach is something Sales has used before with this prospect; the precedent is good.\n\nThe recommendation against Option A is driven by the password-reset trade-off — losing CS's most-requested feature for the launch is a worse position than accepting a static mock for one demo.\n\n## 6. Decision needed\n\nDecision needed from Janelle (sponsor) by 28 April. Designer time has to be allocated by 29 April for the static mock to be ready for the 9 May demo. If the decision is not made by 28 April, the static-mock option becomes infeasible and only Options A, C, or D remain.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The change-requested paragraph names the source of the change explicitly ('Janelle requested it on behalf of Sales who heard from Forrest Bank'). Without this, the CR reads as if the PM invented the change — and the decision-maker pushes back. Always trace the request to a specific actor."
+        },
+        {
+          "section_id": "section-2",
+          "note": "The impact table forces the conversation to be in numbers, not adjectives. 'Significant impact on the team' is something a sponsor can reject. '+£42k contractor extension and a 1-week slip' is something they have to actually decide on."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Trade-offs section is the section that earns the document its credibility. If you say a change has no trade-off, you're either not telling the truth or the change shouldn't be a CR. Every change has a cost; name it."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Four options is a deliberate number. Three options reads as 'we want C' because A and B are obvious straw-men. Four options forces the writer to find a genuine partial-acceptance route (Option B) and a deferred route (Option D) — both of which usually exist in reality."
+        },
+        {
+          "section_id": "section-6",
+          "note": "The 'what happens if the decision isn't made by that date' clause is what makes the deadline real. A decision without a deadline is a discussion."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Apologising for raising the CR. The whole point of a change-request process is to handle changes; the CR is doing its job. The tone should be neutral, not defensive.",
+    "Impact section qualitative rather than quantitative. 'Some impact on the team' is something the sponsor can wave away. '£42k and a week' is something they must decide on.",
+    "Recommendation hidden in the trade-offs section. The recommendation is its own section. Put it there explicitly.",
+    "Options where two of the three are obviously wrong. Most CRs need genuine Options B (partial accept) and D (defer with a specific commitment). The discipline is finding the partial-accept option that's actually viable.",
+    "Sponsor names not on the document. Without a named sponsor, the CR has no decision-maker. Without a named requestor, the CR has no source of truth on what the change actually is.",
+    "CRs raised for things that should be in-sprint adjustments (a story re-prioritisation that doesn't change the end date or scope). The team will stop reading CRs if they become noise. Reserve them for genuine scope / cost / date changes."
+  ],
+  "variant_patterns": [
+    "Emergency variant (security / regulatory): collapse to two sections — what's required and what it costs. No options table; the change isn't optional.",
+    "Vendor-initiated variant: add a §0 'Vendor justification' section quoting the vendor's rationale verbatim. Forces transparency on who is asking, not just what's being asked.",
+    "Cross-programme variant: the impact table grows a column for each affected programme. Decision is at portfolio level, not single-programme."
+  ],
+  "related_scenarios": ["pm-scope-creep", "pm-deadline-slipping"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

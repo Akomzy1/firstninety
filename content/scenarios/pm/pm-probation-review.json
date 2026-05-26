@@ -1,0 +1,43 @@
+{
+  "slug": "pm-probation-review",
+  "role": "pm",
+  "title": "The Probation Review",
+  "one_liner": "Day 88. Your probation review with your manager is in thirty minutes. The conversation that decides whether you stay.",
+  "brief": "## The room\n\nThirty minutes booked in your manager's calendar. The slot is labelled '90-day review — Adekunle / Bethan'. It's Bethan Lloyd-Owen's calendar; she's the Programme Director who hired you in February.\n\nThe last ninety days have not been clean. The migration programme you took over from the previous PM landed only after a three-week slip you flagged in week 5. Two stakeholders escalated complaints about your communication style (one to Bethan, one to her boss). You ran a retrospective in week 8 that opened up a real conversation about why the team was burning out — and saved Lewis, the lead dev who was a flight risk. Mei-Lin Soong, the sponsor on your second programme, told Bethan last week that you were 'sharper than the last three PMs we hired'.\n\nBethan has been kind throughout. She has not signalled which way the conversation is going. The probation pack you submitted on Monday lays out delivered / learned / wanted-next, with the right specifics. You've rehearsed.\n\nYou walk in. She gestures to a chair. 'Thanks for the pack. So — how do you think it's gone?'\n\n## Your turn\n\nAnswer.",
+  "objective": "Walk out of the room with Bethan convinced you're someone the team relies on. Don't oversell what landed; don't undersell what was hard. Be the person you actually are — calibrated against the work, not against your anxiety about the work.",
+  "curveball": "Bethan does not actually have a decision to make on whether to confirm you. That was decided weeks ago — based on Mei-Lin's comment and how you handled the migration slip in week 5. The conversation is, in her head, about how you'll handle the NEXT ninety days. If the user opens with extensive evidence-building of what they delivered, Bethan will let them — and then her closing question will be 'so, what are you most worried about going into the next quarter?'. The user who can answer that honestly, without performing humility OR performing confidence, lands the review at a higher bar than 'confirmed'. The user who can't — who says 'nothing really, I feel good' or who lists five worries — drops back to 'confirmed but Bethan will be watching'.",
+  "personas": [
+    {
+      "name": "Bethan Lloyd-Owen",
+      "role": "Programme Director (hiring manager)",
+      "position": "I want to know how you'll handle the next quarter, more than how you handled the last one",
+      "fear": "Confirming a PM who can't be honest with herself about what's hard",
+      "monogram": "BL",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with a clean, specific account — not a sales pitch. Three things: one that landed (migration), one that was hard (the stakeholder complaints + what you learned), one that you want next",
+      "Named the week-5 slip honestly without making it dramatic — 'I should have flagged it three days earlier' is enough",
+      "Answered 'what are you most worried about going into next quarter?' with one specific thing, not five",
+      "Asked Bethan one question — about her, about the team, about the year — that demonstrated thinking past your own confirmation"
+    ],
+    "yellow": [
+      "Led with the Mei-Lin praise — relying on someone else's read of you instead of your own",
+      "Spent the first five minutes defending the migration slip — Bethan already counted that in your favour, you're un-banking the credit",
+      "Said 'nothing really, I feel good' to the worry question — the false confidence is the tell",
+      "Got emotional about the stakeholder complaints in a way that made Bethan have to manage you in the room"
+    ],
+    "red": [
+      "Blamed the previous PM for the migration state on arrival",
+      "Treated it as a status review of the programmes, not a conversation about you",
+      "Couldn't name a single thing that was hard about the last 90 days",
+      "Closed the meeting asking for a confirmed answer in the room — putting Bethan in a spot she didn't want to be in"
+    ]
+  },
+  "estimated_minutes": 18,
+  "difficulty": 5,
+  "career_stage": "first_90_days",
+  "version": 1
+}

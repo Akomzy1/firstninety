@@ -1,0 +1,53 @@
+{
+  "slug": "pm-lessons-learned",
+  "role": "pm",
+  "artefact_type": "lessons_learned",
+  "title": "Lessons Learned",
+  "variant": "standard",
+  "description": "The post-programme lessons-learned doc that the next PM might actually read. Two pages, written for one specific reader: the PM who picks up this kind of work next year. Honest about what went wrong; specific about what to do differently. The genre is not 'reflections on the project' — it's 'memos to my successor'.",
+  "empty_template_md": "# [Programme name] — Lessons Learned\n_Closed [date] · prepared by [name] · for the PM who picks up the next one like this_\n\n## 1. The programme in one paragraph\n_What we set out to do, what we delivered, against what scope and date and budget. Three sentences._\n\n## 2. Three things that worked\n_Specific behaviours, decisions, or structures that produced disproportionate value. Not 'good team' — 'co-located QA from week 2 caught a class of bugs we would have shipped'._\n\n## 3. Three things that didn't\n_Specific failures with named root causes. Not 'communication issues' — 'we didn't have a named owner for the data-residency conversation until week 9, and that cost us three weeks'._\n\n## 4. The decision you'd reverse\n_If you could go back to a single decision in this programme and make it differently, which one. One paragraph. Be specific._\n\n## 5. The thing that surprised you\n_What did you not see coming. The pattern you didn't know to look for. The conversation you should have had earlier._\n\n## 6. What I'd tell the next PM\n_Three sentences. Direct. The most useful sentences in the document._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal programme — closed September 2026",
+      "content_md": "# Customer Portal Replacement — Lessons Learned\n_Closed 12 September 2026 · prepared by Adekunle Bello · for the next PM in this seat_\n\n## 1. The programme in one paragraph\n\nReplaced the legacy customer portal with a self-service experience for the top-12 B2B customer segment. Delivered on 11 September (one calendar day after the original 10 September go-live target) at £861k against an £820k baseline — a 5% overrun, driven by the CR-03 contractor extension and a smaller end-of-programme contingency call.\n\n## 2. Three things that worked\n\n- **Co-located QA from week 2.** Naledi sat with the engineering team rather than the QA function from week 2 onwards. That decision caught a class of integration bugs in week 4 that we would otherwise have shipped to UAT in week 14. The cost was one slightly awkward HR conversation about cross-team seating; the benefit was approximately 3 weeks of avoided rework.\n- **Weekly RAID review with the team, not just for stakeholders.** We treated the RAID as a working document at the 30-minute team check-in every Wednesday. New PMs typically maintain the RAID in isolation; doing it with the team caught two risks (R-09, R-11) that I would not have identified on my own.\n- **The change-request discipline.** We raised three CRs in 16 weeks, all with quantified trade-offs. Janelle (sponsor) reported afterwards that this was the first programme in two years where she felt she actually understood what she was approving. The discipline cost an hour per CR to write properly; the benefit was approval inside 48 hours each time.\n\n## 3. Three things that didn't\n\n- **The compliance data-residency conversation should have happened in week 1, not week 7.** I treated it as something to surface 'once we knew more', and what we knew in week 7 we could have known by reading the existing compliance policy in week 1. That cost us two weeks of architecture rework and added R-11 to the register longer than it should have been there.\n- **We under-resourced the BA function.** I covered BA work myself for the first 6 weeks because the existing BA was on another programme. By week 6 I was the bottleneck on requirements clarification. A dedicated BA from day 1 (even at 0.5 FTE) would have cost the programme £18k and saved ~10 days of my time.\n- **Dependency on the data-platform team was managed as a peer-PM relationship, not a tracked dependency.** R-04 escalated to red in week 6 only because I'd been polite about the slippage in weeks 3–5 instead of treating it as a dependency at risk. The lesson: peer-PM relationship and dependency status are two different things.\n\n## 4. The decision you'd reverse\n\nI would book the compliance conversation in week 1. Not week 2, not week 3, week 1. The cost is one hour of someone's time; the cost of not doing it was three weeks of architecture rework and a near-miss on the launch date. Every future programme I'll do, the first three meetings I book are: sponsor 1:1, compliance briefing, data-platform dependency check.\n\n## 5. The thing that surprised you\n\nThe top-12 customers cared more about the password-reset feature than they did about the report types. I'd planned the programme treating the reports as the headline feature, because the original BRD had positioned them that way. In the week-12 stakeholder review, Janelle mentioned almost in passing that CS was tracking password-reset calls per week as their primary KPI. If I'd asked CS about their day-to-day pain in week 1 rather than reading the BRD, the programme's emphasis (and Phase 2 priorities) would have looked different.\n\n## 6. What I'd tell the next PM\n\nBook the compliance conversation in week 1, even if you think you don't need it yet. Treat the data-platform team as a tracked dependency, not a peer-PM relationship, from the day the dependency is declared. And go talk to the CS team in person in your first fortnight — the BRD will tell you the official priority, and CS will tell you the real one.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Three sentences. The discipline forces the honesty. 'Delivered against scope, on budget, on time' becomes harder to write when you know the date slipped by one day and the budget overran by 5%."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Three things, not five. Five becomes 'good team, good stakeholders, good vendor' — the generic version that helps nobody. Three forces the writer to find the specific, replicable behaviours."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Three things that didn't, with named root causes. 'Communication issues' is not a root cause; it's a category. 'We didn't have a named owner for X' is a root cause. The next PM can actually act on it."
+        },
+        {
+          "section_id": "section-4",
+          "note": "The 'decision you'd reverse' section is the most generative section in the document — it forces the writer past the safe summary into the specific, accountable narrative. If you can't name a single decision you'd reverse, you weren't paying attention."
+        },
+        {
+          "section_id": "section-6",
+          "note": "Three sentences to the next PM. The whole document earns its place by these three sentences. The PM who reads the doc will skim sections 1–5; she will read section 6 twice."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Lessons-learned doc written as 'reflections on the project'. The genre is 'memos to my successor'. The audience is the next PM, not the people who already lived this with you.",
+    "Generic categories instead of specifics. 'Communication could be better' helps nobody. 'We didn't have a named compliance owner until week 7' is actionable.",
+    "Section 4 (decision you'd reverse) omitted because it feels uncomfortable. That's why it's the most useful section. Write it.",
+    "Section 5 (surprises) treated as 'unexpected challenges' (a euphemism). The genuine surprises are usually about your own assumptions, not external events.",
+    "Five things that worked + five things that didn't. The discipline of three each forces the writer to find the most-important ones. The list of ten is a graveyard.",
+    "Document filed and not actually shared with anyone. Schedule a 30-minute handover with the next PM specifically to walk through this doc. Otherwise it lives in a drive folder and dies."
+  ],
+  "variant_patterns": [
+    "Failed-programme variant: add a §0 'What we did not deliver and why' as the opening. Sections 2–3 stay; section 4 (decision to reverse) often becomes a longer narrative.",
+    "Long-programme variant (12+ months): add §3.5 'Things that worked at the time and stopped working' — the structures that scaled well to month 4 and badly to month 9.",
+    "Cross-programme variant (lessons across a portfolio): the document becomes a patterns document. Sections 2–3 become 'patterns that recurred across the portfolio' rather than single-programme observations."
+  ],
+  "related_scenarios": ["pm-first-retro", "pm-probation-review"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

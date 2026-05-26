@@ -1,0 +1,53 @@
+{
+  "slug": "pm-business-case",
+  "role": "pm",
+  "artefact_type": "business_case",
+  "title": "Business Case",
+  "variant": "standard",
+  "description": "The business case template that gets read versus the one that gets filed. Six sections, no executive summary on its own page — the summary is the first section, and if the rest of the document is doing its job, that's the only section most readers need. Quantify the cost of doing nothing as ruthlessly as you quantify the cost of doing it.",
+  "empty_template_md": "# [Initiative name] — Business Case\n_For [decision forum] on [date] · prepared by [name] · sponsor [name]_\n\n## 1. The ask in one paragraph\n_What is the decision being asked of the reader. The number. The date by which the decision is needed. The consequence of not deciding._\n\n## 2. Why now\n_Three to five sentences. What has changed in the last six months that makes this the right moment. Not 'this is important' — 'this is now'._\n\n## 3. The options considered\n_Option A: do nothing._\n_Option B: minimum-viable response._\n_Option C: recommended option._\n_Each with: cost (CAPEX + OPEX), timeline, what it delivers, what it doesn't._\n\n## 4. The recommendation\n_The chosen option, with one paragraph on why over the others. Honest about the trade-offs you're accepting._\n\n## 5. The numbers\n| Year | Cost | Benefit | Net |\n|------|------|---------|-----|\n|      |      |         |     |\n_Plus: a one-line statement on the assumption-set the numbers depend on, and which assumption is the most fragile._\n\n## 6. What gets decided when\n_Three to five decision points the sponsor needs to be ready for. Not a timeline — a list of forks._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal replacement — business case for £820k programme",
+      "content_md": "# Customer Portal Replacement — Business Case\n_For the Investment Committee on 15 May 2026 · prepared by Adekunle Bello · sponsor Janelle Ofori_\n\n## 1. The ask in one paragraph\n\nApprove a £820k programme to replace the legacy customer portal over 16 weeks, starting 1 June 2026, delivering go-live by 9 September. Approval is needed by 22 May to land the contract with our chosen build partner; missing that date pushes go-live to November and costs an additional £140k in extended legacy support fees.\n\n## 2. Why now\n\nThe legacy portal vendor (PortalCorp) is sunsetting the platform in Q1 2027; we have a contractual obligation to migrate by then. Our top-12 customer accounts have surfaced portal friction in their last three QBRs. Customer-success is currently absorbing 4.2 FTE-equivalent in manual workarounds — the highest CS-overhead-per-customer in the segment. The window to act before the sunset becomes urgent (and our negotiating position with PortalCorp weakens) closes in October.\n\n## 3. The options considered\n\n### Option A — Do nothing.\n- **Cost:** £0 capex. £180k OPEX/year in customer-success overhead from the workarounds. £210k forced migration fees in Q1 2027 to land us anywhere off the legacy.\n- **Timeline:** Forced legacy sunset Q1 2027.\n- **Delivers:** Nothing.\n- **Doesn't:** Resolve the top-12 customer friction; will likely cost one of them at renewal (Forrest Bank renewal is November).\n\n### Option B — Minimum-viable replacement.\n- **Cost:** £420k capex, £30k/year OPEX.\n- **Timeline:** 22 weeks.\n- **Delivers:** Login + account view + one report type. Replaces the legacy login surface only.\n- **Doesn't:** Resolve the underlying friction (reports, password reset, admin tooling). CS overhead largely unchanged.\n\n### Option C — Recommended: full replacement.\n- **Cost:** £820k capex, £45k/year OPEX.\n- **Timeline:** 16 weeks.\n- **Delivers:** Login + account mgmt + three report types + password reset + admin console for CS.\n- **Doesn't:** Migrate historical customer data older than 24 months (Phase 2 candidate). Self-service billing (out of scope; sits with finance).\n\n## 4. The recommendation\n\nOption C. Option B fails to address what the top-12 customers actually complain about — the reports and the password reset — and leaves CS carrying the overhead. The marginal £400k of Option C over Option B is paid back in 22 months on the CS overhead alone (4.2 FTE × £80k loaded cost = £336k/year recovered, conservative estimate at 60% reduction). The implicit trade-off accepted: we are not migrating historical customer data older than 24 months in this programme. CS has signed off on that boundary.\n\n## 5. The numbers\n\n| Year | Cost | Benefit | Net |\n|------|------|---------|-----|\n| Year 1 (Sep 26 – Sep 27) | £820k capex + £30k OPEX | £200k CS recovery (partial year), £140k avoided legacy fees | -£510k |\n| Year 2 | £45k OPEX | £336k CS recovery, £180k retention margin (Forrest Bank likely retained) | +£471k |\n| Year 3 | £45k OPEX | £336k + £180k | +£471k |\n\n**Most fragile assumption:** The CS overhead recovery requires the top-12 customers actually using the new portal — not continuing to use email/phone routes. CS has committed to a hard-cutover policy for those 12 from go-live. If that policy slips, CS recovery is half of the modelled number.\n\n## 6. What gets decided when\n\n- **By 22 May 2026:** Funding approved at £820k (this paper). Else slip to November.\n- **By 14 June:** Confirm in-house SSO integration approach with IT, or proceed via vendor-managed SSO (adds £40k).\n- **By 1 August:** Decision on historical-data migration scope for Phase 2 (in/out of follow-on funding case).\n- **By 1 September:** CS hard-cutover policy ratified by CS Director.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The ask in one paragraph means: a senior reader who reads only this paragraph should know what they're approving, what it costs, by when, and what happens if they don't. The £140k extended legacy fee is the kind of specific that makes the deadline real, not aspirational."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Why now is the section every business case should have and most omit. 'This is important' is timeless and gets deferred. 'The contractual sunset is Q1 2027' is concrete and forces a decision. Always anchor 'why now' to something external (vendor decision, regulatory date, customer event)."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Option A is always 'do nothing' — and crucially, do-nothing has a cost. Most rookie business cases skip this option because it feels obvious. The CFO is reading specifically to find the do-nothing cost. Quantify it."
+        },
+        {
+          "section_id": "section-5",
+          "note": "The 'most fragile assumption' line is the most useful sentence in any business case. It tells the reviewer where to push. Without it, the reviewer assumes everything is equally certain — and either approves everything or doubts everything."
+        },
+        {
+          "section_id": "section-6",
+          "note": "Decision points, not a project timeline. The sponsor doesn't need to know when QA starts; she needs to know when she'll be asked the next question. Three to five forks is enough."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Executive summary as its own page. If the first section is doing its job, that's the summary. The exec summary on its own page is an artefact of templates designed by committee.",
+    "Doing-nothing cost set to zero. Almost never true. Even if there's no direct cost, there's a foregone benefit or a contractual deadline approaching.",
+    "Three options where Option C is obviously the right one and the other two are straw men. Senior reviewers see this immediately. The discipline is to write Option B as the genuinely-minimum-viable response, with its own actual logic.",
+    "NPV / IRR analysis instead of plain-English numbers. If your reader is a CFO, fine. If not, the per-year table beats the discount-rate gymnastics.",
+    "Most-fragile-assumption omitted. Without it, the reviewer doesn't know where to challenge — and so challenges everything, which makes the conversation slower than it needs to be.",
+    "Decision points presented as a project timeline. The sponsor's job is to make decisions, not to track tasks. Frame the section accordingly."
+  ],
+  "variant_patterns": [
+    "Regulatory variant: add §0 'Regulatory driver' as the framing — what specifically the regulator has required, with the citation. Section 3 options collapse to two: minimum compliance vs gold-plated compliance.",
+    "Vendor selection variant: §3 options become the shortlisted vendors. Add a §3.5 'Why not the others' that names every shortlisted vendor that didn't make the cut and the disqualifying reason.",
+    "Small-investment variant (under £100k): collapse to one page. Sections 1, 4, 5 only. Do not produce a 20-page document for a £40k decision."
+  ],
+  "related_scenarios": ["pm-skeptical-exec", "pm-team-estimate"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

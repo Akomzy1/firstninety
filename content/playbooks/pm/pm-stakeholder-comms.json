@@ -1,0 +1,53 @@
+{
+  "slug": "pm-stakeholder-comms",
+  "role": "pm",
+  "artefact_type": "stakeholder_comms_plan",
+  "title": "Stakeholder Communications Plan",
+  "variant": "standard",
+  "description": "The stakeholder communications plan that makes the difference between a programme that lands and one that surprises people on go-live day. Six columns per stakeholder, designed to be read in a glance. The discipline is not in cataloguing every stakeholder; it's in being honest about which channels each one actually reads.",
+  "empty_template_md": "# [Programme name] — Stakeholder Communications Plan\n_v[N] · last reviewed [date] · owner [name]_\n\n## Stakeholders by tier\n\n| Stakeholder | Influence | What they need to know | When | Channel they actually read | Owner |\n|-------------|-----------|------------------------|------|----------------------------|-------|\n|             |           |                        |      |                            |       |\n\n## Recurring rhythms\n_The five to seven recurring communications: weekly status, monthly portfolio review, sprint review, etc. Each one has a named owner and a named audience._\n\n## One-off communications planned\n_Specific moments where a one-off comms is needed: programme kick-off, go-live announcement, post-launch report. Each one with a date, a channel, and an owner._\n\n## Communication assumptions\n_Three to five. Things we're assuming about who reads what. Each one is a sentence whose negation changes the plan materially._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal — comms plan in week 4",
+      "content_md": "# Customer Portal — Stakeholder Communications Plan\n_v0.3 · 22 April 2026 · Adekunle Bello_\n\n## Stakeholders by tier\n\n| Stakeholder | Influence | What they need to know | When | Channel they actually read | Owner |\n|-------------|-----------|------------------------|------|----------------------------|-------|\n| Janelle Ofori (sponsor) | H | RAG + decisions needed | Weekly | Direct email Friday 4pm | Adekunle |\n| Yetunde Mbeki (COO, board chair) | H | Programme-level milestones + risks | Quarterly | Programme board pack | Adekunle |\n| Top-12 CS account managers | M | Feature timeline + cutover plan | Monthly | CS team standup briefing | CS Director |\n| Marcus Klein (Compliance) | M | Data-residency status + sign-off path | Bi-weekly | Direct email + 30-min check-in | Adekunle |\n| Engineering team (Lewis, Theo, Asha) | H (delivery) | Day-to-day priorities + blockers | Daily | Standup + Slack #portal-build | Adekunle |\n| Rohan Chatterjee (peer PM, data platform) | M | Dependency status | Weekly | 30-min sync Thursday + Slack | Adekunle |\n| End-user pool (top-12 customer ops) | M | UAT invitation + go-live comms | Once at UAT, once at go-live | Email from Janelle, not the programme | Janelle |\n| HR / Legal | L | Contractor onboarding only | As needed | Direct email | Adekunle |\n\n## Recurring rhythms\n\n- **Friday 4pm:** Sponsor status email to Janelle (Adekunle owns; one paragraph + RAG + decisions needed).\n- **Monday 9am:** Engineering standup, 15 min (Adekunle facilitates).\n- **Wednesday 2pm:** 30-min team RAID review (Adekunle facilitates).\n- **Thursday 3pm:** 30-min peer-PM sync with Rohan (Adekunle owns; covers D-02 status).\n- **Bi-weekly Tuesday:** Compliance check-in (30 min; Marcus + Adekunle).\n- **Monthly third Thursday:** Programme portfolio review (board pack from Adekunle).\n- **Quarterly:** Programme board (Adekunle presents).\n\n## One-off communications planned\n\n- **Week 4 (28 April):** Programme kick-off note to top-12 CS account managers. Sent by Janelle; Adekunle drafts.\n- **Week 12 (4 August):** UAT invitation to end-user pool. Sent by Janelle (specifically — not from Adekunle; users will trust her more).\n- **Week 14 (18 August):** Compliance sign-off written confirmation to Yetunde (board chair). Drafted by Adekunle, sent by Marcus.\n- **Go-live day (9 September):** Live announcement to top-12 customer ops. Sent by Janelle. Programme-internal celebration (separate, smaller) by Adekunle.\n- **Week 18 (16 September):** Post-launch summary to programme board. Adekunle owns.\n\n## Communication assumptions\n\n- **CA-01:** The top-12 CS account managers will absorb the monthly briefing if it lands via their standup, not via dedicated email. (Tested in week 3 — confirmed.)\n- **CA-02:** Janelle will sign off the customer-facing comms within 24 hours of receipt. (Untested — confirm by week 8.)\n- **CA-03:** Compliance check-ins do not need to escalate to Yetunde unless an issue surfaces. (Holding; revisit if Marcus raises something.)\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The 'channel they actually read' column is what makes the plan useful versus theatrical. Janelle does not read the Slack channel. The top-12 CS account managers do not read direct email. If you list every stakeholder against 'email and Slack and standup', you've catalogued without doing the work."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Influence column matters more than 'role'. A senior dev whose blessing the team needs is high-influence even if her formal role is lower than the sponsor. The discipline is being honest about who actually moves the needle."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Recurring rhythms section is the section new PMs over-engineer. Five to seven rhythms is enough. Daily standup + weekly sponsor + monthly portfolio is the spine of every healthy programme; everything else is supplemental."
+        },
+        {
+          "section_id": "section-3",
+          "note": "One-off communications need a specific date and a specific sender. 'Janelle sends the UAT invitation' is materially different from 'Adekunle sends the UAT invitation' — the end users will trust the sponsor's voice more. Choose the sender deliberately."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Communication assumptions are the section omitted by most plans. They're the cheapest to surface and the most valuable to test. 'CS will absorb the briefing via their standup' is testable in week 1; 'CS will pay attention' is not."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Every stakeholder on every channel. The catalogue is comprehensive and useless. The discipline is being honest about who reads what.",
+    "Communications plan written and never reviewed. The plan is a working document — update it monthly. The assumption that someone reads your Friday email may have stopped being true.",
+    "Sender of each communication left ambiguous. The 'who sends this' is the work. A go-live announcement from the PM lands differently than the same announcement from the sponsor.",
+    "Channels listed without honesty about which one the stakeholder actually opens. Senior stakeholders often have an EA filtering their email; the EA is the actual reader.",
+    "Recurring rhythms inflated to ten meetings per week. The team will not sustain that, and you'll start cancelling meetings, which trains stakeholders that the cadence is unreliable.",
+    "Communication assumptions section omitted. The whole plan rests on assumptions about reader behaviour; surface them."
+  ],
+  "variant_patterns": [
+    "Public-sector variant: add a column for 'FOI exposure' — communications that may become subject to freedom-of-information requests. Changes drafting standards across the board.",
+    "Crisis-mode variant: collapse to one page. Three stakeholders only. The 'who sends this' question becomes the most important one in the document.",
+    "Multi-country variant: add a column for timezone and a column for working-language. Friday-4pm-London is a different communication than the same content arriving at 7am-Tokyo on Saturday."
+  ],
+  "related_scenarios": ["pm-deadline-slipping", "pm-scope-creep", "pm-risk-walkthrough"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

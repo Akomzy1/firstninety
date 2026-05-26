@@ -1,0 +1,43 @@
+{
+  "slug": "pm-skeptical-exec",
+  "role": "pm",
+  "title": "Defending Amber",
+  "one_liner": "The CFO has just asked, in a forum of fifteen people: 'When you say amber, what does amber actually mean?'",
+  "brief": "## The room\n\nMonthly portfolio review. Twelve programmes presented in 90 minutes; you're number seven on the slate. Your slide is up: AMBER, narrative says 'on track for the revised October date with one open risk on the integration testing window'.\n\nYou had your two minutes. As you were about to move on, Hari Venkatesan — the CFO, six months into the role himself, known for thawing in private and freezing in public — interrupts.\n\n'Sorry, can I just understand — when *you* say amber, what does amber actually mean? Because Damilola's programme is also amber and I want to make sure I'm reading these the same way.'\n\nDamilola is the other PM in the room. Her programme is genuinely on fire — three weeks late, two key engineers resigned. Your programme is going to land. They are not the same colour.\n\nThe Programme Director — your boss — is also in the room, watching. The other ten PMs are watching. The portfolio dashboard projector is the most-read document in the building.\n\n## Your turn\n\nFifteen seconds of silence have already passed. Answer.",
+  "objective": "Give a clean answer that defines amber on your terms without throwing Damilola under the bus or making your director step in.",
+  "curveball": "Hari is not actually testing your colour definition. He's testing whether you'll hold up under public pushback and whether you've thought about your own status independently of what other PMs are reporting. If the user gives a textbook definition ('amber means risk mitigation is in flight'), Hari will press — 'so what's the specific risk?'. If the user answers cleanly with the named risk and a specific date, Hari will move on. If the user starts hedging or comparing to Damilola's programme, Hari will hold the floor for another three turns and the meeting will overrun.",
+  "personas": [
+    {
+      "name": "Hari Venkatesan",
+      "role": "Chief Financial Officer",
+      "position": "I need to read these dashboards consistently across programmes",
+      "fear": "Being briefed badly by PMs who use the same colour for different realities",
+      "monogram": "HV",
+      "colour": "slate"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Defined amber in your own programme's terms in one sentence",
+      "Named the specific open risk (integration testing window) and the date by which it resolves",
+      "Did NOT compare your programme to Damilola's, even when invited",
+      "Closed the answer — didn't trail off waiting for Hari's reaction"
+    ],
+    "yellow": [
+      "Read the generic RAG legend off the slide rather than your specific situation",
+      "Defended the amber by listing everything that's going well — that's a green argument and Hari will hear it as inconsistent",
+      "Hedged the integration risk ('there are some concerns') instead of naming what specifically and by when",
+      "Looked at your director before answering"
+    ],
+    "red": [
+      "Compared to Damilola's programme in a way that diminished hers",
+      "Said 'we're actually closer to green' — undermining the slide you just presented",
+      "Asked Hari what HE thinks amber should mean (deflection — he will not love it)",
+      "Got defensive and made it about RAG definitions across the portfolio (not your job to solve)"
+    ]
+  },
+  "estimated_minutes": 10,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

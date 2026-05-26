@@ -1,0 +1,43 @@
+{
+  "slug": "pm-cross-team",
+  "role": "pm",
+  "title": "The Blocking Peer",
+  "one_liner": "Another PM's team is the dependency that's now blocking yours. You need them by Friday. They've replied: 'we'll get to it next sprint'.",
+  "brief": "## The setup\n\nYour programme depends on the data platform team finishing the customer-event pipeline. You don't own them; they sit under a peer PM, Rohan Chatterjee, who's been at the company three years and runs delivery for the platform group.\n\nThe pipeline was promised by Friday, week 6 of your programme. You're now in week 7. Without it, your team can't start the integration work; that's three engineers idling, two of them on contract.\n\nYou messaged Rohan on Monday. He replied today, Wednesday: 'Hi — heads up, we're going to have to push the pipeline to next sprint, we picked up an urgent ask from finance. Sorry for the disruption. Will get it to you week 8.'\n\nNot apologetic. Not asking. Informing.\n\nYou have two paths: escalate (your director, his director, the portfolio forum), or work it with Rohan directly. The cost of escalating wrong is permanent — Rohan is the kind of PM who, if you escalate over his head, will be cooperative-but-slow for the rest of your tenure.\n\n## Your turn\n\nReply to Rohan.",
+  "objective": "Get the pipeline by Friday — or land a clear, specific compromise that doesn't burn the relationship. The exact words matter; this is the conversation that defines whether Rohan's team is helpful or hostile for the next eighteen months.",
+  "curveball": "Rohan's 'urgent ask from finance' is real but not as urgent as he's implied. If the user asks ANY question about it ('what's the finance ask?' or 'who's driving the timeline on that?') he will tell the truth: it's a regulatory data extract due in three weeks, not this week. That's leverage — not to escalate over, but to negotiate with. ('If finance's ask is three weeks out, can your team prioritise our pipeline this sprint and pick up the finance work next? I can write to finance to confirm the slip.') If the user doesn't ask, the conversation stays where Rohan wants it and the pipeline arrives week 8.",
+  "personas": [
+    {
+      "name": "Rohan Chatterjee",
+      "role": "Peer PM, Data Platform group",
+      "position": "I have my own pressure. Yours doesn't outrank it",
+      "fear": "Being seen as the team that always under-delivers on platform commitments",
+      "monogram": "RC",
+      "colour": "teal"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Asked about the finance work specifically rather than accepting 'urgent ask' as final",
+      "Found the leverage (finance is 3 weeks out, your need is this week) and offered to absorb the finance comms",
+      "Closed with a specific commitment — pipeline by Friday, you write to finance Monday",
+      "Did NOT escalate; kept this peer-to-peer"
+    ],
+    "yellow": [
+      "Accepted the week-8 slip with mild objection and went idle for two days while the team had no work",
+      "Got into a tit-for-tat about whose work is more urgent",
+      "Asked Rohan to 'find a way to make this work' without offering anything yourself",
+      "Threatened escalation as the second move — too early, breaks the relationship"
+    ],
+    "red": [
+      "Escalated to your director without first reading the situation properly",
+      "Cc'd Rohan's manager on the reply",
+      "Promised the contractors 'we'll find them other work this week' without checking what's actually doable",
+      "Conceded the slip and absorbed the contractor cost without flagging it to your sponsor"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "pm-project-plan",
+  "role": "pm",
+  "artefact_type": "project_plan",
+  "title": "Project Plan",
+  "variant": "standard",
+  "description": "The project plan most junior PMs over-build and then never look at again. A working plan is one page of dates and dependencies, three views of the same truth, designed to survive contact with reality. The Gantt chart is the artefact; the dependencies are the document.",
+  "empty_template_md": "# [Programme name] — Project Plan\n_Version [v0.1] · last updated [date] · owner [name]_\n\n## 1. One-paragraph framing\n_What is this programme delivering, by when, for whom. Three sentences max._\n\n## 2. Phases + milestones\n| Phase | Starts | Ends | Milestone (named, dated) |\n|-------|--------|------|--------------------------|\n|       |        |      |                          |\n\n## 3. Dependencies (the thing that actually matters)\n| Dependency | Owner | Needed by | Status |\n|------------|-------|-----------|--------|\n|            |       |           |        |\n\n## 4. Resource shape\n| Role | FTE on this | Names (if known) | Window |\n|------|-------------|------------------|--------|\n|      |             |                  |        |\n\n## 5. Critical path\n_The four to six tasks that, if any slips, slip the end date. Not the same as the full task list. List them in order with their float._\n\n## 6. RAID summary\n_Link to the RAID register. Top three risks summarised in plain English here._\n\n## 7. Assumptions\n_Three to five. Each one a sentence that, if it becomes false, changes the plan materially._\n",
+  "worked_examples": [
+    {
+      "title": "Customer portal — 16-week delivery",
+      "content_md": "# Customer Portal Programme — Project Plan\n_v0.4 · 22 April 2026 · Adekunle Bello_\n\n## 1. One-paragraph framing\n\nReplace the legacy customer portal with a self-service experience for the top 12,000 B2B customers. Go-live target: 9 September 2026. Delivers account management, three report types, self-service password reset, and an admin console for our customer-success team.\n\n## 2. Phases + milestones\n\n| Phase | Starts | Ends | Milestone |\n|-------|--------|------|-----------|\n| Discovery | 1 May | 22 May | Signed BRD + architecture decision record |\n| Build wave 1 | 23 May | 4 July | Account mgmt + login features deployable to staging |\n| Build wave 2 | 5 July | 15 Aug | Reports + admin console deployable to staging |\n| UAT | 18 Aug | 5 Sep | UAT sign-off from CS + finance |\n| Go-live | 8 Sep | 9 Sep | Cutover Mon evening, live Tue 9 Sep |\n\n## 3. Dependencies\n\n| Dependency | Owner | Needed by | Status |\n|------------|-------|-----------|--------|\n| SSO config from IT | Tomasz Wójcik (IT) | 14 June | Open — meeting booked 6 May |\n| Customer data pipeline (data platform team) | Rohan Chatterjee | 28 June | At risk — see RAID R-04 |\n| Compliance sign-off on data residency | Marcus Klein | 8 August | Not started — will book in week 7 |\n| Vendor contract renewal (Synth Logistics) | Procurement | 1 July | Closed |\n\n## 4. Resource shape\n\n| Role | FTE on this | Names | Window |\n|------|-------------|-------|--------|\n| Eng (FE) | 2.0 | Lewis Harding, Theo Park | May–Sep |\n| Eng (BE) | 2.0 | Asha Bhatt, contractor TBC | May–Sep |\n| QA | 1.0 | Naledi Mokoena | Jun–Sep |\n| Designer | 0.5 | Theo Park (split) | May–Aug |\n| BA | 1.0 | (TBC — covering with myself for now) | May–Aug |\n\n## 5. Critical path\n\n1. Discovery → BRD sign-off (4 days float)\n2. SSO config land in build wave 1 (0 days float — this is the constraint)\n3. Customer data pipeline land before UAT (5 days float — see R-04)\n4. Compliance data residency sign-off before cutover (3 days float)\n5. UAT sign-off before cutover (1 day float)\n\n## 6. RAID summary\n\nFull register at /raid/customer-portal. Top three:\n\n- **R-04 (high):** Customer data pipeline at risk; depends on cross-team commitment from data platform group. Mitigation: weekly check-in with Rohan, escalation to Programme Director if not on track by 1 June.\n- **R-07 (med):** SSO config team has one engineer on holiday weeks 5–6. Mitigation: confirmed the work is in-flight before holiday.\n- **R-11 (med):** Compliance has signalled a data residency question. Mitigation: book the conversation in week 7, don't let it surface in UAT.\n\n## 7. Assumptions\n\n1. The customer data pipeline (data platform team) delivers in scope by 28 June. If late, build wave 2 compresses or slips.\n2. We do not migrate historical customer data in this programme. Phase 2 candidate. If business pushes for it, end date moves to November.\n3. Compliance accepts UK + EU data residency (current model). If they require UK-only, architecture changes and the date slips a month.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "One paragraph. Three sentences. If you can't frame the programme in three sentences, you don't yet understand it. The framing-paragraph test is the cheapest sanity check on whether you actually own the work."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Dependencies is the section most rookie PMs treat as 'and then we'll do this'. Reality: 80% of programme slippage is dependency slippage. Each dependency needs a named owner and a needed-by date. Status field at four values: Closed / On track / Open / At risk. Anything else is mush."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Critical path is the four-to-six tasks where you do not have float. If your critical path is twenty tasks long, you don't have one — you have a wish list. The discipline is in the cut."
+        },
+        {
+          "section_id": "section-7",
+          "note": "Assumptions are the section senior reviewers read first. Each assumption is a sentence whose negation changes the plan materially. 'We assume we will deliver on time' is not an assumption; it's a fortune cookie."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Full task lists in the Gantt — every story, every standup. The plan becomes unmaintained within a month and stops being trusted. The Gantt is for phases and milestones. The story-level work lives in the sprint tooling.",
+    "Dependencies section omitted, or buried in the RAID register. Dependencies are the document. If they're not at the top, they will be missed.",
+    "Critical path of fifteen tasks. That's not a critical path; that's a fear of cutting. Six tasks max.",
+    "Assumptions written defensively ('we assume the team will perform'). Assumptions exist to be negated; write them precisely enough that a stakeholder can challenge them.",
+    "No owner column on dependencies. 'IT' is not an owner. A named person is.",
+    "Resource shape with FTE counts that don't add up to a real headcount available — the plan looks beautiful and the team can't execute it. Always sanity-check against actual capacity, including the half-day-a-week your QA spends supporting other programmes."
+  ],
+  "variant_patterns": [
+    "Regulatory programme variant: add §8 'Regulatory milestones' (FCA / GDPR sign-off dates) and §9 'External evidence trail' (what gets logged where for audit). Critical path almost always runs through the regulator's calendar, not yours.",
+    "Discovery variant: §2 collapses to 'discovery phases' (problem framing / solution sketch / business case). §5 critical path is replaced by 'decision dates' — when each go/no-go is needed.",
+    "Multi-vendor variant: §3 dependencies become the primary section. Vendor contractual SLAs go above named individuals — escalation paths are different."
+  ],
+  "related_scenarios": ["pm-deadline-slipping", "pm-team-estimate", "pm-risk-walkthrough"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "pm-team-estimate",
+  "role": "pm",
+  "title": "The Estimate Pushback",
+  "one_liner": "Your team estimated the feature at eight weeks. The sponsor wants it in four. She's asked you, in front of her, why it can't be done faster.",
+  "brief": "## The room\n\nWeek six in role. You've taken over the integrations programme; this is the first piece of work you've estimated end-to-end with the team yourself, not inherited.\n\nThe team's estimate for the new fulfilment-API integration: eight weeks. You walked through it with the engineering lead, two senior devs, and the QA lead. The number is honest — not padded, not optimistic. It includes the security review nobody flagged in discovery, the data-shape negotiation with the vendor, and a buffer week because their API is new and changing.\n\nNow you're in a one-to-one with the sponsor — Mei-Lin Soong, Director of Operations. She is sharp, fast, friendly until she isn't. You've sent the estimate over by email. Her reply was a meeting invite for twenty minutes.\n\nShe opens with: 'Right, eight weeks. Walk me through why it can't be four. I have the board asking for it before the quarter ends.'\n\n## Your turn\n\nYou have her attention. Use it.",
+  "objective": "Hold the estimate without being defensive. Make Mei-Lin understand what the team is actually doing for those eight weeks. Leave with a relationship that survives the conversation.",
+  "curveball": "Mei-Lin will not push back on the eight weeks themselves if the user walks her through the breakdown competently. What she WILL push on is whether you, personally, have a grip on the work — versus just relaying what the team told you. Around turn 3 she'll ask: 'What's the bit YOU think is most likely to slip?' If the user names a specific risk with reasoning, the meeting is essentially won. If the user defers ('the team is best placed to answer that'), Mei-Lin will book a separate meeting with the engineering lead, bypass you, and your standing drops.",
+  "personas": [
+    {
+      "name": "Mei-Lin Soong",
+      "role": "Director of Operations (sponsor)",
+      "position": "Eight weeks is too long. Convince me, or compress it",
+      "fear": "PMs who can't tell her what's actually driving the timeline",
+      "monogram": "MS",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Walked Mei-Lin through the three biggest chunks of the eight weeks specifically (security review, vendor API shape, integration testing)",
+      "Held the estimate when she pressed — did not retreat to 'we'll see what we can do'",
+      "Answered 'what's most likely to slip?' with your own named risk and reasoning, not deferral to the team",
+      "Offered one concrete thing she could change to shave time (e.g. parallel security review with a named sponsor on the security side) — without promising it would work"
+    ],
+    "yellow": [
+      "Defended the estimate by repeating that the team had agreed it — accurate but doesn't answer her question",
+      "Said 'I'll go back to the team and see if we can compress' — buys you a meeting next week with the same conversation",
+      "Got stuck on the buffer week and let her negotiate that down to half",
+      "Promised something specific (parallel security review) without first confirming it's actually doable"
+    ],
+    "red": [
+      "Caved to four weeks under direct pressure",
+      "Deferred the 'most likely to slip' question to the engineering lead",
+      "Made the conversation about why the previous PM's plan was wrong",
+      "Got visibly defensive — Mei-Lin will read that as 'this PM can be moved'"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

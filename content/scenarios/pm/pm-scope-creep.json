@@ -1,0 +1,43 @@
+{
+  "slug": "pm-scope-creep",
+  "role": "pm",
+  "title": "The Friday Email",
+  "one_liner": "It's Friday afternoon. The sponsor just emailed asking for 'one small addition' to next sprint.",
+  "brief": "## The setup\n\nYou're four weeks into running the customer-portal programme. The scope was signed off in week 1: account management, two report types, the new self-service password reset. Engineering is heads-down. The first demo is in eleven days.\n\nIt's 4.40pm on Friday. Your sponsor — Janelle Ofori, VP Customer Experience — has just emailed:\n\n> 'Hi, quick one — can we add the bulk-import upload to the demo? Sales had a call with a prospect this morning who absolutely needs it and they want to see it next Thursday. Should be small, right? Let me know. Thx.'\n\nYou know two things. First: it is not small. The data team estimated bulk-import as a 3-week piece of work in discovery, and you cut it for a reason. Second: she is not asking; she is informing.\n\nThe team finishes at 5pm. You have twenty minutes before everyone logs off.\n\n## Your turn\n\nDraft the reply.",
+  "objective": "Decline the in-sprint add without saying no. Make the trade-off Janelle's to own, not yours to absorb. Land with the demo date still safe.",
+  "curveball": "If the user replies with a flat 'no, it's not possible' or with 'sure, we'll find a way', Janelle's next email will copy in the COO. The skill is offering her a real choice she can take to the prospect — not a refusal and not a capitulation. Around turn 4, if the user has handled the email well, Janelle will reply asking about Phase 2 timing. If the user has handled it badly, the COO comes in by turn 6.",
+  "personas": [
+    {
+      "name": "Janelle Ofori",
+      "role": "VP Customer Experience (sponsor)",
+      "position": "I need this in the demo because Sales needs it",
+      "fear": "Losing the prospect because the product looks unfinished",
+      "monogram": "JO",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Replied within the 20-minute window, not Monday morning",
+      "Named the trade-off in numbers — adding bulk-import costs the password-reset story and shifts the demo to the 21st",
+      "Offered Janelle a real choice (delay demo / drop a feature / show a static mock) without recommending which",
+      "Closed by asking who from her side can make the call by Monday 9am"
+    ],
+    "yellow": [
+      "Said 'I'll see what we can do' and bought yourself a weekend of stress without resolving anything",
+      "Replied with a long explanation of why discovery put bulk-import in Phase 2 — Janelle doesn't care about the history, only the path forward",
+      "Capitulated to the in-sprint add and assumed the team would absorb it",
+      "Escalated to your manager without first giving Janelle the chance to own the trade-off"
+    ],
+    "red": [
+      "Refused outright with no alternatives offered ('sorry, not possible this sprint')",
+      "Promised the bulk-import for the demo without checking with the data team first",
+      "Sent the reply Monday morning — by then the prospect call has shaped Sales's expectations",
+      "Framed the reply as a defence of the original scope, not a path to her actual goal (winning the prospect)"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}
