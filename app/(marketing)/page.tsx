@@ -7,6 +7,20 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/Button";
+import { ScrollDepthTracker } from "@/components/marketing/ScrollDepthTracker";
+
+const TRACKED_SECTIONS = [
+  "hero",
+  "why-this-exists",
+  "how-it-works",
+  "tool-situation-room",
+  "tool-simulator",
+  "tool-coach",
+  "tool-playbook",
+  "tool-mission-track",
+  "tool-probation-prep",
+  "pricing",
+] as const;
 
 export default function MarketingLandingPage() {
   return (
@@ -15,6 +29,7 @@ export default function MarketingLandingPage() {
       <WhyThisExistsSection />
       <SixToolsSection />
       <PricingSection />
+      <ScrollDepthTracker sectionIds={TRACKED_SECTIONS} />
     </>
   );
 }
@@ -25,7 +40,10 @@ export default function MarketingLandingPage() {
 
 function HeroSection() {
   return (
-    <section className="mx-auto max-w-(--max-reading) py-7 md:py-8 text-center flex flex-col items-center gap-5">
+    <section
+      id="hero"
+      className="mx-auto max-w-(--max-reading) py-7 md:py-8 text-center flex flex-col items-center gap-5"
+    >
       <p className="text-eyebrow inline-flex items-center gap-2 justify-center">
         <span className="size-1.5 rounded-full bg-accent" aria-hidden />
         For your first 90 days in a new tech role
@@ -161,6 +179,7 @@ function SixToolsSection() {
 
       <div className="flex flex-col gap-7 mt-4">
         <ToolRow
+          id="tool-situation-room"
           number="01"
           tag="On-demand"
           title="Situation Room"
@@ -191,6 +210,7 @@ function SixToolsSection() {
         />
 
         <ToolRow
+          id="tool-simulator"
           number="02"
           tag="Rehearsal"
           title="Scenario Simulator"
@@ -219,6 +239,7 @@ function SixToolsSection() {
         />
 
         <ToolRow
+          id="tool-coach"
           number="03"
           tag="Conversation"
           title="AI Coach"
@@ -244,6 +265,7 @@ function SixToolsSection() {
         />
 
         <ToolRow
+          id="tool-playbook"
           number="04"
           tag="Worked examples"
           title="Playbook Library"
@@ -271,6 +293,7 @@ function SixToolsSection() {
         />
 
         <ToolRow
+          id="tool-mission-track"
           number="05"
           tag="90-day programme"
           title="90-Day Mission Track"
@@ -297,27 +320,30 @@ function SixToolsSection() {
         />
 
         <ToolRow
+          id="tool-probation-prep"
           number="06"
           tag="For the final 21 days"
           title="Probation Prep Mode."
           body={
             <>
               <p>
-                From Day 70 the coach shifts gear. FirstNinety begins
-                assembling a private{" "}
+                Three weeks before your probation review, FirstNinety
+                sharpens around the conversation. The Coach changes voice.
+                The Mission Track changes shape.{" "}
                 <strong className="text-ink font-medium">
-                  Probation Brief
+                  A one-page Brief gets drafted from everything you have
+                  done these 90 days
                 </strong>{" "}
-                — three things you have done that prove the hire, two
-                that still need work, and the single sentence you should
-                be ready to say when they ask you to reflect on the past
-                ninety days.
+                — the work, the conversations, the moments that mattered.
               </p>
               <p>
-                It is not a script. It is a rehearsal of the evidence, in
-                your own voice, written down before the conversation
-                happens — so by the time you walk into the review, you
-                have already had it twice.
+                Most probation reviews are decided weeks before the review
+                itself. The conversation just confirms what your manager
+                already thinks.{" "}
+                <em className="font-display italic">
+                  The 21 days that matter most are the ones before the
+                  room.
+                </em>
               </p>
             </>
           }
@@ -330,6 +356,7 @@ function SixToolsSection() {
 }
 
 function ToolRow({
+  id,
   number,
   tag,
   title,
@@ -337,6 +364,7 @@ function ToolRow({
   illustration,
   illustrationFirst = false,
 }: {
+  id: string;
   number: string;
   tag: string;
   title: string;
@@ -358,7 +386,10 @@ function ToolRow({
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-center border-t border-paper-3 pt-7 first:border-t-0 first:pt-0">
+    <div
+      id={id}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-center border-t border-paper-3 pt-7 first:border-t-0 first:pt-0 scroll-mt-20"
+    >
       {illustrationFirst ? (
         <>
           <div className="order-2 lg:order-1">{illustration}</div>
@@ -655,8 +686,12 @@ function PricingSection() {
       </p>
 
       <div className="w-full max-w-md mt-4 border-t border-b border-paper-3 divide-y divide-paper-3">
-        <PriceRow label="Human career coach — one session" price="~ $200" />
+        <PriceRow
+          label="Human career coach — one session"
+          price="$150–$300"
+        />
         <PriceRow label="BetterUp Plus" price="$149" unit="/ mo" />
+        <PriceRow label="ChatGPT Plus" price="$20" unit="/ mo" />
         <PriceRow
           label="FirstNinety Pro"
           price="$39.99"

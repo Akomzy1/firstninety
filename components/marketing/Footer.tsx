@@ -34,6 +34,12 @@ const COMPANY_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
+const LEGAL_LINKS = [
+  { href: "/terms", label: "Terms" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/dpia", label: "DPA" },
+];
+
 export function MarketingFooter() {
   const year = new Date().getFullYear();
   return (
@@ -48,10 +54,11 @@ export function MarketingFooter() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             <FooterColumn title="Product" links={PRODUCT_LINKS} />
             <FooterColumn title="Roles" links={ROLE_LINKS} />
             <FooterColumn title="Company" links={COMPANY_LINKS} />
+            <FooterColumn title="Legal" links={LEGAL_LINKS} />
           </div>
         </div>
 
@@ -59,19 +66,6 @@ export function MarketingFooter() {
           <p className="text-caption text-mute">
             © {year} AkomzyAi Consulting Ltd. All rights reserved.
           </p>
-          <div className="flex flex-wrap items-center gap-3 text-caption text-mute">
-            <Link href="/terms" className="hover:text-ink">
-              Terms
-            </Link>
-            <span aria-hidden>·</span>
-            <Link href="/privacy" className="hover:text-ink">
-              Privacy
-            </Link>
-            <span aria-hidden>·</span>
-            <Link href="/dpia" className="hover:text-ink">
-              DPA
-            </Link>
-          </div>
           <p className="font-display italic text-body-s text-mute">
             Built for the moment training ends.
           </p>
