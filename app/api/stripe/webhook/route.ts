@@ -32,6 +32,11 @@ import Stripe from "stripe";
 import { getStripeClient } from "@/lib/billing/stripe";
 import { createServiceClient } from "@/lib/db/service";
 import { captureServerEvent } from "@/lib/tracing/posthog-server";
+import { sendEmail } from "@/lib/notifications/email";
+import {
+  cancellationConfirmEmail,
+  trialEndingEmail,
+} from "@/lib/email/templates";
 import type { Database } from "@/lib/db/types.gen";
 
 type SubStatus = Database["public"]["Enums"]["subscription_status_enum"];
@@ -228,6 +233,15 @@ async function handleEvent(event: Stripe.Event): Promise<void> {
         return;
       }
       await markSubscriptionCanceled(userId, sub);
+      // Best-effort cancellation-confirm email — never throws.
+      await sendUserEmail(userId, () =>
+        cancellationConfirmEmail({
+          accessUntilIso: isoFromUnix(
+            (sub as unknown as { current_period_end?: number })
+              .current_period_end ?? sub.items.data[0]?.current_period_end,
+          ),
+        }),
+      );
       await trace(event, userId, "ok");
       return;
     }
@@ -235,10 +249,15 @@ async function handleEvent(event: Stripe.Event): Promise<void> {
     case "customer.subscription.trial_will_end": {
       const sub = event.data.object as Stripe.Subscription;
       const userId = await resolveUserIdFromSubscription(sub);
+      if (userId && sub.trial_end) {
+        await sendUserEmail(userId, () =>
+          trialEndingEmail({
+            trialEndIso: new Date(sub.trial_end! * 1000).toISOString(),
+          }),
+        );
+      }
       await trace(event, userId, "ok", {
         trial_end: sub.trial_end,
-        // Phase 5 will hook an email here; today the event is logged
-        // so we have the data when the email surface lands.
       });
       return;
     }
@@ -272,6 +291,35 @@ async function handleEvent(event: Stripe.Event): Promise<void> {
       // Unhandled but expected event types (customer.created, etc.).
       await trace(event, null, "unhandled");
       return;
+  }
+}
+
+/**
+ * Sends a transactional email to a user identified by their FirstNinety
+ * user_id. Resolves the email via the `users` table; never throws —
+ * webhook processing must continue even if email fails.
+ */
+async function sendUserEmail(
+  userId: string,
+  build: () => { subject: string; html: string; text: string },
+): Promise<void> {
+  try {
+    const supabase = createServiceClient();
+    const { data: user } = await supabase
+      .from("users")
+      .select("email")
+      .eq("id", userId)
+      .single();
+    if (!user?.email) return;
+    const tpl = build();
+    await sendEmail({
+      to: user.email,
+      subject: tpl.subject,
+      html: tpl.html,
+      text: tpl.text,
+    });
+  } catch (err) {
+    console.warn("[stripe-webhook] email send failed", err);
   }
 }
 

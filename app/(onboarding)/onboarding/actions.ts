@@ -12,6 +12,8 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/db/server";
 import { requireAuth } from "@/lib/auth/server";
 import type { Database } from "@/lib/db/types.gen";
+import { sendEmail } from "@/lib/notifications/email";
+import { welcomeEmail } from "@/lib/email/templates";
 
 type Role = Database["public"]["Enums"]["role_enum"];
 type WorkSetup = Database["public"]["Enums"]["work_setup_enum"];
@@ -283,6 +285,31 @@ export async function completeOnboardingAction(): Promise<void> {
   }
   if (seedRows.length > 0) {
     await supabase.from("user_responsibilities").insert(seedRows);
+  }
+
+  // Welcome email — fires after the user is confirmed + committed
+  // (rather than at signUpAction, which would email accounts that
+  // never complete email confirmation). Best-effort: log but don't
+  // block onboarding if Resend is down.
+  try {
+    const { data: emailUser } = await supabase
+      .from("users")
+      .select("email, display_name")
+      .eq("id", user.id)
+      .single();
+    if (emailUser?.email) {
+      const tpl = welcomeEmail({
+        firstName: emailUser.display_name?.split(" ")[0] ?? null,
+      });
+      await sendEmail({
+        to: emailUser.email,
+        subject: tpl.subject,
+        html: tpl.html,
+        text: tpl.text,
+      });
+    }
+  } catch (err) {
+    console.error("[onboarding] welcome email failed", err);
   }
 
   // The Daily Home reads entry_state + day-mode and renders the right

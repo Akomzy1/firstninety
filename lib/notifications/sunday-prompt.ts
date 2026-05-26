@@ -19,6 +19,7 @@ import "server-only";
 import { createServiceClient } from "@/lib/db/service";
 import { sendEmail } from "@/lib/notifications/email";
 import { sendPushToUser } from "@/lib/notifications/push";
+import { sundayRecapEmail } from "@/lib/email/templates";
 
 type Candidate = {
   user_id: string;
@@ -127,11 +128,12 @@ export async function runSundayPromptTick(now: Date = new Date()): Promise<{
       }
 
       try {
+        const tpl = sundayRecapEmail();
         const emailResult = await sendEmail({
           to: candidate.email,
-          subject: "What's coming up this week?",
-          html: sundayPromptHtml(),
-          text: sundayPromptText(),
+          subject: tpl.subject,
+          html: tpl.html,
+          text: tpl.text,
         });
         if (emailResult.sent) email_sent += 1;
       } catch (err) {
@@ -153,30 +155,5 @@ export async function runSundayPromptTick(now: Date = new Date()): Promise<{
   };
 }
 
-function sundayPromptHtml(): string {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://firstninety.app";
-  return `<!doctype html>
-<html>
-  <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; background: #FAF7F2; color: #0E1116; padding: 32px;">
-    <div style="max-width: 560px; margin: 0 auto;">
-      <p style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #6F6A60; margin: 0;">Sunday recap</p>
-      <h1 style="font-family: Georgia, serif; font-size: 28px; line-height: 1.25; margin: 12px 0 16px;">What's coming up this week?</h1>
-      <p style="font-size: 17px; line-height: 1.55; color: #6F6A60; margin: 0 0 24px;">Any upcoming meetings, deliverables, or conversations on your mind? Tell FirstNinety so the week ahead lands better.</p>
-      <p>
-        <a href="${appUrl}/home?sundayPrompt=1" style="display: inline-block; background: #0E1116; color: #FAF7F2; padding: 14px 22px; text-decoration: none; font-weight: 500; border-radius: 4px;">
-          Tell FirstNinety
-        </a>
-      </p>
-    </div>
-  </body>
-</html>`;
-}
-
-function sundayPromptText(): string {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://firstninety.app";
-  return `What's coming up this week?
-
-Any upcoming meetings, deliverables, or conversations on your mind? Tell FirstNinety so the week ahead lands better.
-
-Open: ${appUrl}/home?sundayPrompt=1`;
-}
+// Inline html/text helpers removed; sundayRecapEmail() in
+// lib/email/templates.ts now owns the template.

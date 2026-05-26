@@ -19,6 +19,7 @@ import "server-only";
 import { createServiceClient } from "@/lib/db/service";
 import { sendEmail } from "@/lib/notifications/email";
 import { sendPushToUser } from "@/lib/notifications/push";
+import { probationActivationEmail } from "@/lib/email/templates";
 
 type Row = {
   user_id: string;
@@ -120,11 +121,12 @@ export async function runProbationActivationTick(now: Date = new Date()): Promis
     }
 
     try {
+      const tpl = probationActivationEmail({ daysToReview: days });
       await sendEmail({
         to: userRel.email,
-        subject: "Your probation review is approaching",
-        text: `Your probation review is in ${days} day${days === 1 ? "" : "s"}. Open Settings → Probation to switch on Probation Mode if you haven't already.`,
-        html: `<p>Your probation review is in <strong>${days} day${days === 1 ? "" : "s"}</strong>.</p><p>Open Settings &raquo; Probation to switch on Probation Mode if you haven&rsquo;t already.</p>`,
+        subject: tpl.subject,
+        html: tpl.html,
+        text: tpl.text,
       });
     } catch (err) {
       console.error("[probation-cron] email failed", userRel.email, err);
