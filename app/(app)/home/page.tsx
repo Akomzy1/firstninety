@@ -146,10 +146,15 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     dayState = { ...dayState, mode: "post-90", day: Math.max(dayState.day, 91) } as DayState;
   }
 
-  // Day 91+ users see an entirely different layout: no missions, the
-  // Situation Room becomes the centre of gravity, "Or" surfaces Coach /
-  // Playbook / Simulator, and a Survival Report card sits in the rail.
-  if (dayState.mode === "post-90") {
+  // v1.3 fix: probation surfaces take precedence over post-Day-90 layout (per audit Area 2)
+  // A State C user (joined post-Day-90) whose probation review is coming
+  // up needs the probation banner + Brief CTA, not the post-90 "the work
+  // continues" layout. The probation rendering path lives below this
+  // early-return, so gating the early-return on !probation_mode_active
+  // lets State C probation-active users fall through into it. The
+  // standard Day-91+ layout still renders for non-probation post-90
+  // users (the common case).
+  if (dayState.mode === "post-90" && !context.probation_mode_active) {
     const longDate = new Intl.DateTimeFormat("en-GB", {
       weekday: "long",
       day: "numeric",
