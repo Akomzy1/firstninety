@@ -1,7 +1,9 @@
 ---
-name: voice
+id: voice
+surface: shared
+role: any
+version: 1
 description: Core Coach voice + behaviour block. Injected into every Coach system prompt. Authored per SKILL.md v1.2 §8.
-version: 1.0
 last_updated: 2026-05-25
 ---
 

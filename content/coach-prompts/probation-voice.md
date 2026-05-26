@@ -1,7 +1,9 @@
 ---
-name: probation-voice
+id: probation-voice
+surface: coach
+role: any
+version: 1
 description: Probation Mode voice overlay. Prepended when user_context.probation_mode_active is true. Honest counterweight, not soft reassurance.
-version: 1.0
 last_updated: 2026-05-25
 references:
   - SKILL.md v1.2 §8.1

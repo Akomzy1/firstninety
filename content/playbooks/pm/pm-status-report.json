@@ -1,0 +1,49 @@
+{
+  "slug": "pm-status-report",
+  "role": "pm",
+  "artefact_type": "status_report",
+  "title": "Status Report",
+  "variant": "weekly",
+  "description": "The weekly status report most junior PMs write badly. Two pages, scannable in ninety seconds, designed to surface what the reader needs to decide — not to prove the project is busy. Five sections, one of which is the only one a sponsor will read.",
+  "empty_template_md": "# [Programme name] — Status Report\n_Week ending [date] · prepared by [name]_\n\n## 1. Headline\n_One sentence. RAG status + the one thing the reader needs to take away._\n\n## 2. Decisions needed this week\n_Bullets. If empty, say so explicitly — silence reads as 'I'm hiding something'._\n\n## 3. Progress vs plan\n| Workstream | Status | Was due | Next milestone |\n|------------|--------|---------|----------------|\n|            |        |         |                |\n\n## 4. Risks + issues changed this week\n_Only changes since last week. New, escalated, de-escalated, closed. Don't re-list the static register._\n\n## 5. What's coming next week\n_3 bullets max. The reader should be able to skim this and know what to ask about next Monday._\n",
+  "worked_examples": [
+    {
+      "title": "Mid-flight migration programme — Week 6 of 12",
+      "content_md": "# Customer Data Migration — Status Report\n_Week ending 15 May 2026 · prepared by Adekunle Bello_\n\n## 1. Headline\n\n**AMBER.** Migration is on track for the 18 June go-live, but the QA window has shrunk to four days (was nine). Decision needed on whether to defer non-critical reports to Phase 2.\n\n## 2. Decisions needed this week\n\n- **Sponsor decision (Thursday, latest):** Defer the four non-critical reports from launch to Phase 2 (recommendation), or hold the date and reduce QA scope. The 4-day QA window cannot test all 17 reports to the standard we agreed.\n- **Eng lead + Compliance:** Sign-off on the revised data-residency note. Sent Tuesday; no reply yet.\n\n## 3. Progress vs plan\n\n| Workstream | Status | Was due | Next milestone |\n|------------|--------|---------|----------------|\n| Data mapping | Done | 8 May | — |\n| Migration scripts | Done | 12 May | — |\n| Reconciliation tooling | In progress (80%) | 15 May | Complete 18 May (3-day slip) |\n| QA | Not started | 18 May | Starts 21 May, 4-day window |\n| Comms to end users | Drafted | 22 May | Send 1 June |\n\n## 4. Risks + issues changed this week\n\n- **New:** Reconciliation tooling delivery slipped 3 days (vendor-side issue). Impact: QA window shortens from 9 to 4 days. Drives the decision in §2 above.\n- **Escalated:** Compliance data-residency note still open after one week. Risk to sign-off date if not closed by 22 May.\n- **Closed:** Data-mapping risk closed; final review with engineering passed on 13 May.\n\n## 5. What's coming next week\n\n- Reconciliation tooling delivery (Friday).\n- Compliance sign-off on data-residency note.\n- QA kickoff, 21 May.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The headline is the only section a senior reader is guaranteed to see. RAG + one sentence + the decision they need to make. If the headline says AMBER and there's no decision-needed in §2, the reader knows you're hedging."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Decisions-needed-by-name-and-deadline is the highest-value section in the whole document. The cost of an undecided decision compounds; the cost of asking explicitly is zero. Always include this section. If genuinely no decision is needed, write 'None this week' rather than omitting — silence reads as ducking."
+        },
+        {
+          "section_id": "section-3",
+          "note": "The 'Was due' column is the one PMs delete first when the project is behind. Don't. The table is honest about slippage by construction; trying to disguise it in prose just delays the conversation by one week."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Only *changes*. A static risk register that re-lists every risk every week trains stakeholders to skip the section. New / escalated / de-escalated / closed is the only useful framing for a weekly report."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Headline as a list of activities ('completed scripting, started QA, drafted comms'). The headline is for decisions, not for proving you were busy. The activity log goes in §3.",
+    "Decisions-needed section omitted because 'nothing came up'. Either you're hiding something or you're not paying attention. Senior readers parse the absence; write 'None this week' explicitly if true.",
+    "Green-when-it-should-be-amber. Most rookie PMs over-state status because they're afraid of looking like they're failing. The opposite is true — amber early reads as competence; surprise-red two weeks later reads as a lack of control.",
+    "Re-listing the entire risk register every week. The reader needs *what changed*. The static register lives in the project workspace and is linked once at the top, not pasted in.",
+    "More than two pages. If the report can't be scanned in ninety seconds, you've written a project document, not a status report. Cut.",
+    "RAG without a definition. Every organisation defines green / amber / red slightly differently. If you've inherited the report, spend ten minutes finding the definition — and if there isn't one, write one in your first month."
+  ],
+  "variant_patterns": [
+    "Monthly variant: add a §6 'Spend vs budget' table and a §7 'Headcount + capacity' note. Headline becomes month-over-month trend, not week-over-week.",
+    "Programme-of-programmes variant: §3 becomes a programme-level summary table with each constituent project rolled up. Detailed status reports per project live underneath as appendices, not in the body.",
+    "Board variant: §1 (headline) becomes a one-paragraph narrative rather than a bullet. §2 reframes 'decisions needed' as 'board decisions needed' — most weekly decisions get resolved before the board sees the report."
+  ],
+  "related_scenarios": ["pm-deadline-slipping", "pm-skeptical-exec"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,7 +1,9 @@
 ---
-name: role-ba
+id: role-ba
+surface: coach
+role: ba
+version: 1
 description: Role priming for the Business Analyst Coach surface. Loaded by buildCoachSystemPrompt when user.primary_role === "ba".
-version: 1.0
 last_updated: 2026-05-25
 references:
   - SKILL.md v1.2 §3.1

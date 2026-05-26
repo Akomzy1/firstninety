@@ -1,0 +1,23 @@
+{
+  "slug": "pm-w1-first-1on1",
+  "role": "pm",
+  "week": 1,
+  "sequence_in_week": 2,
+  "title": "Run your first 1:1 with your manager",
+  "why_matters": "The first 1:1 sets the cadence for the next ninety. Done well, it's the meeting you use to surface risks early, ask permission before you need it, and check whether your read of the room matches theirs. Done badly, it becomes a status check you both dread. The shape of week one is the shape of week thirteen.",
+  "steps": [
+    "Book a recurring 30-minute weekly 1:1 if one doesn't exist already. Don't wait to be offered. PMs who do not have a weekly slot with their manager are PMs who escalate at the wrong time.",
+    "Draft a one-page agenda for the first session. Not a status report — a coverage doc. Three sections: 'what I'm seeing in week 1', 'what I'm unsure about', 'what I'd like your read on'.",
+    "Send the agenda the evening before. The framing matters: 'this is so we use the half-hour well, not so you have to prep'. Most managers will appreciate it; the rare one who pushes back is signalling something useful about their style.",
+    "In the meeting itself: ask them what 'good' looks like at the end of your first 30 days. Specifically. 'I'd like to know what would make you tell your peer at the end of next month that the hire is working out.' This is the most useful question you can ask in week one, and it's the one most juniors don't ask."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["pm-status-report"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "Meeting happened, recurring slot is in both calendars, and you walked out with one concrete sentence on what your manager defines as success at Day 30.",
+  "reflection_prompt": "What surprised you about your manager's answer to the 'what does good look like at Day 30' question? Two sentences.",
+  "estimated_minutes": 35,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

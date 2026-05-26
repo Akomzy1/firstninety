@@ -1,7 +1,9 @@
 ---
-name: situation-probation
+id: situation-probation
+surface: situation_room
+role: any
+version: 1
 description: Situation Room — fourth entry type ("This is about my probation"). Calibration over reassurance per SKILL §5.4.
-version: 1.0
 last_updated: 2026-05-25
 references:
   - SKILL.md v1.2 §5.4

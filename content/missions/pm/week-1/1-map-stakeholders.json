@@ -1,0 +1,23 @@
+{
+  "slug": "pm-w1-map-stakeholders",
+  "role": "pm",
+  "week": 1,
+  "sequence_in_week": 1,
+  "title": "Map your stakeholders",
+  "why_matters": "You are about to coordinate work between people who answer to other people. By week three you will be asking one of them for a decision; by week five you'll be asking another to absorb a slip. The stakeholder map is the document that turns those asks from cold calls into conversations you've already started.",
+  "steps": [
+    "Open a fresh document. Use the stakeholder-map template from the Playbook library — at MVP it's a four-column table: Name · Role · Decision rights · Influence.",
+    "List every person you've been introduced to as relevant to your programme. Plus the people whose names came up in those introductions but you haven't met yet — flag them with a (?) so you know who to chase a coffee with in week two.",
+    "Fill the Decision-rights column honestly. Most rows will be 'consult only' or 'inform only'. The rows where decision rights are unclear are the rows worth a five-minute corridor question in week two.",
+    "For the three rows with highest influence, write one sentence underneath: what is this person's pressure right now? (Not what they want from you — what's pressing on *them* this quarter.)"
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": ["pm-deadline-slipping", "pm-skeptical-exec"]
+  },
+  "success_criteria": "By end of day, the document has every named person you've met or heard about, with Role + Decision-rights filled in. You can name the three people whose pressure shapes whether this programme lands.",
+  "reflection_prompt": "Of the three high-influence rows, which one's pressure is the one you understand least? What's one thing you could read or ask this week to fix that? Two sentences.",
+  "estimated_minutes": 30,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

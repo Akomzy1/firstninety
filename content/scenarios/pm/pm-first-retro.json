@@ -1,0 +1,67 @@
+{
+  "slug": "pm-first-retro",
+  "role": "pm",
+  "title": "Your First Retro",
+  "one_liner": "The sprint ended badly. The team is tired. You're facilitating the retrospective in twenty minutes.",
+  "brief": "## The room\n\nThe sprint missed its goal. Two stories didn't ship, one rolled back into production over the weekend, and the lead developer worked Saturday to keep it alive. Everyone is here because they have to be.\n\nYou are five weeks in. This is the first retro you've facilitated yourself — the previous PM ran the last three, and her style was: round the room, three things that went well, three things to improve, action items in the doc, done in 40 minutes.\n\nThe team has four people in the room. Lewis — the lead developer — is visibly fried. Naledi is the QA lead and is quietly furious that the story she flagged as risky shipped anyway. Theo is the junior dev who wrote the rollback code on Saturday and looks like he wants to disappear. Asha is the designer, the most senior person on the team by experience, and she is watching to see how you handle this.\n\n## Your turn\n\nThe room has gone quiet because you opened the meeting and now everyone is waiting for the question. Choose your first move.",
+  "objective": "Surface the actual reasons the sprint failed without it becoming a blame session. Leave with one specific commitment the team owns — not a list of seven 'we should do better' bullets.",
+  "curveball": "If the user opens with 'what went well?', the team will give safe, hollow answers and the real conversation never happens. The retro will end on time, looking fine, and the same thing will happen next sprint. If the user opens with 'what shipped that shouldn't have?', Naledi will name the risky story and Lewis will get defensive. The skill is finding a third opener that surfaces the truth without forcing a confrontation.",
+  "personas": [
+    {
+      "name": "Lewis Harding",
+      "role": "Lead Developer",
+      "position": "Don't make Saturday a thing — I dealt with it",
+      "fear": "Being asked to do this again, or being told he should have escalated sooner",
+      "monogram": "LH",
+      "colour": "slate"
+    },
+    {
+      "name": "Naledi Mokoena",
+      "role": "QA Lead",
+      "position": "I flagged it. We shipped anyway. I want this on the record",
+      "fear": "Being the person who slows the team down",
+      "monogram": "NM",
+      "colour": "ochre"
+    },
+    {
+      "name": "Theo Park",
+      "role": "Junior Developer",
+      "position": "Please don't ask me to explain what I did wrong in front of everyone",
+      "fear": "Being seen as the one who broke it",
+      "monogram": "TP",
+      "colour": "moss"
+    },
+    {
+      "name": "Asha Bhatt",
+      "role": "Senior Designer",
+      "position": "Watching how you run this",
+      "fear": "Working with another PM who runs retros as theatre",
+      "monogram": "AB",
+      "colour": "rose"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with a question that surfaces the truth without forcing accusation (e.g. 'what surprised you this sprint?')",
+      "Acknowledged Naledi's flagged-risk early without making Lewis defend himself",
+      "Named one specific thing the team will do differently — not five — and confirmed who owns it",
+      "Held silence long enough for the real conversation to start, instead of filling it with the next prompt"
+    ],
+    "yellow": [
+      "Opened with 'what went well?' — got hollow answers; never surfaced the rollback story honestly",
+      "Allowed the conversation to focus on Theo's rollback code rather than the decision to ship the risky story in the first place",
+      "Closed with five generic 'we should communicate better' action items, no owners",
+      "Spent more than five minutes on a tool/process suggestion (a Jira workflow tweak) instead of the human conversation"
+    ],
+    "red": [
+      "Let Lewis dominate — Naledi did not speak in the second half of the retro",
+      "Asked Theo to walk through 'what happened' in front of the room",
+      "Framed it as a blame conversation — even gently — and watched Asha disengage",
+      "Ended the retro with no commitment at all, just a thank-you and 'let's keep going'"
+    ]
+  },
+  "estimated_minutes": 18,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

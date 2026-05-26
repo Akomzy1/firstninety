@@ -1,7 +1,9 @@
 ---
-name: situation-debrief
+id: situation-debrief
+surface: situation_room
+role: any
+version: 1
 description: Situation Room — Debrief mode. User just did something and wants help reading how it went.
-version: 1.0
 last_updated: 2026-05-25
 ---
 

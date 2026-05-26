@@ -1,7 +1,9 @@
 ---
-name: situation-normal
+id: situation-normal
+surface: situation_room
+role: any
+version: 1
 description: Situation Room — "Is this normal?" mode. User is checking their read of a situation.
-version: 1.0
 last_updated: 2026-05-25
 ---
 

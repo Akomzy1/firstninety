@@ -1,0 +1,23 @@
+{
+  "slug": "pm-w1-decode-cadence",
+  "role": "pm",
+  "week": 1,
+  "sequence_in_week": 3,
+  "title": "Decode the governance cadence",
+  "why_matters": "Every organisation runs delivery on a hidden operating system — the meeting that actually decides things versus the meeting that performs deciding things. By week three you'll need to know which board the slip-conversation goes to, which forum eats two hours but produces no decisions, and which Slack channel is where the real call gets made. Faster you decode this, faster you stop wasting your team's time turning up to theatre.",
+  "steps": [
+    "Find the governance calendar — programme board, steering, sprint review, portfolio forum, whatever it's called locally. There will be more of these than you expect.",
+    "For each recurring meeting, write down in one column: declared purpose. Then in a second column, what you think actually gets decided there. Most rows will have a delta; that delta is the thing you need to understand.",
+    "Ask one peer PM (or your manager) the single question: 'which of these is the one I actually need to be in?' Most people will give you a real answer if you ask in week one. They won't if you ask in week six.",
+    "Identify the one document that matters most for the programme you're inheriting — the project plan, the RAID register, the architecture decision record, whichever is the canonical source. Read it cover to cover before week two. Note three things you don't understand; those are your week-2 questions."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["pm-status-report"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "You can name the recurring meetings on the programme, identify which one is the actual decision forum, and you've read the canonical programme document end-to-end with three named gaps.",
+  "reflection_prompt": "Of the recurring meetings you've mapped, which one looks like the most expensive theatre — biggest delta between declared purpose and what actually gets decided? Two sentences.",
+  "estimated_minutes": 40,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

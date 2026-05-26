@@ -1,7 +1,9 @@
 ---
-name: situation-prep
+id: situation-prep
+surface: situation_room
+role: any
+version: 1
 description: Situation Room — Prep mode. User is preparing for something specific that's about to happen.
-version: 1.0
 last_updated: 2026-05-25
 ---
 

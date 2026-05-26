@@ -1,3 +1,10 @@
+---
+id: safety
+surface: shared
+role: any
+version: 1
+description: Safety rules wrapped in <safety_rules> tags and prepended to every Coach / Situation Room / Simulator / Probation Brief system prompt. Canonical source per MVP Spec §4.6 + SKILL.md §8.4.
+---
 <!--
   Safety rules injected at the top of every Coach / Situation Room /
   Simulator / Probation Brief system prompt.

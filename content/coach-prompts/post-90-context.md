@@ -1,7 +1,9 @@
 ---
-name: post-90-context
+id: post-90-context
+surface: coach
+role: any
+version: 1
 description: Role priming for users past Day 90. Replaces role-{role}.md as the role-priming block in buildCoachSystemPrompt when dayMode === "post-90". Six sections keyed by role slug (ba / pm / sm / po / da / aie); the system-prompt builder extracts the matching section.
-version: 1.0
 last_updated: 2026-05-25
 references:
   - PRD v1.8 §6.0

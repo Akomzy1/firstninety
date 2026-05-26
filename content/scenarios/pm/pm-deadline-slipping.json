@@ -1,0 +1,43 @@
+{
+  "slug": "pm-deadline-slipping",
+  "role": "pm",
+  "title": "The Slipping Date",
+  "one_liner": "The release date is going to slip. You have a thirty-minute slot with the sponsor in an hour to tell her.",
+  "brief": "## The setup\n\nYou took over the migration programme four weeks ago. The previous PM left detailed notes; the plan said code-complete on the 18th, UAT through the 28th, go-live the 4th of next month.\n\nThree things have happened since you arrived. Engineering hit a data-mapping problem nobody flagged in discovery — it's adding two weeks. The QA lead is on leave until Wednesday so UAT can't kick off on time. Compliance came back with a question that needs a board paper before sign-off, and the next board is the 1st.\n\nThe net is roughly three weeks. You've checked the maths twice with the dev lead. The 4th is dead. The realistic date is the 25th of next month.\n\nThe sponsor is Adaeze Onuoha, the COO. She has been around long enough to have seen every flavour of slippage. She does not like surprises and she does not like hedging.\n\n## Your turn\n\nThe meeting starts in one minute. Open the conversation.",
+  "objective": "Land the new date, name the trade-offs, leave the room with a decision — not with a request for more time to think.",
+  "curveball": "Adaeze will not actually push back on the new date. What she will push back on is whether *you* have a grip. Around turn 4 she'll ask: 'When did you know?' If the user has to think about it — or fudges the timeline of when each issue surfaced — that's a confidence hit she may not name in the room but will name to your manager later. If the user answers cleanly and names the day each issue landed on their desk, the meeting is essentially over.",
+  "personas": [
+    {
+      "name": "Adaeze Onuoha",
+      "role": "Chief Operating Officer (sponsor)",
+      "position": "Tell me what's true, what you're doing about it, and what you need from me",
+      "fear": "Being told something her board will hear about second-hand",
+      "monogram": "AO",
+      "colour": "slate"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with the new date and the maths, in under 90 seconds",
+      "Named all three drivers of the slip without hedging",
+      "Answered 'when did you know?' with a clean timeline",
+      "Left the room with a named decision — new date or a specific trade-off Adaeze is owning"
+    ],
+    "yellow": [
+      "Opened with 'I want to flag some emerging challenges' — hedging that delays the actual news",
+      "Promised a recovery plan you can't actually deliver to buy back the room",
+      "Volunteered to 'see if we can pull it back' without first confirming the new date is acceptable",
+      "Lost five minutes to defending the previous PM's plan rather than owning the current one"
+    ],
+    "red": [
+      "Did not name the new date at all in the first three turns",
+      "Blamed engineering / QA / compliance without owning the orchestration failure",
+      "Asked for another meeting to 'come back with options' — that's the meeting",
+      "Conceded a date you know is unachievable because Adaeze pushed once"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}
