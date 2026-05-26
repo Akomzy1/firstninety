@@ -17,7 +17,10 @@ import "server-only";
 
 import { nonStreamClaudeCall } from "@/lib/coach/claude";
 import { execute as getProbationEvidence } from "@/lib/coach/tools/get-probation-evidence";
-import { loadCoachPromptBody } from "@/lib/content/loaders";
+import {
+  loadCoachPromptBody,
+  loadProbationPromptBody,
+} from "@/lib/content/loaders";
 import { createServiceClient } from "@/lib/db/service";
 import { getDayState } from "@/lib/home/day-state";
 import { captureServerEvent } from "@/lib/tracing/posthog-server";
@@ -54,7 +57,9 @@ export async function generateProbationBrief({
   const [ctxResult, userRowResult] = await Promise.all([
     supabase
       .from("user_context")
-      .select("probation_mode_active, start_date, probation_review_date")
+      .select(
+        "probation_mode_active, start_date, probation_review_date, created_at, entry_state",
+      )
       .eq("user_id", userId)
       .maybeSingle(),
     supabase
@@ -102,11 +107,49 @@ export async function generateProbationBrief({
     },
   );
 
+  // 3.5. Evidence-depth check. A user with zero completed missions AND
+  // fewer than 5 combined simulator runs + situation sessions is in
+  // "thin evidence" territory — typically State C users who joined
+  // FirstNinety after their first 90 days had already passed. The
+  // Brief generator's standard prompt assumes the user ran the
+  // curriculum; for thin-evidence users we prepend an editorial
+  // override that reframes the Brief honestly.
+  const simulatorRunCount =
+    evidence.green_scenario_runs.length +
+    evidence.yellow_scenario_runs.length;
+  const isThinEvidence =
+    evidence.completed_missions.length === 0 &&
+    simulatorRunCount + evidence.recent_situations.length < 5;
+  const daysSinceSignup = ctxResult.data.created_at
+    ? Math.max(
+        0,
+        Math.floor(
+          (Date.now() - new Date(ctxResult.data.created_at).getTime()) /
+            (1000 * 60 * 60 * 24),
+        ),
+      )
+    : null;
+
   // 4. Compose the system + user prompts.
   const voice = await loadCoachPromptBody("voice");
   const probationVoice = await loadCoachPromptBody("probation-voice");
-  const system = buildSystemPrompt(voice, probationVoice);
-  const userBlock = buildUserBlock(userRowResult.data, evidence);
+  const thinEvidencePreamble = isThinEvidence
+    ? await loadProbationPromptBody("brief-thin-evidence-preamble").catch(
+        (err) => {
+          console.warn(
+            "[probation-brief] thin-evidence preamble missing; falling back to standard prompt",
+            err,
+          );
+          return null;
+        },
+      )
+    : null;
+  const system = buildSystemPrompt(voice, probationVoice, thinEvidencePreamble);
+  const userBlock = buildUserBlock(
+    userRowResult.data,
+    evidence,
+    isThinEvidence ? { daysSinceSignup } : null,
+  );
 
   let raw: string;
   try {
@@ -259,13 +302,17 @@ export { MAX_GENERATIONS };
 // Prompts                                                                //
 // --------------------------------------------------------------------- //
 
-function buildSystemPrompt(voice: string, probationVoice: string): string {
+function buildSystemPrompt(
+  voice: string,
+  probationVoice: string,
+  thinEvidencePreamble: string | null,
+): string {
+  const blocks: string[] = [voice, "", "---", "", probationVoice];
+  if (thinEvidencePreamble) {
+    blocks.push("", "---", "", thinEvidencePreamble);
+  }
   return [
-    voice,
-    "",
-    "---",
-    "",
-    probationVoice,
+    ...blocks,
     "",
     "---",
     "",
@@ -315,14 +362,23 @@ function buildSystemPrompt(voice: string, probationVoice: string): string {
 function buildUserBlock(
   user: { display_name: string | null; primary_role: string | null } | null | undefined,
   evidence: Awaited<ReturnType<typeof getProbationEvidence>>,
+  thinEvidence: { daysSinceSignup: number | null } | null,
 ): string {
   const role = user?.primary_role?.toUpperCase() ?? "(role unknown)";
+  const evidenceWindowLine = thinEvidence
+    ? `- Evidence window inside FirstNinety: ${
+        thinEvidence.daysSinceSignup === null
+          ? "(unknown)"
+          : `${thinEvidence.daysSinceSignup} day${thinEvidence.daysSinceSignup === 1 ? "" : "s"}`
+      } (user joined after their first 90 days had already passed; no Mission Track history to draw from)`
+    : null;
   return [
     `# User snapshot`,
     "",
     `- Name: ${user?.display_name ?? "(not set)"}`,
     `- Role: ${role}`,
     `- Days to review: ${evidence.probation.days_to_review ?? "(not set)"}`,
+    ...(evidenceWindowLine ? [evidenceWindowLine] : []),
     "",
     `# Completed missions (last 90 days, most recent first)`,
     ...(evidence.completed_missions.length === 0

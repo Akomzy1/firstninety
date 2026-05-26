@@ -238,3 +238,22 @@ export async function loadCoachPromptBody(name: string): Promise<string> {
   const { body } = await loadCoachPromptByName(name);
   return body;
 }
+
+const probationBodyCache = new Map<string, string>();
+
+/**
+ * Loads a markdown file from `content/probation-prompts/` and returns
+ * its body (frontmatter stripped). Used by the Probation Brief
+ * generator for the thin-evidence preamble and any future prompt
+ * overrides specific to the probation flow.
+ */
+export async function loadProbationPromptBody(name: string): Promise<string> {
+  const cached = probationBodyCache.get(name);
+  if (cached) return cached;
+  const filePath = join(contentRoot, "probation-prompts", `${name}.md`);
+  const raw = await readFile(filePath, "utf8");
+  const { body } = parseFrontmatter(raw);
+  const trimmed = body.trim();
+  probationBodyCache.set(name, trimmed);
+  return trimmed;
+}
