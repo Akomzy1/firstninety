@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 
 import { ArrowRight, VolumeX } from "lucide-react";
 
+import { OfflineGate } from "@/components/providers/OfflineGate";
 import {
   PersonaMonogram,
   type PersonaColour,
@@ -198,10 +199,9 @@ export function ActiveSession({
         ) : null}
       </div>
 
-      <form
-        onSubmit={onSubmit}
-        className="mt-auto pt-7 border-t border-paper-3"
-      >
+      <div className="mt-auto pt-7 border-t border-paper-3">
+      <OfflineGate surface="simulator">
+      <form onSubmit={onSubmit}>
         <div className="relative">
           <label htmlFor="reply-input" className="sr-only">
             What do you say next?
@@ -236,6 +236,8 @@ export function ActiveSession({
           to exit. Estimated {estimatedMinutes} min.
         </p>
       </form>
+      </OfflineGate>
+      </div>
     </main>
   );
 }

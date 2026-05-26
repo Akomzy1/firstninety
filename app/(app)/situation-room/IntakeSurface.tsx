@@ -23,6 +23,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { TierLimitPrompt } from "@/components/billing/TierLimitPrompt";
+import { OfflineGate } from "@/components/providers/OfflineGate";
 
 import {
   submitSituationAction,
@@ -112,6 +113,7 @@ export function IntakeSurface({
         </div>
 
         {/* The single oversized field */}
+        <OfflineGate surface="situation-room">
         <form action={action} className="relative group" aria-busy={pending}>
           <input type="hidden" name="intake_type" value={intake} />
           <label htmlFor="sr-input" className="sr-only">
@@ -158,6 +160,7 @@ export function IntakeSurface({
             </button>
           </div>
         </form>
+        </OfflineGate>
 
         {/* Caption */}
         <p className="text-caption text-mute max-w-prose">

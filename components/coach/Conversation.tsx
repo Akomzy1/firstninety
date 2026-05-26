@@ -25,6 +25,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
 import { TierLimitPrompt } from "@/components/billing/TierLimitPrompt";
+import { OfflineGate } from "@/components/providers/OfflineGate";
 import { CrisisReferral } from "@/components/safety/CrisisReferral";
 import { useClaudeStream } from "@/lib/coach/use-stream";
 
@@ -208,10 +209,9 @@ export function Conversation({
       ) : null}
 
       {/* Composer */}
-      <form
-        onSubmit={onSubmit}
-        className="mt-auto pt-7 border-t border-paper-3 max-w-[64ch]"
-      >
+      <div className="mt-auto pt-7 border-t border-paper-3 max-w-[64ch]">
+      <OfflineGate surface="coach">
+      <form onSubmit={onSubmit}>
         <div className="relative">
           <label htmlFor="coach-input" className="sr-only">
             Write to your coach
@@ -247,6 +247,8 @@ export function Conversation({
           </span>
         </div>
       </form>
+      </OfflineGate>
+      </div>
     </section>
   );
 }
