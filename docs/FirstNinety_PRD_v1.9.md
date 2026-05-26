@@ -1,19 +1,18 @@
 # FirstNinety — Product Requirements Document
 
-**Version:** 1.8
+**Version:** 1.9
 **Owner:** Tokunbo Akomolede (AkomzyAi Consulting Ltd)
 **Status:** Concept → Pre-build
 **Last updated:** 23 May 2026
 
-**Changes from v1.7 — Post-Day-90 reuse:**
-- §6.0 updated: clarifies which features are time-bound vs continuing indefinitely
-- §6.4 Mission Track: explicit note that this feature concludes at Day 90 by design
-- §7.4 90-Day Graduation: rewritten to handle Day 91+ transition properly; Daily Home transforms rather than dies
-- §11 Risks: retention-cliff mitigation rewritten with honest feature-by-feature post-90 utility audit
-- §13 Phase 2A: quarterly Simulator content additions noted as ongoing content load
-- §1 Executive Summary: small adjustment noting structured-curriculum vs on-demand split
+**Changes from v1.8 — Mid-journey signups and probation decoupled from curriculum:**
+- §6.6 rewritten: Probation Mode decoupled from the 90-day Mission Track lifecycle. Activates purely on `probation_review_date - probation_window_days <= today` regardless of where the user is in their journey (or whether they have a Mission Track at all).
+- §7.1 Onboarding step 3: explicit handling of mid-journey signups; product acknowledges past start date and starts where the user actually is
+- §7.4 90-Day Graduation: extended to handle three entry states — Day 1 fresh start (State A), mid-journey within first 90 days (State B), and post-Day-90 at signup (State C). State C users land directly into the post-curriculum on-demand layout.
+- §11 Risks: new row for "mid-journey signup confusion" + new row for "long-probation users excluded by 90-day framing"
+- §1 Executive Summary: framing softened — product serves any user in early tenure, not exclusively users starting on Day 1
 
-*(Changelog entries from v1.0 → v1.7 retained in version history; omitted here for brevity.)*
+*(Changelog entries from v1.0 → v1.8 retained in version history; omitted here for brevity.)*
 
 ---
 
@@ -24,7 +23,9 @@
 It combines two modes:
 
 - **On-demand workplace support** — the user opens FirstNinety at 8:47am because they have a 9:15am meeting they don't know how to handle. The Situation Room and AI Coach respond in seconds, role-aware and situation-aware. **These surfaces continue indefinitely** as long as the user is subscribed — they don't expire on Day 90.
-- **A 90-day structured spine** — the Mission Track gives the user an agenda, not just a toolset. Each week has 2–4 missions that compound into real competence. **This curriculum concludes at Day 90 by design.**
+- **A 90-day structured spine** — the Mission Track gives users who start the product on or near Day 1 of their role an agenda, not just a toolset. Each week has 2–4 missions that compound into real competence. **This curriculum concludes at Day 90 by design** and is *gracefully partial* for users who arrive mid-journey (see §7.1).
+
+The product serves users at any point in their early tenure — not exclusively users starting on Day 1. A user signing up three weeks into their role gets a partial Mission Track plus full access to the on-demand surfaces; a user signing up six weeks past Day 90 gets the on-demand surfaces directly; a user with a 6-month probation review coming up gets Probation Mode regardless of where they are in the 90-day window (it activates 21 days before any future probation review, independent of curriculum state — see §6.6).
 
 Bootcamps, conversion courses, and self-taught learners produce hundreds of thousands of newly certified Business Analysts, Project Managers, Data Analysts, and adjacent tech professionals every year. Almost all of them face the same brutal transition: training teaches *frameworks*; the job demands *tradecraft*. Tradecraft is tacit, situational, and almost never explicitly taught.
 
@@ -396,13 +397,22 @@ Three reasons it earns its own surface rather than being a content theme inside 
 
 #### Activation
 
-Probation Prep Mode is opt-in but proactively prompted. The activation flow:
+Probation Prep Mode is opt-in but proactively prompted. **Critically, Probation Mode is independent of the 90-day Mission Track lifecycle** — it activates purely on the relationship between today and the user's probation review date, regardless of where the user is in their journey or whether they have an active Mission Track at all. This means Probation Mode serves four user populations identically:
 
-- **At onboarding (step 3),** the user is asked optionally: *"When is your probation review, if you know?"* — date input or *"I don't have one"* / *"I don't know yet."* If provided, the date is stored in `user_context.probation_review_date`.
-- **On Day 70 (or 21 days before review date if user provided one),** the user receives a prompt via push notification and Daily Home banner: *"Your probation review is in 21 days. Want to switch on Probation Mode?"*
-- **Manual override** is always available in Settings: the user can activate Probation Mode at any time, set or change the review date, or extend the window for longer probations (some industries run 6-month probations).
-- **Default window:** 21 days before review date. **Min window:** 7 days. **Max window:** 90 days (for industries with extended probations).
+1. Users who started the product on or near Day 1 of their role (typical case — review usually falls at end of Mission Track)
+2. Users who joined mid-journey within their first 90 days (review may be earlier, later, or at the same time as Day 90)
+3. Users who joined past Day 90 of their role with a future probation review (e.g. 6-month probation, user signed up at Month 3)
+4. Users with extended or repeat probation reviews after the standard 90-day window
+
+The activation flow:
+
+- **At onboarding (step 3),** the user is asked optionally: *"When is your probation review, if you know?"* — date input or *"I don't have one"* / *"I don't know yet."* The framing makes no assumption about how far in the future the date is — 21 days, 6 months, or anything in between. If provided, the date is stored in `user_context.probation_review_date`.
+- **At T-21 days (or `probation_window_days` before review date if user customised the window),** the user receives a prompt via push notification and Daily Home banner: *"Your probation review is in {N} days. Want to switch on Probation Mode?"*
+- **Manual override** is always available in Settings: the user can activate Probation Mode at any time, set or change the review date, or extend the window for longer probations.
+- **Default window:** 21 days before review date. **Min window:** 7 days. **Max window:** 90 days (for industries with extended probations or for users who want a longer prep runway).
 - The mode automatically deactivates on the date of the user's review and prompts for outcome capture.
+
+For State C users (post-Day-90 at signup) with a future probation date, **Probation Mode is the dominant Daily Home surface during the active window** — the standard post-Day-90 banner ("You're past your first 90 days. The work continues.") is temporarily replaced by the Probation banner ("PROBATION — {N} DAYS TO REVIEW"). Probation missions become the daily missions (since there's no concurrent Mission Track to compete with). After review and outcome capture, the user returns to the standard post-Day-90 layout.
 
 #### What changes when Probation Mode is active
 
@@ -478,9 +488,26 @@ Probation Mode is **the surface that justifies the $39.99/month price most direc
 1. Sign up (email or Google)
 2. Select primary role (1 of 6)
 3. Optional secondary role (Pro only)
-4. Quick context: when did you start / when do you start? what type of company? remote/hybrid/office? have you got a manager assigned?
-5. Auto-anchor Mission Track Day 1
+4. Quick context: when did you start / when do you start? what type of company? remote/hybrid/office? have you got a manager assigned? *(this question accepts both past and future dates — see "Three entry states" below)*
+5. Probation date capture (optional): *"When is your probation review, if you know?"* — accepts any future date (21 days, 6 months, or anything between)
 6. First micro-win: 1 simulator scenario or 1 playbook walkthrough recommended immediately
+
+**Three entry states (computed from the user's start_date at signup):**
+
+The product handles three distinct entry states based on the relationship between today and `start_date`:
+
+- **State A — Fresh start (start_date is today, future, or within last 3 days):** Standard journey. Mission Track Day 1 signature empty state activates. The user gets the editorial onboarding moment the product was designed around.
+- **State B — Mid-journey within first 90 days (start_date 4-89 days ago):** The user has already lived through some of the curriculum. Onboarding step 3 surfaces an editorial acknowledgement: *"You've been at this {N} weeks. We'll start where you are — not at Day 1."* The Mission Track shows the user's actual current week. Weeks they've already lived through are accessible-but-not-blocking (status `skipped_pre_signup` — see MVP Spec v1.3 §2.5). The user is *not* expected to "catch up" on missed missions; the missions are available to read if curious, but the current week is the user's main surface.
+- **State C — Post-Day-90 at signup (start_date 90+ days ago):** The user is past the structured curriculum window. They route directly to the post-Day-90 Daily Home state (see §7.4) — no Mission Track, on-demand surfaces only. Onboarding step 3 surfaces a brief editorial acknowledgement: *"You're past your first 90 days. We'll focus on the on-demand surfaces."* If they have a future probation date, Probation Mode activates normally per §6.6.
+
+**What the product does not do:**
+
+- Does not offer a "condensed Week 1-3 catch-up track" for State B users (Option B was explicitly rejected — see §11 risks)
+- Does not pretend State B/C users are starting at Day 1
+- Does not lock out the current week behind unfinished earlier weeks for State B users
+- Does not refer to "your first 90 days" framing in Coach voice for State C users (see SKILL.md v1.3 §11.1)
+
+This makes FirstNinety usable by the majority of real-world signups, who hear about the product mid-journey rather than on Day 1.
 
 ### 7.2 Daily Loop
 
@@ -498,20 +525,24 @@ Probation Mode is **the surface that justifies the $39.99/month price most direc
 
 At Day 90, the structured 90-day curriculum concludes. The user receives:
 
-1. **The Day 90 Survival Report** (signature design moment, §6.0 and Design Brief §10) — an editorial long-form document reviewing the user's quarter as a thoughtful senior colleague would. Private to the user, exportable as PDF, persistent in their account.
+1. **The Day 90 Survival Report** (signature design moment, §6.0 and Design Brief §10) — an editorial long-form document reviewing the user's quarter as a thoughtful senior colleague would. Private to the user, exportable as PDF, persistent in their account. Generated only for users who actually used the Mission Track during their first 90 days (State A and State B users at the end of their journey) — State C users do not get a Survival Report because there's no journey to report on.
 
 2. **A transformed Daily Home** — starting Day 91, the Daily Home no longer shows Mission Track cards (the curriculum is over). Instead:
    - Banner: Eyebrow "DAY 95 — TUESDAY, 27 AUGUST" (no longer "WEEK N — DAY N" since the week-curriculum has ended)
    - Fraunces italic H3: a single rotating editorial line, e.g. *"You're past your first 90 days. The work continues."*
    - Below: **no Mission Track cards.** The Situation Room input becomes the main surface — larger, more prominent than during the 90-day curriculum
    - Right sidebar (desktop): "Recent" — last 3 Coach threads, last 2 Situation Room sessions, last Simulator run
-   - A small editorial card lower on the page: *"Your Survival Report is always here →"* linking back to the user's Day 90 Survival Report
+   - A small editorial card lower on the page: *"Your Survival Report is always here →"* linking back to the user's Day 90 Survival Report (hidden for State C users with no Survival Report)
 
-3. **The Coach adjusts its priming** — system prompt context updates from "you're coaching a [role] in week [N] of their first 90 days" to "you're coaching a [role] who completed their first 90 days at this organisation on [date]. They are now [N] weeks into the role beyond probation." The Coach's voice and behaviour rules stay the same; only the situational context updates.
+3. **The Coach adjusts its priming** — system prompt context updates from "you're coaching a [role] in week [N] of their first 90 days" to "you're coaching a [role] who completed their first 90 days at this organisation on [date]. They are now [N] weeks into the role beyond probation." The Coach's voice and behaviour rules stay the same; only the situational context updates. For State C users, the priming uses a third variant that does not assume the user used FirstNinety during their first 90 days (see MVP Spec v1.3 §4.2 and SKILL.md v1.3 §11.1).
 
 4. **The other on-demand surfaces continue unchanged** — Situation Room, Playbook Library, Scenario Simulator. The user can keep using them indefinitely.
 
-This is FirstNinety's honest answer to "what happens after Day 90." Four of the six features continue as a sustained on-demand workplace partner. The Mission Track has done its job and ends. The Survival Report is the closing editorial gesture.
+**State C users land here directly at signup.** Their first Daily Home view is the post-Day-90 state with a one-time welcome line: *"You're past your first 90 days. We'll focus on the on-demand surfaces — Situation Room, Coach, Playbooks, Simulator. They're yours for as long as you're subscribed."* Subsequent visits show the standard post-Day-90 state.
+
+**If a State C user has a future probation date,** Probation Mode activates per §6.6 — and during the active window, the Probation banner replaces the standard post-Day-90 banner, probation missions become the daily missions, and the user gets the full Probation Mode experience. After the review, they return to the standard post-Day-90 state.
+
+This is FirstNinety's honest answer to "what happens after Day 90." Four of the six features continue as a sustained on-demand workplace partner. The Mission Track has done its job and ends (or was never started, for State C users). The Survival Report is the closing editorial gesture for those who completed the curriculum.
 
 The Phase 2 "Earn Your Promotion" track (§13) will eventually add structured curriculum back for Days 91+, but that is post-MVP. At launch, the on-demand surfaces carry the user past Day 90; the curriculum doesn't get replaced, it gets *concluded*.
 
@@ -784,6 +815,8 @@ The Situation Room is the strongest signal of daily relevance — a user who ope
 
 | Risk | Likelihood | Impact | Mitigation |
 |---|---|---|---|
+| Mid-journey signup confusion | Medium | Medium | Three explicit entry states (PRD v1.9 §7.1) — State A (fresh), State B (mid-journey within 90 days), State C (post-Day-90) — each handled gracefully in onboarding and Daily Home. Missed missions marked `skipped_pre_signup` rather than locked or required. No "catch up" mode (deliberately rejected — would imply users are behind, which they aren't). Mid-journey welcome line in onboarding step 3 acknowledges past start dates honestly. |
+| Long-probation users excluded by 90-day framing | Medium | Medium | Probation Mode decoupled from Mission Track lifecycle (PRD v1.9 §6.6). Activates purely on probation_review_date - probation_window_days. Window length range 7-90 days remains; users with 6-month or 12-month probations work identically to users with standard probations. Marketing landing copy softened to avoid presuming probation falls at Day 90 (per Pricing FAQ explicit yes-answer). |
 | Retention cliff at Day 90 | Medium | Medium | Four of six MVP features (Situation Room, Coach, Playbook, Simulator) continue indefinitely past Day 90 — they are not curriculum-bound. Daily Home transforms (§7.4) into an on-demand-focused layout at Day 91 rather than emptying out. Coach system-prompt adjusts for post-90 users. Mission Track concludes by design; Survival Report is the closing editorial gesture. Phase 2B "Earn Your Promotion" track adds structured curriculum for Days 91+ when justified by retention data. |
 | Premium $39.99 price point limits TAM at launch | High | Medium | Accepted trade-off; emerging markets re-enter via Phase 2C with regional pricing; institutional B2B2C channel adds volume |
 | Free → Pro conversion below 4% target at premium price | Medium | High | Free tier rebalanced more generously (v1.5); rapid A/B testing of free-tier shape in first 90 days; premium tier evaluation if signups indicate price-sensitivity |
@@ -893,4 +926,4 @@ Immediate next deliverable on confirmation: Competitive Analysis.
 
 ---
 
-*End of PRD v1.8*
+*End of PRD v1.9*

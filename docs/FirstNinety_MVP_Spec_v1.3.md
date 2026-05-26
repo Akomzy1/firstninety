@@ -1,17 +1,21 @@
 # FirstNinety — MVP Specification v1.0
 
-**Version:** 1.2
+**Version:** 1.3
 **Owner:** Tokunbo Akomolede (AkomzyAi Consulting Ltd)
 **Status:** Pre-build
 **Last updated:** 23 May 2026
-**Companion documents:** PRD v1.8, Competitive Analysis v1.1, Design Brief v1.0, CLAUDE.md, SKILL.md
+**Companion documents:** PRD v1.9, Competitive Analysis v1.1, Design Brief v1.0, CLAUDE.md v1.3, SKILL.md v1.3
 
-**Changes from v1.1 — Post-Day-90 reuse:**
-- §4.2 Coach: system prompt template adjustment for post-90 users (loaded conditionally based on `current_day > 90`)
-- §9 Phase 3.16 added: Post-Day-90 Daily Home state build prompt
-- §9 Phase 5: Survival Report retrievable from Daily Home and Settings (small content seeding addition)
-- Build time estimate adjusted from 29–37 days to 30–38 days (+1 day)
-- §11 Open spec: post-90 cohort sizing for first wave of Day-91+ users added
+**Changes from v1.2 — Mid-journey signups and decoupled Probation Mode:**
+- §2.5 `mission_status_enum` extended with `skipped_pre_signup` value
+- §3 `completeOnboarding` server action extended to backfill missed mission_completions rows
+- §3 added `getEntryState` server action to compute State A / B / C at signup
+- §4.2 Coach gains third system prompt context variant for State C users (no first-90-days framing)
+- §9 Phase 1.2 (onboarding) extended with three-state detection
+- §9 Phase 2.2 (Daily Home) extended with State B mid-journey welcome state
+- §9 Phase 3.17 added: Probation Mode in post-Day-90 standalone context (no curriculum overlay)
+- Build time estimate adjusted from 30-38 days to 33-41 days (+3 days)
+- §11 Open spec: State B Survival Report eligibility question added
 
 ---
 
@@ -278,12 +282,14 @@ create table public.user_context (
   probation_outcome probation_outcome_enum,
   probation_outcome_captured_at timestamptz,
   timezone text default 'UTC',           -- For Sunday prompt + probation trigger timing
+  entry_state entry_state_enum not null default 'A',  -- Computed at signup; see PRD v1.9 §7.1
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
 create type work_setup_enum as enum ('remote', 'hybrid', 'office');
 create type probation_outcome_enum as enum ('continued', 'extended', 'ended', 'prefer_not_to_say');
+create type entry_state_enum as enum ('A', 'B', 'C');
 ```
 
 RLS: users can CRUD their own row.
@@ -392,7 +398,7 @@ create table public.mission_completions (
   updated_at timestamptz not null default now()
 );
 
-create type mission_status_enum as enum ('in_progress', 'completed', 'skipped');
+create type mission_status_enum as enum ('in_progress', 'completed', 'skipped', 'skipped_pre_signup');
 
 create unique index mission_completions_user_mission on public.mission_completions(user_id, mission_id);
 ```
@@ -665,7 +671,17 @@ Server actions live next to the surface they serve (e.g., `app/(app)/situation-r
 
 #### Onboarding
 
-- `completeOnboarding(payload: OnboardingPayload)` → `{ redirect: string }`
+- `completeOnboarding(payload: OnboardingPayload)` → `{ redirect: string, entry_state: 'A' | 'B' | 'C' }`
+  - Computes entry state from `payload.start_date`:
+    - **State A:** start_date ≥ today − 3 days (fresh start)
+    - **State B:** today − 89 days ≤ start_date < today − 3 days (mid-journey within 90 days)
+    - **State C:** start_date < today − 89 days (post-Day-90 at signup)
+  - For **State B:** backfills `mission_completions` rows with status `skipped_pre_signup` for all missions in weeks 1 through (current_week − 1). Mission detail pages remain readable; current week missions are not blocked by these.
+  - For **State C:** does not create any `mission_completions` rows; user routes directly to post-Day-90 Daily Home state on first login.
+  - For all states: updates `user_context` with `start_date`, `current_day`, `current_week` (computed), `probation_review_date` (if provided), `entry_state` (new column — see §2.3).
+  - Redirect target: `/home` (Daily Home renders the right state based on `entry_state` and `current_day`).
+- `getEntryState()` → `{ state: 'A' | 'B' | 'C', current_day: number, current_week: number, has_survival_report_eligibility: boolean }`
+  - Read-only helper used by Daily Home and Coach handlers to determine which state and priming variant to render. `has_survival_report_eligibility` is true only for State A and State B users (not State C — they didn't run the curriculum).
 
 #### Settings
 
@@ -794,10 +810,12 @@ The system prompt is composed at request-time from these blocks:
 
 1. **Role priming** (varies by user's primary role; loaded from `content/coach-prompts/role-{role}.md`)
 2. **Voice & behaviour rules** (constant across all roles; loaded from `content/coach-prompts/voice.md`)
-3. **Current context block** (dynamically generated; *two variants based on user's day*):
-   - **Days 1–90:** *"You are coaching a [role] in week [N] of their first 90 days at a new role."*
-   - **Day 91+:** *"You are coaching a [role] who completed their first 90 days at this organisation on [date]. They are now [N] weeks into the role beyond probation."*
-   The voice and behaviour rules are unchanged across both — only the situational priming changes.
+3. **Current context block** (dynamically generated; *three variants based on user's entry state and current day*):
+   - **State A or B users, Days 1–90:** *"You are coaching a [role] in week [N] of their first 90 days at a new role."*
+   - **State A or B users, Day 91+ (graduated within product):** *"You are coaching a [role] who completed their first 90 days at this organisation on [date]. They are now [N] weeks into the role beyond probation."*
+   - **State C users (joined post-Day-90):** *"You are coaching a [role] who is now [N] weeks into their role at this organisation. They joined FirstNinety after their first 90 days had already passed, so you have no journey data from that period — only what they tell you and what they've done in FirstNinety since signup."*
+   
+   The voice and behaviour rules are unchanged across all three — only the situational priming changes. For State C users specifically, the Coach must not reference "your first 90 days" framing or surfaces that have concluded (Mission Track, Survival Report) — see SKILL.md v1.3 §11.1.
 4. **Safety guardrails** (constant; from `lib/safety/guardrails.md`)
 5. **Tool descriptions** (auto-generated from tool schemas; `get_probation_evidence` only registered when Probation Mode is active)
 
@@ -1272,7 +1290,7 @@ Foundations. No user-visible features yet.
 Auth, onboarding, memory model, navigation. No AI yet.
 
 - 1.1 Sign in / sign up surfaces
-- 1.2 4-step onboarding flow (each step a route)
+- 1.2 4-step onboarding flow (each step a route) — **including three-entry-state detection (State A/B/C) at step 3 per PRD v1.9 §7.1; backfill missed mission_completions as `skipped_pre_signup` for State B users; route State C users directly to post-Day-90 Daily Home on first login**
 - 1.3 Role selection UI (6 cards, ink-on-paper hover)
 - 1.4 Memory introduction screen (signature design moment 4 of 5)
 - 1.5 Sidebar navigation + bottom nav (mobile)
@@ -1286,8 +1304,8 @@ Auth, onboarding, memory model, navigation. No AI yet.
 
 The content surfaces. Still no AI.
 
-- 2.1 Daily home page (Day 1 empty state + Day N populated state)
-- 2.2 Mission Track week view + mission detail view
+- 2.1 Daily home page (Day 1 empty state + Day N populated state **+ State B mid-journey welcome variant per PRD v1.9 §7.1**)
+- 2.2 Mission Track week view + mission detail view **(handle `skipped_pre_signup` mission state visually — quiet muted treatment, accessible-to-read but not blocking current week unlocks)**
 - 2.3 Mission completion flow (state machine, reflection capture)
 - 2.4 Playbook Library index
 - 2.5 Playbook detail view with 2-column document + margin annotations
@@ -1315,9 +1333,10 @@ The differentiated features.
 - 3.13 Pre-flight content checks (PII, real-name, crisis keyword)
 - 3.14 **Probation Mode surfaces:** activation flow, Daily Home banner state, fourth Situation Room entry type, fourth Coach tool (`get_probation_evidence`), Probation Prep Pack playbook surface, Probation Brief generator + PDF export, outcome capture + post-review Coach thread
 - 3.15 **Coach post-90 priming:** conditional system prompt context variant (`current_day > 90`) loaded by the prompt-building function; voice and tools unchanged. Authored content file `content/coach-prompts/post-90-context.md` with the post-probation framing variant per role.
-- 3.16 **Post-Day-90 Daily Home state:** third state of the Daily Home (alongside Day 1 empty + Day N populated) that activates when `current_day > 90`. Banner without week/mission, larger Situation Room input, "Recent" sidebar replacing "Week at a glance", small "Your Survival Report is always here →" link card. See PRD v1.8 §7.4.
+- 3.16 **Post-Day-90 Daily Home state:** third state of the Daily Home (alongside Day 1 empty + Day N populated) that activates when `current_day > 90`. Banner without week/mission, larger Situation Room input, "Recent" sidebar replacing "Week at a glance", small "Your Survival Report is always here →" link card. See PRD v1.9 §7.4.
+- 3.17 **Probation Mode in standalone post-Day-90 context:** Probation Mode logic extended to work when there is no concurrent Mission Track (State C users with future probation, or post-Day-90 graduated users with extended probations). Per PRD v1.9 §6.6, when Probation Mode is active for a post-Day-90 user, the Probation banner replaces the standard post-Day-90 banner, probation missions become the daily missions, and the user gets the full Probation Mode experience. After review and outcome capture, the user returns to the standard post-Day-90 state. Build: extend Daily Home state selector to render Probation Mode banner above post-Day-90 layout when both conditions apply; verify Probation Brief generation works without Mission Track context (the Brief is drawn from situation sessions and Coach threads if no missions exist).
 
-**Exit criteria:** all six product surfaces work end-to-end with seeded BA content **including the probation flow simulated against a test review date and a post-Day-90 user simulated by manually setting current_day to 95**. Cost per Coach interaction is tracked. Tier gating denies free users at the right limits.
+**Exit criteria:** all six product surfaces work end-to-end with seeded BA content **including the probation flow simulated against a test review date and a post-Day-90 user simulated by manually setting current_day to 95, AND a State C user simulated by setting start_date to 100 days ago**. Cost per Coach interaction is tracked. Tier gating denies free users at the right limits.
 
 ### Phase 4 — Payments + Cross-sell + Marketing (target: 3-4 days)
 
@@ -1354,7 +1373,7 @@ The critical path is content production for the remaining 5 roles.
 
 ### Total estimated build time
 
-**30–38 days** of focused engineering effort (revised from v1.1's 29–37 to reflect Phase 3.15 and 3.16: +1 day for the post-90 Daily Home state and Coach priming variant). This excludes content authoring time (which runs in parallel with Phases 1-3) and assumes a single engineer (Tokunbo). With parallelisable content production and design review, ship target is 6-8 weeks from build start to production launch.
+**33–41 days** of focused engineering effort (revised from v1.2's 30–38 to reflect three-entry-state handling: +2 days in Phases 1-2 for onboarding and Daily Home variants, +1 day in Phase 3 for Probation Mode standalone context). This excludes content authoring time (which runs in parallel with Phases 1-3) and assumes a single engineer (Tokunbo). With parallelisable content production and design review, ship target is 7-9 weeks from build start to production launch.
 
 ---
 
@@ -1370,6 +1389,9 @@ The MVP ships to production only when **all** of these are true:
 - [ ] Probation Mode auto-deactivates on review date and triggers post-review Coach thread
 - [ ] **Post-Day-90 Daily Home state renders correctly when `current_day > 90` (test by manually setting a user's start_date to 100 days ago)**
 - [ ] **Coach post-90 priming variant loads correctly for users past Day 90 (verify in a test thread)**
+- [ ] **State B (mid-journey within 90 days) signup tested — user signing up at Day 22 sees mid-journey welcome state, skipped weeks marked `skipped_pre_signup`, current week available**
+- [ ] **State C (post-Day-90 at signup) signup tested — user with start_date 100 days ago lands directly into post-Day-90 Daily Home, no Survival Report link surfaced**
+- [ ] **State C user with future probation date — Probation Mode activates correctly without curriculum overlay; Brief generates from situation sessions and Coach threads if no missions exist**
 - [ ] Stripe Checkout and Portal both work in production
 - [ ] PWA installs on iOS Safari and Chrome Android
 - [ ] All AI surfaces stream responsively (P50 first-token < 2.5s)
@@ -1414,7 +1436,9 @@ These remain unresolved from PRD §14 and need answers before the relevant build
 7. **Probation Brief regeneration policy** (Phase 3.14) — can the user regenerate the Brief multiple times before the review? Recommendation: yes, but cap at 3 generations to control cost (~$0.40 per generation at current Opus rates)
 8. **Probation outcome capture window** (Phase 3.14) — how many days post-review do we prompt? Recommendation: prompt at +1 day, +3 days, +7 days, then stop. Outcome can always be added manually in Settings.
 9. **Post-Day-90 cohort sizing** (Phase 5+) — at MVP launch, no users will reach Day 91 for ~3 months. The post-90 surface (3.16) is build-complete but operationally untested until then. Plan: manually fast-forward `current_day` for 3-5 pilot accounts in staging weekly during launch month to validate the post-90 state catches any rough edges before real users hit it. Document this as a launch operations item.
+10. **State B Survival Report eligibility** (Phase 5) — should a State B user who signed up at Day 30 and reaches Day 90 inside the product receive a Survival Report? They have 60 days of FirstNinety data but no data for the first 30 days. **Recommendation:** yes, generate a Survival Report but include a small footnote acknowledging the start date in the document footer ("Based on your time with FirstNinety from [signup_date] onwards"). The Report still covers the first 90 days as a unit; the framing is honest about which portion FirstNinety helped with.
+11. **State C user paths to Survival Report-equivalent artefact** (Phase 2A) — State C users have no Survival Report. If they end up using FirstNinety for a sustained period (e.g. 3+ months past signup), they might benefit from an equivalent end-of-period editorial document. Defer to Phase 2A as the "Day-365 Where you are" report idea (per PRD §13) — that document doesn't require a 90-day starting point and could serve State C users equivalently.
 
 ---
 
-*End of MVP Spec v1.2*
+*End of MVP Spec v1.3*

@@ -1,22 +1,27 @@
-# FirstNinety — Build Prompts v1.2
+# FirstNinety — Build Prompts v1.3
 
-**Version:** 1.2
+**Version:** 1.3
 **Owner:** Tokunbo Akomolede (AkomzyAi Consulting Ltd)
 **Status:** Ready for build
 **Last updated:** 23 May 2026
-**Companion documents:** PRD v1.8, MVP Spec v1.2, Competitive Analysis v1.1, Design Brief v1.0, CLAUDE.md v1.2, SKILL.md v1.2, Design Prompts v2.0
+**Companion documents:** PRD v1.9, MVP Spec v1.3, Competitive Analysis v1.1, Design Brief v1.0, CLAUDE.md v1.3, SKILL.md v1.3, Design Prompts v2.1
 
-**Changes from v1.1:**
-- Prompt 3.4 extended: scope boundary rule added to the authoring instructions for `lib/safety/guardrails.md` and `content/coach-prompts/safety.md` — Coach does not provide technical execution help (no SQL, no code debugging, no library configuration). See CLAUDE.md v1.2 §"What NOT to do" item 16 and SKILL.md v1.2 §8.4 for the full rule.
-- All cross-references updated: CLAUDE.md v1.1 → v1.2, SKILL.md v1.1 → v1.2
+**Changes from v1.2 — Mid-journey signups and decoupled Probation Mode:**
+- Prompt 1.2 (Onboarding) extended: three-entry-state detection (A/B/C) at step 3; mid-journey acknowledgement copy; backfill missed mission_completions for State B users; route State C users to post-Day-90 home on first login
+- Prompt 2.1 (Daily Home) extended: third state for State B mid-journey welcome
+- Prompt 2.3 (Mission Track) extended: handle `skipped_pre_signup` mission status visually
+- Prompt 3.14 (Probation Mode) updated: explicit note that Probation Mode works independently of Mission Track state
+- Prompt 3.17 added: Probation Mode in standalone post-Day-90 context for State C users
+- Total prompts: 51 (up from 50)
+- Phase 3 Exit Gate extended with State B/C verification
+- Estimated build time: 33-41 days (up from 30-38; +3 days for three-state handling)
+- All cross-references updated: PRD v1.8 → v1.9, MVP Spec v1.2 → v1.3, CLAUDE.md v1.2 → v1.3, SKILL.md v1.2 → v1.3
+
+**Changes from v1.1 (carried forward from v1.2):**
+- Prompt 3.4 extended with scope boundary rule (no technical execution help)
 
 **Changes from v1.0 (carried forward from v1.1):**
-- Prompt 3.15 added: Coach post-90 priming variant (per PRD v1.8 §7.4 and MVP Spec v1.2 §4.2)
-- Prompt 3.16 added: Post-Day-90 Daily Home state (per PRD v1.8 §7.4 and Design Prompts v2.0 C16)
-- Total prompts: 50 (up from 48)
-- Phase 3 Exit Gate extended with two new criteria
-- Estimated build time: 30-38 days (up from 29-37; +1 day for Phase 3.15 and 3.16)
-- All cross-references updated from MVP Spec v1.1 → v1.2, PRD v1.7 → v1.8, CLAUDE.md/SKILL.md → v1.1
+- Prompts 3.15 and 3.16 added for Coach post-90 priming and post-Day-90 Daily Home state
 
 ---
 
@@ -26,10 +31,10 @@
 
 1. Open the project in Claude Code (or whichever Claude-integrated IDE you're using).
 2. Make sure these files are loaded into the project's context (committed at the repo root):
-   - `PRD v1.8`
-   - `MVP Spec v1.2`
-   - `CLAUDE.md v1.2`
-   - `SKILL.md v1.2`
+   - `PRD v1.9`
+   - `MVP Spec v1.3`
+   - `CLAUDE.md v1.3`
+   - `SKILL.md v1.3`
    - `Design Brief v1.0`
 3. The prompts reference these by section number. Claude Code will read them as project documentation.
 
@@ -75,7 +80,7 @@ Foundations. No user-visible features yet. Estimated 2–3 days.
 
 > Initialise the FirstNinety repository as a Next.js 16 project (App Router, TypeScript strict mode, TailwindCSS, ESLint).
 >
-> Read MVP Spec v1.2 §1.2 and create the exact directory structure shown — every folder under `app/`, `components/`, `lib/`, `content/`, `supabase/`, `public/`, `scripts/`, `tests/`. Use `.gitkeep` files for currently-empty directories.
+> Read MVP Spec v1.3 §1.2 and create the exact directory structure shown — every folder under `app/`, `components/`, `lib/`, `content/`, `supabase/`, `public/`, `scripts/`, `tests/`. Use `.gitkeep` files for currently-empty directories.
 >
 > Set up the `.env.example` file with every variable from MVP Spec §1.3, exactly as listed. Create a local `.env.local` containing placeholder values for development.
 >
@@ -150,7 +155,7 @@ Foundations. No user-visible features yet. Estimated 2–3 days.
 
 > Set up a new Supabase project for FirstNinety. Use the Supabase CLI to manage migrations locally.
 >
-> Read MVP Spec v1.2 §2 (all schema sections) and §2.7 and §2.8.
+> Read MVP Spec v1.3 §2 (all schema sections) and §2.7 and §2.8.
 >
 > Create a single migration file at `supabase/migrations/00001_initial_schema.sql` that defines, in this order:
 >
@@ -196,7 +201,7 @@ Foundations. No user-visible features yet. Estimated 2–3 days.
 
 **The prompt:**
 
-> Read MVP Spec v1.2 §5 thoroughly.
+> Read MVP Spec v1.3 §5 thoroughly.
 >
 > Install `next-pwa` (or the current canonical Next.js PWA solution as of May 2026 — check the latest stable Next.js 16 PWA pattern before choosing). Configure it for App Router compatibility.
 >
@@ -370,11 +375,11 @@ Auth, onboarding, navigation, memory model. No AI yet. Estimated 4–5 days.
 
 ---
 
-## Prompt 1.2 — 4-step onboarding flow
+## Prompt 1.2 — 4-step onboarding flow (with three entry states)
 
-**Purpose:** The onboarding journey from registration to Day 1 of the app. Step 4 is a signature design moment.
+**Purpose:** The onboarding journey from registration to Day 1 of the app. Step 4 is a signature design moment. **Onboarding handles three entry states (A/B/C) per PRD v1.9 §7.1.**
 
-**Reference:** PRD §7.1, MVP Spec §7.2, Design Brief §10 (signature design moments — memory introduction), Design Prompts C1 (onboarding flow)
+**Reference:** PRD v1.9 §7.1 (three entry states), MVP Spec v1.3 §3 (completeOnboarding server action with entry state detection), Design Brief §10 (signature design moments — memory introduction), Design Prompts v2.1 C1 (onboarding flow) and C17 (mid-journey welcome state)
 
 **The prompt:**
 
@@ -386,38 +391,52 @@ Auth, onboarding, navigation, memory model. No AI yet. Estimated 4–5 days.
 >
 > Use the Design Prompt C1 from the design prototype as your visual reference — same copy, same layout, same editorial tone.
 >
-> Critical: step 3 must include the optional probation review date field per PRD §6.6 activation flow. Use a date input with quick presets ("In 90 days", "In 3 months", "I'll set this later"). If the user provides a date, store it in `user_context.probation_review_date`. The "I don't know yet" option leaves the field null.
+> Critical: step 3 must include the optional probation review date field per PRD v1.9 §6.6 activation flow. Use a date input with quick presets ("In 21 days", "In 3 months", "In 6 months", "I'll set this later"). **The product accepts any future probation date — 21 days, 6 months, or longer — because Probation Mode is independent of the 90-day Mission Track lifecycle (per PRD v1.9 §6.6).** If the user provides a date, store it in `user_context.probation_review_date`. The "I don't know yet" option leaves the field null.
+>
+> **Three-entry-state detection.** At step 3, compute the entry state from the user's start_date input:
+> - **State A** if start_date ≥ today − 3 days (fresh start, including future start dates)
+> - **State B** if today − 89 days ≤ start_date < today − 3 days (mid-journey within 90 days)
+> - **State C** if start_date < today − 89 days (post-Day-90 at signup)
+>
+> Show an inline editorial acknowledgement *under the date input* based on detected state:
+> - **State A:** no message (this is the default case)
+> - **State B:** small Fraunces italic body S mute line: *"You've been at this {N} weeks. We'll start where you are — not at Day 1. Past weeks will be available to read if you're curious, but they're not the focus."*
+> - **State C:** small Fraunces italic body S mute line: *"You're past your first 90 days at this role. We'll focus on the on-demand surfaces — Situation Room, Coach, Playbooks, Simulator. They're yours for as long as you're subscribed. If you have a future probation review, we'll help with that too."*
+>
+> The acknowledgement is gentle — no warning tone, no "you should have signed up earlier" framing. It's the product treating the user with dignity.
 >
 > On step 4, render the declared facts as Fraunces italic body L, one per line, with a small "edit" pencil icon revealed on hover. The list is built from the user's onboarding inputs:
-> - "You're starting as a [Role]."
-> - "You start on [Date]." (only if date provided)
-> - "You're working in [Sector]." (only if sector provided)
-> - "You're [Remote/Hybrid/Office]." (only if work setup provided)
-> - "Your probation review is on [Date]." (only if probation date provided)
+> - For State A: *"You're starting as a [Role]."*
+> - For State B: *"You're working as a [Role]. You started [N] weeks ago."*
+> - For State C: *"You're working as a [Role]. You started [N] months ago."*
+> - *"You're working in [Sector]."* (only if sector provided)
+> - *"You're [Remote/Hybrid/Office]."* (only if work setup provided)
+> - *"Your probation review is on [Date]."* (only if probation date provided)
 >
 > Below the list, the privacy commitment paragraph from Design Prompt C1 step 4 in full.
 >
-> Onboarding state needs to be resumable. Track completion via a `users.onboarding_completed_at` column — add it via a new migration `00003_onboarding_state.sql`. Each step checks if previous steps are complete and redirects if not.
+> Onboarding state needs to be resumable. Track completion via a `users.onboarding_completed_at` column — add it via a new migration `00003_onboarding_state.sql`. Add the `entry_state` column to `user_context` per MVP Spec v1.3 §2.3. Each step checks if previous steps are complete and redirects if not.
 >
 > On step 4 completion, the server action `completeOnboarding(payload)`:
 > - Updates `users.primary_role`
-> - Updates `user_context` with all collected fields (including `probation_review_date` if provided and `timezone` if detectable from browser)
-> - Inserts any responsibility hints into `user_responsibilities` (e.g., the sector tag becomes a responsibility note like "working in [sector] sector")
+> - Updates `user_context` with all collected fields including `entry_state` (computed), `current_day` (computed from start_date), `current_week` (computed), `probation_review_date` (if provided), `timezone` (if detectable from browser)
+> - For **State B users:** backfills `mission_completions` rows with status `skipped_pre_signup` for all missions in weeks 1 through `current_week - 1`. These are accessible-to-read but not blocking the current week. Backfill happens in a transaction so partial failure doesn't leave the user in a half-state.
+> - For **State C users:** does NOT create any `mission_completions` rows. There's no Mission Track for these users.
+> - Inserts any responsibility hints into `user_responsibilities`
 > - Sets `users.onboarding_completed_at` to now
-> - Redirects to `/home`
+> - Redirects to `/home` — the Daily Home component renders the appropriate state based on `entry_state` and `current_day`
 >
-> Track each step completion as a PostHog event (`onboarding_step_completed`).
+> Track each step completion as a PostHog event (`onboarding_step_completed`), and entry state as a property on the `onboarding_completed` event (`entry_state: 'A' | 'B' | 'C'`). This becomes a key cohort dimension for retention analysis.
 
 **Verification:**
-- A new user lands on `/onboarding/step-1` immediately after signup
-- The four steps render in sequence
-- Step 4 displays the user's declared facts in Fraunces italic
-- Probation date is captured if provided and stored correctly
-- On completion, user lands on `/home` with `onboarding_completed_at` set
-- A user mid-onboarding is correctly redirected to their last incomplete step
-- The memory introduction screen feels editorial, not form-like
+- A new user with future or recent start_date lands on Day 1 empty state (State A)
+- A user with start_date 22 days ago sees State B acknowledgement on step 3, lands on mid-journey welcome state on /home, has weeks 1-3 backfilled as `skipped_pre_signup`, current Week 4 is available
+- A user with start_date 100 days ago sees State C acknowledgement on step 3, lands directly on post-Day-90 Daily Home state, has no `mission_completions` rows
+- A State C user with a future probation date (e.g., 60 days from today) shows the probation date acknowledgement on step 4
+- The four steps render in sequence; resumable mid-flow
+- PostHog `onboarding_completed` event includes `entry_state` property
 
-**Commit:** `feat(onboarding): 4-step flow with memory introduction`
+**Commit:** `feat(onboarding): 4-step flow with three-entry-state detection`
 
 ---
 
@@ -795,78 +814,104 @@ The content surfaces. Still no AI. Estimated 4–5 days.
 
 ---
 
-## Prompt 2.2 — Daily home page (Day 1 empty + Day N populated)
+## Prompt 2.2 — Daily home page (Day 1 empty + Day N populated + State B mid-journey welcome)
 
-**Purpose:** What users see after login. Day 1 is a signature design moment.
+**Purpose:** What users see after login. Day 1 is a signature design moment. **Now handles three Daily Home variants for State A users (Day 1, Day N) and a fourth for State B users (mid-journey welcome). State C users land on Post-Day-90 state — built in prompt 3.16.**
 
-**Reference:** Design Brief §10 (signature moment: empty Mission Track Day 1), Design Prompts C2
+**Reference:** Design Brief §10 (signature moment: empty Mission Track Day 1), Design Prompts v2.1 C2 (Day 1 + Day N), C17 (mid-journey welcome), PRD v1.9 §7.1 (three entry states)
 
 **The prompt:**
 
 > Build the daily home page at `app/(app)/home/page.tsx`.
 >
-> Reference Design Prompts C2 from the design prototype for exact visual layout.
+> Reference Design Prompts v2.1 C2 and C17 from the design prototype for exact visual layouts.
 >
-> Implement two states with the same component, dynamically based on `user_context.current_day`:
+> Implement three states with the same component, dynamically based on `user_context.entry_state` and `user_context.current_day`:
 >
-> **State 1 — Day 1 (the "almost empty" signature moment):**
+> **State 1 — Day 1, State A users only (the "almost empty" signature moment):**
 > - Banner: Eyebrow "DAY 1 — [Day], [Date]" + Fraunces italic H3: "Today is about landing softly. Not about doing everything."
 > - Single mission card centred-ish (use the Mission Card component which you'll build in 2.3)
 > - Below: thin divider, then mute caption "More missions unlock as you progress this week."
 > - Right side: small Situation Room teaser link
 > - **Lots of whitespace below the single mission card.** The brand stance.
 >
-> **State 2 — Day N (populated):**
+> **State 2 — Day N (populated), State A users on Day 2+ AND State B users on subsequent visits:**
 > - Banner: Eyebrow "DAY 38 — WEEK 6 — [Day], [Date]" + Fraunces italic H3 with week theme
 > - Main: 1-2 mission cards for today
 > - Situation Room input (full-width on mobile, half on desktop) — the large input with three soft labels (don't wire up submission yet, that's Phase 3.6)
 > - Right sidebar (desktop only): Week at a glance + What I know + Recent activity
+>
+> **State 3 — State B mid-journey welcome (first-time only — State B users on first visit after onboarding):**
+> - Banner: Eyebrow "DAY 22 — WEEK 4 — [Day], [Date]" + Fraunces italic H3: a one-time welcome line such as *"You're {N} weeks in. We're picking up where you are."*
+> - Below the banner, a small editorial card (only on first visit, then dismissed):
+>   - Eyebrow caption mute: "ABOUT THE WEEKS YOU LIVED THROUGH"
+>   - Body L mute: *"Weeks 1-{N-1} are available to read if you want — they're the structured missions for the parts of your role you've already done. They're not blocking anything. The current week is the focus."*
+>   - "Got it" ghost button — dismisses the card and sets `user_context.viewed_mid_journey_welcome_at` to now (add this column via migration)
+> - Below the welcome card (or directly under banner on subsequent visits): same content as State 2 — current week mission cards, Situation Room input, right sidebar
+> - The right sidebar's "Week at a glance" mini rows show past weeks at very low visual weight (mute, no completion ✓ marks, just labelled as "Available to read")
+>
+> **State selection logic:**
+> ```
+> if entry_state == 'C' OR current_day > 90:
+>   render Post-Day-90 state (handled in prompt 3.16)
+> elif entry_state == 'A' AND current_day == 1:
+>   render State 1 (Day 1 signature empty)
+> elif entry_state == 'B' AND viewed_mid_journey_welcome_at IS NULL:
+>   render State 3 (mid-journey welcome — first visit only)
+> else:
+>   render State 2 (Day N populated)
+> ```
 >
 > Compute the current day server-side from `user_context.start_date` and the current date:
 > - `current_day = floor((today - start_date) / 1 day) + 1`
 > - `current_week = ceil(current_day / 7)`
 > - Update the DB columns when they drift from computed values
 >
-> If user has no `start_date`, treat today as Day 1.
+> If user has no `start_date`, treat today as Day 1 (this should not happen post-onboarding, but defensive coding).
 >
-> If `user_context.probation_mode_active = true`, replace the banner with the Probation banner (Eyebrow "PROBATION — {N} DAYS TO REVIEW" + Fraunces italic line) — this is the only piece of Probation Mode UI in Phase 2; full Probation features come in 3.14.
+> If `user_context.probation_mode_active = true`, replace the banner with the Probation banner (Eyebrow "PROBATION — {N} DAYS TO REVIEW" + Fraunces italic line) — this is the only piece of Probation Mode UI in Phase 2; full Probation features come in 3.14 and 3.17.
 >
 > Server data: a server component fetches today's missions, recent situation sessions, recent simulator runs, and current user_context, then passes to client components.
 
 **Verification:**
-- A Day 1 user sees the empty-feeling layout with one mission card and lots of whitespace
-- A user on Day 38 sees the populated layout with mission cards, Situation Room input, and right sidebar
+- A Day 1 State A user sees the empty-feeling layout with one mission card and lots of whitespace
+- A Day 38 State A user sees the populated layout with mission cards, Situation Room input, and right sidebar
+- A first-visit State B user (e.g., start_date 22 days ago) sees the mid-journey welcome state with the "About the weeks you lived through" card
+- A subsequent-visit State B user sees the standard State 2 populated layout (welcome card dismissed)
+- The "Week at a glance" sidebar shows past weeks as mute/available-to-read for State B users
 - The day/week calculation is correct
 - Probation banner appears when probation_mode_active is true (you can manually flip this in the DB to test)
 - Layout responsive: mobile stacks correctly, desktop shows sidebar
 
-**Commit:** `feat(home): daily home page Day 1 + Day N states`
+**Commit:** `feat(home): daily home page with three states (Day 1 / Day N / mid-journey welcome)`
 
 ---
 
-## Prompt 2.3 — Mission Track week view + mission detail + completion flow
+## Prompt 2.3 — Mission Track week view + mission detail + completion flow (with State B handling)
 
-**Purpose:** The curriculum UI.
+**Purpose:** The curriculum UI. **Now handles the `skipped_pre_signup` mission status for State B (mid-journey) users per PRD v1.9 §7.1.**
 
-**Reference:** PRD §6.4, SKILL.md §6 (Mission authoring), Design Prompts C3
+**Reference:** PRD v1.9 §6.4 (Mission Track), §7.1 (three entry states), SKILL.md v1.3 §6 (Mission authoring), Design Prompts v2.1 C3 (mission week + detail views)
 
 **The prompt:**
 
 > Build the Mission Track surfaces.
 >
 > Mission Card component `components/mission/MissionCard.tsx`:
-> - Three variants: active, completed, locked (per Design Prompts A3 specification)
+> - **Four variants** (was three in v1.0): active, completed, locked, `skipped_pre_signup`
 > - Props: `mission`, `completion`, `status`
 > - Active: Eyebrow "TODAY — DAY N", Fraunces H3 title, 1-line description, time estimate, "Begin" button
 > - Completed: same structure with subtle ✓, title in mute, "Completed N days ago" caption
 > - Locked: muted throughout, lock icon, "Available Day N" tooltip on hover
+> - **`skipped_pre_signup` (new):** mute title and description in Fraunces italic body S (not bold), no lock icon, no "Begin" button. Instead a small ghost link "Read →" on the right. Caption mute italic below the title: *"From a week you lived through before FirstNinety. Available to read if you want."* No completion ✓, no urgency.
 >
 > Mission Track week view `app/(app)/mission-track/page.tsx`:
 > - Default route shows current week
 > - Header: Eyebrow "MISSION TRACK — [ROLE]", Fraunces H3 "Week N — [week theme]"
 > - Navigator: ← Week N-1 / Week N (active) / Week N+1 →
 > - Mission cards in a row (desktop) or stacked (mobile)
-> - Bottom: reflection prompt for the week + "View whole 90-day map →" link
+> - **State B users navigating to past weeks (weeks before their signup):** the week view shows missions with `skipped_pre_signup` cards, the navigator still works, and the header gets a small editorial note above the missions: *"This is from a week you lived through before FirstNinety. Read at your own pace."* No reflection prompt at the bottom of these past weeks (the reflection only fires for weeks the user is actively engaged in).
+> - Bottom (for current and future weeks only): reflection prompt for the week + "View whole 90-day map →" link
 >
 > Mission detail view `app/(app)/mission-track/[slug]/page.tsx`:
 > - Reading column max-width 720px
@@ -880,18 +925,20 @@ The content surfaces. Still no AI. Estimated 4–5 days.
 >   4. Success looks like (Eyebrow "SUCCESS LOOKS LIKE")
 >   5. Reflection prompt (Eyebrow "REFLECTION") + textarea for response
 > - Bottom: "Mark complete" primary button + "Skip this mission" ghost button
+> - **For `skipped_pre_signup` missions specifically:** the page renders the same five sections (the content is the same — the user might want to read it) but the bottom action area is different. Instead of "Mark complete" + "Skip", show a single small editorial line: *"This mission isn't open for completion — you've already lived through this week. Read it as a reference if it's useful."* No textarea for reflection. No "Mark complete" button.
 >
 > Server actions in `app/(app)/mission-track/actions.ts`:
-> - `startMission(missionId)` — upserts `mission_completions` with status `in_progress`
-> - `completeMission(missionId, reflectionResponse?)` — sets status `completed`, captures reflection, sets `completed_at`
-> - `skipMission(missionId, reason?)` — sets status `skipped`
+> - `startMission(missionId)` — upserts `mission_completions` with status `in_progress`. **Rejects if the mission's status is currently `skipped_pre_signup`** — those missions are read-only.
+> - `completeMission(missionId, reflectionResponse?)` — sets status `completed`, captures reflection, sets `completed_at`. **Rejects if the mission's current status is `skipped_pre_signup`.**
+> - `skipMission(missionId, reason?)` — sets status `skipped`. Does NOT change `skipped_pre_signup` to `skipped` — those are different concepts.
 > - `getCurrentWeekMissions()` — returns missions for current week with completion status
+> - `getPastWeekMissions(week)` — returns missions for a specific past week, including `skipped_pre_signup` ones for State B users
 >
 > Mission ordering at MVP is **fixed per role** — adaptive ordering is Phase 2B per PRD. Order is by `week ASC, sequence_in_week ASC`.
 >
-> Prerequisites: a mission is `locked` if any prerequisite mission has `mission_completions.status != 'completed'`. Otherwise `available`.
+> Prerequisites: a mission is `locked` if any prerequisite mission has `mission_completions.status NOT IN ('completed', 'skipped_pre_signup')`. **Critical:** `skipped_pre_signup` counts as satisfying a prerequisite — State B users do not get locked out of their current week because they "missed" earlier missions.
 >
-> Mark mission completion as a "meaningful interaction" event — this is when the notification permission prompt may fire (per prompt 1.7).
+> Mark mission completion as a "meaningful interaction" event — this is when the notification permission prompt may fire (per prompt 1.7). `skipped_pre_signup` reads do NOT count as meaningful interactions.
 
 **Verification:**
 - Mission week view shows the current week's missions with correct statuses
@@ -900,6 +947,9 @@ The content surfaces. Still no AI. Estimated 4–5 days.
 - Reflection text is captured in `mission_completions.reflection_response`
 - Locked missions show correct "Available Day N" caption
 - Navigator moves between weeks; can't go before week 1 or after week 13
+- **State B user (start_date 22 days ago) sees Weeks 1-3 with `skipped_pre_signup` cards, Week 4 active with current missions, Week 5+ locked or unlocked per normal rules**
+- **A State B user cannot accidentally "complete" a `skipped_pre_signup` mission (the action is blocked server-side)**
+- **Current week is not blocked by `skipped_pre_signup` prerequisites — State B users can start Week 4 missions immediately**
 
 **Commit:** `feat(mission-track): week view, mission detail, completion flow`
 
@@ -1071,7 +1121,7 @@ Proceed to Phase 3 only when all green.
 
 ---
 
-# Phase 3 — AI Surfaces (16 prompts)
+# Phase 3 — AI Surfaces (17 prompts)
 
 The differentiated features. Estimated 8-10 days. The heaviest phase.
 
@@ -1242,11 +1292,11 @@ The differentiated features. Estimated 8-10 days. The heaviest phase.
 > - Body paragraph + region-specific helplines (use a static list for MVP: Samaritans UK 116 123, 988 US, "Find local services →" link to a curated list)
 > - Always renders when flagged — never gated on user behaviour
 >
-> **Author `content/coach-prompts/safety.md`** (the safety system message block that will be injected into every Coach, Situation Room, and Simulator system prompt by the Claude wrapper from prompt 3.1). This is the canonical location of the runtime safety rules. The file must include the standard rules from MVP Spec v1.2 §4.6 (no employment law advice, no medical diagnosis, no judgement of named individuals, scope-to-tradecraft, never refer to self as "an AI"), **plus an explicit scope-boundary rule on technical execution help** per CLAUDE.md v1.2 item 16 and SKILL.md v1.2 §8.4. The scope-boundary block should read approximately:
+> **Author `content/coach-prompts/safety.md`** (the safety system message block that will be injected into every Coach, Situation Room, and Simulator system prompt by the Claude wrapper from prompt 3.1). This is the canonical location of the runtime safety rules. The file must include the standard rules from MVP Spec v1.3 §4.6 (no employment law advice, no medical diagnosis, no judgement of named individuals, scope-to-tradecraft, never refer to self as "an AI"), **plus an explicit scope-boundary rule on technical execution help** per CLAUDE.md v1.3 item 16 and SKILL.md v1.3 §8.4. The scope-boundary block should read approximately:
 >
 > > **Scope.** You are a workplace tradecraft coach, not a technical execution helper. You do not write SQL queries, debug code, walk through library or framework configuration, or explain technical concepts at an implementation level. When the user asks for technical execution help (SQL syntax, code debugging, library setup, "how do I do X in Y"), acknowledge the question is outside your lane and suggest ChatGPT, Stack Overflow, or Cursor for that work. Then, if there is a workplace conversation hiding inside the technical question, offer to help with that — for example: "Stack Overflow will explain webhooks faster and better than I will. But the conversation you'll need to have about feasibility — I can help with that. Tell me who's pushing for the integration." The pattern is three parts: acknowledge the lane, point to the right tool, offer the in-scope version if there is one. If the user persists with a pure technical question after the redirect, stay polite and stay out of the lane.
 >
-> See SKILL.md v1.2 §8.4 for the full reasoning, the three edge cases (technical-work-as-workplace-situation IN scope; stakeholder-communication-about-technical-concepts IN scope; pure technical questions OUT of scope with redirect), and the canonical voice patterns. This file should not paraphrase those — load and reference them directly so the rule is enforced consistently at runtime.
+> See SKILL.md v1.3 §8.4 for the full reasoning, the three edge cases (technical-work-as-workplace-situation IN scope; stakeholder-communication-about-technical-concepts IN scope; pure technical questions OUT of scope with redirect), and the canonical voice patterns. This file should not paraphrase those — load and reference them directly so the rule is enforced consistently at runtime.
 >
 > Wire safety checks into the streaming endpoint:
 > - Before calling Claude, run `runPreFlightChecks` on the user_message
@@ -1717,13 +1767,15 @@ The differentiated features. Estimated 8-10 days. The heaviest phase.
 
 ## Prompt 3.14 — Probation Mode surfaces (THE BIG PHASE 3 ADDITION)
 
-**Purpose:** All the Probation Mode UI plus the fourth Coach tool. Wires together everything from PRD §6.6.
+**Purpose:** All the Probation Mode UI plus the fourth Coach tool. Wires together everything from PRD v1.9 §6.6. **Per PRD v1.9, Probation Mode is independent of the Mission Track lifecycle — it works for any user with a future probation date regardless of where they are in their journey or whether they have a Mission Track at all.** Build this prompt to handle the standard case (State A/B users with curriculum overlay); the standalone case for State C users without curriculum is prompt 3.17.
 
-**Reference:** PRD §6.6 (full feature spec), §7.5 (flow), MVP Spec §2.3 (probation columns), §3.1 (probation actions), §4.2 (fourth Coach tool)
+**Reference:** PRD v1.9 §6.6 (full feature spec — note the independence from Mission Track), §7.5 (flow), MVP Spec v1.3 §2.3 (probation columns + entry_state), §3.1 (probation actions), §4.2 (fourth Coach tool)
+
+**Architectural rule for this prompt and 3.17:** Probation Mode activation logic checks ONLY `probation_review_date - probation_window_days <= today` AND `probation_review_date >= today`. It does NOT check Mission Track state, `current_day`, or `entry_state`. The UI rendering differs based on whether there's a Mission Track to overlay onto (3.14) or not (3.17), but the activation/deactivation/Brief-generation/outcome-capture logic is identical.
 
 **The prompt:**
 
-> Build the full Probation Mode feature set.
+> Build the full Probation Mode feature set for users with a concurrent Mission Track (State A and State B users). The standalone variant for State C users is prompt 3.17 — but most of the logic in this prompt is shared and you'll build it once.
 >
 > **Step 1 — Daily Home banner replacement (when probation_mode_active):**
 > Replace the standard week-theme banner on `/home` with the Probation banner:
@@ -1828,13 +1880,13 @@ The differentiated features. Estimated 8-10 days. The heaviest phase.
 
 **Purpose:** Make the Coach's system prompt context-aware of users past Day 90. Voice and tools unchanged; only the situational priming switches based on `user_context.current_day`.
 
-**Reference:** PRD v1.8 §6.0 (continuing surfaces) and §7.4 (90-Day Graduation), MVP Spec v1.2 §4.2 (Coach system prompt structure with day variants), SKILL.md v1.2 §8.2 (voice for post-Day-90 users)
+**Reference:** PRD v1.9 §6.0 (continuing surfaces) and §7.4 (90-Day Graduation), MVP Spec v1.3 §4.2 (Coach system prompt structure with day variants), SKILL.md v1.3 §8.2 (voice for post-Day-90 users)
 
 **The prompt:**
 
 > Extend the Coach system prompt builder to handle the post-Day-90 priming variant.
 >
-> Read MVP Spec v1.2 §4.2 — specifically the "System prompt structure" subsection with the two priming variants. Read SKILL.md v1.2 §8.2 for the voice rules around post-90 users.
+> Read MVP Spec v1.3 §4.2 — specifically the "System prompt structure" subsection with the two priming variants. Read SKILL.md v1.3 §8.2 for the voice rules around post-90 users.
 >
 > Update `lib/coach/system-prompt.ts`:
 > - The `buildCoachSystemPrompt(userId, threadId)` function currently composes from five blocks (role priming, voice rules, current context, safety, tool descriptions).
@@ -1884,13 +1936,13 @@ The differentiated features. Estimated 8-10 days. The heaviest phase.
 
 **Purpose:** The third state of the Daily Home. Activates when `current_day > 90`. The Mission Track has concluded; the Situation Room becomes the centre of gravity.
 
-**Reference:** PRD v1.8 §7.4 (90-Day Graduation and Day 91+), Design Prompts v2.0 C16 (visual reference), CLAUDE.md v1.2 "Post-Day-90 Reuse" section, prompt 2.2 (existing Daily Home with two states)
+**Reference:** PRD v1.9 §7.4 (90-Day Graduation and Day 91+), Design Prompts v2.0 C16 (visual reference), CLAUDE.md v1.3 "Post-Day-90 Reuse" section, prompt 2.2 (existing Daily Home with two states)
 
 **The prompt:**
 
 > Extend the Daily Home page (built in prompt 2.2) to handle the third state — Day 91+.
 >
-> Read PRD v1.8 §7.4 and the Daily Home section of CLAUDE.md v1.2. Reference Design Prompts v2.0 C16 for the exact visual layout.
+> Read PRD v1.9 §7.4 and the Daily Home section of CLAUDE.md v1.3. Reference Design Prompts v2.0 C16 for the exact visual layout.
 >
 > The Daily Home now has three rendering states, selected server-side based on `user_context.current_day`:
 > - **Day 1** (signature design moment from prompt 2.2)
@@ -1972,19 +2024,95 @@ The differentiated features. Estimated 8-10 days. The heaviest phase.
 
 ---
 
+## Prompt 3.17 — Probation Mode in standalone post-Day-90 context
+
+**Purpose:** Extend Probation Mode to work for users with no concurrent Mission Track — primarily **State C users with a future probation date** (e.g., 6-month probation, signed up at Month 3), but also post-graduation State A/B users with extended or repeat probations after Day 90.
+
+**Reference:** PRD v1.9 §6.6 (Probation Mode independent of curriculum state), §7.4 (State C handling), MVP Spec v1.3 §9 Phase 3.17
+
+**The prompt:**
+
+> Extend the Probation Mode infrastructure from prompt 3.14 to handle users with no concurrent Mission Track.
+>
+> **The architectural rule:** Probation Mode activation logic is identical regardless of curriculum state. The activation check is purely `probation_review_date - probation_window_days <= today AND probation_review_date >= today`. What changes is only the Daily Home rendering when both Probation Mode is active AND the user has no current Mission Track (`entry_state == 'C' OR current_day > 90`).
+>
+> **Step 1 — Daily Home state selection update.**
+>
+> Update the Daily Home state-selection logic from prompt 3.16 to handle the new combined case:
+>
+> ```
+> if probation_mode_active == true:
+>   if entry_state == 'C' OR current_day > 90:
+>     render Probation Mode banner replacing the standard post-Day-90 banner
+>     show probation missions as the daily missions (no other missions exist)
+>     fourth Situation Room label visible
+>     "Recent" sidebar (post-Day-90 layout retained for non-probation sections)
+>   else:
+>     render existing 3.14 behavior (Probation Mode overlay on Mission Track)
+> else:
+>   render base state per entry_state and current_day (existing logic)
+> ```
+>
+> **Step 2 — Probation missions for post-Day-90 users.**
+>
+> The 5-mission probation set from prompt 3.14 (Book your pre-review 1:1, Write self-assessment, Assemble evidence portfolio, Rehearse the review conversation, Pre-empt your one weakness) becomes the *daily mission set* during the probation window for these users — not inserted into a Mission Track, but rendered as the standalone curriculum for the active window.
+>
+> Update the mission renderer in `app/(app)/home/page.tsx` to handle this case:
+> - When `probation_mode_active == true AND no current Mission Track`: query probation missions directly via `getProbationMissions(role, days_to_review)` (new server action — returns 1-2 probation missions appropriate for the user's current probation timeline)
+> - Render these as standard Mission Cards but with eyebrow "PROBATION" instead of "TODAY — DAY N"
+> - Mission detail pages work identically — same five sections, same completion flow
+>
+> **Step 3 — Probation Brief generation for users without curriculum data.**
+>
+> The Brief generation logic from prompt 3.14 calls `get_probation_evidence` to assemble context from completed missions, scenario runs, situation sessions, and journal reflections. For State C users, the "completed missions" category will be empty (they have no Mission Track). The Brief generator must handle this gracefully:
+>
+> - The `get_probation_evidence` tool returns whatever categories *do* have data — situation sessions, Coach threads, and (if any) the probation missions completed during the active window
+> - The Brief structure stays identical (top half: Delivered / Learned / Want next; bottom half: three examples; footer: three questions)
+> - For the "examples" section, draw from situation sessions and Coach thread topics rather than scenario runs and mission completions
+> - If the user has used the product for less than 14 days at Brief generation time, surface a small editorial note in the Brief output: *"You've only been with FirstNinety for {N} days, so this Brief draws on a shorter window of evidence than usual. Trust your own knowledge of the work — FirstNinety is a tool to organise your thinking, not the source of it."*
+>
+> **Step 4 — Post-review transition.**
+>
+> When Probation Mode deactivates (review date passes or user manually deactivates), State C users return to the standard post-Day-90 state (from prompt 3.16), not to a Mission Track. The outcome capture and post-review Coach thread work identically.
+>
+> **Step 5 — Verification that the architecture stays clean.**
+>
+> Run an audit pass on the Probation Mode codebase:
+> - No code path checks `current_day` to decide whether Probation Mode can activate
+> - No code path checks `entry_state` to decide whether Probation Mode can activate
+> - The Daily Home renderer is the only place that uses `entry_state` to decide which layout to render *around* the active Probation Mode
+> - The Brief generator handles missing curriculum data gracefully without failing
+>
+> This audit ensures Probation Mode's independence is genuinely architectural, not just notional.
+
+**Verification:**
+- A State C user (start_date 100 days ago) with a probation date 14 days from today: Probation Mode activates correctly, banner replaces the standard post-Day-90 banner, probation missions render as the daily missions, fourth Situation Room label appears
+- The same State C user generates a Probation Brief: Brief renders correctly with examples drawn from situation sessions and Coach threads (not from missing mission completions)
+- After review date passes, the user returns to the standard post-Day-90 state (not to a Mission Track)
+- A standard State A user with probation in the final 21 days of curriculum: Probation Mode behaves per prompt 3.14 (overlay on Mission Track)
+- Architectural audit: no code path conditions Probation Mode activation on `current_day` or `entry_state`
+
+**Commit:** `feat(probation): standalone post-Day-90 context for State C users`
+
+---
+
 ## Phase 3 Exit Gate
 
 - [ ] All six product features work end-to-end with seeded BA content
 - [ ] Probation Mode works end-to-end (test simulated against a near-future review date)
 - [ ] **Post-Day-90 Daily Home state renders correctly when `current_day > 90`** (test by setting a user's start_date to 100 days ago)
 - [ ] **Coach post-90 priming variant loads correctly for users past Day 90** (verify in a test thread)
+- [ ] **State B (mid-journey within 90 days) signup tested end-to-end — user signing up at Day 22 sees mid-journey welcome, skipped weeks marked `skipped_pre_signup`, current week available**
+- [ ] **State C (post-Day-90 at signup) signup tested end-to-end — user with start_date 100 days ago lands directly into post-Day-90 Daily Home, no `mission_completions` rows created**
+- [ ] **State C user with future probation date — Probation Mode activates standalone (no curriculum overlay), Brief generates correctly from situation sessions and Coach threads if no missions exist**
+- [ ] **Coach Day 91+ priming variant works for State A/B graduated users; Coach State C priming variant works for State C users**
 - [ ] Cost per Coach interaction is tracked correctly in `ai_calls`
 - [ ] Tier gating denies free users at the right limits across all surfaces
 - [ ] Coach tool-calling works; fourth tool registers conditionally on Probation Mode
 - [ ] Simulator two-call pattern works (persona + coordinator)
-- [ ] Debriefs use the honest senior-colleague voice from SKILL.md v1.2 §4.3
+- [ ] Debriefs use the honest senior-colleague voice from SKILL.md v1.3 §4.3
 - [ ] Safety checks fire correctly; CrisisReferral renders appropriately
-- [ ] **Coach correctly redirects pure technical questions per the scope boundary** (test by asking the Coach to write SQL or debug code — expected: acknowledge lane, point to ChatGPT/Stack Overflow, offer in-scope alternative if relevant)
+- [ ] Coach correctly redirects pure technical questions per the scope boundary (test by asking the Coach to write SQL or debug code — expected: acknowledge lane, point to ChatGPT/Stack Overflow, offer in-scope alternative if relevant)
 - [ ] No "Great question!" openers anywhere in AI output (review samples)
 - [ ] P50 first-token latency under 2.5s for Coach and Situation Room
 
@@ -2660,7 +2788,7 @@ If not green: hold launch, fix the items, re-check.
 
 ### How long will this take?
 
-Per MVP Spec v1.2 §9.10: **30–38 days of focused engineering effort** for a single engineer (Tokunbo). With content production running in parallel during Phases 1–3, and design review baked into Phase 5 QA, target ship: **6–8 weeks from build start to production launch**.
+Per MVP Spec v1.3 §9.10: **33–41 days of focused engineering effort** for a single engineer (Tokunbo). With content production running in parallel during Phases 1–3, and design review baked into Phase 5 QA, target ship: **7–9 weeks from build start to production launch**.
 
 ### What's NOT covered
 
@@ -2681,13 +2809,15 @@ The temptation will be to jump ahead to AI surfaces (Phase 3) because they're th
 Ask Claude Code a sharp clarifying question when:
 - A spec section genuinely contradicts another
 - A library version is unspecified and the latest stable has breaking changes
-- An open spec question from MVP Spec v1.2 §11 needs to be resolved to proceed
+- An open spec question from MVP Spec v1.3 §11 needs to be resolved to proceed
+- A user scenario doesn't clearly fit State A, B, or C (per PRD v1.9 §7.1) — ask before assuming
 
 Power through (and document the decision) when:
 - A small UX detail is unspecified — apply the Design Brief §12 premium checklist as your judgement
-- A piece of content needs minor adjustment — apply SKILL.md v1.2 §10 60-second quality test
-- The user asks the Coach for technical execution help — apply the redirect pattern per SKILL.md v1.2 §8.4 (acknowledge lane, point to ChatGPT/Stack Overflow, offer in-scope alternative)
+- A piece of content needs minor adjustment — apply SKILL.md v1.3 §10 60-second quality test
+- The user asks the Coach for technical execution help — apply the redirect pattern per SKILL.md v1.3 §8.4 (acknowledge lane, point to ChatGPT/Stack Overflow, offer in-scope alternative)
+- A State B or State C edge case is unspecified — apply the principle from SKILL.md v1.3 §11.1: "write for the user in front of you, not the user the curriculum imagined"
 
 ---
 
-*End of Build Prompts v1.2*
+*End of Build Prompts v1.3*

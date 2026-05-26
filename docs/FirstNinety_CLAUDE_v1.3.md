@@ -1,20 +1,19 @@
-# FirstNinety — CLAUDE.md (v1.2)
+# FirstNinety — CLAUDE.md (v1.3)
 
 This file provides project context to Claude (Claude Code, Claude.ai, or any Claude integration) when working on the FirstNinety codebase or design system.
 
-**Version:** 1.2
+**Version:** 1.3
 **Last updated:** 23 May 2026
-**Companion documents:** PRD v1.8, MVP Spec v1.2, Competitive Analysis v1.1, Design Brief v1.0, Design Prompts v2.0, SKILL.md v1.2, Build Prompts v1.2
+**Companion documents:** PRD v1.9, MVP Spec v1.3, Competitive Analysis v1.1, Design Brief v1.0, Design Prompts v2.1, SKILL.md v1.3, Build Prompts v1.3
 
-**Changes from v1.1:**
-- §"What NOT to do" extended with explicit scope boundary: no technical execution help (no SQL syntax, no code debugging, no library configuration)
-- Reasoning: FirstNinety's moat is workplace context, not technical execution; ChatGPT / Stack Overflow / Cursor own that lane
+**Changes from v1.2:**
+- §"What NOT to do" extended with item 17: no "catch up" mode for mid-journey users (they're not behind, they're starting where they are)
+- §"Post-Day-90 reuse" extended to clarify Probation Mode is independent of curriculum state
+- New section: "Three entry states" explaining State A / B / C handling at signup
+- Cross-references updated to v1.9 PRD and v1.3 MVP Spec
 
-**Changes from v1.0 (carried forward from v1.1):**
-- Core features updated from five to six surfaces (Probation Prep Mode added per PRD v1.7 §6.6)
-- AI Architecture: Coach gains fourth conditional tool (`get_probation_evidence`) when Probation Mode is active
-- New section §"Post-Day-90 reuse" added (per PRD v1.8 §6.0 and §7.4) — Coach priming variant for users past Day 90
-- Cross-references updated throughout to point to current doc versions
+**Changes from v1.1 (carried forward from v1.2):**
+- §"What NOT to do" extended with item 16: no technical execution help
 
 ---
 
@@ -104,6 +103,7 @@ These are the patterns that *will* break the FirstNinety premium positioning, li
 14. **Do not over-build the Mission Track.** At MVP it's a deterministic state machine — fixed ordering, no AI in orchestration. Adaptive ordering is Phase 2B.
 15. **Do not add a community / forum surface.** Cohort tier was deliberately removed; do not reintroduce it through the back door.
 16. **Do not build features that provide technical execution help.** No SQL syntax helpers, no code debugging surfaces, no library configuration walkthroughs, no "explain this error" tools, no IDE-style autocomplete. FirstNinety's moat is workplace context (role-aware, situation-aware, probation-aware). ChatGPT, Stack Overflow, Cursor, and GitHub Copilot already serve technical execution at scale; users pay them $0–20/month for that lane. FirstNinety at $39.99/month only justifies its premium by doing what those tools cannot: knowing the user is a Week-6 BA at a financial services firm with a hostile lead developer. Features that drift into technical execution erode the premium positioning, confuse the value proposition, and risk hallucinating technical content that damages trust in the workplace coaching the product *is* good at. The Coach handles this boundary at runtime (see SKILL.md v1.2 §8.4); features built on the Coach must not contradict it.
+17. **Do not build a "catch up" mode for mid-journey signup users.** Users who sign up at Week 3 of their role are not behind — they're starting where they are. Building a condensed Week 1-3 catch-up track implies they should have been using FirstNinety from Day 1, which is wrong both architecturally (Mission Track works against lived experience, not retroactively) and emotionally (the user feels she joined something for people more organised than her). Instead, missed missions are marked `skipped_pre_signup` (per MVP Spec v1.3 §2.5) — accessible-to-read but not blocking, not required, not framed as "missed." The product respects where the user is. See PRD v1.9 §7.1 for the three entry states.
 
 ---
 
@@ -152,21 +152,54 @@ Voice and behaviour rules are unchanged across both variants. Only the situation
 
 ---
 
-## Post-Day-90 Reuse — what survives the curriculum
+## Three Entry States — how the product handles signup timing
+
+Per PRD v1.9 §7.1, FirstNinety handles three distinct entry states based on when the user signs up relative to their actual role start date:
+
+- **State A — Fresh start** (start_date ≥ today − 3 days): Standard journey. Mission Track Day 1 signature empty state activates. The user gets the editorial onboarding moment.
+- **State B — Mid-journey within first 90 days** (today − 89 days ≤ start_date < today − 3 days): The user has already lived through some of the curriculum. Mid-journey welcome state on Daily Home replaces the Day 1 signature moment. Missions from weeks the user lived through are marked `skipped_pre_signup` — accessible-to-read but not blocking the current week.
+- **State C — Post-Day-90 at signup** (start_date < today − 89 days): The user joined past Day 90 of their role. No Mission Track is created. User routes directly to the post-Day-90 Daily Home layout on first login. Coach uses a third system prompt context variant (per MVP Spec v1.3 §4.2) that doesn't assume the user used FirstNinety during their first 90 days.
+
+Entry state is computed once at signup (in `completeOnboarding` per MVP Spec v1.3 §3) and stored in `user_context.entry_state`. It does not change after signup (a State B user who reaches Day 90 inside the product is still a State B user — the framing in their Survival Report, if any, acknowledges this).
+
+### Why this matters for code
+
+Any feature that touches onboarding, Daily Home, Mission Track, Coach system prompts, Probation Mode, or post-90 navigation must:
+1. Check `user_context.entry_state` to determine which variant applies
+2. For State C users with a future probation date, Probation Mode is the *dominant* Daily Home surface during the active window — not an overlay on a non-existent Mission Track
+3. Do not surface "your first 90 days" framing in Coach voice for State C users (see SKILL.md v1.3 §11.1)
+4. Do not surface a Survival Report link for State C users (they have no Survival Report)
+
+If you're building something and the spec doesn't tell you how to handle a State B or State C user, ask. Don't assume State A is the only case.
+
+---
+
+
 
 Per PRD v1.8 §6.0 and §7.4, FirstNinety distinguishes between time-bound surfaces and continuing surfaces:
 
 **Continues indefinitely** for any paying user:
 - Situation Room (the daily-relevance engine — arguably *more* valuable over time as Situation history accumulates)
-- AI Coach (with the post-90 priming variant — see "AI Architecture" above)
+- AI Coach (with the post-90 priming variant — see "AI Architecture" above; State C users get a third variant)
 - Playbook Library (permanent professional reference shelf)
-- Scenario Simulator (with quarterly content additions per PRD v1.8 §13)
+- Scenario Simulator (with quarterly content additions per PRD v1.9 §13)
 
-**Concludes at Day 90 by design:**
-- Mission Track (13-week curriculum with a defined endpoint)
+**Concludes at Day 90 by design (State A and State B users only):**
+- Mission Track (13-week curriculum with a defined endpoint; State C users have no Mission Track from the start)
 
-**Time-bound by design:**
-- Probation Prep Mode (auto-deactivates on review date)
+**Time-bound by design, independent of curriculum state:**
+- Probation Prep Mode (auto-deactivates on review date; activates 21 days before *any* future probation review, regardless of where the user is in their journey or whether they have a Mission Track at all — see PRD v1.9 §6.6)
+
+### Probation Mode works for all four user populations
+
+This is worth being explicit about, because the original v1.7 framing of Probation Mode tied it to the 90-day curriculum. Per PRD v1.9 §6.6, that's no longer the case:
+
+1. **State A users at end of Mission Track** (typical case) — Probation Mode overlays the final 21 days of the curriculum
+2. **State B users mid-journey** — Probation Mode activates 21 days before *their* review date, which may be earlier or later than Day 90 in product terms
+3. **State C users with future probation** (e.g. 6-month probation, signed up at Month 3) — Probation Mode becomes the dominant Daily Home surface during the active window, replacing the standard post-Day-90 banner
+4. **Any user with an extended/repeat probation** after Day 90 — same as State C handling
+
+Architecturally, this means Probation Mode logic must not depend on Mission Track state. The activation check is: *does the user have a future `probation_review_date`, and is today within `probation_window_days` of it?* That's the entire condition.
 
 ### Daily Home — three states
 
@@ -213,6 +246,7 @@ When working on FirstNinety code, before writing or modifying anything:
 7. Does the UI follow Design Brief §6 (component vocabulary) and §12 (premium checklist)?
 8. **Does this surface need to handle the three day-states (Day 1 / Day N within 90 / Day 91+) correctly?**
 9. **Does this surface need Probation-Mode-aware behaviour?** (e.g. Daily Home banner, Mission Track inserts, Situation Room fourth entry, Coach fourth tool)
+10. **Does this surface need to handle the three entry states (A / B / C) correctly?** State B users have a partial Mission Track; State C users have none. Don't assume State A is the only case.
 
 When in doubt, ask the user a sharp clarifying question rather than guessing.
 
@@ -228,4 +262,4 @@ When in doubt, ask the user a sharp clarifying question rather than guessing.
 
 ---
 
-*End of CLAUDE.md v1.2*
+*End of CLAUDE.md v1.3*

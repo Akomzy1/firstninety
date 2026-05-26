@@ -3,36 +3,30 @@ name: firstninety
 description: Use this skill whenever working on the FirstNinety codebase, design system, content authoring, or any FirstNinety-related task. This includes writing scenario briefs, debrief rubrics, mission content, playbook annotations, Coach prompts, Situation Room intake flows, marketing copy, role-specific tradecraft content for BA/PM/SM/PO/DA/AI Engineer, probation-specific content (probation scenarios, missions, Prep Pack, Brief), and any UI design or copy that must conform to FirstNinety's premium positioning and voice. Trigger especially when generating content that needs to be role-aware, situation-aware, and aligned with the editorial-confident tone of a senior colleague. Do NOT use this skill for unrelated career coaching products or for generic AI chatbot work.
 ---
 
-# FirstNinety Skill — Authoring & Building Within the FirstNinety Universe (v1.2)
+# FirstNinety Skill — Authoring & Building Within the FirstNinety Universe (v1.3)
 
 This skill captures the *domain knowledge* needed to produce content, code, and design that genuinely fits FirstNinety — beyond what a generic AI product would produce. It compounds in value as more content is authored.
 
-**Version:** 1.2
+**Version:** 1.3
 **Last updated:** 23 May 2026
-**Companion documents:** PRD v1.8, MVP Spec v1.2, Competitive Analysis v1.1, Design Brief v1.0, Design Prompts v2.0, CLAUDE.md v1.2, Build Prompts v1.2
+**Companion documents:** PRD v1.9, MVP Spec v1.3, Competitive Analysis v1.1, Design Brief v1.0, Design Prompts v2.1, CLAUDE.md v1.3, Build Prompts v1.3
 
-**Changes from v1.1:**
-- §8.4 added: Scope boundary — Coach does not provide technical execution help; explicit redirect pattern with sample voice
-- §9 Common Authoring Mistakes extended with the "drifted into technical territory" failure mode
+**Changes from v1.2:**
+- §1 product summary clarified: product serves users at any point in their early tenure (not exclusively Day 1 starts)
+- §8.1 Probation voice: counterweight applies equally to mid-journey and post-90 probation users
+- §11.1 added: Authoring guidance for mid-journey (State B) and post-Day-90 (State C) users — Coach should not refer to "your first 90 days" framing if user signed up mid-journey or post-90
 
-**Changes from v1.0 (carried forward from v1.1):**
-- §1 product summary updated to six features (Probation Prep Mode added)
-- §4.4 added: Probation-specific scenario authoring (one per role)
-- §5.4 added: Fourth Situation Room entry type — "This is about my probation"
-- §6 Week themes: Week 7 and Week 12 framing clarified to align with Probation Mode (PRD §6.6)
-- §6.2 added: Probation Missions authoring guide (5 probation-specific missions per role)
-- §7.1 added: Probation Prep Pack as a composite playbook structure
-- §8 Coach voice extended: Probation Mode voice (counterweight against over-preparation) + post-Day-90 priming variant
-- §10 60-second quality test extended with probation-specific check
-- §12 added: Quarterly content commitments (AIE wedge content addition)
+**Changes from v1.1 (carried forward from v1.2):**
+- §8.4 added: Scope boundary — Coach does not provide technical execution help
+- §9 item 9 added: Common authoring mistake — drifting into technical territory
 
 ---
 
 ## 1. The Product in One Paragraph (Memorise This)
 
-FirstNinety is a premium ($39.99/month) AI-native workplace coaching platform helping freshly trained tech professionals survive their first 90 days in a new role. Six launch roles: Business Analyst, Project Manager, Scrum Master, Product Owner, Data Analyst, Junior/Associate AI Engineer. **Six features:** Situation Room (on-demand workplace help), AI Coach (the underlying conversational engine, lightly agentic with tool-calling), Scenario Simulator (rehearsal of difficult workplace conversations), Playbook Library (worked examples of artefacts), 90-day Mission Track (structured curriculum, concludes at Day 90 by design), and Probation Prep Mode (time-bound surface activated for the final 21 days before the user's probation review, with optional outcome capture). Primary persona is "Maya" — a 28-42 year old career-changer at £45-60k UK or $70-100k US. Launch markets: UK + US. Brand voice: confident senior colleague — calm, direct, dry, never patronising.
+FirstNinety is a premium ($39.99/month) AI-native workplace coaching platform helping freshly trained tech professionals survive their first 90 days in a new role. **The product serves users at any point in their early tenure**, not exclusively users starting on Day 1 — see PRD v1.9 §7.1 for the three entry states (State A: fresh start; State B: mid-journey within 90 days; State C: post-Day-90 at signup). Six launch roles: Business Analyst, Project Manager, Scrum Master, Product Owner, Data Analyst, Junior/Associate AI Engineer. **Six features:** Situation Room (on-demand workplace help), AI Coach (the underlying conversational engine, lightly agentic with tool-calling), Scenario Simulator (rehearsal of difficult workplace conversations), Playbook Library (worked examples of artefacts), 90-day Mission Track (structured curriculum, concludes at Day 90 by design — partial for State B users, absent for State C users), and Probation Prep Mode (time-bound surface activated for the final window before *any* future probation review, regardless of curriculum state, with optional outcome capture). Primary persona is "Maya" — a 28-42 year old career-changer at £45-60k UK or $70-100k US. Launch markets: UK + US. Brand voice: confident senior colleague — calm, direct, dry, never patronising.
 
-Four of the six surfaces (Situation Room, Coach, Playbook, Simulator) **continue indefinitely past Day 90** for paying users. The Mission Track concludes at Day 90 by design. Probation Mode auto-deactivates on review date. See PRD v1.8 §6.0 for the full continuity model.
+Four of the six surfaces (Situation Room, Coach, Playbook, Simulator) **continue indefinitely past Day 90** for paying users. The Mission Track concludes at Day 90 by design for State A/B users; State C users never had one. Probation Mode is independent of curriculum state — it activates 21 days before any future probation review and auto-deactivates on review date. See PRD v1.9 §6.0 and §6.6 for the full continuity model.
 
 ---
 
@@ -593,6 +587,26 @@ If you're authoring this voice and any sentence feels patronising, cut it. If an
 
 When in doubt, this skill takes precedence on tone, voice, and authoring decisions. The PRD takes precedence on feature scope and architecture.
 
+### 11.1 Authoring for mid-journey (State B) and post-Day-90 (State C) users
+
+Per PRD v1.9 §7.1, FirstNinety serves three entry states: State A (fresh start), State B (mid-journey within 90 days), and State C (post-Day-90 at signup). The voice and content rules apply across all three with one critical adjustment for State C:
+
+**Do not refer to "your first 90 days" framing in Coach responses for State C users.** The user joined past Day 90. Their first 90 days at this organisation happened without FirstNinety. Phrases like *"your first 90 days"*, *"the first quarter you've just had"*, *"by week 6 you should..."*, or *"as you've been working through the curriculum"* are all wrong for State C users. They didn't run the curriculum.
+
+The Coach's third system prompt variant (per MVP Spec v1.3 §4.2) handles this priming server-side, but content authors should also avoid this framing in any Playbook annotations, Scenario debriefs, or Coach prompts that could be served to a State C user.
+
+**State B users get a partial Mission Track.** Missions from before their signup date are marked `skipped_pre_signup`. When authoring Mission content, don't write reflection prompts that assume the user lived through earlier missions in the product (*"Looking back at your Week 2 stakeholder map..."*). Write reflection prompts that work whether or not the user did the earlier mission inside FirstNinety.
+
+**Probation Mode voice for State B and State C users.** The counterweight against over-preparation (per §8.1) applies equally to these users. A State C user with a 6-month probation is *more* vulnerable to over-preparation than a typical State A user — she has more time, more anxiety to fill, and no curriculum structure constraining her time use. The Coach's role is to keep her grounded: *"You have six weeks until your review. Three of those are for doing the actual work that the review will assess. Don't over-rehearse — over-rehearsed answers sound rehearsed."*
+
+**The "Continued" / "Extended" / "Ended" outcome voice** (per §8.3) applies identically to all three states. The probation outcome itself isn't different for State C users; only the framing leading up to it.
+
+### 11.2 What to do when a content piece won't work for all three states
+
+If a piece of content (a mission, a playbook annotation, a Coach prompt) genuinely depends on the user having done the curriculum (e.g. a Day 90 reflection mission referencing earlier weeks), tag it as such in the content metadata and have the loader exclude it for State C users. Most content can be authored state-agnostic; only a small minority is genuinely state-specific.
+
+When in doubt: write for the user *in front of you*, not the user the curriculum imagined. State B and State C users are real users with real needs; their absence from the original product design is a gap to be filled honestly, not papered over.
+
 ---
 
 ## 12. Ongoing Content Commitments (post-launch)
@@ -630,4 +644,4 @@ Probation content gets a deeper editorial pass than standard content because the
 
 ---
 
-*End of SKILL.md v1.2*
+*End of SKILL.md v1.3*
