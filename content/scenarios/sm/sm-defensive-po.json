@@ -1,0 +1,43 @@
+{
+  "slug": "sm-defensive-po",
+  "role": "sm",
+  "title": "The Wishlist Backlog",
+  "one_liner": "Your PO has just added eleven stories to next sprint's plan. The team's capacity is six. He's already left the room.",
+  "brief": "## The setup\n\nWeek seven. The PO is Hari Quintero, senior product manager, in role for two years. He has strong opinions, a strong network with the executive team, and a backlog that he treats as his personal to-do list rather than the team's prioritisation document.\n\nSprint planning was this morning. Hari walked in with eleven stories he wanted in the sprint. The team estimated six, including a 2-point buffer for the inevitable bug-find. Hari nodded through the conversation, then at the end said 'OK so let's commit to all eleven, we can pull buffer if we need to' and left for another meeting before the team could respond.\n\nThe team is looking at you. Lewis is annoyed. Asha is amused. Theo has already started writing the eight extra stories into the sprint board because 'that's what the PO said'.\n\nYou have two options. You let it stand and the team works overtime, hits roughly seven stories, and the trust erodes. Or you find Hari before close of day and have the conversation you should have had in the planning meeting itself. (Why didn't you have it in the planning meeting? Because Hari has been the PO for two years and you have been the SM for seven weeks, and you weren't sure you had the standing.)\n\n## Your turn\n\nIt's 3.40pm. Hari's calendar has a 30-minute slot at 4.30pm marked 'flex'. Find him, or send the message that books it.",
+  "objective": "Get the sprint scope honest — six stories committed, the rest carried as stretch goals at most — without making Hari feel he lost. Keep the relationship intact. The team is watching whether you'll do the thing you talked about in your first 1:1.",
+  "curveball": "Hari is not actually attached to all eleven stories landing. What he's attached to is the team showing willingness — 'commitment' in his vocabulary. If the user opens with 'the team can't do eleven stories', Hari will defend the eleven and the conversation hardens. If the user opens with 'I want to talk about how we frame commitment in planning so the team can hold a real line', Hari will tell on himself — he'll say something like 'I just need to see the team is leaning in'. That's the opening. From there, six-real-plus-the-stretch-conversation is winnable.",
+  "personas": [
+    {
+      "name": "Hari Quintero",
+      "role": "Product Owner",
+      "position": "I need the team committing to outcomes, not negotiating downward",
+      "fear": "Looking soft to the exec team if velocity is visibly low",
+      "monogram": "HQ",
+      "colour": "teal"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with the framing of 'commitment' rather than the count — let Hari surface his actual concern",
+      "Held the line that the team commits to six, with the remaining five carried as stretch goals",
+      "Offered Hari a specific thing he gets in exchange: a clearer mid-sprint check on the stretch goals so he can re-prioritise live",
+      "Did NOT bring the conversation back to the team as 'I told the PO no on your behalf' — framed it as 'we landed on six commit + five stretch'"
+    ],
+    "yellow": [
+      "Got into a numbers argument — Hari has seen this argument before and has stock answers",
+      "Threatened to escalate to your manager or his — too soon, breaks the relationship",
+      "Capitulated and let all eleven land in the sprint with a private commitment to 'see what we can do'",
+      "Walked into the meeting without a specific alternative — Hari will fill the vacuum"
+    ],
+    "red": [
+      "Sent an email instead of finding the in-person slot",
+      "Made the conversation about whether Hari respects the team",
+      "Promised the team would 'push hard' on the eleven without ever pushing back on Hari at all",
+      "Used the Scrum Guide as your authority ('the team's commitment is sacred') — Hari will roll his eyes and you will lose"
+    ]
+  },
+  "estimated_minutes": 16,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

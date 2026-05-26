@@ -1,0 +1,49 @@
+{
+  "slug": "sm-ceremony-agendas",
+  "role": "sm",
+  "artefact_type": "ceremony_agendas",
+  "title": "Ceremony Agendas",
+  "variant": "composite",
+  "description": "Agendas for the four core ceremonies — standup, planning, review, refinement. Each one tuned to the question 'why are we in this meeting'. The discipline isn't running the ceremony; it's knowing what the ceremony is for and being willing to cut a ceremony that isn't serving the team.",
+  "empty_template_md": "# Ceremony Agendas — Standard\n\n## Daily Standup (15 min, daily)\n\n**Purpose:** the team sees the work-in-flight. Not a status report to the SM or PO.\n\n_Format:_\n1. Round the team, in order of who's on the board:\n   - What did I move forward yesterday?\n   - What am I moving forward today?\n   - What's blocking me?\n2. **No problem-solving in standup.** Blockers get noted; conversation moves to async or a side meeting.\n3. SM does not speak unless prompted.\n\n## Sprint Planning (90 min, sprint cadence)\n\n**Purpose:** the team commits to a sprint goal and the stories that land it.\n\n_Format:_\n1. **10 min — PO frames the sprint goal.** One sentence. Why it matters.\n2. **20 min — team sizes the top stories.** Planning poker or T-shirt; whichever the team uses.\n3. **20 min — capacity check.** Holiday, support rota, on-call. Team identifies its real capacity for the sprint.\n4. **30 min — commit + stretch.** Team commits to what fits comfortably; identifies stretch goals at the end.\n5. **10 min — sprint goal final wording.** Re-read out loud. Everyone signs off.\n\n## Sprint Review (45 min, sprint cadence)\n\n**Purpose:** show working software to stakeholders. Not the PO's status update.\n\n_Format:_\n1. **5 min — PO sets context.** One sentence: what we set out to do.\n2. **30 min — team demos the stories that landed.** Each demo run by the engineer who built it. PO does not demo.\n3. **5 min — stakeholder questions.**\n4. **5 min — what's next.** PO names the next sprint's direction, not the stories.\n\n## Backlog Refinement (60 min, weekly)\n\n**Purpose:** the team understands the next 2-3 sprints' worth of work well enough to commit to a sprint when planning comes.\n\n_Format:_\n1. **10 min — PO walks the next 5-10 stories in priority order.**\n2. **40 min — team estimates, clarifies, splits where needed.**\n3. **10 min — flag stories that aren't ready (more discovery needed). PO owns the action.**\n",
+  "worked_examples": [
+    {
+      "title": "A standup that runs 15 minutes (because the SM made the choice not to absorb)",
+      "content_md": "# Standup — 22 April, 10am\n\n## Setup\n\nThe team has been letting standup drift to 25-30 minutes for the last three sprints. The drift is mostly Lewis going deep on technical context for stories that haven't started yet. The SM has decided this week is when the discipline gets reset.\n\n## What the SM did differently\n\n- **9.55am, Slack message to the team:** 'Heads up — going to keep standup tight to 15 today. If you want to go deep on a story, flag it and we'll book 30 min after.'\n- **10am, in the room:** 'Same format. Round the board. If we hit a deep technical conversation, I'll call a sidebar.'\n- **Round happens. Lewis starts going deep on the payments refactor.**\n- **SM at the 90-second mark:** 'Lewis, sounds like there's a real conversation here. Who else needs to be in it?'\n- **Lewis: 'Naledi, probably. And maybe Asha for the design impact.'**\n- **SM: 'Great. I'll book 30 min for the three of you after standup. Carrying on.'**\n- **Standup wraps at 10.13am.**\n\n## What the SM did NOT do\n\n- Did not say 'standup isn't the place for that' (correction tone)\n- Did not let Lewis run for 8 minutes and 'just see if we could finish' (capitulation)\n- Did not interrupt mid-sentence (broken-trust move)\n\n## Why this worked\n\nThe SM offered Lewis the thing he actually wanted — time with the right people to talk through the refactor — and protected the team's time. Lewis felt heard. The team got 12 minutes back. Standup is now ending on time without anyone feeling managed.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Standup is for the team, not the SM or PO. New SMs often turn it into a status report; the test is whether the team is mostly looking at each other or mostly looking at you. If they're looking at you, you've broken the ceremony."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Planning's most-skipped step is the capacity check. Teams over-commit because nobody surfaced that Lewis is on holiday week 2. Make the capacity conversation explicit; it usually finds 20% of the team's apparent capacity isn't actually there."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Sprint review: the engineer who built it demos it. Not the PO. The team's relationship with stakeholders builds when stakeholders see the people doing the work; the PO demoing every story flattens that and turns the review into PO theatre."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Refinement is the most-cancelled ceremony. The SM who lets refinement get cancelled when calendars are tight will discover, six sprints later, that planning has become a refinement meeting in disguise. Protect refinement."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Standup turned into a status meeting. The SM asks each person 'what are you working on today?' as if they're the manager. Wrong. The team is updating each other; the SM is in the room only because they're on the team.",
+    "Problem-solving in standup. Conversation goes long, half the room checks out, the actual blocker gets discussed but five people who didn't need to be in that conversation are stuck. Move problem-solving to a side meeting.",
+    "Planning without a capacity check. Team commits to 8 stories not knowing that the QA lead has 2 days of leave that sprint. Sprint collapses in week 2.",
+    "Review run as PO presentation, not team demos. Stakeholders see the PO, not the team. The team's visibility to the org never grows.",
+    "Refinement cancelled when calendars are tight. Always the wrong call. If you skip refinement, the next planning meeting becomes refinement; the team doesn't commit cleanly; the sprint slips.",
+    "Ceremonies kept past their useful life. If the team has solved the problem the ceremony was designed for (e.g. standup is now too slow because the team is co-located and doing it informally throughout the day), retire the ceremony. The Scrum Guide is a default, not a constraint."
+  ],
+  "variant_patterns": [
+    "Distributed-team variant: standup becomes async-first (written updates in #team-channel by 10am local; in-person standup is a 10-min sync to surface blockers only). Planning runs longer (~2 hours) because tone is harder to read on video.",
+    "Co-located team variant: standup can be 5 minutes around the board. Planning + refinement can collapse into a single 'sprint setup' meeting with strong PO. The Scrum Guide cadence is optional when the team's communication is rich.",
+    "Multi-team-of-teams (Scrum of Scrums): add a weekly 'cross-team standup' for the SMs themselves. 30 min, focused on cross-team dependencies and impediments only. Not a status report to leadership."
+  ],
+  "related_scenarios": ["sm-defensive-po", "sm-capacity-disagreement", "sm-dominant-voice"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

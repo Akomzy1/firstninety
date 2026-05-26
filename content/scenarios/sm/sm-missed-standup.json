@@ -1,0 +1,43 @@
+{
+  "slug": "sm-missed-standup",
+  "role": "sm",
+  "title": "I Missed Standup",
+  "one_liner": "Theo just messaged you on Slack at 11.40am: 'I missed standup, what did I miss?' This is the third time this fortnight.",
+  "brief": "## The setup\n\nWeek four. Theo Park is the junior developer on the team. He is bright, capable, anxious, and slightly out of his depth in his first proper engineering job. He works hard. He worries.\n\nStandup is at 10am, recurring, fifteen minutes. Theo has missed three of the last six. Each time, around 11.30am, he messages you on Slack asking for the recap. Each time the recap is the same: nothing earth-shattering happened, the team noted his absence kindly, life continued.\n\nThe pattern matters. If you keep summarising standup for him, you are training him that missing standup has no real cost — and the deeper issue (why is he missing standup?) doesn't get surfaced. If you don't reply, he'll spiral and you'll see it in his code reviews this week.\n\nThe team has noticed. Lewis raised it indirectly in the last retro ('we should probably talk about commitments around ceremonies'). Naledi, who is gentle with Theo, has said nothing.\n\nYou like Theo. You want him to stay on the team. The standup-missing is not a discipline problem; it's a signal of something else.\n\n## Your turn\n\nReply to his Slack message.",
+  "objective": "Resolve today's immediate ask (does he need the recap to get on with work?) without locking in the pattern. Open the door to the real conversation — why is he missing standup? — without making it a formal correction.",
+  "curveball": "Theo is missing standup because he is sleeping badly — anxious about a recent code review where Lewis pushed back hard, and rumination-spiralling at night. He won't volunteer this in Slack; he might tell you over coffee if you make space for it. If the user goes straight to 'we need to talk about standup attendance', Theo will hear it as a discipline conversation and shut down. If the user offers a five-minute walk to the coffee place at 2pm with a light frame ('I'm walking for coffee at 2, want to come?'), the conversation surfaces naturally. The Slack reply is the doorway, not the resolution.",
+  "personas": [
+    {
+      "name": "Theo Park",
+      "role": "Junior Developer",
+      "position": "I missed it again. I'm sorry. Please don't make this a thing",
+      "fear": "Being seen as the unreliable junior; being managed out",
+      "monogram": "TP",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Replied to his Slack with the recap (short, factual) AND opened the door to a non-formal conversation later",
+      "Did not lecture or instruct in the Slack message — the channel is wrong for the real conversation",
+      "Found a non-meeting way to have the actual conversation (walk for coffee, lunch, end-of-day catch-up) rather than booking a 'quick 1:1'",
+      "Did NOT mention the pattern explicitly in Slack — held it for the in-person conversation"
+    ],
+    "yellow": [
+      "Sent a long Slack message about the importance of standup — the team's most anxious person now has a wall of text to spiral on",
+      "Booked a formal 1:1 with the calendar event title 'Standup attendance' — the title alone will keep him up that night",
+      "Just sent the recap with no follow-up — closes the immediate ask, locks in the pattern",
+      "Said 'no worries, I'll keep you posted' — well-meaning but trains him that missing standup is fine"
+    ],
+    "red": [
+      "Replied with 'we need to talk about this' and went silent for two hours",
+      "Cc'd Theo's manager in the Slack thread",
+      "Brought it up in the next retro as a team-level concern — Theo will know exactly who you mean",
+      "Refused to give the recap until Theo explains why he missed — leaves him stuck"
+    ]
+  },
+  "estimated_minutes": 10,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

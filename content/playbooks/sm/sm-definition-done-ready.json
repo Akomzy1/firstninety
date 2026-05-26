@@ -1,0 +1,49 @@
+{
+  "slug": "sm-definition-done-ready",
+  "role": "sm",
+  "artefact_type": "definition_of_done",
+  "title": "Definition of Done + Definition of Ready",
+  "variant": "composite",
+  "description": "The two checklist documents that decide what work gets accepted into a sprint and what work gets accepted as finished. Six to eight items each, owned by the team, ruthlessly maintained. The two definitions evolve together; tightening one without tightening the other is the most common rookie mistake.",
+  "empty_template_md": "# [Team name] — Definition of Done + Definition of Ready\n_v[N] · last revised [date]_\n\n## Definition of Ready (DoR)\n_What must be true before a story can be pulled into a sprint._\n\n1. Acceptance criteria written.\n2. Dependencies named (with owner).\n3. Test approach noted at story level (not full test plan — just the shape).\n4. Sized by the team (not the PO alone).\n5. UI / UX captured if the story has a UI surface.\n6. Edge cases discussed; the obvious ones documented.\n\n## Definition of Done (DoD)\n_What must be true before a story is closed._\n\n1. Acceptance criteria met (each one verified, not vibes-tested).\n2. Code reviewed; comments addressed.\n3. Tests written and passing (unit + integration where applicable).\n4. Deployed to staging.\n5. QA signed off (named QA, not 'the team').\n6. Documentation updated (story-level note in the product wiki, no full docs writeup).\n7. Demo-able (if customer-facing).\n\n## How we revise these\n_When and how the DoD/DoR get updated. Usually at retro, occasionally mid-sprint if a specific incident demands it._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal team — DoD + DoR at week 9 (post-rollback revision)",
+      "content_md": "# Customer Portal Team — Definition of Done + Definition of Ready\n_v0.3 · revised 28 April 2026 (week 9 retro)_\n\n## Definition of Ready\n\nFor a story to be pulled into a sprint, it must be:\n\n1. **Acceptance criteria written and reviewed by QA.** (Added week 9: QA review of AC catches half the regression risk before code starts.)\n2. **Dependencies named with owners.** Cross-team dependencies have a named human at the other end, not a team name.\n3. **Test approach noted.** One sentence on how this will be tested. Not a full plan — the shape.\n4. **Sized by the team.** Not the PO alone; not the lead dev alone. The team is the source of estimate truth.\n5. **UI / UX surface captured if applicable.** Asha owns the call on whether the design is ready.\n6. **Payments-touching stories include QA-tail estimate.** (Added week 9.) Naledi sizes the QA work alongside the dev work; the total story size includes both.\n\n## Definition of Done\n\nFor a story to be closed:\n\n1. **All acceptance criteria verified.** Not assumed; named in the PR or the story comment thread.\n2. **Code reviewed.** Two reviewers for payments-touching code (added week 9). One reviewer for everything else.\n3. **Unit + integration tests passing.** Integration tests required for any story that touches the payments path (added week 9).\n4. **Deployed to staging.** And running there for at least 24 hours before sign-off, for payments-path stories.\n5. **QA signed off by Naledi.** Not 'the team'. A named human.\n6. **Documentation updated.** Story-level note in the customer-portal wiki. Architectural changes get an ADR.\n7. **Demoable to a customer admin.** For customer-facing stories: a happy-path walk-through exists that the next sprint review can run.\n\n## How we revise these\n\n- Standard cadence: revisited at every fifth retro (roughly quarterly).\n- Emergency revision: a specific incident can drive a same-sprint revision. The week-8 rollback drove four items (DoR-1, DoR-6, DoD-2, DoD-3).\n- Revisions need team consent, not SM imposition. The SM proposes; the team agrees.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Definition of Ready is what protects the team from sprint chaos. A story that enters the sprint without AC, without dependencies, without a sized estimate is a story that will be in trouble by mid-sprint. The discipline of DoR is the discipline of saying 'not yet' at planning."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Definition of Done is what protects the team from carrying invisible debt. 'Done' that doesn't include QA sign-off, that doesn't include staging deploy, that doesn't include integration tests — that's a story you'll re-open in three sprints. Make 'done' mean done."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Note how the week-8 rollback drove revisions to BOTH the DoR (item 6, payments-touching stories include QA-tail estimate) and the DoD (items 2 and 3, two reviewers + integration tests). Tightening one without the other would have missed the actual cause."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Revisions need team consent, not SM imposition. The SM who tightens DoD unilaterally in response to an incident loses the team's belief that the document is theirs. The SM proposes the change; the team votes."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Tightening DoD without tightening DoR. The team can't deliver to the new DoD because stories arriving in the sprint aren't ready for it. Both move together.",
+    "DoR / DoD too long. A twelve-item DoD is theatre. Six to eight items, each one a real check, is the band that actually gets followed.",
+    "DoR / DoD imposed by the SM after a single incident. The team will follow it for two sprints and quietly drop it. Make the revision a team decision.",
+    "'Demoable to a customer' missing from DoD on customer-facing stories. The story is closed, the customer demo two weeks later collapses because the happy path was never end-to-end-tested in front of someone.",
+    "DoR / DoD that doesn't include QA sign-off. The team learns that 'done' means 'developer says so'. The QA reality lands in production.",
+    "DoR / DoD never revisited. Drift sets in; new team members ignore them; old hands don't notice. Revisit quarterly at minimum."
+  ],
+  "variant_patterns": [
+    "Regulatory variant: DoD adds compliance review for any story touching regulated data. DoR adds 'regulatory impact assessed' as a check.",
+    "Hardening / bug-bash sprint variant: DoD includes 'rerun the smoke suite + the regression suite' as a hard requirement; DoR is relaxed because the sprint goal is fixing known issues rather than landing new stories.",
+    "Two-team-of-teams variant: the two teams' DoDs need to align on the integration story type. Most of the DoD can differ per team; the cross-team-integration DoD lives in a shared document."
+  ],
+  "related_scenarios": ["sm-tense-retro", "sm-capacity-disagreement"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

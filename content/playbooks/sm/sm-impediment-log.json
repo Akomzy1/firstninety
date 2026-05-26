@@ -1,0 +1,49 @@
+{
+  "slug": "sm-impediment-log",
+  "role": "sm",
+  "artefact_type": "impediment_log",
+  "title": "Impediment Log",
+  "variant": "standard",
+  "description": "The impediment log that actually moves the team forward — versus the spreadsheet of grievances that nobody reads. Five columns, ruthlessly maintained. The discipline is closing impediments aggressively and tracking median resolution time so the team can see the SM is doing the job.",
+  "empty_template_md": "# [Team name] — Impediment Log\n_v[N] · last reviewed [date] · owner SM_\n\n## This week\n_What's new, what closed, what escalated. The only section a stakeholder coming back weekly needs._\n\n## Open impediments\n\n| ID | Raised | Description | Owner (SM = me) | Escalation path | Status | Target close |\n|----|--------|-------------|-----------------|-----------------|--------|--------------|\n|    |        |             |                 |                 |        |              |\n\n## Closed this quarter\n_Rolling list. Closed impediments are the SM's best evidence of value._\n\n## Median resolution time (last 4 weeks)\n_Single number. Track it. If it's drifting upward, the SM is slipping or the impediments are getting harder. Either is worth knowing._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal team — impediment log at week 9",
+      "content_md": "# Customer Portal Team — Impediment Log\n_v0.6 · 22 April 2026 · owner: SM (Adekunle Bello, covering)_\n\n## This week\n\n- **New (I-12):** Staging environment IAM role update blocking deploys; raised Wednesday, escalated to Cloud Ops Friday.\n- **Closed (I-09):** Naledi's QA tooling licence — procurement approved Tuesday. 8-day resolution.\n- **Closed (I-10):** Contractor onboarding background-check process clarified with HR. 5-day resolution.\n\n## Open impediments\n\n| ID | Raised | Description | Owner | Escalation path | Status | Target close |\n|----|--------|-------------|-------|-----------------|--------|--------------|\n| I-08 | 12 Apr | Data-platform team commitment unclear on customer-event pipeline | SM | Adekunle (PM) → Rohan Chatterjee | Escalated — weekly check-in scheduled | 1 May |\n| I-11 | 17 Apr | Sprint board's 'in review' column collecting tickets nobody owns | SM | (no escalation needed — internal) | In progress | This sprint |\n| I-12 | 20 Apr | Staging IAM role update blocking deploys to staging | SM | Priya Verma (Cloud Ops) | Escalated — meeting Mon 9am | 27 Apr |\n\n## Closed this quarter (rolling)\n\n- I-01 (17 Mar): Build server flakiness — closed by SRE patch. Resolution: 4 days.\n- I-02 (19 Mar): Code review backlog (3+ days per PR) — closed by team agreement to review within 24h. Resolution: 11 days (team-discipline impediments take longer).\n- I-03 (23 Mar): Design review bottleneck (Theo single-handed) — closed when Theo Park hired full-time. Resolution: 23 days.\n- I-04 (2 Apr): Sprint planning over-running by 40 min — closed by switching to a tighter agenda. Resolution: 8 days.\n- I-05 (8 Apr): Lack of test data in staging for top-12 user simulations — closed by CS providing anonymised seed set. Resolution: 7 days.\n- I-06 (10 Apr): On-call rotation includes contractor (not allowed by contract). Closed by removing. Resolution: 1 day.\n- I-07 (11 Apr): Backlog refinement consistently cancelled when calendars tight. Closed by SM holding the line. Resolution: 13 days (the SM had to actually do the work for two sprints).\n- I-09: Naledi's QA tooling licence.\n- I-10: Contractor onboarding clarity.\n\n## Median resolution time\n\n**Last 4 weeks: 5 days** (down from 8 days four weeks ago).\n\nThe SM has been actively chasing escalation paths rather than waiting for things to resolve themselves. Two-thirds of the improvement came from learning who specifically owns what across the org (Priya in Cloud Ops, Mei-Lin's EA for compliance escalations, etc.). The rest came from raising impediments earlier — when they feel like 'something to keep an eye on' rather than waiting until they're already blocking.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "'This week' section is read first by anyone returning to the log. If it doesn't exist, the log reads as static and people stop coming back. Three to five bullets a week — new / closed / escalated."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Escalation path column with a NAMED person. Not 'IT' or 'Cloud Ops' — Priya Verma. The hour you spend in week 3 learning the org chart is the hour that saves you in week 8 when something needs to move fast."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Closed-this-quarter list grows over time. By month 3 it's the most powerful artefact the SM has — a visible record of value delivered. Sceptical stakeholders read it and stop being sceptical."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Median resolution time is the single most useful metric an SM can track on themselves. Most SMs don't bother. The ones who do can tell their manager, in a sentence, whether they're getting better or worse at the core SM job."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Log treated as a complaint box. Anything anyone is mildly annoyed about gets added; nothing ever closes. The log becomes noise.",
+    "Escalation path column left as a team name, not a person. 'IT' is not an escalation path. Find the named human.",
+    "SM uses the log as a venting outlet ('this is impossible') instead of an action register. The log is the work; venting goes to your own 1:1 with your manager.",
+    "Closed impediments deleted because 'they're done'. Wrong. The closed list is the SM's evidence of value over the quarter; never delete it.",
+    "Median resolution time not tracked. If you can't tell whether you're getting better at the core job, you can't tell your manager either, and your probation review becomes harder.",
+    "Impediments raised that the team should own themselves (e.g. 'we need a definition of done'). Those are team agreements, not impediments. Distinguish the two."
+  ],
+  "variant_patterns": [
+    "Cross-team variant (Scrum of Scrums): each team has its own log; the SoS log only tracks cross-team impediments. Most impediments stay in the team log.",
+    "Long-running impediment variant: impediments that have been open >30 days get an 'why is this still open' note added monthly. The note is the discipline that forces either action or honest acknowledgement that the impediment isn't moving.",
+    "Programme-level variant: when an impediment affects a programme, not just a sprint, it migrates to the programme RAID register (with the SM still tagged as the team-level escalator). The two systems shouldn't duplicate."
+  ],
+  "related_scenarios": ["sm-impediment-ops"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

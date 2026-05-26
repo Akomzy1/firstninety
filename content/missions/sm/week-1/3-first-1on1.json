@@ -1,0 +1,23 @@
+{
+  "slug": "sm-w1-first-1on1",
+  "role": "sm",
+  "week": 1,
+  "sequence_in_week": 3,
+  "title": "Run your first 1:1 with your manager",
+  "why_matters": "The first 1:1 with your manager is also a calibration on what 'a good SM in this organisation' looks like. SMs are assessed on softer signals than PMs or BAs — trajectory, how the team feels, what's quietly working — and your manager's version of those signals is what you need to learn. Done well, this is the meeting you use throughout your probation to check 'am I reading the room the way she'd read it'.",
+  "steps": [
+    "Book a recurring weekly 30-minute 1:1 if one doesn't exist. Don't wait. SMs without weekly manager time become SMs without trajectory feedback.",
+    "Draft a one-page agenda for the first session. Three sections: 'what I'm noticing about this team in week 1' (not yet recommendations — observations); 'questions I have about how things are done here'; 'what would help me from you'.",
+    "In the meeting itself, ask the same question every SM probation review will turn on: 'what does a good Scrum Master in this organisation look like — both how you'd describe it now and how you'd describe it in a year?'. The two-horizon version is the SM-specific framing; the answer tells you what trajectory she's looking for.",
+    "Listen more than you talk. Most new SMs over-share their plans in the first 1:1; the ones who do well listen for what their manager actually values."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": ["sm-probation-review"]
+  },
+  "success_criteria": "Meeting happened, recurring slot is in both calendars, and you walked out with one concrete sentence on what your manager values most in a Scrum Master beyond 'gets the work done'.",
+  "reflection_prompt": "Of what your manager said in answer to the 'good SM' question, which part did you not expect? Two sentences.",
+  "estimated_minutes": 35,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "sm-impediment-ops",
+  "role": "sm",
+  "title": "The Ops Ticket",
+  "one_liner": "The team can't deploy. The ticket is stuck with an ops team that doesn't report to anyone you know.",
+  "brief": "## The setup\n\nWeek five. Mid-sprint. The team finished the customer-event subscription story on Tuesday and it's been ready to deploy to staging since 11am Wednesday. The deploy is blocked because the staging environment needs an updated IAM role, and that change has to go through Cloud Operations — a team three buildings over that the engineering team has never met in person.\n\nThe ticket was raised by Lewis on Wednesday lunchtime. It is now Friday morning. The ticket status is 'In progress'. The assignee is 'Cloud Ops Triage'. Lewis has commented twice. No human response.\n\nThe team's standup just ended. Lewis raised it as a blocker. Theo said 'they always do this, it'll come Monday'. Naledi mentioned that the last three deploys have followed the same pattern.\n\nYou have not yet introduced yourself to anyone in Cloud Ops. You don't know their team lead's name. The escalation path on their wiki points to a manager who left three months ago.\n\n## Your turn\n\nYour next 45 minutes. Plan it.",
+  "objective": "Get the ticket actioned today, not Monday. Land a relationship with the Cloud Ops team that means this isn't a repeat conversation in two weeks. Not by escalating; not by writing another comment on the ticket.",
+  "curveball": "Cloud Ops is genuinely under-resourced and the triage queue is a shared inbox that gets ~80 tickets a day. The wiki escalation path is broken because nobody owns the wiki. The actual person who can action this is a senior engineer called Priya, who you can find on the org chart by going up two levels from the broken escalation page and then sideways. Priya is generally helpful to anyone who shows up in person; she is hostile to anyone who escalates over her head without trying. The user who walks across the three buildings, finds Priya, and has a five-minute introduction conversation gets the ticket actioned by lunchtime. The user who writes a sharply-worded email to her director's director gets the ticket actioned by Tuesday — and a reputation as someone Cloud Ops avoids.",
+  "personas": [
+    {
+      "name": "Priya Verma",
+      "role": "Senior Engineer, Cloud Operations",
+      "position": "I will help anyone who shows up properly. I will slow-walk anyone who escalates badly",
+      "fear": "Becoming the team that everyone escalates over",
+      "monogram": "PV",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Walked across the buildings or arranged a same-day video call rather than commenting on the ticket again",
+      "Introduced yourself before asking for anything",
+      "Asked what Priya needs from your team to make this faster next time — not just to fix today's ticket",
+      "Came back to the team afterward and named Priya by name, so the team knows who they're working with"
+    ],
+    "yellow": [
+      "Wrote another comment on the ticket — 'this is urgent, please action' — and hoped it would move",
+      "Escalated to your manager who escalated to Cloud Ops' manager — works, but burns the relationship and you'll be back here in two weeks",
+      "Asked Lewis to 'try chasing them' — pushes the impediment back to the engineer the SM is supposed to be removing it for",
+      "Found Priya but opened with the urgency of your team's blocker, not with a hello"
+    ],
+    "red": [
+      "Cc'd Priya's director's director on a strongly-worded email",
+      "Posted in #engineering-leadership Slack complaining about Cloud Ops",
+      "Let it sit until Monday and accepted Theo's 'they always do this' framing",
+      "Set up a standing recurring meeting with Cloud Ops without first having the introduction conversation"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,51 @@
+{
+  "slug": "sm-retro-tears",
+  "role": "sm",
+  "title": "When Naledi Cries",
+  "one_liner": "Twelve minutes into the retro, Naledi has started crying. The team has gone still. You are the only person whose next move is being watched.",
+  "brief": "## The setup\n\nWeek nine. The team has had a hard month. The compliance project went over by two weeks; Naledi covered the gap on her own, doing QA on a tooling stack she'd never used before, working evenings she'd promised her partner she wouldn't.\n\nThe retro started ten minutes ago. You went round the room with a simple opener — 'what's one thing you want to land in this conversation'. Lewis said something benign. Theo deferred. Asha said 'I want us to acknowledge the last month'. Naledi spoke last and started to say something about feeling unsupported. She got two sentences in. Then she cried.\n\nThe room is very quiet. Lewis is looking at his hands. Theo is frozen. Asha is reaching for the tissues. Naledi is trying to stop, embarrassed, apologising.\n\nYou have spent your career absorbing the idea that you stay 'professional'. You have also spent your training on retros learning that the room reads how you respond to moments like this more than how you respond to anything else.\n\n## Your turn\n\nWhat you do in the next ten seconds is the lesson the team takes from this retro.",
+  "objective": "Hold the room without forcing Naledi to keep going or to leave. Make the conversation about what happened to her workload over the last month — without making it about her tears.",
+  "curveball": "If the user suggests a break ('let's pause for ten minutes'), the air goes out of the conversation; Naledi composes herself in the bathroom, comes back, and says 'I'm fine, sorry, can we move on?' — and the team learns that crying ends the conversation. If the user holds the room calmly without rescuing ('Naledi, take your time. We're not in a hurry. We can talk about the last month when you're ready'), Naledi gathers herself in 30 seconds and continues. The conversation that follows is the one the team actually needed to have. The skill is holding the space without performing how much you can hold.",
+  "personas": [
+    {
+      "name": "Naledi Mokoena",
+      "role": "QA Lead",
+      "position": "I'm sorry. I didn't mean to do that. I'm fine",
+      "fear": "Being the person who broke down in the room — and being seen as someone who can't handle the work",
+      "monogram": "NM",
+      "colour": "ochre"
+    },
+    {
+      "name": "Lewis Harding",
+      "role": "Lead Developer",
+      "position": "I should have noticed. I didn't",
+      "fear": "Being the person who looked the other way while a colleague burned out",
+      "monogram": "LH",
+      "colour": "slate"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Held the silence for at least 15 seconds without rescuing — let Naledi gather herself at her own pace",
+      "Spoke to her, calmly, by name. Not 'are you OK' (rhetorical) — 'take your time. We're not in a hurry'",
+      "When the conversation resumed, made it about her workload over the last month, not her tears",
+      "Did not steer the team to 'how can we support Naledi' (well-meaning but turns her into the project) — let her name what she needs, if anything"
+    ],
+    "yellow": [
+      "Suggested a 10-minute break — gives her the bathroom escape, kills the real conversation",
+      "Got emotional yourself in a way that required Lewis or Asha to manage you as well",
+      "Filled the silence with 'these things happen' — well-meaning, but minimises",
+      "Booked a 1:1 with Naledi for after the retro and continued the retro on Jira workflow"
+    ],
+    "red": [
+      "Cancelled the retro and ended the meeting — Naledi will replay this in her head for a month and avoid the next one",
+      "Talked to Lewis after the meeting about 'looking out for Naledi' — well-intentioned but turns this into a fix-the-individual conversation",
+      "Mentioned the moment in your status report or to your manager without Naledi's consent",
+      "Said 'don't cry, it's fine' — the most damaging single thing you can do"
+    ]
+  },
+  "estimated_minutes": 16,
+  "difficulty": 5,
+  "career_stage": "first_90_days",
+  "version": 1
+}

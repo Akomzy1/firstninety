@@ -1,0 +1,43 @@
+{
+  "slug": "sm-probation-review",
+  "role": "sm",
+  "title": "The Probation Review",
+  "one_liner": "Day 87. Your manager opens with: 'So the team likes you. But I want to know if you can hold a harder room.'",
+  "brief": "## The room\n\nThirty-minute slot. Your hiring manager is Adisa Okafor, Head of Delivery. She's been in role for three years and has seen four other Scrum Masters through their probations. Two are still here. Two are not.\n\nYou submitted your probation pack on Monday. Adisa read it. The pack laid out: two sprints rescued, the Naledi-burnout conversation in week 9 that surfaced a real workload issue, the impediment-log discipline that took your team's blocker resolution time from a median of 5 days to a median of 1.5, the slow PO conversations you started with Hari about backlog quality.\n\nThe team likes you. Lewis told Adisa in his 1:1 last week — unprompted — that this was the first SM the team had who 'didn't make ceremonies feel like theatre'. Naledi has told Adisa that week 9 was a turning point for her staying on the team.\n\nAdisa is friendly in the room. Direct. She does not waste your time. She opens with: 'So the team likes you. But I want to know if you can hold a harder room.'\n\n## Your turn\n\nAnswer.",
+  "objective": "Land Adisa's question — can you hold a harder room — with specific, non-bragging evidence and one piece of honest self-assessment about what you haven't yet been tested on. Don't oversell. Don't undersell. Be the SM you actually are.",
+  "curveball": "Adisa is not asking whether the team likes you (the answer is obviously yes — she already knows that). She's asking whether your style scales beyond *this* team. Specifically: she has another team — the platform group — where the SM seat will open up in six months and the team is hostile, tired, and has chewed through two SMs in two years. If the user answers cleanly — naming a hard moment they handled (the Naledi retro) and one type of hard room they haven't yet faced (e.g. 'a team that doesn't want an SM') — Adisa will tell them about the platform team and ask if they'd want it. The right answer to that is also 'I'd want it but I'd want to shadow Saara' (the current platform SM) for six weeks first. The wrong answers are either 'yes give it to me' (over-eager) or 'I'm not sure I'm ready' (under-confident).",
+  "personas": [
+    {
+      "name": "Adisa Okafor",
+      "role": "Head of Delivery (hiring manager)",
+      "position": "I need to know whether your style scales to harder rooms than this one",
+      "fear": "Confirming an SM who only works with healthy teams",
+      "monogram": "AO",
+      "colour": "plum"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with the Naledi retro as the hardest single room you held — specific, dated, behavioural ('I sat through 15 seconds of silence; I didn't rescue her')",
+      "Acknowledged what you haven't been tested on — a hostile team, an SM seat where the team doesn't want one — without performing humility",
+      "Asked Adisa a question — what's the harder room she's thinking of",
+      "Did not over-claim on the impediment-log metric ('we got faster') — gave Adisa the number and let her draw the conclusion"
+    ],
+    "yellow": [
+      "Listed five things the team likes about you — answering a question Adisa didn't ask",
+      "Said 'I'd handle any room' — over-claiming on something you haven't yet been tested on",
+      "Got into Scrum Guide territory in your answer — Adisa is not testing your framework knowledge",
+      "Took credit for Naledi's decision to stay — overstates the SM's role"
+    ],
+    "red": [
+      "Said 'I'm not sure if I'm ready for a harder room' as the OPENING — gives Adisa the answer she didn't want and now has to walk you back",
+      "Blamed Hari's behaviour as the hardest thing to manage — making it about a person Adisa works with too",
+      "Asked when you'd be confirmed — putting Adisa in the spot she didn't want to be in",
+      "Brought a printed pack and walked her through it page by page — she read it on Monday"
+    ]
+  },
+  "estimated_minutes": 18,
+  "difficulty": 5,
+  "career_stage": "first_90_days",
+  "version": 1
+}

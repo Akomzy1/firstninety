@@ -1,0 +1,49 @@
+{
+  "slug": "sm-working-agreements",
+  "role": "sm",
+  "artefact_type": "working_agreements",
+  "title": "Working Agreements",
+  "variant": "standard",
+  "description": "Working agreements that the team will actually follow — versus the wall of post-its that gets ignored after one sprint. Three to five agreements, each one a specific behaviour, each one the result of a real conversation. The discipline is in the revision: a working agreement that hasn't been revised in a quarter has stopped being a working agreement.",
+  "empty_template_md": "# [Team name] — Working Agreements\n_Established [date] · last revised [date]_\n\n## How we wrote these\n_One paragraph. Which retro / session / conversation produced these. Most teams skip this; reading the provenance later is how the team remembers why an agreement exists._\n\n## Our agreements\n\n_Three to five. Each agreement: specific behaviour, the reason it exists, the trigger for revising it._\n\n### 1. [Agreement title]\n- **What:** [specific behaviour]\n- **Why:** [the situation or pattern that prompted it]\n- **Revisit if:** [the trigger that means this agreement is no longer serving us]\n\n## What we tried and dropped\n_Optional but useful. Working agreements we adopted and later cut. The lesson — and what cut them — is worth recording._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal team — working agreements (written week 6, revised week 11)",
+      "content_md": "# Customer Portal Team — Working Agreements\n_Established 12 April 2026 (week 6 retro) · last revised 16 May 2026 (week 11 retro)_\n\n## How we wrote these\n\nIn the week 6 retro, the team surfaced two recurring frictions: code-review wait times (Lewis was bottlenecking everything; PRs sitting 2-3 days), and a creeping pattern of standup running 25-30 minutes with deep technical conversations. The team agreed three things in the room; we added a fourth in the week 8 retro after the customer-event rollback.\n\n## Our agreements\n\n### 1. Code review SLA — 24 hours, first response.\n- **What:** Every open PR gets a first response from a reviewer within 24 hours. 'First response' can be 'I'll look at this tomorrow morning' — it's about acknowledgement, not full review.\n- **Why:** PRs were sitting 2-3 days; engineers were context-switching back to old work. The 24-hour first-response cut median age of an open PR from 38 hours to 14 hours within two sprints.\n- **Revisit if:** team capacity changes (someone leaves, two people on leave at once) or median creeps back above 24 hours for two sprints.\n\n### 2. Standup is 15 minutes. No problem-solving in the room.\n- **What:** Round the board, blockers noted, deep conversations moved to a sidebar booked by the SM during standup itself.\n- **Why:** Standup had been drifting to 25-30 min with technical deep-dives. Half the room was checking out; the SM was absorbing the time cost.\n- **Revisit if:** the team feels they're not getting enough collaborative time. Note: refinement and ad-hoc working sessions are where collaborative time should be, not standup.\n\n### 3. No production deploys after Thursday 4pm.\n- **What:** No production deploys after 4pm Thursday. Friday morning is OK if explicitly agreed at standup.\n- **Why:** The week-8 rollback shipped Friday 5pm; nobody was around Saturday to monitor. Lewis had committed to himself privately not to do this; making it a team agreement made it everyone's responsibility, not just his.\n- **Revisit if:** the team has a production-ready feature that's been waiting >2 days. Some Friday-afternoon deploys may be net-positive; the agreement is a default, not a rule.\n\n### 4. The QA tail of any payments-touching story is owned by Naledi, sized by Naledi, signed off by Naledi.\n- **What:** For any story that touches the payments pipeline, Naledi owns the QA scope. Dev sizing without QA sizing = an incomplete estimate.\n- **Why:** Surfaced in week 8 retro (the rollback). Naledi had been carrying the QA tail invisibly; the team agreement makes it visible.\n- **Revisit if:** Naledi changes roles or the payments-pipeline scope changes materially.\n\n## What we tried and dropped\n\n### A pair-programming rotation (week 4–week 6)\n\nWe tried a Monday-morning pair-programming session as a working agreement. Dropped at the week 6 retro because: the team is already pair-programming organically on hard problems; the formal Monday slot was redundant; people resented the calendar block. The lesson: working agreements should formalise what's working, not impose what isn't.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "How-we-wrote-these is the provenance. Teams forget within six weeks why an agreement exists; the provenance is the answer. Without it, agreements get cut for the wrong reasons (a new team member finds them annoying and the rationale is lost)."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Three to five. Not ten. A list of fifteen working agreements is a fiction — nobody can remember them, nobody follows them. The discipline is picking the ones that actually matter."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Each agreement has a 'revisit if' trigger. Without it, the agreement becomes permanent regardless of whether it's still useful. The trigger forces the team to actually re-evaluate, instead of waiting for someone to bring it up."
+        },
+        {
+          "section_id": "section-3",
+          "note": "'What we tried and dropped' is the section most teams skip. It's also the section that teaches new team members the most. Reading 'we tried a pair-programming rotation and cut it' tells a new joiner more about how this team works than any introduction document."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Working agreements written by the SM and presented to the team. Wrong. The team writes them; the SM facilitates the writing.",
+    "Too many agreements. A wall of fifteen post-its is the kind of working-agreements list that gets ignored. Three to five is the band where the team can actually remember them.",
+    "Agreements without a 'revisit if' trigger. They become permanent regardless of whether they're still useful. New team members inherit them without knowing why; old patterns ossify.",
+    "Agreements about values rather than behaviours. 'We respect each other' is not a working agreement; it's a slogan. 'We don't ship past Thursday 4pm without an explicit decision' is an agreement.",
+    "Agreements never revisited. The team adopted them in week 6, the SM filed them in a drive folder, nobody reads them again. Set a recurring 6-week revisit; first time you do it, the team will discover an agreement that's silently stopped being followed.",
+    "What-we-tried-and-dropped omitted. Loses the institutional memory of why certain things were attempted. Teams cycle through the same failed experiments."
+  ],
+  "variant_patterns": [
+    "New team variant: don't write working agreements until week 4-5. Before that, the team doesn't know enough about itself to write useful ones. Forcing it earlier produces theatre.",
+    "Team-merge variant (two teams becoming one): existing agreements from both teams get surfaced, discussed, and either kept, merged, or dropped. The conversation itself is the most valuable part.",
+    "Cross-functional team variant (including stakeholders outside engineering): agreements may need to cover interaction patterns with adjacent functions (CS, finance, ops). Keep these separate from internal team agreements — different audiences, different cadences."
+  ],
+  "related_scenarios": ["sm-tense-retro", "sm-defensive-po", "sm-capacity-disagreement"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,67 @@
+{
+  "slug": "sm-tense-retro",
+  "role": "sm",
+  "title": "The Quiet Retro",
+  "one_liner": "The sprint went badly. The team is in the room. Nobody is talking and you opened the retro three minutes ago.",
+  "brief": "## The room\n\nFour weeks in. Your second retro. The sprint missed its goal — a major story rolled back, the PO was livid in the review yesterday, and the team is feeling watched.\n\nYou opened the retro with the usual prompt: 'What went well? What didn't? What do we try next?'. The whiteboard is up. The Post-its are out. Three minutes have passed and nobody has moved.\n\nLewis is staring at his laptop. Naledi has her arms crossed. Theo, the most junior, is looking at Lewis hoping he'll go first. Asha is the only one looking at you, and she is waiting to see what you do next.\n\nYou are six minutes into a sixty-minute meeting. The team is going to extract whatever you let them; if you bail them out, you train them that retros are theatre. If you let the silence sit too long, you lose the room and people start checking phones.\n\n## Your turn\n\nMake your next move.",
+  "objective": "Get the team into the real conversation about the rollback without them feeling cornered. Leave with one concrete commitment the team owns — not five 'we should communicate better' bullets.",
+  "curveball": "If the user backs off the silence by suggesting a format change ('let's try something different, how about a timeline?') the team will engage politely but the rollback will not actually come up — they'll talk around it for fifty-four minutes. The skill is naming what's in the room without forcing it. Around turn 5, if the user has held space without rescuing it, Asha will say something specific about why the rollback happened. That's the unlock; from there the conversation can go.",
+  "personas": [
+    {
+      "name": "Lewis Harding",
+      "role": "Lead Developer",
+      "position": "I broke it. Don't make me explain it",
+      "fear": "Being asked to walk through the mistake in front of the team",
+      "monogram": "LH",
+      "colour": "slate"
+    },
+    {
+      "name": "Naledi Mokoena",
+      "role": "QA Lead",
+      "position": "I flagged the risk. Nobody listened",
+      "fear": "Being the I-told-you-so person",
+      "monogram": "NM",
+      "colour": "ochre"
+    },
+    {
+      "name": "Theo Park",
+      "role": "Junior Developer",
+      "position": "Please nobody ask me to go first",
+      "fear": "Being the youngest in a room where everyone else is more senior",
+      "monogram": "TP",
+      "colour": "moss"
+    },
+    {
+      "name": "Asha Bhatt",
+      "role": "Senior Designer",
+      "position": "Watching how you handle this",
+      "fear": "Working with an SM who runs retros as theatre",
+      "monogram": "AB",
+      "colour": "rose"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Held the silence longer than felt comfortable — at least 90 seconds — without rescuing",
+      "Named what was in the room directly when the silence broke ('the rollback is the obvious thing; let's start there if you want')",
+      "Drew Asha out without singling her out — used her body language to invite, not interrogate",
+      "Closed with one specific team commitment owned by a named person, not a generic 'better communication' bullet"
+    ],
+    "yellow": [
+      "Filled the silence with a process suggestion ('let's try a timeline format') — relieves the room but loses the actual conversation",
+      "Called on Lewis to start because he was the closest to the rollback — produces compliance, not honesty",
+      "Allowed the retro to drift into a long discussion about Jira workflows (safe-but-irrelevant)",
+      "Closed with three to five action items, none with owners"
+    ],
+    "red": [
+      "Cancelled the retro and rescheduled because 'the team isn't ready'",
+      "Walked Lewis through 'what happened' in front of the room",
+      "Sided with Naledi's I-told-you-so framing — the team will hear it and Lewis will stop attending retros",
+      "Talked for more than half the meeting yourself"
+    ]
+  },
+  "estimated_minutes": 15,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

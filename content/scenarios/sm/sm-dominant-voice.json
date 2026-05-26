@@ -1,0 +1,59 @@
+{
+  "slug": "sm-dominant-voice",
+  "role": "sm",
+  "title": "The Loudest in the Room",
+  "one_liner": "Lewis has spoken for nineteen of the last twenty-five minutes in planning. Naledi has not spoken at all. Lewis is not doing it on purpose.",
+  "brief": "## The setup\n\nWeek six. Sprint planning. The team is sizing the next batch of stories. Lewis Harding, lead developer, is the most experienced person in the room — he has been on the platform six years, knows it in a way nobody else does, and his estimates are usually right.\n\nThe team has just spent 25 minutes on a single story about the payment-reconciliation pipeline. Lewis has talked for 19 of those minutes — walking through the technical context, naming the edges, explaining why this is harder than it looks. None of what he said was wrong. None of it was condescending. He is genuinely trying to help.\n\nNaledi Mokoena (QA lead) has not spoken. Theo Park (junior dev) tried twice and was talked over both times. Asha Bhatt (designer) has the laptop closed.\n\nLewis is about to start on the next story. You can already see he has things to say about it.\n\nThis is the third planning in a row where this pattern has played out. If you do nothing, the team's two quieter voices stop trying. If you do the obvious thing — 'let's hear from someone else' — Lewis will feel called out, and he is the team's most senior engineer and the person you most need on your side.\n\n## Your turn\n\nLewis just took a breath. Now.",
+  "objective": "Open the next story so Naledi or Theo speaks first, without making Lewis feel managed. Plant the seed for a longer conversation with Lewis 1:1 later this week.",
+  "curveball": "If the user asks Naledi or Theo a direct question to start, the room will work — but Lewis will pick up the pattern immediately and feel singled out. If the user asks Lewis to hold his thoughts ('let's hear from QA first on this one'), Lewis will comply but the trust drops. The skill is choosing a format move that *changes the structure* without naming anyone. Around turn 3, if the user has handled the format move well, Naledi will offer a substantive observation that catches a bug Lewis hadn't named. Lewis will visibly relax — not because he was managed, but because the team is now doing its job collectively. That's the unlock.",
+  "personas": [
+    {
+      "name": "Lewis Harding",
+      "role": "Lead Developer",
+      "position": "I have a lot of context the team needs",
+      "fear": "Being the bottleneck — both technically and conversationally",
+      "monogram": "LH",
+      "colour": "slate"
+    },
+    {
+      "name": "Naledi Mokoena",
+      "role": "QA Lead",
+      "position": "I'm done trying to break in",
+      "fear": "Becoming the person who stopped showing up to planning",
+      "monogram": "NM",
+      "colour": "ochre"
+    },
+    {
+      "name": "Theo Park",
+      "role": "Junior Developer",
+      "position": "I'll wait for someone to ask me",
+      "fear": "Being seen as not knowing enough to speak up unprompted",
+      "monogram": "TP",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Changed the format rather than calling on a person — 'let's silent-vote on initial estimates first, then talk' (or equivalent)",
+      "Did NOT name Lewis as the issue, in the room or in the format choice",
+      "Booked a separate 1:1 with Lewis in the next 48 hours to have the real conversation — not as 'feedback' but as 'how do we make planning better, you and I'",
+      "Made the unlock landable for Naledi — silent vote, written input first, or a round-robin that doesn't single anyone out"
+    ],
+    "yellow": [
+      "Asked 'has anyone else got thoughts?' — open question, no air pressure, Lewis fills it",
+      "Asked Naledi directly — works once, Lewis sees it, doesn't work the second time",
+      "Suggested 'let's move on, we're spending too long' — gets the meeting back but loses the point",
+      "Took the conversation to Lewis right after the meeting in the corridor — too immediate, Lewis will hear it as a correction"
+    ],
+    "red": [
+      "Said 'Lewis, let's hear from someone else' — direct, public, breaks the relationship",
+      "Cancelled future plannings and switched to async — solves the visible symptom, loses the team meeting that's supposed to be where the team aligns",
+      "Did nothing and hoped the team would self-correct",
+      "Talked to Lewis's manager about the dominance — Lewis will find out and the trust collapses"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "sm-sprint-goal",
+  "role": "sm",
+  "artefact_type": "sprint_goal",
+  "title": "Sprint Goal",
+  "variant": "standard",
+  "description": "The sprint goal that the team can actually align around — and that survives the question 'why does this matter' from any stakeholder who asks. One sentence. Outcome-shaped, not output-shaped. The discipline is in the cut: most rookie sprint goals are checklists of what the team will do, not statements of what will be different by sprint end.",
+  "empty_template_md": "# Sprint Goal — Sprint [N], [start date] – [end date]\n\n## The goal (one sentence)\n_Outcome-shaped. Not 'we will ship X stories' — 'by sprint end, users in the top-12 segment will be able to do Y on their own, without raising a CS ticket'._\n\n## Why this matters (one sentence)\n_The reason this goal — not another goal — is the right thing to land this sprint._\n\n## Stories in scope\n_The 4-6 stories the team has committed to, listed by reference._\n\n## Stretch (if any)\n_Up to 2 stories that will be picked up if the committed work lands ahead of schedule. Never confused with the committed work._\n\n## What 'goal met' looks like\n_The observable thing that's true at sprint end if the goal landed. Demo-able where possible._\n\n## What 'goal partially met' looks like\n_The cut-down version. If the team can't land everything, what's the minimum that still means the goal moved the dial._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal — Sprint 6 of 12",
+      "content_md": "# Sprint Goal — Sprint 6, 22 April – 5 May 2026\n\n## The goal\n\nBy sprint end, top-12 customer admins can manage their own account-level user list (add / remove / role assignment) end-to-end in the new portal, without raising a CS ticket.\n\n## Why this matters\n\nUser-list management is the most common reason top-12 customers contact CS (~6 tickets/week, 24 minutes average resolution); this story landing means CS can demonstrate the workload shift to the executive sponsor in next week's portfolio review.\n\n## Stories in scope\n\n- CP-141 — User list view (already deployable, polish + edge cases)\n- CP-142 — Add user flow\n- CP-143 — Remove user flow\n- CP-144 — Role assignment dropdown (limited to 'admin' / 'viewer' this sprint)\n- CP-145 — CS-side audit log entry on each user change\n\n## Stretch\n\n- CP-146 — Bulk add via CSV (Phase 2 candidate; only if committed work is done by Friday week 1)\n\n## What 'goal met' looks like\n\nA top-12 customer admin (using the staging account we provisioned for Forrest Bank) can log in, add a new user, assign them the 'viewer' role, and that change reflects in our CS-side audit log within 60 seconds. Demoable on day-10 in sprint review.\n\n## What 'goal partially met' looks like\n\nIf CP-145 (audit log) slips, the user-management flows still work — but CS would carry a manual reconciliation step until next sprint. That's an acceptable partial result if CP-141 through CP-144 all land.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Outcome-shaped, not output-shaped. The goal is 'admins can manage their own user list end-to-end' — that's something a user can do. 'We will ship CP-141 through CP-145' would be a list of outputs and tells the team nothing about what they're trying to accomplish."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Why-this-matters in one sentence is the discipline. If you can't say why this goal — not another goal — is the right thing to land this sprint, the team will not align around it. The CS-ticket-volume number is what makes the goal land outside the team."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Stretch goals are not commitments. The discipline is naming them as stretch in the planning meeting and never accidentally moving them into the 'commit' column mid-sprint without a re-planning. New SMs often blur this line; the PO will exploit any blur in their favour."
+        },
+        {
+          "section_id": "section-6",
+          "note": "Partial-met section is the safety net that prevents the team from going into 'all or nothing' mode in week 2. If the audit log slips, the team still landed the user-management work — that's worth landing partially. Without this section, teams collapse in week 2 panic when one story is at risk."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Output-shaped goal ('we will ship 7 stories'). Tells the team nothing about what they're trying to land for the user. The goal becomes a velocity number, not a north star.",
+    "Why-this-matters omitted because 'obvious'. Never obvious. If you can't write it in a sentence, the team can't either, and you'll discover that in sprint review when nobody can explain to the PO why the sprint mattered.",
+    "Stretch goals confused with committed goals. The first time a stretch story drifts into commit territory without a re-planning, the team has lost the discipline. Don't let it happen.",
+    "What-goal-met-looks-like written abstractly ('the feature works'). Always observable, demoable, specific. The story is concrete; the goal should be too.",
+    "Partial-met section omitted. Without it, week-2 stress collapses the team's ability to land anything. With it, the team can drop one piece and still feel they delivered.",
+    "Sprint goals changed mid-sprint. If the goal needs to change, the sprint needs to end and a new sprint needs to start. Otherwise the team learns that goals are negotiable, and they stop using them."
+  ],
+  "variant_patterns": [
+    "Multi-team variant: when two teams contribute to the same goal, both team's sprint goals reference the shared outcome but break it down by their respective contributions. The discipline is in coordinating the demo.",
+    "Bug-bash / hardening sprint variant: the goal becomes 'system stability for X feature is at production-ready quality by sprint end' — measured by named issue counts, not stories shipped.",
+    "Research / spike sprint variant: the goal is 'by sprint end, we have a defensible recommendation on X' — the deliverable is a decision document, not a working feature."
+  ],
+  "related_scenarios": ["sm-defensive-po", "sm-capacity-disagreement"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

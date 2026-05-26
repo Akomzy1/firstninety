@@ -1,0 +1,23 @@
+{
+  "slug": "sm-w1-sit-in-every-ceremony",
+  "role": "sm",
+  "week": 1,
+  "sequence_in_week": 1,
+  "title": "Sit in every ceremony",
+  "why_matters": "You are about to take over the rhythm of a team you didn't build. The single best thing you can do in your first week is observe how the ceremonies actually run — not how they should run according to the Scrum Guide. By week 4 you'll be facilitating them; by week 8 you'll be changing the ones that need changing. None of that works if you haven't first watched how the team currently treats the rooms.",
+  "steps": [
+    "Find every recurring team ceremony in this sprint: standup, planning, refinement, review, retro. Block them in your calendar. If something clashes, move the clashing meeting.",
+    "Sit in each one in observation mode. Do not facilitate. Do not introduce yourself with a long preamble. The previous SM (or the current facilitator) runs them; you watch.",
+    "For each ceremony, note three things in a private doc: how long it actually runs versus how long it's scheduled for; who talks most and who talks least; what gets decided versus what gets re-litigated.",
+    "Resist the urge to suggest improvements in week 1. The team has been working without you; they'll keep working without you for one more week. The right to suggest change is earned by demonstrating you can run the ones they already trust."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["sm-ceremony-agendas", "sm-retro-agendas"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "By end of week, you have observed at least four of the team's ceremonies (standup at minimum twice, plus one planning or refinement and one retro if it falls in the week). Your private doc has the three observations per ceremony.",
+  "reflection_prompt": "Which ceremony do you think is doing the least useful work for this team right now? Two sentences. (You're not going to change it yet; the observation is the work.)",
+  "estimated_minutes": 35,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "sm-w1-read-the-team-history",
+  "role": "sm",
+  "week": 1,
+  "sequence_in_week": 2,
+  "title": "Read the team's history",
+  "why_matters": "Every team you join has a documented history — six months of retros, working agreements written and then abandoned, definition-of-done that nobody currently follows, impediment-logs full of patterns. Most new SMs skip this and start fresh; the ones who read the history get to skip the early mistakes the team already learned from. The retros tell you what the team is tired of talking about. The working agreements tell you what they value when they're being deliberate. The impediment log tells you what's actually been hard.",
+  "steps": [
+    "Find where the team's retro notes live. Read the last six sprints' worth, in order. Note: patterns that recur, themes that keep being raised, action items that never landed.",
+    "Find the team's working agreements (if they exist). Read them. Compare to what you saw in week 1 ceremonies. The delta — between what's written and what's actually practised — is where the team's quiet frictions live.",
+    "Find the team's definition of done. Read it. Ask one developer (not the lead) what they actually check before closing a ticket. The difference between the document and the practice is what to ask about in retro #1 you facilitate (in week 3, not week 1).",
+    "Find the impediment log (or whatever serves that role). Read the last quarter. The recurring impediments are the ones you'll get to own; note which ones look like real impediments and which ones look like team-internal stuff that's been mis-classified."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["sm-impediment-log", "sm-working-agreements", "sm-definition-done-ready"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "By end of week, you can name at least one recurring theme from the retro history, one delta between written working agreements and practised behaviour, and one impediment pattern that's been recurring for a quarter or more.",
+  "reflection_prompt": "Of the recurring themes in the retro history, which one do you think is the team's least productive groove — the conversation they keep having and nothing keeps changing? Two sentences.",
+  "estimated_minutes": 45,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

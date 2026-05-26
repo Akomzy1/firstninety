@@ -1,0 +1,49 @@
+{
+  "slug": "sm-retro-agendas",
+  "role": "sm",
+  "artefact_type": "retro_agendas",
+  "title": "Retro Agendas",
+  "variant": "composite",
+  "description": "Five retro formats with notes on when to use which. The standard 'what went well / didn't / try next' is the worst possible default — the team gets bored of it in three sprints and stops engaging. A working SM has at least three formats they can run cleanly and chooses the one that fits the sprint. Format change is not gimmickry; format is how you change the conversation.",
+  "empty_template_md": "# Retro Agendas — Five Formats\n\n## When to choose which\n\n| Format | Best for | Avoid when |\n|--------|----------|------------|\n| Standard (well / didn't / try) | First retros with a new team | The team has done four in a row |\n| Timeline | Mid-sprint when team had real moments | The sprint was uneventful |\n| Sailboat | Energy is low; need a creative reset | Team is tired and wants tactics |\n| Mad / Sad / Glad | Emotional charge is high | Team is in a 'just facts' mood |\n| Five Whys | A specific incident needs unpacking | The team is broadly fine |\n\n## Format 1 — Standard\n\nMost rookies treat this as 'safe'. It's actually the format the team gets least value from after the third use.\n\n_Agenda (60 min):_\n1. 5 min — Frame the sprint (one sentence on what we set out to do)\n2. 10 min — Silent write: well / didn't / try (Post-its)\n3. 15 min — Cluster + read aloud\n4. 15 min — Group conversation on the heaviest cluster\n5. 10 min — Commit to one specific action with a named owner\n6. 5 min — Close (one word from each person on how they're leaving the room)\n\n## Format 2 — Timeline\n\nDraw the sprint as a horizontal line. Team adds events above (energy up) and below (energy down). Surface the dips.\n\n## Format 3 — Sailboat (Wind / Anchors / Rocks / Sun)\n\nWhat helped us move forward (wind), held us back (anchors), risks ahead (rocks), what makes us feel good (sun). Visual, slightly playful — useful when the team is low and you need to reset energy without forcing positivity.\n\n## Format 4 — Mad / Sad / Glad\n\nName the emotions. Sometimes the team needs to. The discipline is making it safe: the SM goes first with a small genuine 'mad'. Never invite the team to vulnerability you won't model yourself.\n\n## Format 5 — Five Whys\n\nFor when one specific incident dominates the sprint. Walk the chain: why did X happen, why did the cause of X happen, etc. The skill is knowing when to stop — usually the third or fourth 'why' lands on the real cause; deeper than that becomes therapy.\n",
+  "worked_examples": [
+    {
+      "title": "Sprint 6 — Timeline format because the sprint had a rollback",
+      "content_md": "# Retro — Sprint 6 (Timeline Format)\n_22 April–5 May · 60 min · facilitator: [SM]_\n\n## Why this format\n\nSprint 6 had a real moment — the user-list rollback on day 8. A standard format would let the team go around it; the timeline forces it onto the wall.\n\n## Agenda\n\n1. **5 min — frame.** \"We set out to land the user-management flow end-to-end. We landed it on day 11 instead of day 7. Let's lay out what happened.\"\n2. **10 min — silent timeline.** Each person adds 2-3 events above the line (energy up) and 2-3 below (energy down). No filter; their own dots.\n3. **15 min — read the timeline.** SM reads each dot aloud. No interpretation yet.\n4. **20 min — converge on the heaviest dip.** Usually obvious by this point. The day-8 rollback is mentioned by 4 of 5 people.\n5. **8 min — what we'd do differently in that moment.** Specific. Owned. One person tracks the commitment.\n6. **2 min — close.** One word from each person.\n\n## Commitment from sprint 6 retro\n\nNaledi will own the integration-test smoke run before any production deploy that touches the payments path. Tracked in the next sprint's working agreement; revisited at sprint 8 retro.\n\n## What landed in the room\n\nLewis acknowledged he merged the payments PR without the integration-test signal because 'it was 5pm Friday'. The acknowledgement was the unlock; nobody else needed to say anything. The commitment came from Naledi unprompted.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Why-this-format-now is the discipline most new SMs skip. They cycle through formats arbitrarily ('let's try the sailboat this week'). The format should fit the sprint. Timeline for sprints with real moments; sailboat for sprints with low energy; standard only for the first retro with a new team."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Reading dots aloud without interpretation is harder than it looks. The SM reads what's on the wall — 'on day 3 someone wrote: data pipeline meeting felt good' — without analysing it. Analysis comes later. The discipline is letting the team see their own dots first."
+        },
+        {
+          "section_id": "section-5",
+          "note": "'What we'd do differently in that moment' is more useful than 'what we'd do differently overall'. The team can't change everything; they can change one specific thing in one specific situation. The commitment that comes out of this is much more likely to actually happen."
+        },
+        {
+          "section_id": "section-7",
+          "note": "Note that the unlock came from Lewis acknowledging his own move. Most rookie SMs would try to draw that out by direct question; the timeline did it without the SM having to. That's the power of format: the structure does the work."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Running the same format every retro. Team gets bored, engagement drops, the retro becomes theatre. Three formats minimum in your rotation by week 8.",
+    "Choosing a format based on novelty, not fit. 'Let's try the lean coffee retro!' when the team is tired and just wants to land a commitment is gimmickry. Match the format to the sprint.",
+    "Mad/sad/glad without modelling first. If you invite the team to a vulnerable format and don't model the vulnerability yourself in the first 30 seconds, the team won't go there.",
+    "Five whys taken past the natural stopping point. Three or four whys is usually deep enough; the fifth becomes therapy and the team checks out.",
+    "Closing without a single specific commitment. Five generic 'we should communicate better' bullets land nowhere. One specific commitment with a named owner is the test.",
+    "Retros that always end on time. If a retro lands the real conversation, sometimes it's worth running 15 minutes long — and sometimes the right move is to close 10 minutes early. Forcing 60 minutes regardless of content trains the team that the meeting matters more than the conversation."
+  ],
+  "variant_patterns": [
+    "Quarterly retro variant: combine timeline + five-whys for a longer-horizon look. 90 min. Once a quarter. Focused on patterns across multiple sprints, not one sprint's incidents.",
+    "Project-close retro variant: use lessons-learned framing rather than retro framing. The team is wrapping up, not iterating; the audience for the document is the next team, not this one.",
+    "Async retro variant: when in-person isn't possible (distributed team, multiple timezones), silent-write phase moves to a shared doc 48 hours before; meeting becomes 30-min synth conversation."
+  ],
+  "related_scenarios": ["sm-tense-retro", "sm-retro-tears"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "sm-team-charter",
+  "role": "sm",
+  "artefact_type": "team_charter",
+  "title": "Team Charter",
+  "variant": "standard",
+  "description": "The team charter that the team wrote together — versus the template the SM filled in alone. One page. Read once a quarter. Used as the reference when something feels off and nobody can name why. The discipline is not in writing it; it's in revisiting it.",
+  "empty_template_md": "# [Team name] — Team Charter\n_Written [date] · last revisited [date] · next revisit [date]_\n\n## Why this team exists\n_One paragraph. The outcome this team is accountable for, in language a senior engineer in another team could understand._\n\n## What we'll deliver in the next 90 days\n_Three to five outcomes (not features). Specific. Dated._\n\n## How we'll work together\n_Working agreements. See sm-working-agreements playbook for the structure. Three to five items, agreed by the whole team._\n\n## What we'll measure\n_How we'll know we're succeeding. Three to five measures. Lagging is fine; we want signal, not theatre._\n\n## Who's in the room and what each person brings\n_Each team member: name, role, what they're great at, what's their stretch this quarter._\n\n## What we don't do\n_The boundaries. What this team is not responsible for. Saying no to the wrong work is half the job._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal team charter — written in week 4",
+      "content_md": "# Customer Portal Team — Team Charter\n_Written 22 March 2026 · last revisited 22 March 2026 · next revisit 22 June 2026_\n\n## Why this team exists\n\nWe're replacing the legacy customer portal with a self-service experience for our top-12 B2B customers. By the end of this work, the portal team in CS will spend less time fielding password-reset calls and more time on relationship work that actually moves accounts forward.\n\n## What we'll deliver in the next 90 days\n\n- A working portal in production by 9 September that supports login + account management + three report types + password reset + admin console.\n- A CS team that can hard-cutover the top-12 customers to the new portal on go-live day, with the workflow documented.\n- An archived migration path for customer data older than 24 months, with a Phase-2 commitment about what we'll do with it.\n- A measured reduction in CS-team-fielded password-reset tickets, from a current baseline of ~30/week.\n\n## How we'll work together\n\n- Standup at 10am, 15 minutes, problem-solving moved offline.\n- Code review SLA: 24 hours, first response. Same-day for blocking PRs.\n- Compliance review at week 7, not later. Any data-residency questions surface there.\n- Naledi's QA work has a one-day buffer before any production deploy that touches payments.\n- We work to the team's capacity, not the PO's wishlist. The PO and the SM hold this line together.\n\n## What we'll measure\n\n- Sprint goal achievement (target: 6 of 8 sprints land their goal fully).\n- Deployment-to-staging cycle time (current: 2-3 days; target: <1 day).\n- Impediment resolution median (current: 5 days; target: <4 days).\n- Team-health survey: 'I can do my best work here' — scored monthly, anonymous.\n\n## Who's in the room\n\n- **Lewis Harding (Lead Dev):** great at platform-deep technical reasoning; stretch this quarter is mentoring Theo without solving Theo's problems for him.\n- **Naledi Mokoena (QA Lead):** great at finding the regression nobody saw coming; stretch is owning the QA strategy for the bulk-import work in Phase 2.\n- **Theo Park (Junior Dev / Design crossover):** great at design-engineering bridge work; stretch is owning a story end-to-end with no senior pairing.\n- **Asha Bhatt (Senior Designer):** great at making complex flows feel simple; stretch is teaching the design language to engineers via component patterns.\n- **Hari Quintero (PO, not on this team but adjacent):** brings stakeholder access; stretch is being in fewer planning meetings (delegating to the team).\n- **[SM]:** brings the holding-the-space role; stretch is the platform-team transition conversation Adisa flagged for Q3.\n\n## What we don't do\n\n- We don't migrate customer data older than 24 months in this programme (Phase 2 candidate).\n- We don't own customer-facing communications (that's CS via Janelle).\n- We don't take on the self-service billing work — that sits with finance.\n- We don't run prod outage response (SRE rotation handles that).\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Why-this-team-exists in language understandable by a senior engineer in another team. Most charters fail the 'would my counterpart in another team understand this?' test. The discipline is plain English."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Outcomes, not features. 'Working portal' is a feature; 'CS spends less time fielding password resets' is an outcome. The team needs to see the impact of the work, not just the work."
+        },
+        {
+          "section_id": "section-5",
+          "note": "The 'stretch this quarter' line per person is the most-skipped section and the most useful. It gives every team member something specific to grow into and gives the SM something specific to coach against."
+        },
+        {
+          "section_id": "section-6",
+          "note": "What we don't do is the boundary the team can point to when scope creeps. Saying no to the wrong work is half the job — and having it written down makes the no much easier to defend."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Charter written by the SM alone and presented to the team for approval. Wrong direction. The charter is the team's; the SM facilitates the writing of it.",
+    "Charter written in week 1 before the team has worked together enough to know how they want to work. Write a working charter in week 4 or 5; revisit it as a real charter at the quarter mark.",
+    "Outcomes confused with outputs. 'We will ship the portal' is an output. 'CS spends less time on password resets' is the outcome of the output. The charter wants outcomes.",
+    "What-we-don't-do section omitted. The team has no boundary to point to when the next opportunistic ask comes in. Always include it.",
+    "Charter filed and never re-read. Set a quarterly revisit date in the document itself. The first revisit is when the team learns whether the charter is real or theatre.",
+    "Charter that has nothing about the people in the room. The 'who's in the room' section makes the document a living team document, not a template. Skip it and you have a project brief, not a charter."
+  ],
+  "variant_patterns": [
+    "Cross-functional team variant: 'who's in the room' grows to include adjacent roles (PO, designer, SRE liaison). Boundaries section becomes more important — what we own end-to-end vs. share.",
+    "Long-running team variant (team has existed for years): the 'why this team exists' section gets revisited annually. Often what was true two years ago no longer holds.",
+    "New team forming variant: the charter gets written in two passes — a draft in week 4, a real version in week 8. The first pass is the SM's; the second pass is the team's."
+  ],
+  "related_scenarios": ["sm-defensive-po", "sm-dominant-voice"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

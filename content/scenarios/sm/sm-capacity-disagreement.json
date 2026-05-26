@@ -1,0 +1,51 @@
+{
+  "slug": "sm-capacity-disagreement",
+  "role": "sm",
+  "title": "The Capacity Argument",
+  "one_liner": "Halfway through planning, Lewis and Naledi are arguing about whether the team can take another story. Both have a point. Both have stopped listening.",
+  "brief": "## The setup\n\nWeek five. Sprint planning. The team has sized seven stories — a comfortable sprint for capacity, on paper. Lewis (lead dev) is pushing to add an eighth: a small payment-API refactor that he says is 'three points, tops'. Naledi (QA lead) is pushing back: 'three points of dev maybe, but it'll be six points of QA because of the regression suite, and we don't have the bandwidth'.\n\nLewis has shifted from 'three points tops' to 'come on, we can manage'. Naledi has shifted from 'six points of QA' to 'this is what always happens, we promise too much and then I cover the weekend'. Voices are not raised, but the room has hardened. Theo is looking at his shoes. Asha is watching you.\n\nBoth of them are right. Lewis is right that the dev work is small. Naledi is right that the QA tail on this kind of refactor has historically been the actual bottleneck.\n\nThe PO (Hari) is not in the room — he had to leave at the half-hour mark, which is one of the things you're going to coach him on later but is not the thing in front of you now.\n\nIf you side with Lewis, Naledi disengages for the rest of planning and the QA tail bites the team in sprint week 2. If you side with Naledi, Lewis hears 'the SM doesn't trust my estimates' and his cooperation gets slower over the next month. If you don't act, they will keep going in circles and you'll be ten minutes from end-of-meeting with nothing decided.\n\n## Your turn\n\nNext move.",
+  "objective": "Get the team out of the binary (in vs out) and into the actual question (what's the real shape of the work, in dev AND QA points?). Land a decision the team owns, not one you imposed.",
+  "curveball": "If the user calls a vote, the room splits 2-2 with Theo abstaining and Asha siding with Naledi to avoid a fight — Lewis loses publicly and the relationship cools. If the user takes the dev-vs-QA framing seriously and says something like 'let's size the story separately for dev and QA effort and see what the total looks like', the team finds it's about 3 dev points + 5 QA points = capacity-busting on the QA side. Lewis sees this and concedes voluntarily ('OK, fair, let's drop it'). The skill is changing the question so the data resolves the disagreement instead of the SM.",
+  "personas": [
+    {
+      "name": "Lewis Harding",
+      "role": "Lead Developer",
+      "position": "It's a small story. The team is capable",
+      "fear": "Being seen as the lead who under-commits the team",
+      "monogram": "LH",
+      "colour": "slate"
+    },
+    {
+      "name": "Naledi Mokoena",
+      "role": "QA Lead",
+      "position": "The QA tail on this kind of refactor is always bigger than the dev points suggest",
+      "fear": "Carrying another weekend of cleanup work",
+      "monogram": "NM",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Re-framed the question — separated dev effort from QA effort so the total shape became visible",
+      "Did not pick a side; surfaced the data that let the team pick",
+      "Asked Naledi what specifically the QA tail looks like (named the regression suite) — gives Lewis specific information he didn't have",
+      "Closed with a team decision, not an SM ruling — Lewis or Naledi names the outcome out loud"
+    ],
+    "yellow": [
+      "Called a vote — splits the room badly and doesn't resolve the underlying disagreement",
+      "Sided with Lewis ('let's lean in') — wins this sprint, loses Naledi for the next three",
+      "Sided with Naledi ('we shouldn't add it') — wins this sprint, Lewis stops volunteering ideas",
+      "Suggested 'let's table it and decide tomorrow' — kicks the conversation into asynchronous mode where it goes unresolved"
+    ],
+    "red": [
+      "Made it about the personal dynamic — 'you two need to listen to each other'",
+      "Asked Hari (the absent PO) to make the call by Slack — pulls in the wrong decision-maker",
+      "Let the planning meeting overrun by 20 minutes without a decision",
+      "Took the conversation offline to a 1:1 with Lewis to 'work it out' — bypasses the team and undermines Naledi"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}
