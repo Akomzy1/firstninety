@@ -30,6 +30,7 @@ const PRO_INCLUSIONS: ReadonlyArray<React.ReactNode> = [
   "Full 90-day Mission Track",
   "Unlimited Coach",
   "Multi-role support",
+  "Probation Prep Mode",
   "Survival Report export at Day 90",
 ];
 
@@ -75,140 +76,101 @@ const FAQ: ReadonlyArray<{ q: string; a: React.ReactNode }> = [
   {
     q: "Why isn't there a cheaper tier?",
     a: (
-      <>
-        <p>
-          Because a cheaper tier would mean cutting the parts that actually
-          do the work — the unlimited Situation Room, the full Simulator,
-          the 90-day arc. What&rsquo;s left is a chatbot, and a chatbot is
-          not what we&rsquo;re selling.
-        </p>
-        <p>
-          The Free plan exists so you can see what FirstNinety is. Pro
-          exists for using it through your first 90 days. There is no
-          halfway version, because halfway is the version that
-          doesn&rsquo;t help.
-        </p>
-      </>
+      <p>
+        Because the value at $39.99 is already the cheaper tier.
+        We&rsquo;re not selling you a path up — we&rsquo;re selling you
+        the whole product, once.
+      </p>
     ),
   },
   {
     q: "Can I cancel anytime?",
     a: (
       <p>
-        Yes. One click in Account &raquo; Billing. No call to retain you,
-        no exit survey you can&rsquo;t skip. If you cancel mid-month you
-        keep access until the end of the billing period, then drop to
-        Free.
+        Yes. From your account settings. Your access continues until the
+        end of the billing period.
       </p>
     ),
   },
   {
     q: "What if my employer wants to pay?",
     a: (
-      <>
-        <p>
-          You can expense it. Many learning &amp; development budgets
-          cover tooling under $50 a month without approval; ours is
-          designed to fit inside that ceiling on purpose.
-        </p>
-        <p>
-          We don&rsquo;t currently sell team or enterprise seats, and we
-          deliberately don&rsquo;t share your usage, prompts, or progress
-          with anyone — including a paying employer. Your manager does
-          not see your Situation Room transcripts. That is a feature, not
-          an oversight.
-        </p>
-      </>
+      <p>
+        For now, you&rsquo;d expense it yourself and your employer
+        reimburses. Direct invoicing for institutions is coming in Phase
+        2.
+      </p>
     ),
   },
   {
     q: "Will you read my work emails or Slack?",
     a: (
-      <>
-        <p>
-          <strong className="text-ink font-medium">No. Never.</strong>{" "}
-          FirstNinety does not connect to your email, your calendar, your
-          Slack, your Teams, your GitHub, your Jira, or any other
-          workplace system. There are no integrations on the roadmap that
-          change this.
-        </p>
-        <p>
-          What the coach knows about you is what you have typed into it
-          directly, plus the role and week you selected at sign-up.
-          That&rsquo;s it.
-        </p>
-      </>
+      <p>
+        <strong className="text-ink font-medium">No. Never.</strong> We
+        never ask for access to your work systems. When you paste
+        anything from work into FirstNinety, we&rsquo;ll prompt you to
+        anonymise first. See our memory model — Level 1 declared only,
+        never Level 3 workplace ingestion.
+      </p>
     ),
   },
   {
     q: "What happens after Day 90?",
     a: (
-      <>
-        <p>
-          On Day 90 we generate a Survival Report — a single document
-          summarising what you worked on, the patterns the coach noticed,
-          and where you came in stronger than when you started. You can
-          export it and keep it.
-        </p>
-        <p>
-          After that, you can stay on Pro (the Situation Room and Coach
-          keep working — they&rsquo;re useful past probation), switch to
-          Free, or cancel. Most people stay through their first
-          promotion conversation, then decide.
-        </p>
-      </>
+      <p>
+        The Mission Track concludes — it&rsquo;s a 13-week curriculum by
+        design. Situation Room, Coach, Playbook Library, and Simulator
+        continue indefinitely as long as you&rsquo;re subscribed. Your
+        Day 90 Survival Report is yours to keep. The product transforms
+        from structured curriculum to sustained on-demand workplace
+        partner.
+      </p>
+    ),
+  },
+  {
+    q: "Does FirstNinety work if my probation is longer than 90 days?",
+    a: (
+      <p>
+        Yes. Probation Prep Mode is independent of the 90-day Mission
+        Track — it activates 21 days before any probation review you
+        have coming up, whether that&rsquo;s at the end of your first
+        90 days or six months in. You can set or adjust your probation
+        date anytime in Settings. The window length is customisable
+        from 7 to 90 days for industries with extended probations.
+      </p>
+    ),
+  },
+  {
+    q: "What if I joined FirstNinety after my first 90 days at this role?",
+    a: (
+      <p>
+        You can still use it. We&rsquo;ll start where you are — no
+        catch-up curriculum, no pretending you&rsquo;re starting fresh.
+        You&rsquo;ll have full access to Situation Room, Coach,
+        Playbooks, and Simulator. If you have a probation review coming
+        up — even at month 5 or 6 — Probation Prep Mode will activate
+        at the right time.
+      </p>
     ),
   },
   {
     q: "Do you have a refund policy?",
     a: (
-      <>
-        <p>
-          The 7-day free trial is the refund policy. You don&rsquo;t pay
-          until day 8, and you can cancel inside the trial with one click.
-        </p>
-        <p>
-          After that, we don&rsquo;t offer partial-month refunds — but we
-          also don&rsquo;t auto-renew an annual plan without warning you
-          14 days out. If something has genuinely gone wrong, email us;
-          we read every message.
-        </p>
-      </>
-    ),
-  },
-  {
-    q: "Is this only for new graduates?",
-    a: (
-      <>
-        <p>
-          No. FirstNinety is for anyone in their first 90 days of a new
-          tech role — career changers, returners, people moving from one
-          specialism to another, and yes, recent graduates.
-        </p>
-        <p>
-          The system is calibrated by role and by week, not by age or
-          years of experience. A senior engineer becoming a Scrum Master
-          for the first time gets the same Mission Track as a graduate
-          becoming a BA.
-        </p>
-      </>
+      <p>
+        The 7-day free trial means most users won&rsquo;t need refunds.
+        Outside the trial, we don&rsquo;t offer refunds for past billing
+        periods — but you can cancel anytime to stop future charges.
+      </p>
     ),
   },
   {
     q: "Is there a student discount?",
     a: (
-      <>
-        <p>
-          Not as a permanent line item. The price is already set against
-          a single human coaching session, not against a typical SaaS
-          product — discounting it further would make the comparison
-          incoherent.
-        </p>
-        <p>
-          If you&rsquo;re enrolled in a partner bootcamp, your cohort may
-          have a code. Ask whoever ran your programme.
-        </p>
-      </>
+      <p>
+        Not at MVP. Institutional partnerships with bootcamps and
+        training programs are coming in Phase 2 — if you&rsquo;re a
+        current student, your program may be able to provide access.
+      </p>
     ),
   },
 ];
@@ -383,6 +345,15 @@ function AnchorBand() {
           What $39.99 a month actually compares to.
         </h2>
 
+        <p className="text-body-l text-mute mt-5 max-w-[60ch] mx-auto">
+          The first three months of FirstNinety cost $120. The difference
+          between losing your first tech job and keeping it costs less
+          than one human coaching session per month.{" "}
+          <strong className="text-ink font-medium">
+            That&rsquo;s the comparison worth making.
+          </strong>
+        </p>
+
         <div className="mt-7 max-w-md mx-auto text-left border-t border-paper-3">
           {COMPARISON.map((row, idx) => (
             <div
@@ -408,13 +379,6 @@ function AnchorBand() {
             </div>
           ))}
         </div>
-
-        <p className="text-body text-mute mt-7 max-w-[60ch] mx-auto">
-          <strong className="text-ink font-medium">$39.99</strong> buys you
-          a structured 90-day programme, role-specific simulation, and
-          on-demand workplace help — not a chatbot, not a course, not a
-          calendar invite.
-        </p>
       </div>
     </section>
   );
