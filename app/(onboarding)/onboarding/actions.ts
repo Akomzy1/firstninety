@@ -15,6 +15,36 @@ import type { Database } from "@/lib/db/types.gen";
 
 type Role = Database["public"]["Enums"]["role_enum"];
 type WorkSetup = Database["public"]["Enums"]["work_setup_enum"];
+type EntryState = Database["public"]["Enums"]["entry_state_enum"];
+
+/**
+ * MVP Spec v1.3 §3 — three-entry-state model.
+ *
+ *   A (fresh start)        — start_date is today, yesterday, or up to 3 days ago
+ *   B (mid-journey)        — start_date is 4-89 days ago
+ *   C (joined post-Day-90) — start_date is 90+ days ago
+ *
+ * Boundaries match the spec exactly: State A includes days 0-3; State B
+ * includes days 4-89; State C is day 90+.
+ */
+function computeEntryState(startDate: Date, now: Date): EntryState {
+  const startUtc = Date.UTC(
+    startDate.getUTCFullYear(),
+    startDate.getUTCMonth(),
+    startDate.getUTCDate(),
+  );
+  const nowUtc = Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+  );
+  const daysSinceStart = Math.floor(
+    (nowUtc - startUtc) / (1000 * 60 * 60 * 24),
+  );
+  if (daysSinceStart <= 3) return "A";
+  if (daysSinceStart <= 89) return "B";
+  return "C";
+}
 
 const ROLE_VALUES: ReadonlyArray<Role> = ["ba", "pm", "sm", "po", "da", "aie"];
 const WORK_SETUP_VALUES: ReadonlyArray<WorkSetup> = ["remote", "hybrid", "office"];
@@ -110,12 +140,13 @@ export async function completeOnboardingAction(): Promise<void> {
   const user = await requireAuth();
   const supabase = await createClient();
 
-  // Load what we've gathered so we can derive initial responsibility hints.
+  // Load what step-3 wrote so we can compute the entry state + seed
+  // responsibility hints.
   const [{ data: userRow }, { data: contextRow }] = await Promise.all([
     supabase.from("users").select("primary_role").eq("id", user.id).single(),
     supabase
       .from("user_context")
-      .select("sector, work_setup")
+      .select("sector, work_setup, start_date")
       .eq("user_id", user.id)
       .single(),
   ]);
@@ -125,22 +156,115 @@ export async function completeOnboardingAction(): Promise<void> {
     redirect("/onboarding/step-2");
   }
 
-  // Mark onboarding complete.
-  const { error: completionError } = await supabase
-    .from("users")
-    .update({ onboarding_completed_at: new Date().toISOString() })
-    .eq("id", user.id);
-  if (completionError) {
-    // Bounce back to step 4 with the error in the URL so the page can
-    // render it. (We avoid the useActionState path here since the form has
-    // no inputs.)
-    redirect(`/onboarding/step-4?error=${encodeURIComponent(completionError.message)}`);
+  const role = userRow.primary_role as Role;
+
+  // ---- Compute entry state (MVP Spec v1.3 §3) ----------------------- //
+  // start_date is optional at step 3. When it's null we treat the user as
+  // State A — they'll fill it in via Settings later and the home page's
+  // day-state computation handles a missing date as Day 1.
+  const now = new Date();
+  let entryState: EntryState = "A";
+  let currentDay = 1;
+  let currentWeek = 1;
+  if (contextRow?.start_date) {
+    const startDate = new Date(`${contextRow.start_date}T00:00:00Z`);
+    if (!Number.isNaN(startDate.getTime())) {
+      entryState = computeEntryState(startDate, now);
+      const daysSinceStart = Math.floor(
+        (Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) -
+          Date.UTC(
+            startDate.getUTCFullYear(),
+            startDate.getUTCMonth(),
+            startDate.getUTCDate(),
+          )) /
+          (1000 * 60 * 60 * 24),
+      );
+      currentDay = Math.max(1, daysSinceStart + 1);
+      currentWeek = Math.max(1, Math.ceil(currentDay / 7));
+    }
   }
 
-  // Seed an initial declared-memory entry from the sector tag if present.
-  // We're explicit about source so the Coach (Phase 3) can weight onboarding
-  // entries differently than ongoing Sunday-prompt entries.
-  const seedRows: { user_id: string; description: string; source: Database["public"]["Enums"]["memory_source_enum"] }[] = [];
+  // ---- Persist entry_state + computed day/week --------------------- //
+  // Sequential calls match the rest of the codebase's pattern; Supabase
+  // JS doesn't expose transactions client-side. Partial-failure
+  // scenarios:
+  //   - context update fails    → user_context entry_state unchanged,
+  //                               onboarding not marked complete, action
+  //                               returns with redirect to error state
+  //   - backfill fails          → entry_state set + onboarding still
+  //                               proceeds; user lands on home with
+  //                               State B but no skipped_pre_signup rows
+  //                               yet. Reconciled on next render or by a
+  //                               re-run of the backfill.
+  // The risk is acceptable because the rows are idempotent (upsert on
+  // user_id+mission_id) and the user can always replay via Settings.
+  const { error: contextError } = await supabase
+    .from("user_context")
+    .update({
+      entry_state: entryState,
+      current_day: currentDay,
+      current_week: currentWeek,
+    })
+    .eq("user_id", user.id);
+  if (contextError) {
+    redirect(
+      `/onboarding/step-4?error=${encodeURIComponent(contextError.message)}`,
+    );
+  }
+
+  // ---- State B: backfill skipped_pre_signup rows ------------------- //
+  // Per MVP Spec v1.3 §3 — for State B users, mark all published
+  // missions in weeks 1 through (current_week - 1) for their role as
+  // `skipped_pre_signup`. This is the "system-skipped because you
+  // weren't here yet" status, distinct from user-initiated `skipped`.
+  // State C users get no backfill: they never had a Mission Track.
+  if (entryState === "B" && currentWeek > 1) {
+    const { data: priorMissions } = await supabase
+      .from("missions")
+      .select("id")
+      .eq("role", role)
+      .eq("is_published", true)
+      .lt("week", currentWeek);
+    if (priorMissions && priorMissions.length > 0) {
+      const backfillRows = priorMissions.map((m) => ({
+        user_id: user.id,
+        mission_id: m.id,
+        status: "skipped_pre_signup" as const,
+        completed_at: now.toISOString(),
+      }));
+      const { error: backfillError } = await supabase
+        .from("mission_completions")
+        .upsert(backfillRows, { onConflict: "user_id,mission_id" });
+      if (backfillError) {
+        // Log only — don't abort onboarding. The user still completes
+        // and the partial state is recoverable.
+        console.error(
+          "[onboarding] mid-journey backfill partial failure",
+          backfillError,
+        );
+      }
+    }
+  }
+
+  // ---- Mark onboarding complete ------------------------------------ //
+  const { error: completionError } = await supabase
+    .from("users")
+    .update({ onboarding_completed_at: now.toISOString() })
+    .eq("id", user.id);
+  if (completionError) {
+    redirect(
+      `/onboarding/step-4?error=${encodeURIComponent(completionError.message)}`,
+    );
+  }
+
+  // ---- Seed declared-memory responsibilities ----------------------- //
+  // (Existing behaviour — unchanged. Source-tagged so the Coach can
+  // weight onboarding entries differently than ongoing Sunday prompts.)
+  const seedRows: {
+    user_id: string;
+    description: string;
+    source: Database["public"]["Enums"]["memory_source_enum"];
+  }[] = [];
   if (contextRow?.sector) {
     seedRows.push({
       user_id: user.id,
@@ -149,7 +273,8 @@ export async function completeOnboardingAction(): Promise<void> {
     });
   }
   if (contextRow?.work_setup) {
-    const label = contextRow.work_setup === "remote" ? "fully remote" : contextRow.work_setup;
+    const label =
+      contextRow.work_setup === "remote" ? "fully remote" : contextRow.work_setup;
     seedRows.push({
       user_id: user.id,
       description: `Working ${label}.`,
@@ -160,5 +285,8 @@ export async function completeOnboardingAction(): Promise<void> {
     await supabase.from("user_responsibilities").insert(seedRows);
   }
 
+  // The Daily Home reads entry_state + day-mode and renders the right
+  // state (Day 1 / mid-journey / post-90). No special routing per state
+  // is needed here.
   redirect("/home");
 }
