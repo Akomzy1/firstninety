@@ -1,0 +1,53 @@
+{
+  "slug": "po-user-stories",
+  "role": "po",
+  "artefact_type": "user_stories",
+  "title": "User Stories + Acceptance Criteria",
+  "variant": "standard",
+  "description": "User stories that the team can actually build against — versus the As-a/I-want/So-that template that contains no information. The story is the title; the AC is the contract. The discipline is that the AC is testable, observable, and specific enough to settle disputes without further conversation.",
+  "empty_template_md": "# Story: [Short title — verb-led, 6-10 words]\n_ID: [PROJ-NN] · size: [points] · owner: [PO] · status: [ready / refining / blocked]_\n\n## The narrative\n\n**As a** [specific user type — not just 'user']\n**I want** [the specific capability]\n**so that** [the outcome — observable, specific, not 'be more efficient']\n\n## Context (optional but recommended)\n_One paragraph. The situation behind the story. Why now. Why this user. The thing the team needs to know that doesn't fit the As-a/I-want format._\n\n## Acceptance criteria\n_Each one testable. Numbered. Behavioural where possible (Given/When/Then). If a developer or QA can read this and disagree about what 'done' means, it's not done._\n\n1. **Given** [context], **when** [action], **then** [observable outcome].\n2. \n3. \n\n## Out of scope\n_What this story does NOT cover. Without this section, you'll have the same conversation in PR review._\n\n## Open questions\n_Things that need to be resolved before this story is pulled into a sprint. PO owns getting them answered._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal — Admin: role-assignment changes (CP-201)",
+      "content_md": "# Story: Admin can change a user's role from admin to viewer\n_ID: CP-201 · size: 3 points · owner: [PO] · status: ready_\n\n## The narrative\n\n**As a** customer admin on the new portal,\n**I want** to change another user's role from 'admin' to 'viewer' (or vice versa)\n**so that** I can manage permissions without raising a ticket to our internal CS team.\n\n## Context\n\nCurrently top-12 customers raise an average of 4 role-change tickets per week to our CS team. Each ticket takes ~12 minutes of CS time. This story lands the most common variant (admin↔viewer) and unlocks the CS-time recovery committed to in the programme business case. The 'add additional roles beyond admin/viewer' is explicitly out of scope and a Phase-2 candidate.\n\n## Acceptance criteria\n\n1. **Given** a customer admin viewing the user list, **when** they click the role dropdown next to another user, **then** they can select 'admin' or 'viewer' and the change is saved within 2 seconds.\n2. **Given** a customer admin changes another user's role, **when** the change saves, **then** an entry is written to the audit log (CP-145) recording the actor, target, old role, new role, and timestamp.\n3. **Given** a customer admin attempts to change their OWN role to 'viewer', **when** they confirm, **then** the system blocks the change with an error: 'You can't change your own admin role. Ask another admin in your organisation.'\n4. **Given** an organisation has only one admin (the actor), **when** they attempt to change that role to 'viewer', **then** the system blocks with: 'There must be at least one admin in your organisation.'\n5. **Given** the role change succeeds, **when** the affected user next logs in, **then** they see their new permission level reflected immediately.\n\n## Out of scope\n\n- Custom roles beyond 'admin' / 'viewer' (Phase 2; tracked as CP-401).\n- Bulk role-assignment for multiple users at once (separate story CP-217).\n- Role-change notifications via email to the affected user (separate story; AC 5 covers the in-portal reflection).\n\n## Open questions\n\n- None. Resolved at refinement on 24 April.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Title verb-led, 6-10 words. 'Admin can change a user's role' tells you the actor and the action immediately. 'Role-assignment changes' (which is what the backlog item was called) is fine for a backlog title but doesn't work as a story title."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Specific user type. 'Customer admin on the new portal' — not just 'user'. The 'As a user' story is the most common rookie mistake; it tells the developer nothing about the actor's actual context."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Context paragraph is optional but high-value. It tells the team WHY the story is being built — and the team that knows why builds better stories. Without it, the developer makes assumptions about edge-case handling that may not match the actual user."
+        },
+        {
+          "section_id": "section-5",
+          "note": "AC in Given/When/Then form is the contract. Each one testable. The 'Given an organisation has only one admin…' criterion (AC 4) is the kind of edge case that a sloppy AC misses and a real customer hits in week one."
+        },
+        {
+          "section_id": "section-6",
+          "note": "Out-of-scope section saves you the PR-review argument. Without it, a developer might 'helpfully' add bulk role-assignment because they thought it was the natural extension. With it, they don't."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "'As a user' instead of a specific user type. 'User' is everybody and nobody; the actor matters.",
+    "AC that aren't testable. 'The system should be intuitive' isn't AC; it's a wish. 'When the admin clicks the dropdown, the change saves within 2 seconds' is AC.",
+    "AC that describe implementation. 'Use OAuth for authentication' is a solution, not a capability. 'The user authenticates without remembering a separate password' is the AC.",
+    "Out-of-scope section omitted because 'obvious'. The PR review will surface the 'but we should also…' conversation; save the time and write it down.",
+    "Open-questions section omitted because there are no open questions (you say). There always are; the discipline forces you to find them.",
+    "Stories with no number on them. 1, 2, 3 in the AC list — without numbers, refinement conversations devolve into 'the third bullet' / 'no the fourth one' / 'wait, you mean the one about admins?'."
+  ],
+  "variant_patterns": [
+    "Discovery / spike story variant: no AC in the traditional sense. The AC becomes 'we have a defensible decision document with options A/B/C and a recommendation' — the deliverable is a decision, not working software.",
+    "Bug-fix story variant: 'The narrative' becomes 'expected behaviour / actual behaviour / impact'. AC becomes 'reproduce the bug, fix it, add a regression test, deploy'.",
+    "Cross-team story variant: add a §5 'Dependency contract' — what we agreed with the other team to deliver, when, and what we're delivering back to them. Misalignment here is where cross-team stories die."
+  ],
+  "related_scenarios": ["po-vague-request", "po-coach-developer"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

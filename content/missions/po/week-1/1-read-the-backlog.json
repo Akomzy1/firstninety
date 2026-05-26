@@ -1,0 +1,24 @@
+{
+  "slug": "po-w1-read-the-backlog",
+  "role": "po",
+  "week": 1,
+  "sequence_in_week": 1,
+  "title": "Read the backlog, cover to cover",
+  "why_matters": "Your backlog is the document that tells the team what to build and tells stakeholders what they can expect. Every conversation you have for the next ninety days will reference it — directly or indirectly. The version you inherit was shaped by someone else's judgement; reading it cover to cover is how you learn what they believed, what they deferred, and what they decided against. By week four you'll be the person whose judgement shaped it; by week one, you read what you've inherited.",
+  "steps": [
+    "Find every horizon of the backlog: what's ready for the next sprint, what's refined for the next 2-3 sprints, what's on the quarter idea list, and what's in the archive (declined items).",
+    "Read each item. Not skim — read. Note the items you don't understand, the items that surprise you, and the items where the rationale is missing.",
+    "Look specifically at the archive (declined items). If there isn't an archive, that's a finding in itself — the previous PO never wrote down what they said no to, and you'll be having those conversations from scratch.",
+    "By Friday, you can name: the three most important items in Horizon 1, the most ambiguous item in Horizon 2, and one declined item from the archive you'd want to revisit at some point.",
+    "Do NOT make changes to the backlog this week. Read, take notes, prepare questions for refinement next week. Changes come from understanding, and you don't yet have it."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["po-product-backlog", "po-no-memo"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "By end of week, you can describe the backlog to a peer PO in five minutes: what's in flight, what's coming, what's been declined. You have a list of 5-10 questions for refinement next week.",
+  "reflection_prompt": "Looking at the archive — which declined item, if any, looks like a decision you might have made differently? Two sentences. (You're not going to act on this in week one; the observation is the work.)",
+  "estimated_minutes": 45,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

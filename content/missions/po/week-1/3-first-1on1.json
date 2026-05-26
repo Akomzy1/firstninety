@@ -1,0 +1,23 @@
+{
+  "slug": "po-w1-first-1on1",
+  "role": "po",
+  "week": 1,
+  "sequence_in_week": 3,
+  "title": "Run your first 1:1 with your manager",
+  "why_matters": "The PO is the only person on the team allowed to say no to the business; the first 1:1 with your manager is where you learn what kind of no's she will back you up on and which ones she'd rather you didn't pick. POs without a strong calibration on their manager's risk appetite end up either capitulating to senior stakeholders (because they're afraid of an escalation they don't want to manage) or holding hard lines their manager isn't prepared to defend. The week-1 1:1 is where you start that calibration.",
+  "steps": [
+    "Book a recurring weekly 30-minute 1:1 if one doesn't exist. Insist on weekly; POs without weekly manager time discover they needed it during a conversation that already happened.",
+    "Draft a one-page agenda for the first session. Three sections: 'what I'm noticing about this product in week 1' (observations only — no opinions yet); 'questions I have about how things are decided here'; 'what would help me from you'.",
+    "Ask the calibration question directly: 'when you imagine me holding a hard no with a senior stakeholder in the next ninety days — say, with Tobi or Yetunde — what kind of no would you want me to escalate to you first, and what kind would you want me to just handle?'. The answer tells you her appetite.",
+    "Listen more than you talk. The most useful POs in their first 1:1 learn what their manager values; the least useful ones over-share their roadmap plans."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["po-no-memo"],
+    "scenario_slugs": ["po-probation-review"]
+  },
+  "success_criteria": "Meeting happened, recurring slot is in both calendars, and you walked out with one concrete sentence on the kind of no your manager wants you to escalate before holding.",
+  "reflection_prompt": "What surprised you in your manager's answer to the escalation-calibration question? Two sentences.",
+  "estimated_minutes": 35,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

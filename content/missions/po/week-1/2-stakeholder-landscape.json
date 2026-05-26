@@ -1,0 +1,23 @@
+{
+  "slug": "po-w1-stakeholder-landscape",
+  "role": "po",
+  "week": 1,
+  "sequence_in_week": 2,
+  "title": "Map the stakeholder landscape",
+  "why_matters": "Every backlog decision you make in the next ninety days will land with a stakeholder. Some of them you already know; many you don't. Some are senior and loud; some are quiet and consequential. By week three you'll need to know who carries which conversation; by week six you'll need to know whose 'no' weighs more. The map you draw in week one is what protects you from being surprised by power dynamics in week five.",
+  "steps": [
+    "Find the org chart. Identify every person whose work, budget, or revenue depends on the product. Mark them.",
+    "For each, write one sentence on what they want from the product and one sentence on what they fear losing if the product fails them. The fear column is the more useful column — fears drive escalations.",
+    "Identify the loud-but-not-powerful stakeholders (they ask for things often; their asks rarely have business gravity) and the quiet-but-powerful ones (they speak rarely; what they say shapes the roadmap when they do). Both groups matter; mishandling either is a different kind of mistake.",
+    "Ask one peer PO (or your manager) the single question: 'who do I think is important that I'm wrong about, and who am I missing entirely?'. Most people will tell you the truth in week one."
+  ],
+  "resource_refs": {
+    "playbook_slugs": [],
+    "scenario_slugs": ["po-defending-no", "po-competing-priorities"]
+  },
+  "success_criteria": "By end of week, you have a stakeholder map covering at least 10 named people, with the 'wants' and 'fears' columns filled in. You can name the three quiet-but-powerful stakeholders.",
+  "reflection_prompt": "Of the quiet-but-powerful stakeholders you identified, which one have you not yet introduced yourself to? Two sentences on what you'd want from a fifteen-minute introduction conversation.",
+  "estimated_minutes": 40,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "po-no-memo",
+  "role": "po",
+  "artefact_type": "no_memo",
+  "title": "The 'No' Memo",
+  "variant": "standard",
+  "description": "The short written artefact a PO sends when declining a feature request that's been raised, scored, and decided against. Two pages max. Calibrated against the specific stakeholder's framing. The discipline is making the reasoning visible enough that the same conversation doesn't recur next quarter — and graceful enough that the relationship survives.",
+  "empty_template_md": "# Memo: [Feature name] — not on the [period] roadmap\n_To: [stakeholder] · From: [PO] · Date: [date] · Reference: [backlog archive ID]_\n\n## What was proposed\n_One paragraph in the proposer's framing. Quote their language where you can. Shows you took the proposal seriously._\n\n## What we considered\n_Three to five things: the business case, the alternative options, the cost, the strategic context. Brief — each one a sentence or two._\n\n## Where we landed\n_The decision. One sentence._\n\n## Why\n_The reasoning. Two to three sentences. Honest. Specific to this decision, not generic 'capacity constraints'._\n\n## What we'd want to see to revisit\n_The conditions under which the decision could change. Specific. Without this, the stakeholder feels permanently dismissed; with it, the conversation has a real future._\n\n## What we are doing instead\n_The thing the team IS doing in the slot this would have occupied. Honest comparison; lets the stakeholder weigh the trade-off themselves._\n",
+  "worked_examples": [
+    {
+      "title": "Memo declining partner referral codes — sent to Daniel Quigley, week 8",
+      "content_md": "# Memo: Partner Referral Codes — not on the Q3 roadmap\n_To: Daniel Quigley (Head of Sales) · From: [PO] · Date: 28 April 2026 · Reference: Backlog archive item PB-024_\n\n## What was proposed\n\nA partner-referral feature allowing top-12 customers to issue branded promo codes to their own customers, with revenue-sharing back to the issuer. Modelled by the data team as potentially £400k of new revenue in year one, premised on a 12% adoption rate across the top-12 base. Strategic case: deepens the commercial relationship with top-12 customers and creates a co-marketing surface.\n\n## What we considered\n\n- **The £400k modelled revenue.** At 12% adoption, the number holds. The data team's base-case scenario (5% adoption) yields ~£80k; the bull case (20% adoption) yields ~£700k. Distribution of outcomes is wide.\n- **The build cost.** 6 weeks of engineering work plus a compliance review for revenue-share calculations. Total ~9 elapsed weeks.\n- **What it would displace.** The slot is currently held by the bulk-import upload work (Q4) which has a more conservative revenue model but a tighter probability distribution.\n- **The strategic context.** Partner-referral revenue would build a new relationship surface with top-12 customers, but we're already mid-deployment on the customer portal v1 which is the highest-leverage relationship surface for this segment.\n\n## Where we landed\n\nWe are not adding partner referral codes to the Q3 roadmap.\n\n## Why\n\nThe expected value of the bulk-import upload work (already in Q4 roadmap) is comparable to the partner-referral work under the base case, but with a much tighter probability distribution and a stronger fit with the customer-portal investment we've already made. The decision is not about the partner-referral idea itself — it's about which £400k of expected value the team builds in a constrained capacity window.\n\n## What we'd want to see to revisit\n\n- A revised adoption model that closes the spread between base case and modelled case — specifically, evidence from 2-3 named top-12 accounts that they would actively use partner referrals at the modelled rate.\n- Customer portal v1 in production for ≥60 days with the workload-recovery KPIs landing as committed.\n- A revisit in Q1 planning (early November) would be the natural moment.\n\n## What we are doing instead\n\nIn the same capacity window, the team is shipping bulk-import upload v1 (committed Q4), customised-period reports, and laying the architecture foundation for the customer-data export API that Tobi's team have asked about. These are not bigger ideas — but the expected value is at least as strong, the team has the discovery in hand, and they extend the v1 portal investment rather than starting a new relationship surface.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Quote the proposer's language. 'Strategic case: deepens the commercial relationship' is in Daniel's framing. Shows you read the proposal. Without this, the memo reads as dismissive."
+        },
+        {
+          "section_id": "section-2",
+          "note": "The 'what we considered' section is what stops the stakeholder feeling unheard. Each item is brief — the discipline is naming them, not exhausting them."
+        },
+        {
+          "section_id": "section-5",
+          "note": "'What we'd want to see to revisit' is the section that distinguishes a no-with-future from a no-with-finality. Daniel will read this and know what would change the answer. He may even go and find that evidence."
+        },
+        {
+          "section_id": "section-6",
+          "note": "'What we are doing instead' is the comparison-honest section. It lets Daniel weigh the trade-off himself. He may still disagree, but he can't claim the decision was hidden."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Memo as defensive. Apologetic tone, hedging language. The stakeholder reads it as PO-uncertainty; the no doesn't stick.",
+    "Memo as aggressive. 'We considered this carefully and the answer is no.' True; reads as dismissive. Conviction without heat.",
+    "What-we-considered section padded with everything. Three to five items, each tight. More than five and the memo feels defensive.",
+    "'What we'd want to see to revisit' omitted. The stakeholder feels permanently dismissed; the conversation has no future. Include it.",
+    "'What we are doing instead' omitted. The stakeholder can't weigh the trade-off; the decision feels unilateral.",
+    "Memo sent without first having the verbal conversation. Even for a clear no, the memo is the artefact AFTER the conversation, not the substitute for it."
+  ],
+  "variant_patterns": [
+    "Quarterly-portfolio-roundup variant: when multiple 'no's land in a planning cycle, batch them into a single memo. Same structure per item; lets stakeholders see the prioritisation in aggregate.",
+    "Sensitive-relationship variant (declining a CEO request, etc.): structure unchanged but the verbal conversation matters more. The memo is the documentation; the conversation does the relational work.",
+    "Hold-not-no variant: when the answer is 'not yet, but possibly later', the 'why' becomes 'what specifically would unlock this'. The memo is more conditional; the 'revisit' section grows."
+  ],
+  "related_scenarios": ["po-defending-no", "po-date-pressure"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

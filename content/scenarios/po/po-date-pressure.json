@@ -1,0 +1,51 @@
+{
+  "slug": "po-date-pressure",
+  "role": "po",
+  "title": "Promise It By June",
+  "one_liner": "The VP wants a public commitment to a June launch. The team hasn't sized the work. She's asked you in front of her peer.",
+  "brief": "## The setup\n\nTuesday morning, 9.45am. Quarterly roadmap review. Bilqis Hassan (VP Product Strategy, your skip-level manager) is in the room, along with Folake (CX), Yetunde (COO), and Tobi Adesanya (VP Revenue).\n\nThe customer-portal Phase 2 is on the agenda — bulk-import upload, advanced reporting, and a self-service billing piece that finance has been asking about. The team has done discovery on the bulk-import work; the other two are barely scoped.\n\nBilqis turns to you: 'I'd like to commit to all three by end of June. That gives us a clean Q2 close and Tobi can use it in next quarter's commercial conversation. Can you confirm?'\n\nIt is 7 May. End of June is 8 weeks away. The team's realistic capacity is probably one of the three pieces in 8 weeks. The other two haven't been sized; you don't actually know if they're 4 weeks of work or 12.\n\nTobi is sitting up. Folake is watching to see what you say. Bilqis is your skip-level; saying no to her is materially harder than saying no to a peer stakeholder.\n\n## Your turn\n\nAnswer Bilqis.",
+  "objective": "Decline to commit publicly to a date the team hasn't sized — without making Bilqis feel undermined in front of her peers. Offer her something specific she can take to Tobi's commercial conversation that isn't a date.",
+  "curveball": "Bilqis is not actually attached to all three by end of June. What she's attached to is having SOMETHING substantive she can take to Tobi's conversation. If the user says 'I can commit to the bulk-import work by mid-June; the other two I'll have sized by next Friday and we can plan from there', Bilqis will accept it because what she needed was a piece of credible commitment, not all three. If the user commits to all three publicly, the team will under-deliver and Bilqis will quietly lose faith. If the user defers everything ('I'll come back to you on dates'), Tobi's conversation lacks the substance Bilqis wanted and you'll be in the same room a week later under more pressure.",
+  "personas": [
+    {
+      "name": "Bilqis Hassan",
+      "role": "VP Product Strategy (skip-level)",
+      "position": "I need something to commit to Tobi by end of next week",
+      "fear": "Going into Tobi's conversation with nothing concrete from the product team",
+      "monogram": "BH",
+      "colour": "teal"
+    },
+    {
+      "name": "Tobi Adesanya",
+      "role": "VP Revenue",
+      "position": "I need product commitments I can use in commercial conversations",
+      "fear": "Product team becoming the bottleneck on the commercial pipeline",
+      "monogram": "TA",
+      "colour": "plum"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Did not commit to all three by end of June — held the line on un-sized work",
+      "Offered a specific committed piece (bulk-import by mid-June) that Bilqis can use",
+      "Committed to bringing sized estimates for the other two by a specific date (next Friday)",
+      "Framed the trade-off in commercial terms — 'I can give you one credible commit now or three risky ones'"
+    ],
+    "yellow": [
+      "Asked for a follow-up meeting to 'work through the dates with the team' — buys time but Bilqis leaves empty",
+      "Committed to dates that are stretched but achievable — and the team learns that public dates trump their sized estimates",
+      "Hedged with 'we'll do our best' — Bilqis will hear that as yes",
+      "Offered to size everything by next Friday with no interim commitment — too thin for Bilqis's purpose"
+    ],
+    "red": [
+      "Committed publicly to all three by end of June",
+      "Said 'I'll need to check with the team' — undermines your authority as PO in front of the room",
+      "Made the team's lack of sizing the team's failure ('they haven't sized this yet') — Bilqis hears that as PO blame-deflection",
+      "Promised a date privately to Bilqis after the meeting that contradicts what was said publicly"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

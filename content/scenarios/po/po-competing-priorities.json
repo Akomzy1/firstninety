@@ -1,0 +1,51 @@
+{
+  "slug": "po-competing-priorities",
+  "role": "po",
+  "title": "Two Number Ones",
+  "one_liner": "Two stakeholders have just asked, in the same hour, for their work to be the team's top priority next sprint. Both have reasonable cases.",
+  "brief": "## The setup\n\nThursday afternoon. You're refining the backlog for next sprint's planning on Monday. Two separate Slack messages, twenty minutes apart.\n\nFirst: Yetunde Mbeki (COO) — 'We need the audit-trail enhancement in the next sprint. The external auditors arrive on the 14th and we need it shipped before then. This is the highest priority.'\n\nSecond: Folake Adeyemi (Head of CX) — 'Bumping the customer-portal SSO migration up to top priority for next sprint please. Three of our top-12 customers have asked about it this week and we're losing renewal conversations.'\n\nThe sprint can hold one major story plus a handful of small ones. Both audit-trail and SSO migration are major. Both stakeholders are senior. Both think they've made their case.\n\nThe team's actual capacity is the audit-trail OR the SSO migration plus small work. Not both. The previous PO would have run a WSJF on it and shown the numbers; that's an option for you too, but Yetunde finds frameworks unsatisfying and Folake has used WSJF herself to justify exactly the opposite call.\n\nYou have about three hours before you need a backlog ready for refinement tomorrow morning.\n\n## Your turn\n\nFirst move?",
+  "objective": "Make the call. Land it with both stakeholders in a way that the loser understands why and the winner doesn't gloat. Have one specific thing to offer the loser that isn't 'next sprint'.",
+  "curveball": "Both stakeholders are right in their own frame. The actual deciding factor is something neither has surfaced: the audit-trail work has a hard external deadline (the 14th, ten working days from now), while the SSO work has a soft renewal-conversation deadline (you can renegotiate; auditors you cannot). If the user goes to Yetunde and Folake separately to surface this — 'help me understand if the audit deadline is movable' / 'help me understand which renewals are at immediate risk if SSO slips two sprints' — the answer becomes clear: audit-trail wins this sprint, SSO becomes top of next sprint with a written commitment to Folake. If the user picks without that discovery, they may pick correctly but the loser will not feel heard.",
+  "personas": [
+    {
+      "name": "Yetunde Mbeki",
+      "role": "Chief Operating Officer",
+      "position": "Auditors are in on the 14th. The audit-trail is the priority",
+      "fear": "Being unprepared for an external audit because the product team didn't deliver",
+      "monogram": "YM",
+      "colour": "slate"
+    },
+    {
+      "name": "Folake Adeyemi",
+      "role": "Head of Customer Experience",
+      "position": "Three top-12 customers are asking about SSO; renewal conversations are happening now",
+      "fear": "Losing customer renewals because the product team prioritised internal work over customer-facing work",
+      "monogram": "FA",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Talked to Yetunde and Folake separately BEFORE making the call — pulled the hard-vs-soft-deadline information neither had volunteered",
+      "Made the call (audit-trail this sprint) and explained the reasoning to Folake first, with a specific commitment for next sprint",
+      "Did not use a framework as the justification — used the deadline reality as the justification",
+      "Closed the loop with both stakeholders in writing, with the trade-off named explicitly"
+    ],
+    "yellow": [
+      "Ran a WSJF score and presented the framework output as the answer — works mathematically; doesn't address the relationship",
+      "Did both, partially — split the team across both stories and missed the audit deadline by two days",
+      "Picked by escalating to your manager rather than making the call yourself",
+      "Made the call privately and let Yetunde and Folake find out at refinement Friday morning"
+    ],
+    "red": [
+      "Capitulated to whoever messaged second (the recency effect)",
+      "Promised both as top priority and then quietly de-scoped during the sprint",
+      "Asked the team to vote on which to do — pushes a PO decision onto the team",
+      "Sent Yetunde and Folake into a meeting with each other to 'work it out between them'"
+    ]
+  },
+  "estimated_minutes": 16,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

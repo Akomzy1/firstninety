@@ -1,0 +1,43 @@
+{
+  "slug": "po-mid-sprint-request",
+  "role": "po",
+  "title": "Just One More Thing",
+  "one_liner": "Day 6 of an 8-day sprint. Folake just messaged: 'tiny thing — can we add the export button to this sprint?'",
+  "brief": "## The setup\n\nThe sprint is six days in. Two stories are landed. Two are mid-build. The team is in a healthy rhythm; Lewis hasn't worked past 6pm in a week.\n\nFolake (Head of CX) Slacks: 'Hi! Tiny thing — can we add a CSV export button to the customer-list view in this sprint? Came up in our team meeting; should be trivial. Would save us writing a separate one-off ticket later.'\n\nThe word 'tiny' is doing a lot of work. The button itself is small (a few hours). The data-shape conversation behind it (which columns, default sort, header row, charset for non-ASCII names) takes a couple of hours of conversation, half a day of build, and a half-day of QA. Realistic total: about a day-and-a-half. Sprint capacity does not have a day-and-a-half spare; the team is committed.\n\nFolake is also someone you have a good relationship with. She doesn't normally do this. She's asking politely, and the thing she's asking for is genuinely small. The instinct is to say yes — keep the relationship, deliver a small win.\n\nThe trade-off is the discipline. If you accept this, you've taught Folake (and via her, every other stakeholder) that mid-sprint asks land if framed politely. By month three the team is constantly carrying mid-sprint debt and missing sprint goals.\n\n## Your turn\n\nReply to Folake.",
+  "objective": "Decline the mid-sprint add. Keep the relationship intact. Give Folake a real path for the export button that's faster than 'wait two sprints'.",
+  "curveball": "If the user accepts (even on the framing that 'it's small'), Folake will ask again next sprint and the sprint after. The pattern hardens. If the user simply declines without offering an alternative, Folake feels the polite ask was met with bureaucracy and the warmth in the relationship drops. The skill is offering a specific path: 'I want to land this for you; if you can let me commit to it at the top of the next sprint (planning Monday), it gets shipped within ten days. If it's urgent enough that ten days is too long, I can ask Lewis to spike it tomorrow morning — but that's pulling him off CP-189, which is your customer-portal SSO story, so it'd be your call.' That last sentence is the unlock: it makes the trade-off concrete and Folake's to own.",
+  "personas": [
+    {
+      "name": "Folake Adeyemi",
+      "role": "Head of Customer Experience",
+      "position": "It's small. I'm asking politely. Surely you can fit it in",
+      "fear": "Being seen as the stakeholder who can never get small things done by the product team",
+      "monogram": "FA",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Declined the mid-sprint add without softening to 'maybe' or 'let me check'",
+      "Named the actual cost (~day and a half, not 'tiny')",
+      "Offered a specific path forward — top of next sprint, with a concrete date",
+      "Made the trade-off Folake's to own — 'pull Lewis off the SSO story or wait ten days'"
+    ],
+    "yellow": [
+      "Accepted on the 'it's small' framing — locks in the pattern",
+      "Asked Lewis 'can you fit it in?' — pushes a PO decision to the dev team",
+      "Declined without an alternative — Folake feels the warmth has gone",
+      "Offered to 'try to squeeze it in if the team has time' — same as accepting, with deniability"
+    ],
+    "red": [
+      "Accepted and quietly de-scoped another story to make room — the team finds out at Friday standup",
+      "Brought it up in standup as 'should we…' — the team will agree to please the PO, then resent it",
+      "Sent a long Slack about scrum discipline — Folake will skim it and feel lectured",
+      "Said 'I have to ask the SM' — the SM should back you up, not be the decision-maker"
+    ]
+  },
+  "estimated_minutes": 11,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

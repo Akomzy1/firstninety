@@ -1,0 +1,49 @@
+{
+  "slug": "po-product-backlog",
+  "role": "po",
+  "artefact_type": "product_backlog",
+  "title": "Product Backlog",
+  "variant": "standard",
+  "description": "The product backlog that's actually maintained — versus the dumping ground of every idea that's ever been mentioned. Three horizons: ready for the next sprint, refined for the next two sprints, ideas for the next quarter. Aggressive pruning. The discipline is what doesn't make it in, not what does.",
+  "empty_template_md": "# [Product] — Product Backlog\n_v[N] · last reviewed [date] · owner PO_\n\n## Horizon 1 — Ready for next sprint (≤8 stories)\n_Sized, acceptance-criteria-written, dependencies named. The team could pull any of these into the next sprint without further refinement._\n\n## Horizon 2 — Refined for next 2-3 sprints (10-15 stories)\n_Discovery done; AC drafted but may need a final refinement pass; sizing not yet final. Anything here should be pullable into Horizon 1 with one refinement session._\n\n## Horizon 3 — Quarter idea list (no size limit, but ruthlessly culled)\n_Things we're thinking about. No AC yet, no sizing. Each item has one sentence on the outcome it serves. Items here for >2 quarters get archived or rewritten._\n\n## Archive — Things we decided against\n_The un-roadmap. Each item: what was proposed, when, who proposed it, why it was declined. This section is the PO's most important defensive artefact._\n",
+  "worked_examples": [
+    {
+      "title": "Customer portal — backlog at week 10 of the programme",
+      "content_md": "# Customer Portal — Product Backlog\n_v0.7 · 28 April 2026 · owner: [PO]_\n\n## Horizon 1 — Ready for next sprint\n\n1. **CP-201** — Admin: role-assignment changes (3 points). AC written, deps clear.\n2. **CP-202** — Admin: user-deactivation audit log entry (2 points).\n3. **CP-203** — Customer-portal CSV export of user list (3 points) — committed to Folake last sprint.\n4. **CP-204** — Reports: monthly summary report v1 (5 points).\n5. **CP-205** — Self-service password reset polish: edge-case error messaging (2 points).\n6. **CP-206** — Admin console: audit-log view for last-30-days actions (3 points).\n\n## Horizon 2 — Refined for next 2-3 sprints\n\n7. **CP-210** — Reports: quarterly summary (8 points est.) — discovery done with Folake; AC draft 80%.\n8. **CP-211** — Bulk-import upload v1 (13 points est.) — AC drafted; team has questions on error-handling pattern.\n9. **CP-212** — SSO migration: top-12 customer rollout (8 points est.) — discovery complete; IT confirmed week 14 capacity.\n10. **CP-215** — Customer-portal homepage redesign (5 points est.) — Asha leading discovery; AC draft expected Friday.\n11. **CP-217** — Admin: bulk role-assignment (5 points est.) — surfaced in week 9 retro as a CS pain point.\n12. **CP-220** — Reports: custom-period date range (3 points est.).\n\n## Horizon 3 — Quarter idea list\n\n- **Idea: API for customer-data export.** Outcome: top-12 customers can pull their data into their own warehouses without raising a ticket. Raised by Tobi week 6.\n- **Idea: Mobile-responsive admin console.** Outcome: CS team can action urgent tickets from phones. Raised by CS team retro week 7.\n- **Idea: White-label theming for top-12 customers.** Outcome: customers see their brand in the portal. Raised by Sales week 4; high-ambiguity.\n- **Idea: In-portal notifications (system messages).** Outcome: PO can communicate to portal users without email. Raised week 3.\n- **Idea: Audit-trail export to SIEM.** Outcome: compliance team gets structured logs. Raised by Marcus week 8.\n\n## Archive — Things we decided against\n\n- **Partner referral codes** (raised Daniel Quigley, declined week 7). Reason: model assumes 12% adoption; realistic base case is ~£80k revenue vs. £400k modelled. Cost: 6 weeks build + compliance review. Not the highest-leverage thing this quarter. Re-evaluate Q3 if base-case modelling improves.\n- **Self-service billing within the portal** (raised finance team, declined week 2). Reason: not the customer-portal team's remit; sits with finance. Phase 2 candidate if finance can sponsor.\n- **Real-time chat support in the portal** (raised Folake exploratory week 5, withdrawn week 6 after we surfaced the staffing implication on CS).\n- **Historical-data migration for accounts older than 24 months** (declined at programme charter time). Cost: 4 weeks separate workstream. Phase 2 candidate.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Horizon-1 cap (≤8 stories) is the discipline that prevents the backlog from becoming a wishlist. If you have 15 stories 'ready for next sprint', they're not actually ready — they're a fantasy. Force the ranking."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Horizon 2 is the most-skipped section by rookie POs. The next-2-3-sprints view is what lets the team estimate trajectory; without it, planning meetings become discovery meetings. Maintain it weekly."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Horizon 3 should be ruthlessly culled. Items that sit here >2 quarters either need to move into refinement (and become real) or be archived. A backlog with 47 idea-stage items is a backlog the team has stopped trusting."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Archive — the un-roadmap — is the PO's most powerful defensive artefact. When a stakeholder asks 'why isn't X in the roadmap', you point to the archive entry with the reasoning. Without this section, every 'no' becomes a fresh argument."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Backlog as a dumping ground. Every idea ever mentioned ends up in it; nothing ever leaves. Stakeholders learn the backlog is meaningless.",
+    "Horizon-1 not capped. Twelve stories in 'ready for next sprint' means nothing is actually ready — the PO hasn't done the ranking work.",
+    "Horizon 2 omitted. Planning meetings become discovery meetings because nothing has been refined. Team can't size cleanly.",
+    "Archive section missing. Every 'no' becomes a fresh argument every quarter. With the archive, you point at the entry and the conversation is much shorter.",
+    "Items sitting in Horizon 3 for years. Cull aggressively. If it hasn't moved into refinement in two quarters, it isn't going to.",
+    "Backlog maintained alone by the PO. The refinement conversation with the team is where the backlog becomes real. Without it, the backlog reflects what the PO thinks, not what the team will build."
+  ],
+  "variant_patterns": [
+    "Multi-team backlog variant: each team owns its Horizon 1 and 2; Horizon 3 (and archive) is product-wide. Refinement is per-team but informed by product-wide priorities.",
+    "Hardening / bug-bash sprint variant: Horizon 1 becomes a prioritised defect list, not user stories. Sizing matters less; severity + frequency matters more.",
+    "New-product variant (no installed base): Horizon 3 dominates. Heavy discovery. Horizon 1 is small and tight; Horizon 2 is unstable until the product finds its shape."
+  ],
+  "related_scenarios": ["po-defending-no", "po-vague-request", "po-competing-priorities"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

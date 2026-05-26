@@ -1,0 +1,49 @@
+{
+  "slug": "po-prioritisation",
+  "role": "po",
+  "artefact_type": "prioritisation_framework",
+  "title": "Prioritisation Framework",
+  "variant": "wsjf_rice_kano",
+  "description": "When and how to use WSJF, RICE, and Kano — and crucially, when to put the framework away and use judgement. Frameworks are useful for triangulating, not for deciding. The PO who hides behind a WSJF score is a PO who has stopped doing the actual work of prioritising.",
+  "empty_template_md": "# Prioritisation — Decision Notes\n_For [decision] · prepared by [PO] · [date]_\n\n## The question\n_What are we ranking. Among which items. By when._\n\n## Items in scope\n_Three to seven items being compared. More than seven and you're not prioritising; you're cataloguing._\n\n## Framework chosen + why\n\n| Framework | Use when | Avoid when |\n|-----------|----------|------------|\n| WSJF (Weighted Shortest Job First) | Mostly cost-of-delay-driven items in a stable team | Cost of delay is the same across items (i.e. nothing differentiates) |\n| RICE (Reach × Impact × Confidence ÷ Effort) | Comparing items with very different reach across the user base | Items all reach the same users (reach factor doesn't differentiate) |\n| Kano (Must-have / Performance / Delight) | Discovering whether new feature work is differentiating or table-stakes | Comparing items that are all in the same Kano bucket |\n| MoSCoW | Inside a single release plan with a fixed deadline | Across releases — MoSCoW doesn't help with sequencing |\n\n## Scores / analysis\n_The actual framework output. Numbers if WSJF/RICE; categorisation if Kano; etc._\n\n## What the framework says\n_The ranking the framework produces._\n\n## What the PO says\n_The actual decision. If it matches the framework, brief note. If it differs from the framework, paragraph explaining why._\n\n## Trade-offs accepted\n_What we're giving up by this prioritisation. Honest. Specific._\n",
+  "worked_examples": [
+    {
+      "title": "Customer portal — prioritising the four Phase-2 candidates",
+      "content_md": "# Prioritisation — Phase 2 Customer-Portal Sequencing\n_For Q3 planning · prepared by [PO] · 28 April 2026_\n\n## The question\n\nAmong the four Phase-2 candidates surfaced by stakeholders, which one starts in week 17 (the first week of Q3 capacity), and what's the sequence behind it?\n\n## Items in scope\n\n- **A.** Bulk-import upload (Folake / Sales-driven)\n- **B.** API for customer-data export (Tobi / Sales)\n- **C.** Mobile-responsive admin console (CS team retro)\n- **D.** White-label theming for top-12 (Sales / Bilqis)\n\n## Framework chosen + why\n\nRICE. The four items have very different reach across the user base (D is for ~12 customers; A and C are for the full top-12 portal-user base of ~9,000 users; B is intermediate). RICE's reach factor is what will most differentiate them; WSJF's cost-of-delay framing would be artificial across these.\n\n## Scores\n\n| Item | Reach (users / quarter) | Impact (1-3) | Confidence (%) | Effort (person-weeks) | RICE |\n|------|------------------------|--------------|----------------|----------------------|------|\n| A. Bulk-import | 9,000 | 3 | 80% | 4 | 5,400 |\n| B. Data-export API | 12 (customers, not users) | 3 | 50% | 6 | 3 |\n| C. Mobile admin | 200 (CS team) | 2 | 90% | 3 | 120 |\n| D. White-label | 12 | 2 | 70% | 8 | 2.1 |\n\n## What the framework says\n\nClear ranking: A → C → B → D. The bulk-import dominates by reach × impact, and effort is moderate. The mobile admin is a clear second (high confidence, modest effort). The other two trail by orders of magnitude.\n\n## What the PO says\n\nA first. C second. **B third — but I'm rejecting RICE's ranking on D versus B.** RICE puts B (data-export API) ahead of D (white-label theming). I'm sequencing them the other way: D first, B last. The reason: D is a renewal-conversation enabler for the top-12 (specifically Forrest Bank and two others have asked at QBRs). The RICE 'reach' factor of 12 understates the strategic value — these 12 customers are 60% of segment revenue. B is genuinely lower-priority and the API conversation can be deferred to Q4 without commercial damage.\n\n## Trade-offs accepted\n\n- The CS team waits another quarter for mobile admin (a year and a half from initial ask). Risk: CS engagement drops. Mitigation: I've committed to Folake that mobile admin is locked in for week 23.\n- We don't deliver an API for data export this year. Risk: top-12 customers asking for it raise it again next quarter, and Tobi will use it as evidence of slow product responsiveness. Mitigation: I'll write a positioning note for Tobi explaining the trade-off, with the data-export API as the leading Q4 candidate.\n- White-label theming may not actually convert at renewal — we're assuming it does because customers have asked, but we don't know. Mitigation: explicit success metric on D: '2 of the 3 customers who asked for it cite it as a renewal-positive factor in Q3 QBRs'.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The question section forces precision. 'Which one starts in week 17 and what's the sequence behind it' is a specific answerable question; 'how should we sequence Phase 2?' is not."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Framework choice + WHY. Most rookie POs default to WSJF because it sounds rigorous. RICE was the right choice here because reach differentiates the items. Choosing the wrong framework produces a confidently-wrong ranking."
+        },
+        {
+          "section_id": "section-6",
+          "note": "The 'what the PO says' section is the section that distinguishes a PO from a calculator. The framework gave a ranking; the PO accepted some of it and overrode some. Owning the override — and explaining it — is the actual prioritisation work."
+        },
+        {
+          "section_id": "section-7",
+          "note": "Trade-offs section makes the prioritisation honest. Every prioritisation produces losers; naming what each loser actually loses is what stops the loser feeling dismissed. The mitigation per trade-off is the PO's commitment back to the affected stakeholder."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Hiding behind the framework. 'The WSJF score is conclusive' is the rookie PO's safety blanket. WSJF is a triangulation tool, not a decision-maker.",
+    "Choosing the wrong framework. WSJF when reach differentiates (use RICE); RICE when all items reach the same users (use WSJF or Kano).",
+    "More than seven items in a single prioritisation exercise. Past seven, the PO is cataloguing, not prioritising. Cut to the genuine candidates.",
+    "Trade-offs section omitted. Every prioritisation produces losers; without naming what they lose, you can't have the follow-up conversation.",
+    "PO accepts framework output without override even when their judgement says otherwise. The PO's job is judgement; the framework is input.",
+    "Prioritisation done in isolation. The conversation with the team — 'what does this mean for the next two sprints?' — is where the prioritisation becomes real."
+  ],
+  "variant_patterns": [
+    "Cost-of-delay variant (when WSJF actually fits): use it when items have genuinely different cost-of-delay profiles. Document the cost-of-delay for each item; if you can't articulate it specifically, WSJF isn't the right tool.",
+    "Kano-only variant for new product discovery: use when classifying features by user-perception type (table-stakes / performance / delight) is the actual question. Don't try to combine with RICE.",
+    "Lightweight variant for in-sprint trade-offs: don't run a full RICE for a single mid-sprint conversation. Note the trade-off in three lines, make the call, log it in the backlog archive."
+  ],
+  "related_scenarios": ["po-defending-no", "po-competing-priorities", "po-date-pressure"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

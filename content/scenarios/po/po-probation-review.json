@@ -1,0 +1,43 @@
+{
+  "slug": "po-probation-review",
+  "role": "po",
+  "title": "The Probation Review",
+  "one_liner": "Day 88. Your hiring manager opens with: 'tell me about a decision you made this quarter that you'd defend even if it cost us a stakeholder.'",
+  "brief": "## The room\n\nThirty minutes. Your hiring manager is Bilqis Hassan, VP Product Strategy — the same skip-level you held the line with about the June launch dates in week 6. She has been busy throughout your probation; you've had three 1:1s with her, all short. You don't know her well.\n\nWhat you know: Daniel Quigley (Head of Sales) has complained twice about you to Tobi Adesanya. Folake Adeyemi has told Bilqis, in writing, that you're the first PO in two years who has 'made saying no feel constructive'. The team — Lewis, Naledi, Theo, Asha — would all push back hard if anyone tried to replace you. The June-launch conversation you handled in week 6 is a piece of the file Bilqis read.\n\nYou submitted your pack on Monday. The pack lays out: backlog discipline introduced, two saved-the-sprint moments, the partner-referral-codes 'no' you held in front of Tobi, the date-pressure conversation, the bulk-import work that landed in week 12 against the date you committed to.\n\nBilqis is friendly but direct. She does not waste time. Her opener is:\n\n'Tell me about a decision you made this quarter that you'd defend even if it cost us a stakeholder.'\n\n## Your turn\n\nAnswer.",
+  "objective": "Name a specific decision — the partner-referral-codes 'no' is the obvious one — and own the trade-off you accepted. Show Bilqis you can hold a 'no' under public pressure. Don't oversell; the answer should be calibrated, not heroic.",
+  "curveball": "Bilqis is testing whether you can articulate the un-roadmap — the things you decided against and why. A PO who can name three things they said no to, with the reasoning, is materially more credible than a PO who lists three things they shipped. The right shape of the answer: name the decision (the partner-referral 'no'), name the trade-off you accepted (Daniel's annoyance, repeated escalations), name what you would do differently next time (the engagement with the data team's model could have been deeper earlier — would have made the 'no' stickier first time). The wrong shape: list every 'no' you said, or list shipped features and try to claim them as decisions, or hedge ('well, I'd defend it but it might be different if…').",
+  "personas": [
+    {
+      "name": "Bilqis Hassan",
+      "role": "VP Product Strategy (hiring manager)",
+      "position": "I want to know whether you can hold a 'no' under public pressure",
+      "fear": "Confirming a PO who can ship but can't say no — they're the same PO who promises everything in roadmap reviews",
+      "monogram": "BH",
+      "colour": "teal"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with one specific decision (the partner-referral 'no') — not a list of three",
+      "Named the trade-off you accepted (Daniel's repeated escalations, Tobi watching) — not just the win",
+      "Answered honestly when she pushed — 'I'd defend the decision; I'd handle the conversation slightly differently next time'",
+      "Did not list every 'no' you said — restraint is the answer to her question"
+    ],
+    "yellow": [
+      "Listed three or four decisions to seem thorough — dilutes the answer Bilqis was looking for",
+      "Couldn't name the trade-off you accepted — 'I think it was the right call' (no skin in the game shown)",
+      "Used framework language ('the WSJF showed…') instead of judgement language",
+      "Defended the decision so hard it sounded brittle — 'the data was conclusive' overstates what was actually a judgement call"
+    ],
+    "red": [
+      "Couldn't name a single decision you'd defend",
+      "Named shipping a feature as the 'decision' — Bilqis is asking about no, not yes",
+      "Threw Daniel under the bus by name ('Daniel keeps escalating') — Bilqis works with him; you don't want that on your file",
+      "Hedged so much it sounded like you'd reverse the decision under enough pressure"
+    ]
+  },
+  "estimated_minutes": 16,
+  "difficulty": 5,
+  "career_stage": "first_90_days",
+  "version": 1
+}

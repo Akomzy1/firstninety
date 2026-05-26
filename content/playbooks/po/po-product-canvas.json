@@ -1,0 +1,53 @@
+{
+  "slug": "po-product-canvas",
+  "role": "po",
+  "artefact_type": "product_canvas",
+  "title": "Product Canvas",
+  "variant": "single_page",
+  "description": "The single-page product canvas the PO actually uses to anchor every conversation — versus the Strategyzer-template document that lives in a slide deck and gets forgotten. Eight boxes, written tightly, revised quarterly. The canvas is the truth-test: if you can't fill it in for your product, you don't yet understand it.",
+  "empty_template_md": "# [Product] — Product Canvas\n_v[N] · last revised [date] · owner: [PO]_\n\n## Who\n_Who is the product for. Be specific. Not 'users'. Three-line user archetype with name, role, situation._\n\n## Their problem\n_What problem does the product solve for them. In their language, not ours. One sentence._\n\n## Our hypothesis\n_What we believe is the right solution shape, stated as a testable hypothesis. 'We believe that [users] will [behaviour] if we [solution] because [reasoning].'_\n\n## What we measure\n_The 2-3 metrics that tell us the hypothesis is holding. Not vanity metrics. Behavioural metrics that link to the problem._\n\n## What we won't do\n_Three to five things the product explicitly does not try to solve. The discipline is naming them; it stops scope creep before it starts._\n\n## Adjacent competitors\n_What else the user might use to solve this problem. Includes 'do nothing' as a competitor if relevant._\n\n## The strategic risk\n_The single biggest thing that could make this product irrelevant or wrong. Be honest._\n\n## Next big bet\n_The single biggest in-flight or imminent investment to address the strategic risk or extend the hypothesis._\n",
+  "worked_examples": [
+    {
+      "title": "Customer portal — product canvas at end of Q2",
+      "content_md": "# Customer Portal — Product Canvas\n_v0.3 · 30 June 2026 · owner: [PO]_\n\n## Who\n\nCustomer admins at our top-12 B2B accounts. Each is typically a senior operations manager (not IT) responsible for 50-2000 internal users in their organisation. They manage the relationship between their company and us on a day-to-day basis. They are not technical; they are organised, time-poor, and were not consulted when we chose the legacy portal vendor.\n\n## Their problem\n\nThey spend ~3 hours a week on internal admin tasks (user management, report retrieval, password resets) that they believe should be self-serve. Currently, each of those tasks routes through a ticket to our CS team and takes 12-48 hours of round-trip.\n\n## Our hypothesis\n\nWe believe top-12 customer admins will switch their admin workflow to the new portal within 30 days of go-live if we deliver self-service user management, three core report types, and self-service password reset — because the round-trip cost via CS is the largest single friction in their day-to-day relationship with us.\n\n## What we measure\n\n- **Adoption:** % of top-12 customer admins who have performed at least one admin action in the portal within 30 days of go-live (target: 80%).\n- **Workload shift:** CS team's password-reset + role-change ticket volume from top-12. Baseline 30/week. Target <10/week within 4 weeks.\n- **Renewal-conversation signal:** in Q4 QBRs, # of top-12 accounts where the portal is named positively in renewal discussion (target: 8 of 12).\n\n## What we won't do\n\n- We will not handle billing in this product. Billing is finance's remit and a separate system.\n- We will not provide real-time chat support. CS does that via a separate channel.\n- We will not support custom roles beyond admin/viewer in this version. Phase 3 candidate.\n- We will not migrate historical data older than 24 months.\n- We will not theme the portal with customer branding in this version. Q1 candidate; not committed.\n\n## Adjacent competitors\n\n- **Do nothing (legacy portal).** Current alternative. Cost is the 3-hours-per-week of admin friction.\n- **Customer admins building their own light tooling.** Two of the top-12 have done this for password reset specifically. Cost is fragility + no shared standard.\n- **Customer admins routing everything through email to CS.** The default fallback if the portal fails to launch.\n\n## The strategic risk\n\nIf top-12 customer admins do not adopt the portal within 60 days of launch, the CS team's workload doesn't drop, the renewal-conversation signal doesn't strengthen, and the £820k programme cost cannot be defended at the next portfolio review. The single biggest derisking move is the CS hard-cutover policy — if CS keeps the email fallback live for top-12, adoption may not happen.\n\n## Next big bet\n\nBulk-import upload in Q4. This is the single most-requested feature beyond the v1 scope; landing it well in Q4 keeps the top-12 engaged and provides the proof point for the Q1 API discussion. Cost: 4-6 weeks of build. Risk: the data-shape negotiation with each top-12 customer.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "'Who' must be specific. 'Senior operations manager (not IT)' is the kind of detail that changes how the product is built. 'Users' is the rookie mistake; it tells you nothing."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Hypothesis must be testable. 'We believe X will Y if Z because reasoning' — each clause has to be falsifiable. 'We believe customers will love this' is not a hypothesis; it's a hope."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Measurement is the discipline that makes the hypothesis honest. Behavioural metrics linked to the problem — not vanity metrics. The CS ticket-volume drop is behavioural; 'customer satisfaction score' would be vanity."
+        },
+        {
+          "section_id": "section-5",
+          "note": "'What we won't do' is the most-skipped section and the most useful. Three to five items. Naming them stops scope creep before it starts."
+        },
+        {
+          "section_id": "section-7",
+          "note": "Strategic risk must be specific, not generic ('competition could move'). The CS-cutover-policy risk is specific, actionable, and the kind of thing that focuses the team's attention on the actual risk vector."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "'Who' written as 'all users' or 'enterprise customers'. Too broad to build for. Specific archetype with role and situation.",
+    "Hypothesis as a hope, not a falsifiable claim. The discipline is writing 'we believe X will Y' in a way you could be wrong about.",
+    "Metrics as vanity. CSAT scores and NPS are downstream of the actual behaviour; measure the behaviour.",
+    "'What we won't do' omitted. The single most useful section for resisting scope creep.",
+    "Strategic risk written generically. Specific or it's not a risk.",
+    "Canvas filled in once and never revised. The canvas is the artefact that should change with the product; revise quarterly at minimum."
+  ],
+  "variant_patterns": [
+    "Pre-launch / new product variant: 'next big bet' becomes 'first proof point'. The metrics section is mostly target-state; everything is hypothesis until launch.",
+    "Mature product variant: 'strategic risk' often becomes 'platform health' or 'competitive obsolescence'. Hypothesis is less about acquisition; more about retention/expansion.",
+    "Multi-segment product variant: replicate the canvas per segment (e.g. small-business vs enterprise) if the product genuinely serves materially different users. Resist if it serves the same job-to-be-done across segments."
+  ],
+  "related_scenarios": ["po-vague-request", "po-defending-no"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

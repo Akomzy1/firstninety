@@ -1,0 +1,51 @@
+{
+  "slug": "po-broken-demo",
+  "role": "po",
+  "title": "The Demo That Won't Load",
+  "one_liner": "Sprint review. Twelve stakeholders. Theo is about to demo. He clicks the button. Nothing happens.",
+  "brief": "## The room\n\nFortnightly sprint review. Twelve stakeholders, including Yetunde Mbeki (COO) and Folake Adeyemi (Head of CX) — both of whom have been waiting two sprints for the customer-portal user-management story to land.\n\nThe team has been excited about this review. The story landed Friday. It works in staging. Theo, the junior dev who built the form flow, has been rehearsing the demo since Wednesday. He volunteered to run it himself, which is the first time he's done that.\n\nHe shares his screen. He talks through the setup. He clicks 'Add user'. The page hangs. Then a 500 error.\n\nThe room goes very still. Theo says 'oh — sorry — let me try…' and clicks again. Same error.\n\nYou are the PO. Lewis is in the room but not driving. Asha (designer) is on video, audibly worried for Theo. Yetunde is watching the screen. Folake is checking her phone.\n\nYou have about six seconds before this moment hardens into a story the team tells about Theo for the next month, and a story Yetunde tells about your team for the next quarter.\n\n## Your turn\n\nNext move.",
+  "objective": "Save Theo. Save the sprint review. Don't pretend the demo worked. Land the actual point of the review — what the team built — without depending on the demo software to cooperate.",
+  "curveball": "If the user starts apologising or starts a technical diagnosis in the room ('let me check the logs'), the room hardens against the demo. The skill is reframing the moment fast: 'OK, the live environment is having a moment. Theo, walk us through what the flow looks like and what we shipped, and we'll re-demo offline. Yetunde, Folake — the story is live in staging, you'll have hands-on tomorrow.' This sentence achieves three things: (a) takes the pressure off Theo, (b) shifts the demo from 'watch the thing' to 'understand the thing', (c) commits to a follow-up that's specific. Around turn 4, if the user has held the room, Yetunde will say something like 'no worries, happens'. If the user has handled it badly, Folake will quietly send a Slack to her director suggesting the team is unreliable.",
+  "personas": [
+    {
+      "name": "Theo Park",
+      "role": "Junior Developer (demo-running)",
+      "position": "Please make this stop",
+      "fear": "Being seen as the person who broke the demo in front of the executives",
+      "monogram": "TP",
+      "colour": "moss"
+    },
+    {
+      "name": "Yetunde Mbeki",
+      "role": "Chief Operating Officer",
+      "position": "I want to see what shipped. Don't waste my time",
+      "fear": "Confirming a team that can't deliver under public scrutiny",
+      "monogram": "YM",
+      "colour": "slate"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Took the pressure off Theo within ten seconds — didn't let him cycle through the failure twice",
+      "Reframed from 'watch this' to 'understand this' — narrated walkthrough using the staging context",
+      "Committed to a specific follow-up (Yetunde and Folake hands-on tomorrow) — concrete, named",
+      "Acknowledged the failure without dwelling on it — 'live environment having a moment' is enough"
+    ],
+    "yellow": [
+      "Let Theo retry the demo three more times in front of the room",
+      "Started a technical diagnosis in the room — 'let me check the logs, Lewis can you see if…'",
+      "Offered to reschedule the entire review — over-corrects, signals the demo failure was catastrophic",
+      "Apologised effusively — focuses the room on the apology, not the story"
+    ],
+    "red": [
+      "Pretended the demo worked ('and here's the user list view') — Yetunde will see the screen",
+      "Threw Theo under the bus ('Theo, what happened?') in the room",
+      "Lewis was forced to jump in and rescue because the PO didn't move — undermines you and the team",
+      "Ended the review there with 'we'll send a video' — loses the room for a fortnight"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

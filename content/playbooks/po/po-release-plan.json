@@ -1,0 +1,49 @@
+{
+  "slug": "po-release-plan",
+  "role": "po",
+  "artefact_type": "release_plan",
+  "title": "Release Plan",
+  "variant": "standard",
+  "description": "The release plan that survives contact with stakeholders — versus the Gantt chart that looks impressive in a meeting and crumbles by week three. Four sections, written in commitments not aspirations. The discipline is being honest about what we commit to versus what we hope to deliver.",
+  "empty_template_md": "# [Product / programme] — Release Plan\n_For [release window] · v[N] · last updated [date]_\n\n## 1. The release in one paragraph\n_What is shipping. Who it's for. Why this release, not the next one._\n\n## 2. Committed scope\n_The features we are committing to ship in this release window. Each one: title, sized estimate, the user outcome it serves. Sized commitments only — anything un-sized goes in section 3._\n\n## 3. Stretch scope\n_Features we will deliver if committed scope lands ahead of schedule. NEVER blurred into committed scope. Explicitly conditional._\n\n## 4. Out of release\n_What is NOT in this release that someone might assume is. Explicit list. This section prevents the 'I thought you were doing X' conversation._\n\n## 5. Key dates + dependencies\n_Hard dates (external commitments, regulator deadlines). Soft dates (internal commitments). Dependencies with named owners._\n\n## 6. The one thing that could derail this\n_Name it. Specifically. Not 'team availability'; 'Lewis's parental leave overlaps with the integration testing window'._\n",
+  "worked_examples": [
+    {
+      "title": "Customer portal — go-live release plan (week 10)",
+      "content_md": "# Customer Portal v1 — Release Plan\n_For go-live 9 September 2026 · v0.4 · 28 April 2026_\n\n## 1. The release in one paragraph\n\nReplace the legacy customer portal for top-12 B2B customers. Go-live 9 September; CS hard-cutover begins the same day. Self-service experience covering: account management, three report types, password reset, admin console. Sized to 16 weeks of programme work; we are in week 10.\n\n## 2. Committed scope\n\n| Feature | Size | User outcome |\n|---------|------|--------------|\n| Login + account view | 8 pts | Top-12 admin can log in and see their org's user list |\n| User management (add / remove / role-change) | 13 pts | Top-12 admin can manage their own user list without raising a ticket |\n| Three report types (usage, billing, audit) | 13 pts | Top-12 admin can see their org's standard reports without contacting CS |\n| Self-service password reset | 5 pts | Top-12 portal users can reset their password without raising a ticket |\n| Admin console (CS-side audit log + impersonation) | 8 pts | CS team can audit customer-admin actions and impersonate for support cases |\n\n## 3. Stretch scope\n\n- **Bulk-import upload v1** (8 pts est., not refined). Will deliver if committed scope lands by week 14. Otherwise Q4.\n- **Custom-period date range on reports** (3 pts). Will deliver if committed scope lands by week 15.\n\n## 4. Out of release\n\n- Historical data migration for accounts >24 months old (Phase 2; declined at programme charter).\n- Mobile-responsive admin console (Phase 2; CS confirmed acceptable to wait until Q4).\n- API for customer-data export (Q4 candidate; Tobi notified).\n- White-label theming (Q3 candidate; Bilqis aware).\n- Real-time chat support (declined week 6; Folake withdrew the ask).\n\n## 5. Key dates + dependencies\n\n| Date | Type | Dependency | Owner | Status |\n|------|------|------------|-------|--------|\n| 14 June | Hard | SSO config from IT | Tomasz Wójcik | On track |\n| 28 June | Hard | Customer-data pipeline (data platform team) | Rohan Chatterjee | At risk — see RAID R-04 |\n| 8 August | Hard | Compliance data-residency sign-off | Marcus Klein | Open — meeting week 7 |\n| 18 August | Soft | UAT cycle starts (top-12 end-user pool ≥24) | Janelle Ofori | At risk — currently 17 of 24 |\n| 1 September | Soft | CS hard-cutover policy ratified | CS Director | Confirmed week 4 |\n| 9 September | Hard | Go-live cutover | [PO + PM] | — |\n\n## 6. The one thing that could derail this\n\nThe customer-data pipeline from the data platform team (R-04). It's tracked, escalated, mitigated — but if it slips beyond mid-July, UAT can't start on time, which collapses the cutover window. Everything else has float; this one doesn't. Watching weekly with Rohan.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "One paragraph, plain English. The release in five sentences. If you can't compress it to this, the team can't either, and stakeholders won't remember what's in it."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Stretch scope NEVER blurred into committed scope. The first time a stretch item drifts into commit territory without re-planning, the team has lost the discipline. Make it explicit: 'will deliver if X lands by Y'."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Out-of-release section is the most valuable single section in the document. Six weeks in, someone will say 'I thought you were doing white-label theming for this release'. With this section, the answer is 'no, here's where we documented that'. Without it, the conversation becomes a fresh argument."
+        },
+        {
+          "section_id": "section-6",
+          "note": "The 'one thing that could derail this' section forces honesty. If you can't name the single highest-risk thing, you haven't been paying attention. Naming it doesn't make it worse; it makes the mitigation conversation real."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Committed scope inflated. The PO commits to everything because saying no in section 2 is harder than saying no in section 4. Resist; the release won't ship if section 2 is a wishlist.",
+    "Stretch scope omitted. Without it, the team has nothing to pull from when committed scope lands ahead of schedule, and ends up either coasting or asking the PO mid-release.",
+    "Out-of-release section omitted because 'obvious'. Never obvious. Always populate.",
+    "Key dates without owners. 'IT' is not an owner. Name the human.",
+    "'The one thing that could derail this' written generically ('team capacity'). Specific. Name the actual risk.",
+    "Release plan written once and never updated. By week 6 the plan is stale; stakeholders are working from outdated information. Revise weekly at first, monthly once the plan is stable."
+  ],
+  "variant_patterns": [
+    "Multi-release variant (annual roadmap): each release gets its own plan; the roadmap references each. Don't try to make a single document do both jobs.",
+    "Regulatory release variant: add §0 'Regulatory commitment' — what the regulator requires by which date. Section 5 dates almost always run through the regulator's calendar.",
+    "Trial / beta release variant: section 2 becomes 'features in the beta'; section 4 becomes 'features deliberately NOT in beta (and why we're holding them back)'. The discipline is being honest about what beta is for."
+  ],
+  "related_scenarios": ["po-date-pressure", "po-competing-priorities"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

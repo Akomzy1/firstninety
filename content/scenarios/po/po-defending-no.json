@@ -1,0 +1,51 @@
+{
+  "slug": "po-defending-no",
+  "role": "po",
+  "title": "The Pet Feature",
+  "one_liner": "The Head of Sales has asked, twice this week, for a feature you've already said no to. He's just asked again — in front of his director.",
+  "brief": "## The room\n\nFortnightly stakeholder forum. You, the Head of Sales (Daniel Quigley), his director (Tobi Adesanya, VP Revenue), two other product stakeholders, and the engineering lead. Twenty minutes left.\n\nThe feature is 'partner referral codes' — a Sales-driven idea to let large customers issue branded promo codes to their own customers, with revenue-sharing. Daniel has wanted it for six months. The previous PO said no twice; you've now said no once, three weeks ago, after looking at the proposal yourself.\n\nDaniel has just said, with Tobi in the room: 'I think we should revisit partner referral codes. The data team have looked at the model and it could drive £400k of new revenue in year one. I want to understand why this hasn't made it onto the roadmap.'\n\nYou know two things. First: the £400k number assumes adoption rates you don't believe; the actual realistic number is closer to £80k. Second: the engineering work is six weeks of build plus a compliance review for revenue-share calculations.\n\nTobi is watching you. The engineering lead, Lewis, is watching his shoes. You are the new PO; Daniel has been at the firm seven years.\n\n## Your turn\n\nAnswer Daniel.",
+  "objective": "Hold the 'no' without making it about Daniel. Make the trade-off visible to Tobi so the decision becomes 'is this the right next thing, given what it costs?' rather than 'did the PO say no for good reasons?'.",
+  "curveball": "Daniel will not actually push back on the rejection if the trade-off is named cleanly. What he will push back on is whether you've taken the proposal seriously. Around turn 3 he'll say 'have you read the data team's model?'. If the user has read it and can engage with the £400k assumption specifically ('the adoption rate of 12% is the optimistic case; under the base case it's £80k'), Daniel will concede the conversation. If the user hasn't read it, or just dismisses the framework ('Sales models are always optimistic'), Daniel takes the conversation to Tobi over the user's head.",
+  "personas": [
+    {
+      "name": "Daniel Quigley",
+      "role": "Head of Sales",
+      "position": "I've put this in three times. I need to know why the answer keeps being no",
+      "fear": "Looking weak in front of his director if the PO dismisses him without engagement",
+      "monogram": "DQ",
+      "colour": "ochre"
+    },
+    {
+      "name": "Tobi Adesanya",
+      "role": "VP Revenue (Daniel's director)",
+      "position": "Watching to see if this PO has actually done the work",
+      "fear": "Confirming a new PO who doesn't engage substantively with Sales",
+      "monogram": "TA",
+      "colour": "plum"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Engaged with the £400k number specifically — named the adoption-rate assumption and what the realistic base case is",
+      "Held the 'no' without softening it into 'maybe Q4' or 'we'll see' — that's a worse position than no",
+      "Made the trade-off visible: 6 weeks of build + compliance review costs X feature that's currently scheduled",
+      "Closed by inviting Daniel to bring the proposal back at the next quarterly roadmap if business conditions change"
+    ],
+    "yellow": [
+      "Dismissed the data team's model without engaging it — Daniel can claim you haven't taken it seriously",
+      "Softened to 'let's look at it again next quarter' just to close the moment — moves the no to a future no with less authority",
+      "Got into a numbers argument that lost Tobi (the actual decision-shaper in the room)",
+      "Apologised for saying no — trains the room that no is negotiable with enough pressure"
+    ],
+    "red": [
+      "Caved publicly — said 'OK, let's put it on the roadmap for review' just to end the conversation",
+      "Made it about Daniel personally — 'this is the third time you've raised it'",
+      "Deferred to engineering ('Lewis, can we even do this?') — your call to make, not his",
+      "Promised to 'reconsider with fresh eyes' without naming what would change your view"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

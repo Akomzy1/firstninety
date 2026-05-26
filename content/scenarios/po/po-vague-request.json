@@ -1,0 +1,43 @@
+{
+  "slug": "po-vague-request",
+  "role": "po",
+  "title": "Make It Smarter",
+  "one_liner": "A senior stakeholder has asked for the product to be 'smarter about recommendations'. The team is asking you what that means.",
+  "brief": "## The setup\n\nWeek five. You've inherited a backlog with a Phase-2 epic called 'Smarter Recommendations'. It was added six months ago after a meeting with Bilqis Hassan, VP Product Strategy. There are no stories underneath it; there is no acceptance criteria; there is a one-paragraph note that says 'recommendations should be more intelligent; users should feel the system understands them'.\n\nLewis (engineering lead) has asked you, in your 1:1, whether this is something the team should start scoping for next quarter. Naledi (QA lead) has asked, separately, whether this is something she should be building test infrastructure for.\n\nBilqis is genuinely senior, busy, and was a VP at her previous company who used 'I trust the team to figure out what I mean' as a working style. You met her once, briefly. She's not going to write the acceptance criteria for you; she's going to be annoyed if you ask her to.\n\nThe risk is twofold. If you build something against your interpretation of 'smarter' and it's not what Bilqis meant, you've burned a quarter. If you delay scoping while you wait for clarity, the team feels you're parking the work indefinitely.\n\n## Your turn\n\nYou have a 30-minute slot with Bilqis next Wednesday. Plan it.",
+  "objective": "Turn 'smarter about recommendations' into a testable working hypothesis the team can build against — without making Bilqis feel she has to do your job. Leave the meeting with three concrete observable changes you'll deliver.",
+  "curveball": "If the user goes into the meeting with 'can you help me understand what smarter means?', Bilqis will give the same vague answer ('the system should understand the user'). The skill is showing up with a specific hypothesis Bilqis can react to. 'I think smarter recommendations means: (a) the system stops surfacing things the user has already dismissed twice, (b) the system shows users which colleagues are using similar products, (c) the system explains why it's recommending something. Which of these match what you had in mind?' — gives Bilqis something to react to. She'll typically say 'yes (a) for sure, (b) is interesting, (c) is not what I meant — I meant something more like…'. That third pull is where the actual definition lives.",
+  "personas": [
+    {
+      "name": "Bilqis Hassan",
+      "role": "VP Product Strategy",
+      "position": "I trust the team to figure out what I mean. Don't ask me to spec it",
+      "fear": "Becoming the spec-writer for a team that should be able to think for itself",
+      "monogram": "BH",
+      "colour": "teal"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Showed up with a specific hypothesis (three concrete interpretations) rather than an open question",
+      "Let Bilqis react to the hypothesis rather than asking her to define from zero",
+      "Listened for the 'not quite — I meant something more like' moment, which is where the real definition lives",
+      "Left the meeting with three concrete observable changes you'll deliver — written down, agreed in the room"
+    ],
+    "yellow": [
+      "Asked 'what do you mean by smarter?' — gets the same vague answer Bilqis has given before",
+      "Pre-wrote a long discovery document and shared it 24 hours before the meeting — Bilqis didn't read it, you didn't get the conversation",
+      "Spent half the meeting on technical-feasibility framing instead of the user-experience question Bilqis cares about",
+      "Booked a follow-up to 'continue the discovery' — buys you another week but Bilqis is starting to think you can't synthesise"
+    ],
+    "red": [
+      "Asked Bilqis to write acceptance criteria",
+      "Built against your own interpretation without the conversation",
+      "Took the conversation to Lewis to scope before you'd defined the outcome with Bilqis",
+      "Escalated to your manager to 'get clarity on what Bilqis wants' — she will hear about it"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

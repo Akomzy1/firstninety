@@ -1,0 +1,43 @@
+{
+  "slug": "po-coach-developer",
+  "role": "po",
+  "title": "Write Them Yourself",
+  "one_liner": "Your senior developer keeps closing tickets without acceptance criteria written. He's just asked you to write them on his next story.",
+  "brief": "## The setup\n\nWeek six. The senior developer is Lewis Harding — six years on the platform, technically excellent, slightly impatient with what he calls 'process overhead'. The pattern has been consistent: he picks up a story, builds something close to what's described in the title, marks it done. QA finds the gap, opens follow-up tickets, two sprints later you're still cleaning up the original story.\n\nYou've raised this twice already, both times gently. Lewis nodded both times. Behaviour hasn't changed.\n\nThis morning he Slacked you: 'Hey, picking up CP-201 (admin role-assignment changes) — can you write the AC? I want to get into the code, you know the business side better than I do.'\n\nIt's framed politely. It's not actually about the AC; it's a habitual delegation. If you write them this time, you've trained him that this is your job. If you say no flatly, the conversation turns into a thing.\n\nThe SM is aware of the pattern and has hinted he'll back you up if you push back, but won't fight the battle for you.\n\n## Your turn\n\nReply to Lewis.",
+  "objective": "Decline to write the AC. Get Lewis to write them himself. Don't burn the relationship in the process; the team needs Lewis engaged and not defensive. Make this the conversation that changes the pattern, not the one that delays it another sprint.",
+  "curveball": "Lewis is not actually convinced he can't write AC. He just finds them tedious and has been getting away with delegating them because previous POs accepted the framing. If the user offers to pair on writing them once ('let's do it together this morning; I'll show you the AC pattern I want, and you'll do the next one solo'), Lewis will accept — partly because it's pair time with the PO (which he values), and partly because it's an offer he can't gracefully refuse without admitting he doesn't want to do them. The pair session takes 25 minutes; the next three stories he writes AC for himself. If the user simply says 'no, you write them', Lewis will write them — badly — for one story and revert to delegation by sprint 8.",
+  "personas": [
+    {
+      "name": "Lewis Harding",
+      "role": "Senior Developer",
+      "position": "AC is tedious and the PO knows the business better",
+      "fear": "Being seen as the senior dev who's slowed down by process",
+      "monogram": "LH",
+      "colour": "slate"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Did not write the AC, even partially",
+      "Offered to pair once ('let's do CP-201 together this morning; you'll do CP-202 solo') — gives Lewis a face-saving route into the new pattern",
+      "Named the pattern without making it accusatory ('this is the third one this sprint; I want us to land in a sustainable place')",
+      "Followed up — checked the AC on the NEXT story Lewis wrote solo, gave specific feedback within 24 hours"
+    ],
+    "yellow": [
+      "Wrote them 'just this one time' — locks the pattern in for another quarter",
+      "Said 'no, you write them' with no support offered — Lewis will produce minimal AC that you'll spend the sprint clarifying",
+      "Escalated to Lewis's manager — works but burns the direct relationship and the SM relationship",
+      "Wrote a long Slack message about why AC matter — Lewis will skim it and miss the point"
+    ],
+    "red": [
+      "Wrote them and then complained about it to the SM after",
+      "Wrote them and added a passive-aggressive comment ('happy to do this one for you')",
+      "Brought it up in retro as a team-level issue — Lewis will hear it directly, will be defensive",
+      "Refused so hard the conversation broke down and Lewis stopped responding for the rest of the day"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "po-roadmap",
+  "role": "po",
+  "artefact_type": "roadmap",
+  "title": "Roadmap",
+  "variant": "outcome_themed",
+  "description": "The roadmap that survives quarterly stakeholder pressure — versus the date-grid that locks the team in and makes the PO look unreliable when reality moves. Outcomes by quarter, not features by month. The discipline is being honest about confidence levels: 'committed', 'planned', 'exploring' — and never letting 'exploring' read as 'planned'.",
+  "empty_template_md": "# [Product] — Roadmap\n_v[N] · for the next [3-4] quarters · last updated [date]_\n\n## Now (this quarter)\n_Outcomes we are committed to. Stories underneath these outcomes are sized and in flight. Confidence: high._\n\n## Next (next quarter)\n_Outcomes we plan to start in the next quarter. Discovery underway; sizing partial. Confidence: medium._\n\n## Later (the quarter after that)\n_Outcomes we are exploring. May or may not happen depending on what we learn. Confidence: low. Stakeholders should not plan against these._\n\n## Not on this roadmap\n_Outcomes we've explicitly decided against in this horizon. With the reason. This section is the PO's defensive artefact in stakeholder conversations._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal roadmap, written at end of Q2",
+      "content_md": "# Customer Portal — Roadmap\n_v0.6 · Q3 2026 – Q1 2027 · last updated 30 June 2026_\n\n## Now (Q3 2026 — July to September)\n\n### Outcome: Top-12 customers self-serve on user management and standard reports\n- Customer-portal v1 launches 9 September.\n- Hard CS cutover for top-12 the same day.\n- Success metric: CS team's password-reset ticket volume drops from ~30/week to <10/week within 4 weeks of launch.\n\n_Confidence: high. All stories in flight; team is week 10 of 16._\n\n## Next (Q4 2026 — October to December)\n\n### Outcome: Top-12 customers can self-serve on bulk operations + customised reports\n- Bulk-import upload (v1).\n- Custom-period date range on existing reports.\n- Mobile-responsive admin console (CS team).\n- Self-service: add a single user via email invitation.\n\n_Confidence: medium. Discovery done on bulk-import; mobile-admin scope still being shaped; invite flow is fresh._\n\n### Outcome: Foundations laid for the Q1 API work\n- Architecture decision record on the customer-data export API approach.\n- One small instrumented API endpoint shipped (audit-log export) as a proof point.\n\n_Confidence: medium-low. Tobi wants this; we want to learn before we commit Q1 to it._\n\n## Later (Q1 2027 — January to March)\n\n### Outcome: Customers integrate the portal with their own data warehouses\n- Customer-data export API (full v1, based on Q4 ADR + proof point).\n\n_Confidence: low. May change shape after Q4 learnings._\n\n### Outcome: Top-12 customers can theme the portal with their own brand\n- White-label theming for the top-12.\n\n_Confidence: low. Sales-driven request; we have an unverified assumption that this changes renewal conversion._\n\n## Not on this roadmap (next 3 quarters)\n\n- **Partner referral codes.** Declined Q2 (see backlog archive). Model assumes adoption rates we don't believe; revisit Q1 if base case improves.\n- **Historical-data migration (>24 months).** Phase 3 candidate. Cost is a 4-week separate workstream; not the highest-leverage thing in the portfolio.\n- **Real-time chat support in the portal.** Folake withdrew the ask Q2 after CS staffing implications surfaced. Not coming back without different staffing model.\n- **Self-service billing within the portal.** Sits with finance; not the customer-portal team's remit. Conversation with finance to be opened Q4 if they want to sponsor.\n- **Custom roles beyond admin/viewer.** Phase 3 candidate; declined for Q3-Q1 horizon.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Outcomes, not features. 'Top-12 customers self-serve on user management' is an outcome the team can navigate trade-offs against. 'Ship CP-201, CP-202, CP-203' is a list of stories that locks the team to specific tickets and removes their ability to flex."
+        },
+        {
+          "section_id": "section-1",
+          "note": "Success metric on the 'Now' outcome. A roadmap without success metrics doesn't tell anyone what success looks like. The CS ticket volume drop is a measurable, testable outcome — not a feature output."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Confidence levels — high / medium / low — must be visible. The whole point of the roadmap is communicating what stakeholders can plan against (high), what they can expect (medium), and what they should NOT plan against (low). Without confidence levels, the 'Later' section reads as 'planned'."
+        },
+        {
+          "section_id": "section-4",
+          "note": "'Not on this roadmap' is the PO's most strategic section. Every stakeholder who asks 'why isn't X on the roadmap?' gets pointed here. The section saves three meetings per quarter."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Roadmap as features-by-month. Locks the team to specific stories at specific dates. By week 6, reality has moved and the PO is constantly explaining away slip.",
+    "All items presented at the same confidence level. Stakeholders plan against 'Later' items as if they're committed; the PO ends up explaining six months later why an exploratory item didn't ship.",
+    "'Not on this roadmap' section omitted. Every quarter, the PO defends the same set of declined items in stakeholder forums. The section saves the recurrence.",
+    "Confidence levels omitted because 'we don't want to seem uncertain'. The roadmap LOOKS more certain without them, and IS less reliable. Stakeholders prefer honesty.",
+    "No success metrics on the 'Now' outcomes. The team builds; nobody knows whether the work landed the outcome. Always include the measurable.",
+    "Roadmap updated quarterly but presented as authoritative monthly. Either revise more often or be honest that the document is at-most-quarterly accurate."
+  ],
+  "variant_patterns": [
+    "Multi-product portfolio variant: each product has its own roadmap; the portfolio roadmap rolls up the strategic outcomes only, not every feature. Resist the temptation to make one document do both jobs.",
+    "Theme-led variant: the roadmap is organised by strategic theme (e.g. 'retention', 'monetisation', 'platform health'); outcomes nest underneath. Useful when the product is large and outcomes are abundant.",
+    "Beta / experimental variant: add a §0 'Active experiments' — outcomes we're learning about via running experiments. Stakeholders should NOT plan against these; they exist to inform the next roadmap revision."
+  ],
+  "related_scenarios": ["po-date-pressure", "po-defending-no"],
+  "career_stage": "first_90_days",
+  "version": 1
+}
