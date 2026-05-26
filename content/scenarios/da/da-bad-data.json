@@ -1,0 +1,43 @@
+{
+  "slug": "da-bad-data",
+  "role": "da",
+  "title": "The Source-of-Truth Is Wrong",
+  "one_liner": "You've found that the company's main revenue dashboard has been understating Q1 by about £230k. You've been at the firm three weeks.",
+  "brief": "## The setup\n\nWeek three. You've been doing the standard onboarding tour of the team's dashboards. The 'company revenue v2' dashboard is the one everyone — including the board — uses as the canonical revenue number.\n\nYou pulled it apart to learn the data model. There is a bug. A subquery that joins partner-channel revenue is dropping rows for partners whose contract terms include a deferred-payment clause. About 14 partners, all signed in Q4 last year. The cumulative effect on Q1 is roughly £230k under-reported.\n\nThe dashboard is owned (officially) by Marcelo Rivera, the senior DA who has been with the firm for four years and built the entire data-warehouse layer underneath it. He is widely respected. He onboarded you the first three days you were here.\n\nThe board pack went out on Tuesday with the wrong number. The CFO quoted the wrong number in an investor call last Thursday. The next board pack is in eight days.\n\nYou are three weeks in. You are right.\n\n## Your turn\n\nWhat's the first move?",
+  "objective": "Get the bug fixed and the right number in the next board pack — without making Marcelo defensive, without going around him, and without becoming the new DA who 'told everyone the senior DA is wrong'.",
+  "curveball": "If you go to anyone other than Marcelo first (your manager, the CFO, a Slack channel), Marcelo will hear about it within the day and the relationship cools permanently. If you go to him directly with the bug, walk him through what you found, and frame it as 'I want to make sure I'm reading this right before I do anything', he'll either confirm the bug instantly (he's a real engineer; he won't gaslight you over a real bug) and own the comms with the CFO himself, or he'll have a reason the join is intentional that you didn't know. Either way, the conversation is short and you both come out of it OK. The skill is showing up with humility you don't actually need to be performing — Marcelo knows you're competent; the humility frame is for the relationship, not the technical claim.",
+  "personas": [
+    {
+      "name": "Marcelo Rivera",
+      "role": "Senior Data Analyst (owner of the dashboard)",
+      "position": "I built that thing. Show me what you found",
+      "fear": "Discovering a bug in his own work that's been wrong for months and the CFO has cited it",
+      "monogram": "MR",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Went to Marcelo first, in person or on a video call — not Slack, not a written report",
+      "Framed it as 'I want to make sure I'm reading this right' even though you're confident — gives Marcelo the dignity-preserving entry",
+      "Showed the actual subquery + the joined row counts — let Marcelo confirm the bug himself",
+      "Did NOT mention the CFO call or the board pack until Marcelo had confirmed the bug — adding stakes first hardens the conversation"
+    ],
+    "yellow": [
+      "Wrote a long Slack message in the data-team channel describing the issue — Marcelo sees it second, in front of colleagues, and the relationship hardens",
+      "Went to your manager first 'to ask for advice' — your manager will ask why you didn't go to Marcelo, and it's the same conversation but worse",
+      "Sent Marcelo a Jira ticket — flat, transactional, takes the conversation out of the room where it could land cleanly",
+      "Hedged so hard ('not sure if this is a real issue but…') that Marcelo doesn't take it seriously until two weeks later when the next board pack is being prepared"
+    ],
+    "red": [
+      "Emailed the CFO directly with the corrected number",
+      "Pushed a PR fixing the dashboard yourself without telling Marcelo",
+      "Brought it up in the team standup as 'I think we have a bug in the revenue dashboard'",
+      "Sat on it — figured you're too new to flag this and waited for someone else to notice"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "da-quick-number",
+  "role": "da",
+  "title": "Just a Quick Number",
+  "one_liner": "Slack from the VP at 4.55pm: 'quick one — how many customers signed up last month?' She's about to go into a meeting in 5 minutes.",
+  "brief": "## The setup\n\nWeek four. You're closing your laptop. Slack pings. Bilqis Hassan (VP Product Strategy) — three levels above you in the org chart, you've spoken to her twice in person:\n\n> 'Hey — quick one, how many customers signed up last month? Going into a meeting at 5, want to drop the number in. Thanks!'\n\nIt looks easy. You know the table. It's a one-line query.\n\nIt is not actually easy. The signup table has three categories of row — trial, paid, abandoned-during-onboarding. Last month you onboarded a partner-channel acquisition that triple-counted itself for a week before someone fixed the pipeline. The number depends on what Bilqis means by 'customer' and whether she wants the gross or net number.\n\nYou have two minutes before she walks into the meeting. If you fire the SQL and send a number, you have ~60% chance of sending the wrong one. If you ask what she means, you might be the new DA who doesn't know the data.\n\n## Your turn\n\nReply.",
+  "objective": "Get Bilqis a defensible number in time for the meeting. Establish the precedent that you ask before you produce. Don't be patronising; she's senior, she's busy, and she does know what 'customer' broadly means.",
+  "curveball": "If you just send a number, you have a 60% chance of being wrong AND you've trained Bilqis that quick numbers from you arrive without intake — meaning the next request will also be ambiguous. If you ask the intake question well, Bilqis will answer in 30 seconds and you'll send the right number with 60 seconds to spare. The intake question that works is specific and short: 'Net new paid in March — 412. Or did you mean inc. trials (~840), or net of churn (~390)? Happy to send a different cut if useful.' The structure: lead with the most likely answer, list the alternatives in one line, offer the door open. Bilqis will reply 'net new paid is fine' and use 412 in her meeting.",
+  "personas": [
+    {
+      "name": "Bilqis Hassan",
+      "role": "VP Product Strategy",
+      "position": "I need a number now. Be useful and quick",
+      "fear": "Being given a wrong number that she quotes in a senior meeting",
+      "monogram": "BH",
+      "colour": "teal"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Sent a specific number AND named the cut (net new paid, March, 412)",
+      "Listed the alternative cuts in one line so Bilqis could pick a different one if needed",
+      "Did NOT send a long methodology note — kept it under 3 lines",
+      "Did NOT delay for clarification first — gave her the most likely number with the door open"
+    ],
+    "yellow": [
+      "Asked 'what do you mean by customer?' as the first reply — Bilqis won't have time to answer before her meeting",
+      "Sent a number without specifying the cut — 60% chance of being wrong, and no audit trail if she quotes it",
+      "Sent a long explanation of the pipeline issue last week — too much context for a 2-minute window",
+      "Took 6 minutes to reply — she's already in the meeting"
+    ],
+    "red": [
+      "Sent 'I need to check the data first' — Bilqis walks in empty",
+      "Fired the laziest possible query (count(*) from signups where month=...) and sent 1,247 — that's the gross including triple-counts",
+      "Cc'd your manager for permission to answer",
+      "Promised a 'detailed report by EOD' she didn't ask for"
+    ]
+  },
+  "estimated_minutes": 8,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

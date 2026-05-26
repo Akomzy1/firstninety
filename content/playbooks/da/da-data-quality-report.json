@@ -1,0 +1,49 @@
+{
+  "slug": "da-data-quality-report",
+  "role": "da",
+  "artefact_type": "data_quality_report",
+  "title": "Data Quality Report",
+  "variant": "standard",
+  "description": "The data quality report that gets read — versus the dimensions-of-DQ slide deck nobody opens. Five questions, answered specifically per data domain. The discipline is being honest about where the data is weak and quantifying the impact on downstream analysis.",
+  "empty_template_md": "# [Data domain] — Data Quality Report\n_v[N] · prepared by [DA] · [date] · audience: [data team + named data owners]_\n\n## 1. What this report covers\n_The data domain in scope (e.g. 'customer signups + onboarding events'). The tables, the time window assessed, what's NOT in scope._\n\n## 2. What we found, ranked by impact\n_Issues, ranked by 'how much does this break downstream analysis'. Each one: what the issue is, where it lives, who downstream is affected, when it started._\n\n## 3. The numbers behind each issue\n_For each ranked issue: row counts affected, %, impact on key metrics that use this data._\n\n## 4. What we recommend\n_Per issue: fix-at-source / fix-in-transform / accept-and-document. With the trade-off named._\n\n## 5. What we'd want to monitor going forward\n_The 3-5 quality checks that, if they break, would signal the issue is back. Owned by the data team via dbt tests or equivalent._\n",
+  "worked_examples": [
+    {
+      "title": "Signups + onboarding events — DQ report at week 6",
+      "content_md": "# Signups + Onboarding Events — Data Quality Report\n_v0.1 · prepared by [DA] · 22 April 2026 · audience: data team + Marcelo (data eng) + Folake (CX, downstream consumer)_\n\n## 1. What this report covers\n\n- Tables: `users`, `onboarding_events`, `signup_channel_attribution`.\n- Window assessed: 1 October 2025 – 21 April 2026.\n- NOT in scope: billing / subscription data, third-party event sources.\n\n## 2. What we found, ranked by impact\n\n### Issue 1 (HIGH) — partner-channel attribution triple-counted between 18-25 March\n- 3,127 user rows duplicated in the attribution table; downstream effect is overstated partner-channel signup volume.\n- Affected: weekly partner-channel reporting; the £400k partner-referral business case modelling.\n- Fix landed in the pipeline on 25 March; historical rows still need backfilling.\n\n### Issue 2 (HIGH) — onboarding_step_completed event missing for ~14% of mobile signups\n- Missing for a specific app build (v3.4.0–v3.4.2, ~6 weeks of releases) due to a client-side analytics bug.\n- Affected: cohort completion-rate analyses; the simplified-onboarding churn analysis (already corrected for in the week-5 finding).\n- Fixed in app v3.5; historical rows can't be recovered.\n\n### Issue 3 (MEDIUM) — `signup_channel` field has 4% NULL rate\n- Affects all rows where attribution can't be resolved (mostly direct-to-product visits with no UTM).\n- Affected: any analysis sliced by channel.\n- This is a fundamental ambiguity, not a bug — should be documented as 'unattributed' rather than fixed.\n\n### Issue 4 (LOW) — three users have signed_up_at timestamps after their first event\n- Likely race-condition between signup row insert and first event capture.\n- Affected: edge cases in cohort definitions; will produce off-by-one-day cohort assignment for those three users.\n- Acceptable as-is; the issue is rare enough that we'd lose more time fixing than we'd gain.\n\n## 3. The numbers\n\n| Issue | Rows affected | % of domain | Downstream metrics affected |\n|-------|---------------|-------------|-----------------------------|\n| 1 | 3,127 | 18.3% (partner-channel slice) | weekly partner reporting, business case modelling |\n| 2 | ~2,400 | 14.2% (mobile signups in window) | cohort completion-rate; simplified-onboarding analysis |\n| 3 | ~840 | 4.1% (all signups) | any channel-sliced analysis |\n| 4 | 3 | 0.02% | edge-case cohort assignment |\n\n## 4. What we recommend\n\n| Issue | Recommendation | Trade-off |\n|-------|----------------|-----------|\n| 1 | Backfill the affected attribution rows from raw event source (1 day eng work) | Two-week delay to clean partner-channel reporting if not done |\n| 2 | Document the gap; do not attempt recovery (data not available) | Cohort analyses for the affected window have a known floor of completeness |\n| 3 | Document 'unattributed' as a valid channel value; treat NULLs as unattributed in all transforms | Need to update three downstream dashboards |\n| 4 | Accept and document | Minor cohort edge case in published analyses |\n\n## 5. What we'd want to monitor going forward\n\n- **dbt test on `signup_channel_attribution`:** uniqueness of `(user_id, attributed_at)` — would have flagged Issue 1 within 24 hours.\n- **Mobile-build event-completeness check:** automated alert if `onboarding_step_completed` rate drops >5% week-on-week for any app version.\n- **Schema-tracking on `signup_channel`:** new values appearing without our knowledge get flagged for triage.\n- **Timestamp-ordering check:** assert `signed_up_at <= first_event_at` for each user; alert on violations beyond the known floor.\n",
+      "annotations": [
+        {
+          "section_id": "section-2",
+          "note": "Issues ranked by impact, not by data-quality-framework category. 'Accuracy issue, severity HIGH' tells nobody anything. 'Partner-channel attribution triple-counted between 18-25 March, breaks partner-channel reporting + business case modelling' tells the reader what to act on."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Quantify everything. Row counts, percentages, named downstream metrics. Without numbers, the report reads as opinion. With numbers, it reads as a triage document the team can act on."
+        },
+        {
+          "section_id": "section-4",
+          "note": "The fix-at-source / fix-in-transform / accept-and-document framing forces a real recommendation. 'Investigate further' is not a recommendation."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Monitoring checks live in dbt tests (or equivalent), not in a future-DA's head. The whole point of the DQ work is to prevent the next issue, not to catalogue the current one."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Report written using the DAMA dimensions of data quality (accuracy / completeness / etc.) as the structure. Comprehensive and useless. Use impact-ranked issues instead.",
+    "Issues listed without quantifying downstream effect. The reader can't tell whether to act.",
+    "Recommendations of 'investigate further'. That's not a recommendation; that's a deferral. Make a call: fix at source, fix in transform, or accept-and-document.",
+    "DQ report produced once and never updated. The whole point is the ongoing health of the data; one-off reports become wallpaper.",
+    "Going to the data engineer with the report before having a conversation first. Same pattern as the bad-data scenario — the conversation comes before the document.",
+    "Listing every NULL value as an issue. NULLs that mean something specific (e.g. 'unattributed') are not data quality issues; they're modelling decisions."
+  ],
+  "variant_patterns": [
+    "Pre-launch product variant: DQ report covers the new event schema only. Section 5 (monitoring) is the main deliverable — tests baked in before launch prevent the report from being needed in 6 months.",
+    "Regulatory-data variant: §6 'Regulatory implications' added at the end — which issues create audit risk, which create reporting accuracy risk, which create compliance breach risk.",
+    "Cross-source variant (data from multiple systems): §2 issues separately tagged by source system. Some issues are at the source; some are at the integration layer; the recommendations differ."
+  ],
+  "related_scenarios": ["da-bad-data"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

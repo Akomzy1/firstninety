@@ -1,0 +1,24 @@
+{
+  "slug": "da-w1-map-the-data-sources",
+  "role": "da",
+  "week": 1,
+  "sequence_in_week": 2,
+  "title": "Map the data sources",
+  "why_matters": "By week three you'll be writing SQL against tables you didn't build. The structure of your data warehouse — what's a source, what's a fact, what's a dimension, what's deprecated — shapes what's easy versus hard to answer. The hour you spend in week one walking the warehouse is the hour you save in week six when a stakeholder asks 'can we get this by channel by week?' and you know exactly which table that lives in.",
+  "steps": [
+    "Find the data warehouse (Snowflake / BigQuery / Postgres / etc.) and the orchestration layer (dbt / Airflow / etc.). Open the schema docs if they exist. If they don't, that's a finding.",
+    "List the top 10-15 tables by reference frequency (which tables show up most often in the team's dashboards + ad-hoc queries). Read each one's column list.",
+    "Identify the canonical fact tables (transactions / events / signups / etc.) and the canonical dimension tables (users / accounts / products). Note which ones are kept clean and which ones have known issues.",
+    "Find the dbt project (or equivalent). Read the model file structure. Identify which models are marketed as 'source of truth' and which are downstream consumption layers.",
+    "Ask Marcelo (or whoever owns the data warehouse) one question: 'which table looks easy to use but is actually a trap?'. Most engineers will tell you the truth in week one and never tell you in week six."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["da-sql-patterns", "da-data-quality-report"],
+    "scenario_slugs": ["da-bad-data"]
+  },
+  "success_criteria": "By end of week, you can describe the top 10 tables and their relationships in plain English. You know which one tablename Marcelo flagged as the trap. You can write a join between users and events that runs without errors.",
+  "reflection_prompt": "Of the top tables, which one's name doesn't quite match what it contains — i.e. you'd have expected to find one thing and it actually holds another? Two sentences.",
+  "estimated_minutes": 40,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

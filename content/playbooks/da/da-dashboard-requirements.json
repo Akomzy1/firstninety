@@ -1,0 +1,49 @@
+{
+  "slug": "da-dashboard-requirements",
+  "role": "da",
+  "artefact_type": "dashboard_requirements",
+  "title": "Dashboard Requirements Document",
+  "variant": "standard",
+  "description": "The requirements document that prevents you building the wrong dashboard. Six sections, fits on one page. Read once with the stakeholder; signed off before any SQL is written. The discipline is asking 'what decision does this support' until the answer is specific enough to build against.",
+  "empty_template_md": "# [Dashboard name] — Requirements\n_Requestor: [name] · audience: [primary user(s)] · DA: [you] · target date: [date]_\n\n## 1. Decision this supports\n_What decision (or set of decisions) does the user need to make using this dashboard? Specific. 'Where to focus the team's effort this week' is OK; 'see how sales is doing' is not._\n\n## 2. Primary user + cadence\n_Who opens this most. How often (daily / weekly / monthly / one-off). The opening cadence shapes the entire design._\n\n## 3. The metrics\n_Three to seven metrics. Each one: name, business definition (plain English), SQL definition (one line), slicing dimensions, refresh cadence. Anything beyond seven and the dashboard becomes a directory._\n\n## 4. Slicing dimensions\n_The 2-4 dimensions users will slice by (e.g. segment, region, channel, time grain). If they want fifteen slicing dimensions, the actual ask is a self-serve query tool, not a dashboard._\n\n## 5. What this dashboard is NOT for\n_The boundary section. What this dashboard explicitly will not answer. Saves three months of 'can we also add X'._\n\n## 6. Success criteria\n_How we'll know the dashboard is being used. Specific. 'Daniel opens it on Monday mornings' is testable; 'it's useful' is not._\n",
+  "worked_examples": [
+    {
+      "title": "Sales pipeline dashboard — requirements with Daniel Quigley",
+      "content_md": "# Sales Pipeline Dashboard — Requirements\n_Requestor: Daniel Quigley (Head of Sales) · audience: Daniel + his director (Tobi Adesanya) · DA: [you] · target date: 8 May 2026_\n\n## 1. Decision this supports\n\nWeekly: Daniel decides where to push sales effort the following week — which segments are underperforming, which deals are slipping, which channels are working. Monthly: Daniel's QBR conversation with Tobi needs a defensible pipeline-velocity view by segment.\n\n## 2. Primary user + cadence\n\n- **Primary:** Daniel, opens it Monday mornings (9-10am) and during weekly sales-leadership stand-up Wednesdays.\n- **Secondary:** Tobi, looks at it before monthly 1:1 with Daniel.\n- **Not the user:** the broader Sales team. They have CRM-native views.\n\n## 3. The metrics\n\n| Metric | Plain English | SQL definition | Slicing | Refresh |\n|--------|---------------|----------------|---------|---------|\n| Pipeline value | Sum of open-deal value at current stage | `sum(amount) where stage in ('discovery','proposal','negotiation')` | segment, channel, week | Daily |\n| Stage velocity | Median days to move stage-to-stage | `median(days_in_stage) where stage transitions in last 90d` | segment, stage | Weekly |\n| Conversion rate | % of deals entering Discovery that close-won | `won / entered_discovery` by entry-week | segment, channel | Weekly |\n| At-risk deals | Deals >2× median time in current stage | rule-based — TBD with Daniel | segment, owner | Daily |\n\n## 4. Slicing dimensions\n\n- Segment (Enterprise / Mid-market / SMB)\n- Channel (Direct / Partner / Inbound)\n- Time grain (this week, this month, this quarter, custom)\n- Deal owner (defaults off — turn on only for the deep-dive view)\n\n## 5. What this dashboard is NOT for\n\n- Individual rep performance reviews (sits with Sales leadership separately).\n- Forecasting (separate model owned by Finance).\n- CRM data quality (a different conversation; this dashboard assumes upstream data is OK).\n- Deal-level commentary or notes (the CRM is the system of record for that).\n\n## 6. Success criteria\n\n- Daniel opens the dashboard at least 3 of 4 Mondays in May.\n- Daniel uses at least one specific dashboard view in his weekly Wednesday stand-up.\n- After 4 weeks, neither Daniel nor Tobi has asked you to add a new metric (i.e. the original set is doing the job).\n- Tobi cites the dashboard in his next monthly 1:1 with Daniel.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Decision-this-supports section is the heart of the document. If you can't fill it in, the dashboard shouldn't be built. The stakeholder will give you a vague answer; your job is to keep asking until it's specific."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Three to seven metrics. More than seven and the dashboard becomes a directory; nobody can hold the picture in their head. The discipline is in the cut."
+        },
+        {
+          "section_id": "section-5",
+          "note": "What-this-is-NOT-for section saves you the 'can we also add forecasting?' conversation in week 4. Always include it. Three to five items minimum."
+        },
+        {
+          "section_id": "section-6",
+          "note": "Success criteria with named users opening the dashboard at named cadences. 'It's useful' is not a success criterion. Without observable criteria, you can't tell whether the dashboard is doing its job."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Skipping the requirements doc because 'it'll slow things down'. The dashboard will be wrong, abandoned, or both — and the requirements conversation will have to happen anyway, later, retroactively, with worse data.",
+    "Metrics that aren't decision-anchored. 'Total signups' is a metric. 'Net new paid customers by week, used to decide whether to extend the partner-channel investment' is a decision-anchored metric.",
+    "More than seven metrics. The dashboard becomes a directory; users skim and stop using it.",
+    "Slicing dimensions without limits. 'Slice by anything' is not a dashboard; it's a self-serve query tool. If that's what the user actually wants, name it and build it differently.",
+    "Success criteria omitted. Without observable adoption criteria, you'll never know whether the dashboard is being used; you'll only know when someone complains it's wrong.",
+    "Requirements doc written by the DA alone and emailed for sign-off. The conversation IS the requirements doc. The signed doc is just the record."
+  ],
+  "variant_patterns": [
+    "Executive-dashboard variant: §3 becomes ≤4 metrics. §5 (what this is NOT for) grows — executives need very tight scoping. §6 includes 'mentioned by name in the next board pack'.",
+    "Operational-dashboard variant (used hourly / daily by an operations team): §2 cadence shifts; §3 includes alert thresholds; §6 includes 'used to action a decision in the last 24 hours'.",
+    "One-off-analysis variant (not really a dashboard): collapse to §1 + §3 only. If the user only needs the answer once, build a one-pager, not a dashboard."
+  ],
+  "related_scenarios": ["da-vague-dashboard", "da-quick-number"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

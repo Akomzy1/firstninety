@@ -1,0 +1,53 @@
+{
+  "slug": "da-ab-test-plan",
+  "role": "da",
+  "artefact_type": "ab_test_plan",
+  "title": "A/B Test Plan",
+  "variant": "standard",
+  "description": "The A/B test plan that prevents the team running a test that can't answer the question. Seven sections written before any traffic is split. The discipline is being honest in section 4 (minimum detectable effect) and section 7 (what we do with each possible result). Most teams skip both; both are what make the test useful.",
+  "empty_template_md": "# [Test name] — A/B Test Plan\n_For: [decision-maker] · prepared by: [DA] · [date]_\n\n## 1. The decision this test informs\n_What decision will be made based on the result. Specific. The decision exists; the test is to inform it._\n\n## 2. The hypothesis\n_'We believe that [variant] will [change behaviour] because [reasoning]. We'll see this as [observable metric] moving by at least [MDE]%.'_\n\n## 3. Primary metric (the one we'll decide on)\n_One metric. Just one. Plain English definition + SQL definition. Any 'secondary metrics' are explicitly for monitoring not deciding._\n\n## 4. MDE + sample size\n_Minimum detectable effect we can see with the available traffic + duration. If MDE > likely effect size, the test cannot answer the question and shouldn't run._\n\n## 5. Variant assignment + exclusion rules\n_How users get into A vs B. Who is excluded (existing customers? mobile only? specific segments?). The exclusion rules are usually where the test designs go wrong._\n\n## 6. Test duration + stopping rules\n_When the test starts, when it ends, and what would cause us to stop early (and how we'd interpret an early stop)._\n\n## 7. What we do with each possible result\n_Three scenarios: clear win for B, clear win for A, inconclusive. The decision for each named in advance, so we don't argue post-hoc._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal onboarding flow — pre-test plan",
+      "content_md": "# Customer-Portal Onboarding Flow — A/B Test Plan\n_For: Linh Nguyen (PO) · prepared by: [DA] · 1 March 2026_\n\n## 1. The decision this test informs\n\nWhether to ship the new onboarding flow (variant B) to all new top-12 customer signups for the customer-portal product, replacing the current default (control A).\n\n## 2. The hypothesis\n\nWe believe that the new onboarding flow (B) will activate more users than the current flow (A) because it reduces the number of fields users must fill in before reaching the dashboard from 9 to 4. We'll see this as the **7-day activation rate** moving from the current 38% to at least 43% — a 5-percentage-point absolute improvement (a 13% relative improvement).\n\n## 3. Primary metric\n\n**7-day activation rate.** Defined as: % of new signups who complete the 'first useful action' (creating their first user OR pulling their first report) within 7 calendar days of signup.\n\n_SQL definition:_ `count(distinct user_id where first_useful_action_at <= signup_at + 7 days) / count(distinct user_id)`, where first_useful_action_at is the earliest of `user_created_at` or `report_pulled_at`.\n\n_Secondary metrics (for monitoring, not for deciding):_ time-to-activation; activation-rate by signup channel; first-week retention.\n\n## 4. MDE + sample size\n\nWith ~120 new signups/week split 50/50 between variants, over 6 weeks (720 total per variant), the minimum detectable effect is approximately **4.2 percentage points** of activation-rate change at 80% power. Our hypothesised effect is 5pp; this gives us reasonable but not abundant power.\n\nNote for Linh: if the actual effect is 3pp, this test will likely be inconclusive. We should be prepared for that outcome (see Section 7).\n\n## 5. Variant assignment + exclusion rules\n\n- Random 50/50 assignment at signup, salted by user_id (deterministic on subsequent visits).\n- **Excluded:** partner-channel signups (different funnel); enterprise-tier customers (custom onboarding); existing customers signing up additional sub-accounts (already activated).\n- **Included:** all direct + inbound signups for the top-12 product tier, mobile + desktop.\n\n## 6. Test duration + stopping rules\n\n- Test starts 8 March 2026. Test ends 19 April 2026 (6 calendar weeks).\n- **Hard early stop:** activation rate for either variant drops >10pp below historical baseline. (Indicates a real bug, not a treatment effect.)\n- **No early stops for 'reached significance'.** Six weeks is the design; stopping when we 'see' significance is the classic peeking error.\n\n## 7. What we do with each possible result\n\n- **Clear win for B (activation +5pp or more, CI doesn't cross zero):** ship B to all top-12 signups by 26 April. Roll back A.\n- **Clear win for A (B is worse by 3pp or more):** kill B; investigate the 'simpler is worse' result with the UX team.\n- **Inconclusive (CI crosses zero):** the test cannot resolve the question. Linh decides whether to extend the test (6 more weeks costs us nothing) or accept that B is at best a small positive and ship-with-monitoring. This is the most likely outcome given §4 power calculation, and we should be ready for it.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Section 1 — the decision — anchors the whole document. If you can't name the decision the test will inform, the test shouldn't run. 'Find out whether B is better than A' is not a decision; it's a fishing expedition."
+        },
+        {
+          "section_id": "section-3",
+          "note": "ONE primary metric. Just one. Secondary metrics exist but are explicitly for monitoring, not deciding. Teams that try to decide on multiple primary metrics end up post-hoc rationalising the metric that gave them the answer they wanted."
+        },
+        {
+          "section_id": "section-4",
+          "note": "MDE + sample size is the section most rookie DAs skip. The result: tests that ran for six weeks and were always going to be inconclusive because the available traffic couldn't detect the effect size. If MDE > likely effect, don't run."
+        },
+        {
+          "section_id": "section-6",
+          "note": "'No early stops for reached significance' is the discipline that separates real A/B testing from p-value peeking. Every time you check the test and decide whether to keep going, you're adding to the false-positive rate. Set the duration; honour it."
+        },
+        {
+          "section_id": "section-7",
+          "note": "Section 7 — what we do with each possible result — is the section that prevents the post-hoc 'well, directionally…' conversation. Decide in advance. The inconclusive-result decision matters most; it's the most likely outcome of an underpowered test."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "No MDE + sample size calculation. Test runs for six weeks; result is inconclusive; team is surprised. Always check MDE against likely effect before starting.",
+    "Multiple primary metrics. Team picks the one that gives the answer they want post-hoc.",
+    "Early stopping on 'reached significance'. The classic p-value peeking error. Stop only on hard early-stop criteria (real bug, ethical concern, etc.), never on 'we have a result'.",
+    "Exclusion rules omitted. Test runs across populations that have materially different behaviour, masking or amplifying the effect.",
+    "No section on what to do with an inconclusive result. Result lands inconclusive; team argues for two weeks about whether to ship B 'directionally'. Decide in advance.",
+    "Test plan written by the DA alone. The PO/stakeholder should sign off section 1 (the decision) and section 7 (what we do with each result) BEFORE traffic starts. Otherwise you'll have the argument after the data is in."
+  ],
+  "variant_patterns": [
+    "Multi-armed bandit variant: §4 + §6 change materially. Bandits trade off measurement precision for traffic to better-performing variants over time. Use when continuous optimisation matters more than a clean point-in-time answer.",
+    "Long-cycle variant (test cycle longer than 6 weeks because the outcome metric lags): §3 should split into 'short-cycle proxy' (used for monitoring during the test) and 'long-cycle truth' (used for the actual decision, possibly months later).",
+    "Holdout variant (no live A/B; comparing a launch to a counterfactual): MDE calculation becomes synthetic-control based. Higher noise; use only when running a real test isn't possible."
+  ],
+  "related_scenarios": ["da-inconclusive-ab-test"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

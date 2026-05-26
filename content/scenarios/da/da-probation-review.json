@@ -1,0 +1,43 @@
+{
+  "slug": "da-probation-review",
+  "role": "da",
+  "title": "The Probation Review",
+  "one_liner": "Day 88. Your manager opens with: 'tell me about a request you pushed back on this quarter.'",
+  "brief": "## The room\n\nThirty-minute slot. Your hiring manager is Adisa Okafor (Head of Data Platform). She's been in role for three years; she runs a team of nine, including five analysts. She has a reputation for being honest in a way that catches new hires off-guard — not unkind, just direct.\n\nWhat you know: Marcelo signed off the revenue-dashboard fix conversation positively ('handled it well; came to me first'). Folake has told Adisa, in writing, that you 'don't waste my time' — which Adisa quoted to you appreciatively in your week-6 1:1. The week-8 inconclusive-A/B-test reframe with Linh has been mentioned twice in your manager's calendar in agenda items you weren't on.\n\nYou submitted your pack on Monday. The pack lays out: the revenue-dashboard fix (Marcelo's onboarding to your existence as a DA who watches), the counter-intuitive churn finding (week 5; landed cleanly with Yetunde), the inconclusive-A/B-test reframe (week 8; saved Linh from a wrong brief), and a list of the dashboards you've built or improved.\n\nAdisa opens with: 'Tell me about a request you pushed back on this quarter.'\n\n## Your turn\n\nAnswer.",
+  "objective": "Name a specific push-back — the inconclusive A/B test is the obvious one — and own the reasoning. Show Adisa you can hold a position without being statistically obnoxious. Don't list every push-back; restraint is the answer.",
+  "curveball": "Adisa is testing whether the user can articulate the work of saying-no-to-the-wrong-question, which is the senior DA skill she most cares about. A user who answers with the A/B test pushback AND names the cost they accepted (Linh's initial annoyance, the risk of being seen as the DA who blocks decisions) is materially more credible than a user who lists three push-backs or who defends statistics in the abstract. The right shape: name the moment, name the reframe ('the question wasn't did B win; the question was should we ship B given what we now know'), name the cost (Linh's first message was less warm), name what landed (Linh used the brief, Bilqis approved, the decision held).",
+  "personas": [
+    {
+      "name": "Adisa Okafor",
+      "role": "Head of Data Platform (hiring manager)",
+      "position": "I want to know if you can hold a position without being statistically obnoxious",
+      "fear": "Confirming a DA who can't say no, or one who says no with technical contempt",
+      "monogram": "AO",
+      "colour": "plum"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with one specific push-back (the A/B test reframe with Linh) — not a list",
+      "Named the cost accepted (Linh's initial coolness, the relationship risk) — owns the trade-off",
+      "Articulated the reframe in plain English ('the question wasn't did B win; should we ship given what we now know') — not 'the confidence interval included zero'",
+      "Stayed away from statistical pedantry when Adisa pushed — 'the confidence interval is the technical detail; the actual skill was reframing the decision' is the right register"
+    ],
+    "yellow": [
+      "Listed three push-backs — dilutes the answer",
+      "Couldn't name the cost — 'I think it was the right call' (no skin in the game shown)",
+      "Defended the reframe with p-values and statistical language — Adisa tunes out",
+      "Gave the revenue-dashboard fix as the push-back — that's a different skill (escalation done well, not push-back); Adisa is looking for the harder thing"
+    ],
+    "red": [
+      "Couldn't name a single push-back you made",
+      "Made the push-back about Linh ('she wanted the wrong thing') — Adisa hears that as throwing your stakeholder under the bus",
+      "Said you 'often have to push back' — comes across as the DA who blocks decisions",
+      "Apologised for pushing back ('I hope it wasn't a problem') — frames it as something you'd rather not have done"
+    ]
+  },
+  "estimated_minutes": 15,
+  "difficulty": 5,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,43 @@
+{
+  "slug": "da-pretty-chart",
+  "role": "da",
+  "title": "Make It Prettier",
+  "one_liner": "The exec presenting your churn analysis tomorrow has Slacked: 'can we make the chart on slide 4 prettier? Feels a bit dry.'",
+  "brief": "## The setup\n\nWeek seven. You've prepared a churn analysis deck for a board sub-committee meeting tomorrow. The deck is being presented by Folake Adeyemi (Head of CX). You went back and forth on it for three days; she signed off Friday.\n\nThe chart on slide 4 is the central exhibit: a clean line chart showing the 2.2× churn differential between the new and old onboarding cohorts over four quarters. Two lines. Clear gap. Annotated with the quarter the new onboarding launched.\n\nFolake just Slacked, at 6.10pm Sunday:\n\n> 'Hi — pre-reading the deck for tomorrow. Slide 4 — can we make that chart prettier? It's a bit dry. Maybe add some colour or icons. Thanks!'\n\nThe chart is not the problem. The chart is doing exactly the job it's meant to do — show two cohorts diverging clearly. 'Prettier' would mean adding noise to a chart that is functioning. The actual issue, you suspect, is that Folake is nervous about presenting a finding that contradicts Yetunde's bet — and her instinct is to make the chart 'softer'.\n\nYou have an hour before bed. You can rebuild the chart with more colour. You can push back. You can offer to take Folake through the slide tomorrow morning before the meeting.\n\n## Your turn\n\nReply.",
+  "objective": "Defend the chart. Acknowledge the real concern (Folake's nerves about presenting against Yetunde). Don't make the slide worse to make her feel better.",
+  "curveball": "If you just rebuild the chart with more colour, you've taught Folake (and via her, every future stakeholder) that 'make it prettier' is a valid override on a working chart. The chart Monday morning will be worse, harder to read, and Folake will be presenting a chart that doesn't land the finding as cleanly. The skill is reading the underlying concern: Folake doesn't actually think the chart is dry; she's nervous. The reply that works: 'The chart's intentionally austere — two lines, clear gap, hard to misread. If you'd like, I can join the first five minutes of the meeting tomorrow and walk through the methodology question if Yetunde pushes. That covers the same ground as making the chart busier, and keeps the visual doing its job.' Folake will reply within ten minutes thanking you and accepting the offer.",
+  "personas": [
+    {
+      "name": "Folake Adeyemi",
+      "role": "Head of Customer Experience",
+      "position": "I'm presenting tomorrow and I'm nervous. The chart feels exposed",
+      "fear": "Presenting a finding that contradicts Yetunde without enough cover",
+      "monogram": "FA",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Defended the chart — did not rebuild it",
+      "Named the design intent in one sentence ('intentionally austere — two lines, clear gap')",
+      "Read the underlying concern (Folake's nerves) and offered something that addresses it (joining the meeting, or talking her through it pre-meeting)",
+      "Kept the reply short — under five lines"
+    ],
+    "yellow": [
+      "Rebuilt the chart with more colour because Folake asked — chart is now worse and you've established the precedent",
+      "Wrote a long Slack about chart design principles — Folake will skim and feel lectured",
+      "Asked 'what specifically would feel less dry?' — Folake doesn't know; the question puts the work back on her",
+      "Promised to 'see what you can do' and quietly didn't change anything — Folake walks in unsure if the chart was updated"
+    ],
+    "red": [
+      "Added pie charts, icons, and gradient fills — the chart now obscures the finding",
+      "Refused with no alternative — Folake feels unsupported, presents an unchanged chart resentfully",
+      "Said 'the chart is fine, trust me' — true but reads as dismissive",
+      "Sent Folake to talk to Marcelo about it — passes the relationship work to someone else"
+    ]
+  },
+  "estimated_minutes": 9,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "da-w1-read-the-dashboards",
+  "role": "da",
+  "week": 1,
+  "sequence_in_week": 1,
+  "title": "Read every existing dashboard end to end",
+  "why_matters": "Every dashboard on the team's BI tool is a record of what the previous DAs thought mattered, what stakeholders asked for, and which questions never quite got answered. Most new DAs skim the dashboards; the ones who get respected in their first month read each one carefully — including the ones nobody uses anymore. By week four you'll be the person responsible for shipping new ones; by week one, you understand what's already there and where the gaps are.",
+  "steps": [
+    "List every dashboard in the team's BI tool. There will be more than you think. Group them by owner, audience, and last-viewed date.",
+    "Open each dashboard. Don't just look at the charts — read the underlying SQL (or dbt models) where available. Note the patterns: who builds with CTEs, who uses self-joins, where the conventions break.",
+    "Identify the dashboards that haven't been viewed in 60+ days. Those are the abandoned ones. Note who requested them; the abandonment pattern often tells you which stakeholders 'want a dashboard' but never use one.",
+    "For each dashboard you couldn't immediately interpret in 10 seconds, note why. That note becomes your map of what 'good' looks like on this team — and what doesn't."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["da-dashboard-design", "da-dashboard-requirements"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "By end of week, you can list every dashboard, name its primary user, and name the 3-5 that have been abandoned and the 3-5 that are getting the most use. You can describe two stylistic conventions the team uses without checking the documentation.",
+  "reflection_prompt": "Of the abandoned dashboards, which one looks like it was the right idea built badly — versus the wrong idea entirely? Two sentences.",
+  "estimated_minutes": 45,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

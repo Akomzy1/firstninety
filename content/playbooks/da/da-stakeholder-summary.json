@@ -1,0 +1,53 @@
+{
+  "slug": "da-stakeholder-summary",
+  "role": "da",
+  "artefact_type": "stakeholder_summary",
+  "title": "Stakeholder Summary (One-Pager)",
+  "variant": "standard",
+  "description": "The one-page write-up that gets read instead of the 30-slide deck that doesn't. The structure forces the analyst to lead with the decision, not the methodology. Methodology lives in an appendix; the first page is for the stakeholder. The discipline is being willing to compress your three weeks of work into five sentences a CFO will read on the train.",
+  "empty_template_md": "# [Analysis title]\n_For: [primary reader] · prepared by: [DA] · [date]_\n\n## The headline (one sentence)\n_What did we find. Specific. Quantified. No 'broadly speaking' or 'tends to'._\n\n## What it means (two to three sentences)\n_Why the headline matters. What decision it supports. The 'so what'._\n\n## What we'd recommend (three bullets max)\n_The action(s) the decision-maker would take. Phrased as decisions, not analyses ('approve the partner-channel investment' beats 'consider further investigation of partner-channel ROI')._\n\n## What we're not certain about (one to three caveats)\n_The honest caveats. Not hedging the headline; naming the specific things that could change the picture._\n\n## How we got here (one paragraph)\n_The methodology, plain English, one paragraph. Detailed methodology in the appendix._\n\n## Appendix\n_Full methodology, SQL, statistical detail. Linked from the one-pager; not embedded in it._\n",
+  "worked_examples": [
+    {
+      "title": "Simplified-onboarding churn finding — one-pager for the executive committee",
+      "content_md": "# Simplified Onboarding Is Driving 2.2× Higher Churn\n_For: Executive Committee · prepared by: [DA] · 22 April 2026_\n\n## The headline\n\nCustomers who went through the simplified onboarding (launched September 2025) are churning at **2.2× the rate** of customers from the equivalent legacy onboarding (19.2% vs 8.7% over a comparable 90-day observation window). The effect is consistent across segment, channel, and signup-month slices.\n\n## What it means\n\nThe primary investment from last year's Q3 strategy is producing the opposite outcome to the intended one. Churn losses attributable to the simplified-onboarding cohort are roughly **£640k of annualised revenue** versus the counterfactual at the legacy rate. The CS team's escalation volume on this cohort is also 1.8× — suggesting the new onboarding is creating frustrated customers who churn rather than activated customers who stick.\n\n## What we'd recommend\n\n- **Pause new enrolment into the simplified onboarding for the top-12 segment by 1 May.** Default new top-12 signups back into the legacy onboarding path while we diagnose.\n- **Commission a 4-week qualitative study with 8-10 churned customers** from the simplified-onboarding cohort to understand the specific drop-off moment.\n- **Schedule a 30-day decision point** to either (a) reinstate simplified onboarding with fixes, (b) extend the legacy-only policy to all segments, or (c) ship a v2 of the simplified onboarding.\n\n## What we're not certain about\n\n- The mobile-signup observation window has a known 14% data gap (see DQ Report v0.1). The 2.2× holds across the available data but may shift slightly with full data.\n- The pricing change in February affected both cohorts; we've controlled for it in the segmentation, but a small residual confound remains.\n- We have not yet isolated which step in the simplified onboarding is the dropping-off point; recommendation (2) above is intended to surface that.\n\n## How we got here\n\nWe defined cohorts based on signup date and channel: 'new_onboarding' for direct + inbound signups from 15 September 2025 onwards; 'legacy_onboarding' for the same channels prior, plus all partner-channel signups (which kept the old flow). We measured days-to-churn from signup, with consistent 90-day observation windows to avoid right-censoring bias. The 2.2× ratio was checked across three segmentation cuts (segment, channel, signup month) and held in each.\n\n## Appendix\n\nFull SQL: see `analyses/2026-04-churn-by-onboarding-cohort.sql`. Cohort definitions, observation-window logic, and segmentation cuts documented inline. Statistical significance: difference is significant at p<0.001 by two-sample test; the confidence interval on the ratio is [2.04, 2.39].\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "The headline does the headline's job in one sentence. 'Customers who went through the simplified onboarding are churning at 2.2× the rate' is specific, quantified, and unambiguous. 'There may be concerns with simplified onboarding adoption' is the rookie version — true and useless."
+        },
+        {
+          "section_id": "section-2",
+          "note": "What-it-means translates the finding into business stakes. £640k of annualised revenue, 1.8× CS escalations. Numbers force the reader to engage with the consequence, not just the finding."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Recommendations as decisions, not as further analyses. 'Pause new enrolment for top-12 by 1 May' is a decision the executive committee can take. 'Consider further investigation' is the kind of recommendation that delays decisions indefinitely."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Caveats listed honestly. The 14% mobile data gap is the kind of thing that, if hidden, will surface later and undermine the finding. Surfacing it in the one-pager makes the analysis trustworthy."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Methodology in one paragraph. Plain English. The CFO does not need to read about your CTE structure on page one. If she wants the SQL, she'll click the appendix link."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Leading with methodology. 'We pulled data from the signups table, joined on the events table, and segmented by…' loses the reader by line three. Lead with the finding.",
+    "Hedged headlines. 'There may be some patterns suggesting…' is not a finding; it's a fear of being wrong. Be specific or don't write the document.",
+    "Recommendations phrased as 'consider further analysis'. Make a call. The DA's job is to surface decisions, not perpetually defer them.",
+    "Caveats either omitted entirely (overclaiming) or listed exhaustively (underclaiming). Three caveats. The ones that genuinely could change the picture.",
+    "Methodology paragraph that runs to half a page. Compress. The appendix exists for a reason.",
+    "Document that's two pages. It's a one-pager. Cut."
+  ],
+  "variant_patterns": [
+    "Single-stakeholder variant (writing for one named reader): tone shifts slightly to address them directly. 'Bilqis — what we found:' is acceptable in this variant.",
+    "Decision-required-now variant (the analysis is timely and a decision must follow): §3 (recommendation) becomes a single, named option with rationale, not three options to choose between.",
+    "Negative-finding variant (the analysis says 'nothing here'): the headline becomes 'no evidence that X drives Y over the observation window' — and the recommendation includes whether to commission further work or close the question."
+  ],
+  "related_scenarios": ["da-counter-intuitive-finding", "da-inconclusive-ab-test"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "da-sql-patterns",
+  "role": "da",
+  "artefact_type": "sql_patterns",
+  "title": "SQL Query Patterns",
+  "variant": "readable_first",
+  "description": "Five SQL patterns the working DA reaches for again and again. CTEs first, not subqueries. Window functions over self-joins where they fit. Readable beats clever. Each pattern includes a worked example a junior DA can adapt to their own data. The discipline is not memorising the syntax — it's recognising which problem maps to which pattern.",
+  "empty_template_md": "# SQL Patterns — Five You'll Use Weekly\n\n## When to reach for which\n\n| Pattern | Best for | Avoid when |\n|---------|----------|------------|\n| Cohort with CTEs | Tracking groups over time (signup-cohort retention, etc.) | The grouping is just a single dimension — no time dimension involved |\n| Running totals (window) | Cumulative metrics, rolling averages | Single-point-in-time aggregates — use a normal GROUP BY |\n| Funnel via conditional aggregation | Stage-to-stage conversion in a flat events table | The funnel has time-window logic — use SQL transformations or a tool |\n| Latest-row-per-group | Most recent state of each entity (latest status, current price) | The history matters — keep all rows, slice with windows instead |\n| Pivot via FILTER / CASE | Crosstab views (segment × month) for dashboarding | The dimensions are unbounded — use a BI tool's native pivot instead |\n\n## Pattern 1 — Cohort CTE\n\nFor any question of the shape 'how did the group that signed up in month X behave over the following N months'.\n\n_Skeleton:_\n```sql\nwith cohorts as (\n  select user_id, date_trunc('month', signed_up_at) as cohort_month\n  from users\n),\nactivity as (\n  select user_id, date_trunc('month', event_at) as activity_month\n  from events\n)\nselect cohort_month,\n       activity_month,\n       count(distinct activity.user_id) as active_users\nfrom cohorts\nleft join activity using (user_id)\ngroup by cohort_month, activity_month\norder by cohort_month, activity_month;\n```\n\n## Pattern 2 — Running totals + rolling averages\n\nWindow functions. Avoid self-joins; they're slower and harder to read.\n\n```sql\nselect day,\n       revenue,\n       sum(revenue) over (order by day) as cumulative_revenue,\n       avg(revenue) over (order by day rows between 6 preceding and current row) as rolling_7d_avg\nfrom daily_revenue\norder by day;\n```\n\n## Pattern 3 — Funnel via conditional aggregation\n\nFor stage-to-stage conversion when all events live in one flat table.\n\n```sql\nselect\n  count(distinct case when event = 'signup' then user_id end) as signups,\n  count(distinct case when event = 'activated' then user_id end) as activated,\n  count(distinct case when event = 'paid' then user_id end) as paid\nfrom events\nwhere event_at >= '2026-01-01';\n```\n\n## Pattern 4 — Latest row per group\n\n```sql\nselect *\nfrom (\n  select *,\n         row_number() over (partition by user_id order by event_at desc) as rn\n  from user_status_history\n) ranked\nwhere rn = 1;\n```\n\n## Pattern 5 — Pivot via FILTER\n\nFor crosstabs in modern Postgres / BigQuery / Snowflake.\n\n```sql\nselect segment,\n       count(*) filter (where signup_month = '2026-01-01') as january,\n       count(*) filter (where signup_month = '2026-02-01') as february,\n       count(*) filter (where signup_month = '2026-03-01') as march\nfrom users\ngroup by segment;\n```\n",
+  "worked_examples": [
+    {
+      "title": "The churn analysis CTE that landed the counter-intuitive finding",
+      "content_md": "# Cohort Churn Analysis — Worked Example\n\n_Context: the week-5 churn analysis. Question: 'is the new simplified onboarding driving higher churn than the old onboarding?'._\n\n## The full query\n\n```sql\n-- Identify each user's onboarding cohort\nwith onboarding_cohort as (\n  select \n    u.user_id,\n    u.signed_up_at,\n    case \n      when u.signed_up_at >= '2025-09-15' and u.signup_channel != 'partner' then 'new_onboarding'\n      else 'old_onboarding'\n    end as cohort,\n    date_trunc('month', u.signed_up_at) as signup_month\n  from users u\n  where u.signed_up_at between '2025-06-01' and '2026-03-01'\n),\n-- Find each user's churn event, if any\nchurn_events as (\n  select \n    user_id,\n    min(event_at) as churned_at\n  from events\n  where event = 'subscription_cancelled'\n  group by user_id\n),\n-- Compute days-to-churn or censoring window per user\ncohort_with_churn as (\n  select\n    oc.user_id,\n    oc.cohort,\n    oc.signup_month,\n    case \n      when ce.churned_at is not null then datediff('day', oc.signed_up_at, ce.churned_at)\n      else datediff('day', oc.signed_up_at, current_date)\n    end as days_observed,\n    case when ce.churned_at is not null then 1 else 0 end as churned\n  from onboarding_cohort oc\n  left join churn_events ce using (user_id)\n)\nselect\n  cohort,\n  count(*) as users,\n  sum(churned) as churned_users,\n  round(100.0 * sum(churned) / count(*), 1) as churn_rate_pct,\n  round(avg(case when churned = 1 then days_observed end), 1) as median_days_to_churn\nfrom cohort_with_churn\nwhere days_observed >= 90  -- ensure consistent observation window\ngroup by cohort\norder by cohort;\n```\n\n## What landed in the result\n\n- new_onboarding: 8,403 users, 1,612 churned, **19.2% churn rate**, median 47 days to churn.\n- old_onboarding: 2,141 users, 187 churned, **8.7% churn rate**, median 61 days to churn.\n\n2.2× differential, consistent across the segmentation cuts (segment, channel, signup month).\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "CTEs first, not subqueries. Each CTE is named, doing one thing. A senior reviewer can read the query top to bottom and understand the logic without scrolling. Subquery-heavy SQL fails this test instantly."
+        },
+        {
+          "section_id": "section-2",
+          "note": "The `case when ... signup_channel != 'partner' ...` line is the kind of detail that makes the difference between the right and wrong analysis. The new onboarding was deliberately not applied to partner-channel signups, so a naive 'all users after Sep 15' grouping would have contaminated both cohorts."
+        },
+        {
+          "section_id": "section-3",
+          "note": "The `days_observed >= 90` filter ensures a consistent observation window. Without it, recent signups appear to churn less simply because they haven't had time to churn yet. This is the kind of mistake that produces wrong findings junior DAs miss."
+        },
+        {
+          "section_id": "section-4",
+          "note": "The output table has the headline numbers, not the working — what a stakeholder needs to see. The CTE work above is the methodology; the bottom select is the answer. Most rookie DAs do this in reverse."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Subquery-heavy SQL where CTEs would make the logic readable. Three nested subqueries means nobody (including future-you) can read the query.",
+    "Self-joins where window functions fit. Slower, less readable, harder to debug. Use windows.",
+    "select * in production queries. Brittle to upstream schema changes. Always list the columns explicitly.",
+    "No observation-window filter on cohort analyses. The latest cohort always looks better because it hasn't had time to churn / convert / lapse.",
+    "CASE WHEN logic that doesn't handle NULL explicitly. Comparison against NULL is silently false; the WHERE clause then drops rows you didn't mean to drop.",
+    "Hard-coded date literals scattered through the query. The date should appear once, ideally as a CTE that names the analysis window."
+  ],
+  "variant_patterns": [
+    "dbt-managed transformations variant: most of these patterns belong in dbt models, not in ad-hoc queries. The pattern is the same; the location is upstream of the dashboard.",
+    "Real-time / streaming variant: window functions over event streams need explicit time windows; ROWS BETWEEN becomes RANGE BETWEEN with timestamps.",
+    "Federated query variant (joining across data sources): minimise cross-source joins in the SQL; do them at the orchestration layer. Most federated query engines are slower than expected."
+  ],
+  "related_scenarios": ["da-counter-intuitive-finding", "da-bad-data"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

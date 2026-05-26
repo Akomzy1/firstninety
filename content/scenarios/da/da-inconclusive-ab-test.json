@@ -1,0 +1,43 @@
+{
+  "slug": "da-inconclusive-ab-test",
+  "role": "da",
+  "title": "The Test Didn't Win",
+  "one_liner": "The A/B test the team ran for six weeks just landed inconclusive. The PO wants to ship the variant anyway because 'the trend looks good'.",
+  "brief": "## The setup\n\nWeek eight. You analysed an A/B test for the customer-portal team — variant B (new onboarding flow) vs. control A (existing flow). Test ran six weeks. The team needs to make a ship decision by Friday because the variant is currently consuming infrastructure cost that won't scale beyond pilot.\n\nThe result: variant B is +3.1% on the primary metric (activation rate), but with a 95% confidence interval of [-0.4%, +6.6%]. It includes zero. The test is inconclusive — variant B is probably a small improvement, possibly null, possibly a small loss.\n\nThe PO, Linh Nguyen, has just messaged you on Slack:\n\n> 'Hey — looked at the test results. The +3.1% is pretty clear directionally; I want to ship B. Can you put together a write-up I can use to brief Bilqis? Friday morning works.'\n\nLinh is competent, friendly, and slightly under-resourced. The Friday deadline is real. Bilqis will read whatever you write and she does read confidence intervals.\n\nYou have three options. Write the brief as Linh asked. Push back with statistical purity ('the test is inconclusive; we shouldn't ship'). Or find a third path that honours the inconclusiveness AND lets the team make a decision.\n\n## Your turn\n\nReply to Linh.",
+  "objective": "Honour the inconclusiveness honestly. Don't let the team ship a variant on a misleading write-up. Don't kill the decision with statistical purity. Help Linh frame the actual question — is shipping a probably-small-positive-but-possibly-null variant the right call given the cost-of-decision context?",
+  "curveball": "If you write the brief as Linh asked ('+3.1% directionally; recommend ship'), Bilqis will read it, ask one question about the confidence interval, and Linh's credibility takes the hit. If you write a statistically-pure brief ('inconclusive; don't ship'), Linh is annoyed because you've taken her decision away and the variant gets pulled. The skill is reframing: the question is not 'did B win'; it's 'is shipping B the right decision given what we now know'. The reframe: B is probably a small positive, possibly null, but the cost-of-staying-on-A is also non-zero (the variant infrastructure costs will continue accruing). The brief presents both: the test result honestly, AND the framing of 'ship-B-with-monitoring' as a defensible choice if Linh is willing to own that framing.",
+  "personas": [
+    {
+      "name": "Linh Nguyen",
+      "role": "Product Owner (customer portal)",
+      "position": "The trend is positive; I want to ship",
+      "fear": "Either shipping something that's actually worse, OR killing a variant that could be the right call",
+      "monogram": "LN",
+      "colour": "teal"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Did not write the brief as Linh originally framed it — pushed back on the framing politely",
+      "Reframed the question for Linh ('the question is not did B win; it is is shipping B the right call given what we know')",
+      "Wrote the brief in a way that lets Bilqis see the actual confidence interval AND the decision-framing",
+      "Offered Linh a clear path forward — 'ship with monitoring' as a defensible choice if she owns the framing"
+    ],
+    "yellow": [
+      "Wrote a long Slack about statistical significance before agreeing what the brief should say — Linh tunes out",
+      "Just declined ('we can't recommend shipping based on this') — leaves Linh without a path",
+      "Wrote the brief as Linh asked — Bilqis sees the gap and Linh takes the hit",
+      "Promised to 'extend the test' as a deflection — six weeks more burn, may still be inconclusive"
+    ],
+    "red": [
+      "Hid the confidence interval in the brief to make B look conclusive",
+      "Quoted the p-value as 'almost significant' (no such thing) — Bilqis will catch it",
+      "Refused to write the brief at all — leaves Linh stuck",
+      "Wrote the brief and added a private Slack to Bilqis saying you disagreed with Linh — undermines Linh, ends the trust"
+    ]
+  },
+  "estimated_minutes": 13,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

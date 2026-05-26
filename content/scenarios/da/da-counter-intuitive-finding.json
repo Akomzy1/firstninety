@@ -1,0 +1,51 @@
+{
+  "slug": "da-counter-intuitive-finding",
+  "role": "da",
+  "title": "Your Bet Is Wrong",
+  "one_liner": "The COO has just asked you to present what's driving customer churn. The answer is the feature she championed. She's in the room.",
+  "brief": "## The room\n\nMonthly product-and-data review. Eight people including Yetunde Mbeki (COO), Folake Adeyemi (Head of CX), Bilqis Hassan (VP Product Strategy), and the Head of Sales. You're the new DA — five weeks in. You volunteered for this analysis because the previous DA's notes flagged it as needing fresh eyes.\n\nThe analysis question: 'what's driving the increase in customer churn over the last quarter?'.\n\nThe data is clear. Three factors explain about 78% of the variance. In rank order:\n\n1. The new 'simplified onboarding' that Yetunde championed eight months ago — customers who go through it churn at 2.2× the rate of those who came in through the old onboarding (which still runs for partner-channel signups).\n2. A pricing change in February.\n3. Reduced response time on certain CS ticket categories.\n\nYou checked the analysis twice. You ran it past the senior DA, who said: 'yep, the numbers are right, good luck'.\n\nYou have 8 minutes on the agenda. Yetunde is friendly, smart, and well-known for defending her bets when she believes she's right. She does not particularly like data that disagrees with her.\n\n## Your turn\n\nOpen the slot.",
+  "objective": "Land the finding. Don't bury the onboarding effect. Don't make it about Yetunde personally. Leave the room with a path forward — either a deeper analysis Yetunde owns, or a decision about what to do with the simplified onboarding.",
+  "curveball": "Yetunde's first instinct will be to question the methodology — that's the senior-stakeholder default move on findings they don't want. If the user has prepared one specific defensive answer about methodology (the segmentation logic, the cohort definition, the choice of comparison window) and can deliver it without escalating heat, Yetunde will accept the number. If the user gets defensive or starts citing statistical-significance language, Yetunde will hold the floor and the meeting overruns with the finding unresolved.",
+  "personas": [
+    {
+      "name": "Yetunde Mbeki",
+      "role": "Chief Operating Officer",
+      "position": "Show me the number. Then show me why I should believe it",
+      "fear": "Being told the bet she championed last year was wrong, in front of her peers",
+      "monogram": "YM",
+      "colour": "slate"
+    },
+    {
+      "name": "Folake Adeyemi",
+      "role": "Head of Customer Experience",
+      "position": "I've suspected the new onboarding for two months. Land it cleanly",
+      "fear": "Looking like she's celebrating Yetunde's bet failing",
+      "monogram": "FA",
+      "colour": "moss"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with the headline — three factors, ranked, with the onboarding effect first — without burying it",
+      "Pre-empted the methodology question by naming the cohort definition + comparison window in the second slide",
+      "Stayed factual when Yetunde pushed back — 'the 2.2× holds across the three segmentation cuts we tried' is the right register",
+      "Closed with a specific next step — 'happy to run a deeper segmentation by signup channel if useful, here's what that would cost'"
+    ],
+    "yellow": [
+      "Buried the onboarding effect — led with the pricing change as the 'most likely' driver because it felt safer",
+      "Cited p-values and confidence intervals when Yetunde questioned the methodology — escalates the technical defence, loses the room",
+      "Softened the 2.2× to 'roughly twice the rate' to seem less confrontational — Folake will notice; Yetunde will too",
+      "Promised to 'investigate further before drawing conclusions' to avoid the conversation today — kicks the finding into a quieter room where it dies"
+    ],
+    "red": [
+      "Apologised for the finding — frames it as your fault",
+      "Mentioned that the senior DA had reviewed the numbers (an appeal to authority) — Yetunde reads that as the new DA hiding behind someone else",
+      "Got into a back-and-forth with Yetunde for three minutes and lost the slot",
+      "Concealed the onboarding rank — listed three factors without ranking them, giving Yetunde the chance to pick which one to discuss"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

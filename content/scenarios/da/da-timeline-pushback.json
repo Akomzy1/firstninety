@@ -1,0 +1,43 @@
+{
+  "slug": "da-timeline-pushback",
+  "role": "da",
+  "title": "I Need It Today",
+  "one_liner": "Daniel needs an ad-hoc analysis 'by end of day'. Realistically, well, it's a four-hour piece of work and you have two meetings.",
+  "brief": "## The setup\n\nWeek five. 11.20am. Daniel Quigley (Head of Sales) catches you in the kitchen. 'Hey — quick favour. I need a cut of last quarter's pipeline by partner channel, with conversion rate, by today. Briefing the CEO at 5pm. You can do that, right?'\n\nThe cut is real work: the partner-channel field is in a separate dimension table; conversion rate calculation requires the deal-stage history joined back; one of the partner mappings changed in February and needs adjusting. Three or four hours of careful work, plus 30 minutes of double-checking before you'd send it to a CEO.\n\nYou have a 12pm sprint demo to attend (where you're presenting a small slice of work, can't be skipped), and a 3pm 1:1 with your manager.\n\nDaniel is friendly, slightly hurried, and not wrong to ask. The CEO briefing is a real event. But 'end of day' realistically means 'so I can read it before my 5pm', which means 4.30pm at the latest. You have, very tightly, about four hours of working time between now and 4.30 — which is exactly how long the analysis takes if nothing goes wrong.\n\n## Your turn\n\nAnswer Daniel in the kitchen.",
+  "objective": "Land a realistic delivery window without saying 'no' or being seen as slow. Set expectations Daniel can rely on. Don't promise 5pm if 5pm only works if everything goes right.",
+  "curveball": "If you say 'yes, no problem' to be helpful, you'll deliver something at 4.45pm that's either rushed (errors Daniel will quote to the CEO) or just slightly less than what he asked for (because you cut a corner under time pressure). If you say 'I can't do it today', Daniel will go to Marcelo who'll do it grudgingly. The skill is offering a specific deliverable at a specific time that protects both the analysis quality and Daniel's relationship with the CEO. 'I can have it by 4.30, with the partner mapping fix applied — but to do it cleanly I'd need to skip the 3pm 1:1. Can you ping my manager so it's on her radar?'. Daniel will say yes (or volunteer to ping her himself). The 1:1 is rescheduled. You deliver good work, on time, and Daniel respects you.",
+  "personas": [
+    {
+      "name": "Daniel Quigley",
+      "role": "Head of Sales",
+      "position": "I need this for the CEO. Make it work",
+      "fear": "Going into the CEO briefing without the number, or with a wrong number",
+      "monogram": "DQ",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Committed to a specific time (4.30pm) that protects analysis quality",
+      "Named the trade-off explicitly (skipping the 1:1) and gave Daniel a clear ask (ping the manager)",
+      "Did NOT promise 5pm — the buffer matters",
+      "Did NOT do the trade-off silently — making it visible is what builds trust over time"
+    ],
+    "yellow": [
+      "Said 'yes 5pm' to be helpful, then quietly skipped the 1:1 and worked through lunch — Daniel won't know, and you'll be running on empty by Friday",
+      "Said 'I'll see what I can do' — Daniel walks away unclear whether he has the data or not",
+      "Asked Daniel to push the CEO briefing — not your call, escalates the asking pattern wrongly",
+      "Said 'sure, by EOD' — 'EOD' is ambiguous and Daniel will read it as 'before close of business' (6.30pm) which is too late"
+    ],
+    "red": [
+      "Promised 3pm and rushed the analysis — sent something with the partner-mapping bug still in, Daniel quotes it to the CEO",
+      "Said 'I can't do it today' with no alternative — Daniel goes to Marcelo, who's annoyed at both of you",
+      "Booked a 30-minute call to 'discuss timelines' — there's no time for the meta-conversation; just commit",
+      "Worked through the 1:1 without telling your manager — she finds out from Daniel and is unimpressed"
+    ]
+  },
+  "estimated_minutes": 10,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}

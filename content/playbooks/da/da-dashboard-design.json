@@ -1,0 +1,53 @@
+{
+  "slug": "da-dashboard-design",
+  "role": "da",
+  "artefact_type": "dashboard_design_checklist",
+  "title": "Dashboard Design Checklist",
+  "variant": "knaflic_few_inspired",
+  "description": "The checklist a working DA runs through before shipping a dashboard. Influenced by Knaflic and Few; pruned to the moves that matter on the first 90 days' worth of dashboards. The discipline is being willing to delete charts that nobody asked for — your default impulse will be to add them.",
+  "empty_template_md": "# Dashboard — Design Checklist\n_Run through before shipping. If any answer is 'no', either fix it or document why._\n\n## The first 10 seconds\n- [ ] Can a stakeholder who's never seen this answer the headline question in 10 seconds?\n- [ ] Is the single most important number visible without scrolling?\n- [ ] Is there a one-sentence interpretation visible (a 'so what')?\n\n## Hierarchy\n- [ ] Top-left to bottom-right reading order matches importance order?\n- [ ] No more than 7 visual elements on the primary view?\n- [ ] The big number is the biggest visual element on the page?\n\n## Each chart\n- [ ] Title states the question, not the metric? ('How is sales tracking vs target?' beats 'Sales by month')\n- [ ] Axis labels include units?\n- [ ] Time axis is consistent across charts (same date range, same grain)?\n- [ ] Y-axis starts at zero (for absolute values) — or is explicitly labelled as relative?\n- [ ] Any annotations on the chart for known events (launches, outages, policy changes)?\n\n## Colour\n- [ ] Colour is being used to encode information (not decoration)?\n- [ ] Same dimension means the same colour across all charts (e.g. 'Enterprise' segment is the same blue everywhere)?\n- [ ] No more than 5 categorical colours in any single chart?\n- [ ] Accessible: works in greyscale, distinguishable for the most common forms of colour vision deficiency?\n\n## The footer\n- [ ] Data source(s) linked?\n- [ ] Last-refreshed timestamp visible?\n- [ ] DA + ownership named?\n- [ ] Known limitations / caveats documented somewhere reachable?\n\n## The cut\n- [ ] Every chart that's on the dashboard right now — could you defend its presence in a stakeholder review? If not, delete it.\n",
+  "worked_examples": [
+    {
+      "title": "Customer-portal weekly dashboard — pre-ship checklist run",
+      "content_md": "# Customer-Portal Weekly Dashboard — Pre-Ship Checklist\n_Run 28 April 2026, before showing to Folake_\n\n## The first 10 seconds — PASS\n\nHeadline: '78% of top-12 customer admins logged in last week'. Visible as the largest element top-left, with one-sentence interpretation underneath: 'Above the 70% target. Trend +4pp vs last 4-week average.'\n\n## Hierarchy — ONE FIX\n\n- ✓ Top-left to bottom-right order matches importance.\n- ✓ 6 visual elements (under the 7-element cap).\n- ✗ The big number (78%) was the same size as two secondary metrics. **Fixed: bumped to 2× the secondary metric size.**\n\n## Each chart — TWO FIXES\n\n- ✓ Titles are questions, not metric names ('How many admins logged in?', 'Which actions did they take?').\n- ✗ Two charts had no units on the y-axis. **Fixed: '%' and 'count of admins' added respectively.**\n- ✓ Time axis consistent (weekly grain, 12-week trailing window across all charts).\n- ✗ Adoption-rate chart Y-axis started at 60% to 'show the gap'. **Fixed: started at 0 with the target line drawn at 70%.** Misleading otherwise; senior stakeholders will catch it.\n- ✓ Annotations added: 12 May launch date, 25 May CS-cutover-policy date.\n\n## Colour — PASS\n\n- ✓ Colour encoding: Enterprise = teal, Mid-market = ochre, SMB = moss (consistent with the rest of the data team's dashboards).\n- ✓ 3 categorical colours per chart (under the 5 cap).\n- ✓ Tested in greyscale; distinguishable.\n\n## The footer — ONE FIX\n\n- ✓ Data sources linked (customer_portal_events, customer_portal_users).\n- ✓ Refresh timestamp visible (daily 6am UTC).\n- ✓ DA named.\n- ✗ No link to the known limitations doc. **Fixed: added link to the data-quality report covering this domain.**\n\n## The cut — ONE FIX\n\nReviewed each chart. The 'admin-by-region' breakdown chart was nice-to-have but didn't tie to any current decision. **Removed.** Dashboard down from 7 to 6 visual elements.\n\n## Pre-ship summary\n\nFive fixes made. Dashboard shipped to Folake for sign-off; she opened it Monday morning at 9.04am.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Ten-second test is the most useful single test in dashboard design. If a fresh viewer can't get the headline in 10 seconds, the dashboard has failed at its primary job — communication."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Seven visual elements is the working ceiling. More than seven and the page becomes a directory; users skim and stop using it. The discipline is in the cut."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Y-axis starting at zero is the rule that catches the most senior eyes. A bar chart with a y-axis starting at 60% to 'show the gap' is the same lie as a chart with broken bars. Don't do it."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Consistent colour-to-dimension mapping across the dashboard (and across the team's dashboards) is what makes the data team's outputs feel coherent. If Enterprise is teal in your dashboard and ochre in Marcelo's, executives notice the inconsistency before they notice the data."
+        },
+        {
+          "section_id": "section-6",
+          "note": "The cut is the discipline most rookie DAs lack. The chart you added because it was easy to add will dilute the dashboard. If you can't defend it in a stakeholder review, delete it."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Adding charts because the data was available. The data being available is not a reason; the decision it supports is the reason.",
+    "Y-axis starting somewhere other than zero to 'show the gap'. Misleading. Senior stakeholders catch it; team's credibility takes the hit.",
+    "Titles as metric names ('Sales by Month'). Titles should be questions; the user knows what they're looking at because the title tells them what question they're answering.",
+    "Colour as decoration. Colour should encode information. If you're using colour because charts feel 'naked' otherwise, remove it.",
+    "Annotations omitted. A spike in the data that's actually a known launch is misleading without an annotation. Always annotate known events.",
+    "No 'last refreshed' timestamp. Users assume the dashboard is current; sometimes it's not. Always show the timestamp."
+  ],
+  "variant_patterns": [
+    "Executive-dashboard variant: tighter scope. ≤4 visual elements. The single headline number gets even more real estate. Methodology link is essential because senior reviewers will check.",
+    "Operational-dashboard variant (used hourly): visible 'last-updated' timestamp is critical. Alert thresholds embedded in the chart. Refresh cadence shown prominently.",
+    "Mobile / phone-friendly variant: vertical scroll, one chart at a time. Five-element cap drops to three. The headline question still has to land in the first 10 seconds — typically harder on mobile."
+  ],
+  "related_scenarios": ["da-pretty-chart", "da-vague-dashboard"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

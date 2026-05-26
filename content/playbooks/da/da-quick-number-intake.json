@@ -1,0 +1,49 @@
+{
+  "slug": "da-quick-number-intake",
+  "role": "da",
+  "artefact_type": "intake_template",
+  "title": "Quick-Number Intake",
+  "variant": "two_minute",
+  "description": "The 60-second intake question(s) every DA should ask before firing a SQL query. The discipline is asking once before answering — not every time, just every time the request is ambiguous enough that the answer could be wrong. This template is for the DA; it never gets sent to the stakeholder.",
+  "empty_template_md": "# Quick-Number Intake — Internal Template\n_For the DA's use, not the stakeholder's. Run through before any 'quick number' request._\n\n## 1. What decision will this number inform?\n_If the answer is 'I just want to know', the number doesn't matter and we can hand them anything. Usually the answer is more specific._\n\n## 2. By when do they need it?\n_'EOD', 'before my 5pm meeting', 'this week'. The time window shapes how much intake conversation is appropriate._\n\n## 3. What's the most likely intended cut?\n_The default interpretation of the request. Send this as the answer with the alternatives one-line below — gives the stakeholder a fast-path to confirm or correct._\n\n## 4. Where could the answer be wrong?\n_What's the most likely data quality / definition / time-window gotcha. Two minutes thinking here saves 24 hours of post-hoc embarrassment._\n\n## 5. Could the answer be ambiguous in a way that matters?\n_If 'customer signups' could mean gross-vs-net-vs-paid-vs-trial, the right response includes the most likely cut PLUS one-line alternatives. If it can only mean one thing, don't waste the stakeholder's time on intake._\n\n## 6. Send template\n_How to phrase the answer when sending. The 'lead with the most likely answer, list the alternatives in one line, offer the door open' format is the working default._\n",
+  "worked_examples": [
+    {
+      "title": "Bilqis's 'how many customers signed up last month' — the 90-second intake",
+      "content_md": "# Quick-Number Intake — Bilqis's Signups Question\n\n_Request received: 16.55, Tuesday 22 April. Bilqis going into a meeting at 17.00._\n_Intake time available: ~60 seconds before responding._\n\n## 1. What decision will this inform?\n\nShe's quoting it in a meeting that starts in 5 minutes. The decision context is whatever's in that meeting — probably commercial / board / strategy. The number needs to be defensible if questioned, but doesn't need a full caveat list. She'll use it directionally, but cite it specifically.\n\n## 2. By when?\n\n2-3 minutes. After that, she walks in without the number.\n\n## 3. Most likely intended cut\n\n**Net new paid customers in March 2026.** That's the most common version of 'signups' that someone at her level would quote — the one finance reports against and that maps to revenue conversation. 'Customers' usually means paid, not trial. 'Last month' on 22 April means March, the most recently closed reporting month.\n\n## 4. Where could the answer be wrong?\n\n- **Partner-channel triple-count incident (18-25 March):** the raw signups table has duplicate rows from that pipeline issue. If I run a naive `count(*)`, I overcount by ~3,127.\n- **Trial-vs-paid:** if I count all signups, I'll send ~840 including trials, but she probably wants paid (~412). 2× difference depending on interpretation.\n- **Net-of-churn:** finance sometimes reports net-of-churn (additions minus losses, ~390). Likely a smaller question, but possible.\n\n## 5. Could it be ambiguous?\n\nYes — three plausible cuts (paid gross, all signups, net-of-churn) within ~2× of each other. The intake question takes 30 seconds to answer; she'll prefer that to a wrong number quoted to the board.\n\n## 6. The send\n\n> 'Net new paid in March — 412. Happy to swap to inc. trials (~840) or net-of-churn (~390) if useful — let me know which works.'\n\nThree sentences. Specific number lead. Alternatives in one line. Door open. She replies in 90 seconds: 'net new paid is fine, thanks!' and walks into the meeting.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Decision-context — even guessed — shapes the response. A board-level quote needs more defensiveness than a 'just curious' question. The DA who never asks 'what is this for' often ends up answering the wrong question well."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Lead with the most-likely cut — don't open with 'which cut do you want?' The stakeholder usually doesn't know what cuts exist; offering one is more useful than asking them to specify."
+        },
+        {
+          "section_id": "section-4",
+          "note": "The data-quality knowns are what saves the DA from sending a 60%-wrong number. The 90 seconds you spend reviewing what could be wrong is the most valuable 90 seconds in the whole interaction."
+        },
+        {
+          "section_id": "section-6",
+          "note": "Three-sentence response: specific number with the cut named, alternatives in one line, door open. Format is consistent enough that stakeholders learn to scan it; they reply 'X is fine' in 30 seconds."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Skipping intake on 'easy' requests. Most ambiguous requests look easy on the surface ('how many customers signed up?').",
+    "Asking the intake question OF the stakeholder when you could answer it yourself. 'What do you mean by customer?' is a worse response than 'Net new paid: 412; alternatives are X, Y'.",
+    "Sending the most defensive answer (full caveats, methodology, footnotes). Defensive answers are useless when the stakeholder has 90 seconds.",
+    "Sending the wrong cut without naming it. The number is wrong, the stakeholder quotes it, and the DA's credibility takes the hit.",
+    "Treating every quick-number request as needing a one-page brief. Sometimes 'X' is the right answer. The DA's job is to know which is which.",
+    "Not learning the data quality knowns. The triple-count incident is a real example; without knowing it, you'd send the wrong number from a naive query."
+  ],
+  "variant_patterns": [
+    "High-context-stakeholder variant: a stakeholder you've worked with for months may know the cuts already. Send the number with one-line context, not the full alternatives list.",
+    "First-time-stakeholder variant: spend extra intake time on §1 (decision context). You don't yet know what they'll do with the number.",
+    "Compliance-sensitive variant: any number going into a regulated submission requires full caveat tracking. The 60-second intake doesn't apply; switch to the full stakeholder-summary playbook."
+  ],
+  "related_scenarios": ["da-quick-number", "da-timeline-pushback"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

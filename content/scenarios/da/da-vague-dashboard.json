@@ -1,0 +1,43 @@
+{
+  "slug": "da-vague-dashboard",
+  "role": "da",
+  "title": "Build Me a Dashboard",
+  "one_liner": "The Head of Sales has just asked for 'a dashboard showing how sales is performing'. He needs it 'by next Friday'.",
+  "brief": "## The setup\n\nWeek six. Daniel Quigley (Head of Sales) catches you on the way back from coffee. 'Hey, I need a dashboard showing how sales is performing — by next Friday if possible. Just something I can look at every morning. Thanks!'\n\nHe is friendly, busy, and means well. He has not specified: which metrics, what time grain, what slicing dimensions, what the dashboard is for (his own daily read? a forum where he'll show it? a board paper?). He's just told you he wants a dashboard.\n\nNext Friday is eight working days away. Building a useful sales dashboard takes about three days if requirements are sharp. It takes four weeks if they aren't, and the resulting thing gets used twice and abandoned.\n\nYour senior DA, Marcelo, mentioned in passing during onboarding that Daniel asks for a dashboard about once a quarter and never opens the one he asked for the previous quarter. There are currently three Daniel-requested dashboards that haven't been viewed in 60+ days.\n\n## Your turn\n\nYou have a chance to walk back to Daniel before your next meeting. Or you can wait.",
+  "objective": "Get the requirements sharp before you start building. Don't ship Daniel's fifth abandoned dashboard. Make this the conversation that establishes you ask before you produce.",
+  "curveball": "If you just start building, you'll have a dashboard by Friday — and Daniel will look at it once, say 'great', and never open it again. The skill is the intake conversation: 'happy to build this — quick three questions, takes five minutes. What's the one decision you'd make differently each week if you had this? Who else needs to see it? And what do you currently use to track this — what's missing from that?'. Daniel will, after a moment of mild surprise, give you actual answers: he wants weekly pipeline velocity by segment because his QBR conversation with his director needs it, his director is the other reader, and the existing pipeline view in the CRM is too aggregated to be useful. With those answers, the dashboard takes three days, gets used weekly, and Daniel cites you as the first DA who 'actually got what he meant'.",
+  "personas": [
+    {
+      "name": "Daniel Quigley",
+      "role": "Head of Sales",
+      "position": "I want a dashboard. Don't overthink it",
+      "fear": "Being asked twenty questions by a junior who should just build the thing",
+      "monogram": "DQ",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Asked the intake conversation before starting any SQL",
+      "Three questions: decision-driven (what would you change weekly), audience (who else reads it), gap (what's missing from current tools)",
+      "Acknowledged the eight-day timeline as achievable with sharp requirements",
+      "Did NOT mention the previous abandoned dashboards (Marcelo's heads-up is for you, not for Daniel)"
+    ],
+    "yellow": [
+      "Sent a long requirements doc by email — Daniel won't read it; he'll send a one-line 'just use your judgement' reply",
+      "Asked five questions when three would do — Daniel tunes out",
+      "Started building immediately to 'show progress' on Monday — risk of three days of work pointed at the wrong outcome",
+      "Booked a formal 30-minute requirements meeting — Daniel will reschedule it twice"
+    ],
+    "red": [
+      "Promised the dashboard for Friday with no intake — produces a dashboard he won't use",
+      "Told Daniel 'this is the fourth dashboard you've asked for; the last three weren't used' — accurate and relationship-ending",
+      "Cc'd your manager asking for guidance — undermines you with Daniel",
+      "Declined the request outright — Daniel goes to Marcelo, who builds it grudgingly and you've burned a chance"
+    ]
+  },
+  "estimated_minutes": 10,
+  "difficulty": 2,
+  "career_stage": "first_90_days",
+  "version": 1
+}
