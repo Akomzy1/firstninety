@@ -102,7 +102,7 @@ export function MissionCard({
         {description}
       </p>
 
-      <div className="mt-2 flex items-center gap-3">
+      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 min-w-0">
         {status === "active" ? (
           <Link href={`/mission-track/${missionSlug}`}>
             <Button variant="primary" size="md">
@@ -116,9 +116,13 @@ export function MissionCard({
             </Button>
           </Link>
         ) : null}
-        <span className="text-caption text-mute">{estimatedMinutes} min</span>
+        <span className="text-caption text-mute whitespace-nowrap">
+          {estimatedMinutes} min
+        </span>
         {statusLabel ? (
-          <span className="text-caption text-mute">{statusLabel}</span>
+          <span className="text-caption text-mute whitespace-nowrap">
+            {statusLabel}
+          </span>
         ) : null}
       </div>
     </article>
