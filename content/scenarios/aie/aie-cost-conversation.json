@@ -1,0 +1,43 @@
+{
+  "slug": "aie-cost-conversation",
+  "role": "aie",
+  "title": "What Does This Cost Per User?",
+  "one_liner": "Finance wants the cost-per-user-per-month for the AI assistant in writing, with a deadline of Friday. You don't have it yet — and you don't yet know whether it's $0.20 or $4.",
+  "brief": "## The setup\n\nWeek nine. The AI-assistant feature has been live in beta for three weeks. Today's Wednesday. The finance business partner — Henrietta Cole, sharp, ex-consultant — has emailed:\n\n> 'Hi! Need the per-user-per-month cost for the AI assistant for Friday board prep. Including model API + vector DB + any compute. Whatever number you have is fine; we'll caveat.'\n\nYou don't have the number. You have some of the inputs (Anthropic API costs, ballparked vector DB infra) but not the per-user usage curve from production — that requires querying the logs over the three-week beta window and breaking down by user.\n\nA defensible analysis takes about a day of work. A back-of-the-envelope number would take 30 minutes but could be off by 4×. The 'whatever number you have' framing is the trap — Henrietta will use whatever you send in front of the board on Friday, and if it's wrong by 4× it lands with the people who control the funding for next year.\n\nYou have until Friday EOD. Today is Wednesday afternoon.\n\n## Your turn\n\nReply to Henrietta.",
+  "objective": "Get Henrietta a defensible number by Friday. Make sure the number she takes to the board is not the 4×-wrong back-of-envelope. Show her you take the cost work seriously without making the request feel bureaucratic.",
+  "curveball": "If you send back the back-of-envelope today ('roughly $1.50/user/month, with caveats') you'll be wrong by some unknown factor and Henrietta will quote whatever you sent. If you say 'I can't get you a number by Friday', Henrietta will go to Tomasz and you've ceded the cost-credibility work. The skill is what to commit to: 'I can have a defensible number for you by Friday 2pm — I want to do a proper breakdown of the actual per-user usage curve from the beta rather than ballpark it. The back-of-envelope would be ~$1.50 but could be off by 2-4× depending on the usage distribution; for board prep I'd want the real curve. Acceptable to wait until 2pm?' Henrietta will reply 'yes please, much appreciated'. Friday at 1.55pm you send a one-pager with $1.18/user/month, broken down by component, with the usage-curve assumption documented.",
+  "personas": [
+    {
+      "name": "Henrietta Cole",
+      "role": "Finance Business Partner",
+      "position": "I need a number. Defensible. By Friday",
+      "fear": "Taking a wrong number to the board and being the one who quoted it",
+      "monogram": "HC",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Did not send the back-of-envelope number on Wednesday — held the line on doing it properly",
+      "Committed to a specific time (Friday 2pm) that gives Henrietta board-prep margin",
+      "Named the uncertainty explicitly in the reply — 'could be off by 2-4× ballpark'",
+      "Delivered on Friday with a one-pager: number, component breakdown, key assumption documented"
+    ],
+    "yellow": [
+      "Sent the back-of-envelope to be helpful — Henrietta uses it, the board sees a 4×-wrong number",
+      "Promised the analysis but missed the Friday deadline — Henrietta is now in the board with no number",
+      "Sent a number with no breakdown — board asks one question, the number unravels",
+      "Made the work look easy ('I'll send something over today') and then realised mid-analysis it's more complex"
+    ],
+    "red": [
+      "Sent a number rounded to 2 significant figures because the actual data wasn't ready ('$2/user/month') — overconfident on a wrong number",
+      "Forwarded the question to the senior engineer — abdicates the cost-credibility surface",
+      "Said 'we can't reliably calculate this yet' with no path forward — Henrietta goes elsewhere",
+      "Sent the number without naming the assumption ('assumes uniform usage') — the board's most likely question goes unanswered"
+    ]
+  },
+  "estimated_minutes": 14,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

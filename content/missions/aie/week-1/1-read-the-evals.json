@@ -1,0 +1,23 @@
+{
+  "slug": "aie-w1-read-the-evals",
+  "role": "aie",
+  "week": 1,
+  "sequence_in_week": 1,
+  "title": "Read the team's evals + prompts end to end",
+  "why_matters": "Every eval in the repo is a regression the team caught and decided to gate against. Every prompt is the result of a decision someone made and (hopefully) versioned. Reading these end-to-end in week 1 is how you learn what the team considers acceptable behaviour, what they've already seen go wrong, and what they haven't yet thought to test for. By week three you'll be writing your own evals; by week one, you understand the calibration that's already been set.",
+  "steps": [
+    "Find the eval suite. List every eval, group by feature, note coverage gaps you can see immediately. If there is no eval suite, that's the most important finding of your first week — flag it to your manager in your 1:1.",
+    "Read each prompt the team has in production. Look at the changelog if one exists. Look at the git history if it doesn't. Note: which engineer ships prompt changes, which prompts haven't been touched in months (often the most fragile), and which capabilities have evals vs which don't.",
+    "Find the model cards (or the equivalent docs) for the AI features in production. Read each one. Note the limitations sections — those are the team's honest admission of where the systems are weakest.",
+    "Resist the urge to write or change anything in week 1. The team has been working without you; one more week of observation costs nothing. The right to change a prompt or add an eval is earned by demonstrating you understand what's already there."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["aie-eval-rubric", "aie-prompt-versioning", "aie-model-card"],
+    "scenario_slugs": []
+  },
+  "success_criteria": "By end of week, you can name every AI feature in production, the model it uses, whether it has an eval suite, and the single biggest coverage gap. You can describe the team's prompt-versioning convention without checking the docs.",
+  "reflection_prompt": "Of the AI features in production, which one has the largest gap between what its model card claims and what its eval suite actually tests for? Two sentences. (You're not going to act on this in week one; the observation is the work.)",
+  "estimated_minutes": 50,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

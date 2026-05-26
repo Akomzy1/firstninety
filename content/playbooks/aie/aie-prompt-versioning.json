@@ -1,0 +1,49 @@
+{
+  "slug": "aie-prompt-versioning",
+  "role": "aie",
+  "artefact_type": "prompt_versioning",
+  "title": "Prompt Versioning Doc",
+  "variant": "git_native",
+  "description": "How to version prompts so you can roll back, A/B compare, and answer 'why did the model start saying X two weeks ago?'. Prompts live in git, not in a vendor's playground. Each change has an eval delta. The doc structure is light; the discipline is in the workflow — never edit a prompt in production without a paired eval result.",
+  "empty_template_md": "# Prompt Versioning — [Feature]\n_Owner: [AIE] · location: `prompts/[feature-name]/`_\n\n## Where prompts live\n_Filesystem path. Prompts are .md or .yaml files in git, not in a vendor's playground or a Notion doc._\n\n## File structure per prompt\n```\nprompts/refund-policy-bot/\n├── system.v1.md         # the system prompt\n├── examples.v1.jsonl    # few-shot examples if used\n├── changelog.md         # what changed when, with eval delta\n└── README.md            # what this prompt does + how it's tested\n```\n\n## Changelog format\n_One entry per change. Each entry: version number, date, what changed (one sentence), eval delta (numbers from before/after), author._\n\n## Branching + review\n_Prompt changes go through PR review like any other code change. Required reviewer: at least one other AIE; for customer-facing prompts, also the eng lead. Eval run is required and must show no regression on the critical subset._\n\n## Rollback procedure\n_If a prompt change causes a production issue: revert the file, redeploy. The git history is the rollback history. No 'I forgot the previous version' allowed._\n",
+  "worked_examples": [
+    {
+      "title": "Refund-policy-bot — changelog from week 5 to week 12",
+      "content_md": "# Refund-Policy-Bot — Prompt Changelog\n\n## v3 — 14 May 2026 — [AIE]\n\n**What changed:** Added explicit instruction: 'If asked about refund policy, cite the exact policy document by name and quote the relevant paragraph. Do not paraphrase the policy or infer policy from general practices.'\n\n**Eval delta:**\n- Critical subset: 9/12 → 12/12 (3 examples now pass that previously hallucinated 30-day policy under leading questions)\n- Full set: 28/32 → 31/32 (one example now over-cites; flagged for v4)\n- Cost per response: +6% (the citation instruction adds ~80 tokens per response)\n\n**Trigger:** the 14 May customer incident — assistant invented a 30-day refund policy.\n\n## v2 — 4 April 2026 — Tomasz Wójcik (paired with AIE)\n\n**What changed:** Reworded the system prompt to put policy boundaries earlier in the instruction set. Moved 'never invent a policy' instruction from position 8 to position 3.\n\n**Eval delta:**\n- Critical subset: 8/12 → 9/12\n- Full set: 26/32 → 28/32\n- Cost per response: no change\n\n**Note:** This was a structural rewrite based on the observation that instruction position matters for adherence (Anthropic guidance on prompt structure). The v3 update was needed because instruction order alone wasn't enough.\n\n## v1 — 15 March 2026 — Tomasz Wójcik\n\n**What changed:** Initial system prompt. Three sections: role, refund-policy-content, tone guidance.\n\n**Eval delta:** N/A (baseline). 22/32 on full set; 6/12 on critical subset.\n\n**Note:** The 6/12 on critical was acceptable for an MVP but flagged for follow-up; we never got back to it before the 14 May incident, which is the lesson on its own.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Prompts in git, not in a vendor's playground. The team needs to be able to diff, blame, branch, revert. A prompt sitting in a UI somewhere is not versioned in any meaningful sense — it's just the current state."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Changelog with eval delta is the discipline. 'Made the prompt better' is not a changelog entry; '9/12 → 12/12 on critical subset' is."
+        },
+        {
+          "section_id": "section-3",
+          "note": "The v1 entry has a 'note' acknowledging the team accepted 6/12 on critical at MVP — and that the 14 May incident was the consequence of never going back to fix it. The changelog is also a record of decisions and their consequences."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Cost-per-response tracked alongside eval performance. The v3 update was a 6% cost increase for a 3-example improvement on critical evals. Recording the trade-off lets the team have the cost-vs-quality conversation later with data, not opinions."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Prompts maintained in a vendor playground or Notion. Untrackable, unreviewable, easy to lose. Always in git.",
+    "Changelog without eval delta. 'Made it better' isn't auditable. Always show the before/after numbers.",
+    "No PR review on prompt changes. Production code changes go through review; prompts are production code. Same standard.",
+    "Cost-per-response not tracked. A prompt that doubles in size for a 1% eval improvement may not be worth it; without the cost tracking, you can't have that conversation.",
+    "No rollback procedure documented. When a prompt change causes a production issue at 4pm Friday, the team needs to know exactly how to revert without panicking.",
+    "Versioning the prompt without versioning the few-shot examples. The few-shot set is part of the prompt; changes to it must be versioned the same way."
+  ],
+  "variant_patterns": [
+    "Multi-prompt variant (system + user-context + tool-descriptions): version each piece separately; the runtime composition is also versioned (as a config that names which versions of each piece to use).",
+    "Multi-tenant variant (different prompts per customer segment): the changelog tracks which segment(s) a change applies to. Default to no per-tenant prompts; the explosion of variants becomes ungovernable.",
+    "Vendor-hosted prompt-management variant (e.g. PromptLayer, LangSmith): the prompts live in the vendor system but you keep a git-mirrored backup. The vendor is convenient but you don't want to lose your prompt history if the vendor changes terms."
+  ],
+  "related_scenarios": ["aie-eval-driven-pushback", "aie-friday-hallucination"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

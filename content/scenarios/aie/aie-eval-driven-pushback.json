@@ -1,0 +1,51 @@
+{
+  "slug": "aie-eval-driven-pushback",
+  "role": "aie",
+  "title": "Evals Slow Us Down",
+  "one_liner": "The senior engineer keeps shipping prompt changes without evals. He's just asked you, in standup, why you keep 'gating' your work behind evals.",
+  "brief": "## The setup\n\nWeek six. The senior engineer is Tomasz Wójcik — eight years in the industry, two years on AI projects, technically excellent in everything that isn't ML. He has shipped four prompt changes in the last three sprints. Two of them caused subtle regressions on a question category that surfaced only when CX reported it a week later.\n\nYou have been writing evals before every change. Tomasz finds this slow and has said so once in a 1:1, gently. This morning in standup, in front of the team, he said:\n\n> 'I just want to check — why do you always wait for evals before shipping a prompt? Feels like we're gating ourselves. The whole point of LLMs is you can iterate fast.'\n\nThe team is watching. Lewis (lead dev, not on AI work) is interested. Asha (the eng lead) is sitting back, which is her tell that she wants to see how you handle this without her stepping in.\n\nTomasz is not hostile. He genuinely thinks you're being over-cautious. He has not yet internalised that 'iterate fast' on LLM prompts produces the regressions that landed CX tickets two weeks ago.\n\n## Your turn\n\nAnswer Tomasz.",
+  "objective": "Hold the eval-first discipline without making Tomasz defensive. Land the answer in a way that Asha will recognise as the right framing — and that gives Tomasz a path to start using evals on his own changes without losing face.",
+  "curveball": "If you cite 'best practice' or 'eval-driven development is industry standard', Tomasz will roll his eyes and you'll have lost the room. The skill is being specific about the two regressions Tomasz's recent changes caused — without naming them publicly as Tomasz's. 'We've shipped three prompt changes in the last three sprints. Two of them produced regressions on the price-question category that surfaced via CX a week later. Each one took ~3 hours of investigation to track back to the change that caused it. An eval that took 15 minutes to write would have caught both before they shipped. That's the calculation I'm making.' Tomasz, who is a real engineer, will hear that as the cost-benefit it is — not as a process-fetish argument. By the end of the day he'll be asking how to write an eval himself.",
+  "personas": [
+    {
+      "name": "Tomasz Wójcik",
+      "role": "Senior Engineer",
+      "position": "Evals feel like overhead. Convince me otherwise",
+      "fear": "Being seen as the engineer who slows the team down",
+      "monogram": "TW",
+      "colour": "slate"
+    },
+    {
+      "name": "Asha Bhatt",
+      "role": "Engineering Lead",
+      "position": "Watching how this AIE handles the discipline question",
+      "fear": "Having to mediate between an AIE and a senior eng who can't agree on workflow",
+      "monogram": "AB",
+      "colour": "rose"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Named the specific regressions in numbers — 'two of three changes produced regressions on a question category'",
+      "Made the cost calculation visible: 15 minutes of eval-writing vs 3 hours of post-hoc investigation per regression",
+      "Did NOT name Tomasz publicly as the engineer who shipped the regressions — kept it impersonal",
+      "Offered Tomasz a starting move: 'happy to pair on writing the eval for your next change so it doesn't feel like overhead'"
+    ],
+    "yellow": [
+      "Cited 'eval-driven development' as a methodology — Tomasz tunes out at 'methodology'",
+      "Got into a debate about engineering culture rather than the specific cost-benefit",
+      "Promised 'I'll make evals faster' — accepts the framing that evals are the problem",
+      "Asked Asha to weigh in — pushed the conversation to the wrong person"
+    ],
+    "red": [
+      "Got defensive — 'evals are how I work, that's just how it is'",
+      "Named Tomasz publicly as the source of the recent regressions",
+      "Refused to engage with the speed concern — 'speed isn't the point' (true but dismissive)",
+      "Stopped writing evals to please Tomasz — the next regression lands on a customer instead of CX"
+    ]
+  },
+  "estimated_minutes": 13,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

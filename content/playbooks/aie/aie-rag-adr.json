@@ -1,0 +1,49 @@
+{
+  "slug": "aie-rag-adr",
+  "role": "aie",
+  "artefact_type": "rag_adr",
+  "title": "RAG Architecture Decision Record",
+  "variant": "standard",
+  "description": "The Architecture Decision Record (ADR) for the RAG choices that are easy to defer and expensive to revisit. Five sections, written before the build, signed off by the eng lead. The discipline is being honest about the chosen-vs-rejected trade-offs in section 4 — most rookie ADRs list rejected options as obvious losers, which makes the chosen option look unfought-for and harder to defend later.",
+  "empty_template_md": "# ADR-[N]: [Title] — RAG architecture decision\n_Date: [date] · author: [AIE] · status: [proposed / accepted / superseded] · reviewers: [names]_\n\n## 1. Context\n_One paragraph. What's the problem this decision addresses. What's the deadline. Who's affected._\n\n## 2. The decision\n_One paragraph. What we are doing. Not the options — the choice._\n\n## 3. The architecture\n_The actual technical design: retrieval source, embedding model, vector store, chunk strategy, retrieval strategy (single-vector / hybrid / reranker), generation model. One section per layer. Be specific._\n\n## 4. Alternatives considered\n_The genuinely-considered alternatives. Each with why it was rejected. The rookie tell is listing 'do nothing' as the third option; the working ADR has at least two real alternatives with real reasoning._\n\n## 5. Consequences + revisit triggers\n_What we expect to happen. What would cause us to revisit this decision (a measurable trigger, not 'if it doesn't work')._\n",
+  "worked_examples": [
+    {
+      "title": "ADR-014: Customer-knowledge-base assistant — RAG architecture",
+      "content_md": "# ADR-014: Customer-Knowledge-Base Assistant — RAG Architecture\n_Date: 18 April 2026 · author: [AIE] · status: accepted · reviewers: Asha Bhatt (eng lead), Tomasz Wójcik (senior eng)_\n\n## 1. Context\n\nWe are building an internal AI assistant that answers questions about our customer-knowledge-base — a corpus of ~3,200 markdown documents, ~12M tokens total, updated weekly. The assistant is for internal CS team use (~40 daily active users). Target latency: <3s P95 for the response. Target accuracy: ≥85% on the eval golden set. Decision needed by 25 April to start build for Q3 launch.\n\n## 2. The decision\n\nWe will build a RAG system using pgvector (extension on our existing Postgres), text-embedding-3-large for embeddings, semantic-chunking by markdown heading at the H2 level with a 400-token max chunk size, hybrid retrieval (vector top-10 union BM25 top-5), and Claude Sonnet 4.5 as the generation model with the retrieved chunks injected into the system prompt. We will not fine-tune the generation model.\n\n## 3. The architecture\n\n### Retrieval source\nThe canonical customer-knowledge-base repo (~3,200 markdown files). Weekly snapshot to a staging branch; embeddings rebuilt on snapshot.\n\n### Embedding model\nOpenAI `text-embedding-3-large` (3072-dimensional). Chosen for performance on technical documentation similarity (internal benchmark; +6% recall@5 over text-embedding-3-small on the 100-question golden set).\n\n### Vector store\npgvector extension on our existing Postgres. Chosen over Pinecone / Weaviate because: (a) we already run Postgres, no new infra, (b) corpus size (3,200 docs) doesn't need the scale of dedicated vector DBs, (c) on-prem stays internal. Indexed with `vector_cosine_ops` IVFFlat with 100 lists.\n\n### Chunking strategy\nSemantic chunking by markdown H2 heading, with a 400-token max chunk size (split H2 sections larger than 400 tokens at next paragraph boundary). Each chunk carries the H1/H2 path as metadata for citation.\n\n### Retrieval strategy\nHybrid: vector top-10 + BM25 top-5, deduplicated by chunk ID, reranked by a heuristic (recency × cosine similarity). Total chunks retrieved: 10. No cross-encoder reranker at v1 (added in section 5 as a v2 candidate).\n\n### Generation model\nClaude Sonnet 4.5 via the Anthropic API. Chosen for the cost/quality ratio at our scale + good adherence to citation instructions. System prompt includes retrieved chunks; the model is instructed to cite by H1/H2 path and to say 'not found in the knowledge base' when retrieval returns nothing relevant.\n\n## 4. Alternatives considered\n\n### Fine-tune a smaller model on the knowledge-base\n- **Why considered:** would avoid the per-query retrieval cost; potentially better adherence on specific corpus.\n- **Why rejected:** the KB updates weekly. Fine-tuning + redeployment cycle is ~3 days minimum; we'd be perpetually stale. The cost of weekly fine-tunes plus the operational overhead exceeds RAG inference cost within 4 months at our scale.\n\n### Pinecone (or other dedicated vector DB)\n- **Why considered:** higher-quality recall at large scale; better-developed ecosystem around RAG-specific patterns.\n- **Why rejected:** at 3,200 documents, pgvector is well within its performance envelope (sub-100ms queries). The scaling benefit doesn't apply yet, and adding a new infrastructure dependency for a feature that may or may not see adoption is the wrong order of operations.\n\n### Long-context-only (no retrieval, fit entire KB in context)\n- **Why considered:** modern long-context models could potentially fit 12M tokens in context (with appropriate chunking).\n- **Why rejected:** cost. 12M input tokens per query at current Sonnet pricing is ~$30+ per query; we'd burn the year's budget in three weeks. RAG retrieves ~3K relevant tokens; ~99% cheaper per query at acceptable quality.\n\n### Hybrid agentic retrieval (LLM-driven query reformulation + iterative retrieval)\n- **Why considered:** could produce better recall on hard queries by letting the LLM rewrite the search.\n- **Why rejected for v1:** adds 1-2 round trips per query, increasing latency (we estimated +1.5s P95) and cost (roughly +2× per query). The quality improvement on our specific golden set is ~3-4% recall@5 — real but not justifying the cost at v1. Revisit candidate (see §5).\n\n## 5. Consequences + revisit triggers\n\n**Expected consequences:**\n- Per-query cost: ~$0.018 (embedding lookup negligible, generation ~$0.015 with retrieved chunks ~$0.003).\n- Latency: P95 estimated <2.5s based on staging tests.\n- KB update lag: <24h from a doc update to it being retrievable (weekly snapshot + embedding rebuild).\n\n**Revisit triggers:**\n- If KB corpus grows past ~15K documents: re-evaluate pgvector vs Pinecone (the IVFFlat index degrades around that size).\n- If recall@5 on the eval golden set drops below 85%: add a cross-encoder reranker (BGE-reranker-large or similar).\n- If KB update cadence drops to monthly or less: fine-tuning becomes competitive on cost; re-evaluate.\n- If query volume grows past ~2K/day: consider caching frequently-asked-question pairs.\n",
+      "annotations": [
+        {
+          "section_id": "section-2",
+          "note": "The decision in one paragraph. Specific models named. Specific store named. Specific strategy named. This is the section a future engineer reads first; it has to be unambiguous."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Architecture by layer. Each layer's choice is justified briefly. The IVFFlat-with-100-lists detail is the kind of specificity that matters six months later when someone asks 'why did we pick that index'."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Four genuine alternatives, each with real reasoning for rejection. The rookie ADR has 2 fake alternatives (often 'do nothing' + 'do everything') that make the chosen option look unfought-for. This ADR shows the chosen option survived four real comparisons."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Revisit triggers are measurable. 'If recall drops below 85%' is testable; 'if quality gets worse' is not. The triggers are also why the agentic-retrieval alternative was rejected for v1 but kept as a revisit candidate — not closed off forever."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "ADR written after the build is done. Misses the point. The ADR is for the team to align BEFORE the build; writing it after is documentation, not decision-making.",
+    "Alternatives section with obvious losers as the only alternatives. Makes the chosen option look unfought-for. Always include the genuinely-considered alternatives with real reasoning.",
+    "Architecture section written in 'we'll figure it out' language. Be specific. Models named, indexes named, chunking strategy specified. If you can't be specific, the decision isn't ready.",
+    "Revisit triggers omitted or unmeasurable. 'If it doesn't work' is not a trigger; 'if recall@5 drops below 85%' is a trigger.",
+    "Cost not estimated. The architecture decision has a per-query cost; without it, the team and finance can't have the cost conversation when it inevitably comes up.",
+    "ADR not reviewed by anyone. The whole point is alignment; an ADR with no reviewers is a private memo."
+  ],
+  "variant_patterns": [
+    "Pre-build ADR variant (this is the working default): written before the build, reviewed by eng lead + senior AIE, accepted before build starts.",
+    "Post-mortem ADR variant: when a system has been built without an ADR and now needs documentation, write a 'reflective' ADR that captures the as-built decision and adds explicit revisit triggers. Mark as 'post-hoc' so reviewers know.",
+    "Superseded ADR variant: when an ADR is replaced, mark the original as 'superseded by ADR-NNN'. Don't delete. The history is the institutional memory."
+  ],
+  "related_scenarios": ["aie-rag-vs-finetune", "aie-agentic-vs-feature"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

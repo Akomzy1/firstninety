@@ -1,0 +1,53 @@
+{
+  "slug": "aie-cost-analysis",
+  "role": "aie",
+  "artefact_type": "cost_analysis",
+  "title": "Cost Analysis Template",
+  "variant": "per_user_per_month",
+  "description": "The cost analysis that holds up in front of a CFO — versus the back-of-envelope that turns into a board-deck embarrassment. Five components per feature, scaling curve included. The discipline is honest assumptions: per-user usage distribution is rarely uniform, and the cost surprise is in the long tail.",
+  "empty_template_md": "# [Feature] — Cost Analysis\n_v[N] · prepared by [AIE] · [date] · for [audience]_\n\n## 1. Headline numbers\n_Per-user-per-month cost at current usage. Per-query cost. Total monthly cost at current volume. One line each._\n\n## 2. Cost components\n_Breakdown of where the money goes. Typical components: model API (input + output tokens), embedding costs, vector store, compute / orchestration, observability._\n\n## 3. Usage distribution\n_Per-user usage is rarely uniform. Median, P95, P99 queries per user per month. The cost calculation should use the actual distribution, not the average — especially if you're pricing for the customer or budgeting for the year._\n\n## 4. Scaling curve\n_What does cost look like at 2×, 5×, 10× current usage. Where do the cost-per-query economics change (e.g. switch to a cheaper model? add caching? batch processing?)._\n\n## 5. Key assumptions + sensitivities\n_The three assumptions whose negation would materially change the headline. With a sensitivity range (e.g. 'if response length grows by 30%, monthly cost grows by ~25%')._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-knowledge-base assistant — cost analysis for the board",
+      "content_md": "# Customer-KB Assistant — Cost Analysis\n_v0.2 · prepared by [AIE] · 16 May 2026 · for: Henrietta Cole (finance) → board prep_\n\n## 1. Headline numbers\n\n- **Per-user-per-month cost (40 daily active users):** ~$1.18\n- **Per-query cost (typical):** ~$0.022\n- **Total monthly cost (current volume):** ~$47\n- **Total annual cost (current volume):** ~$564\n\n## 2. Cost components (per query)\n\n| Component | Cost | % of total |\n|-----------|------|------------|\n| Generation (Claude Sonnet 4.5, ~3K input + ~400 output tokens) | $0.0162 | 73% |\n| Embedding (text-embedding-3-large, ~1 query embedding @ ~50 tokens) | $0.0000065 | <1% |\n| Vector store (pgvector on existing infra) | $0 incremental | 0% |\n| Compute / orchestration (Lambda invocation, 200ms median) | $0.0008 | 3% |\n| Observability (LangSmith traces, ~1 per query) | $0.005 | 23% |\n| **Total per query** | **$0.022** | 100% |\n\n## 3. Usage distribution (last 30 days, beta period)\n\n- Median user: 14 queries/month\n- P75 user: 38 queries/month\n- P95 user: 72 queries/month\n- P99 user: 154 queries/month\n- Active-user count: 40\n\n_Note: distribution is right-skewed. The top 5 users (12.5% of base) account for ~38% of total queries. Cost-per-user above is volume-weighted, not per-user-average._\n\n## 4. Scaling curve\n\n| Scale | DAU | Queries/month | Monthly cost | Per-user-per-month |\n|-------|-----|---------------|--------------|---------------------|\n| Current | 40 | ~2,100 | $47 | $1.18 |\n| 2× usage | 80 | ~4,200 | $94 | $1.18 |\n| 5× usage | 200 | ~10,500 | $235 | $1.18 |\n| 10× usage | 400 | ~21,000 | $470 | $1.18 |\n\n**Cost-per-query stays linear** through 10×; no caching, batching, or model-tier changes are needed at that scale. Above 1,000 users we'd revisit:\n- Caching the top ~20 FAQ patterns (estimated 30% query reduction, ~$0.007/query savings on cached queries)\n- Routing simple queries to Claude Haiku 4.5 (rough ~5× cost reduction on routed queries; ~15% of queries currently look simple enough)\n\n## 5. Key assumptions + sensitivities\n\n- **Average response length: 400 tokens.** If response length grows by 30% (e.g. we ask the model to provide more detail), per-query cost grows by ~12%, total cost by ~12%. We chose response length deliberately; revisit if eval scores suggest longer responses are needed.\n- **Retrieval returns 10 chunks @ ~300 tokens each = 3K input tokens.** If we add a reranker that lets us drop to 5 chunks at higher precision, per-query cost drops ~20%. (See ADR-014 §5 — reranker is a candidate v2 improvement.)\n- **Observability cost stays at LangSmith pricing.** If we switch to self-hosted Langfuse, the $0.005 per query disappears (but we add ~$80/month of infra). Crossover at ~16K queries/month — likely a Q4 conversation.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Headline numbers in one block, easy to quote. The CFO will pull these numbers out of the doc; if you don't put them at the top, she'll mis-quote whatever she finds first."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Cost breakdown with each component as a fraction of total. The observability cost being 23% of per-query is the kind of finding that surprises teams — and is the lever the team can pull (self-host) when scale grows."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Usage distribution is the section most rookie analyses skip. Per-user-average is misleading when distribution is right-skewed. The 'top 5 users = 38% of volume' detail matters for capacity planning and for thinking about whether you have a power-user problem or just enthusiastic adopters."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Scaling curve linear through 10× is the kind of statement the CFO wants. The triggers for cost-architecture changes are at specific scales — the team isn't being precious about caching at 40 users, but knows when it'll matter."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Sensitivity analysis on the assumptions whose negation matters. 'If response length grows 30%, cost grows 12%' is the kind of trade-off the team can have a real conversation about with the PO."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Per-user-per-month calculated from per-user average. If the distribution is right-skewed, the average underestimates total cost. Use the actual distribution.",
+    "Cost components rolled up into a single line. The CFO needs to see where the money goes; that's the conversation about what to optimise.",
+    "Scaling curve omitted. The CFO is funding for the next 12 months; she wants to know what happens at 5×.",
+    "No sensitivity analysis. The cost number looks more certain than it is; surface the assumptions that could move it by 20%+.",
+    "Observability cost forgotten. It's typically 10-25% of total inference cost and often missed by junior cost analyses.",
+    "Cost stated without naming the model + token assumptions. 'Claude API: $X' isn't reproducible; 'Claude Sonnet 4.5 @ 3K input + 400 output: $X' is."
+  ],
+  "variant_patterns": [
+    "Pre-launch variant (no usage data yet): replace §3 with estimated-distribution assumptions. Be honest about the uncertainty range (e.g. '50% confidence interval is $0.50-$2.00/user/month').",
+    "Multi-feature variant (multiple AI features sharing infrastructure): components like vector store + observability may be shared. Allocate by query volume share; document the allocation method.",
+    "Customer-facing pricing variant: same analysis structure but with margin layered on top. If you're pricing this for end customers, the cost analysis is the floor; the pricing decision is a separate conversation."
+  ],
+  "related_scenarios": ["aie-cost-conversation"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

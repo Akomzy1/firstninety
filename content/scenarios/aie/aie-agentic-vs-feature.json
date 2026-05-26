@@ -1,0 +1,51 @@
+{
+  "slug": "aie-agentic-vs-feature",
+  "role": "aie",
+  "title": "But Could We Make It An Agent?",
+  "one_liner": "Architectural review. Senior engineer just suggested rebuilding the assistant as an agentic system with tool-calling. You think the current feature shape is right.",
+  "brief": "## The room\n\nWeek eleven. Architectural review for the next phase of the customer-support assistant. The team is deciding whether to add functionality (booking refunds, scheduling callbacks, fetching account data) as feature-shaped tooling — where each capability is a specific code path the assistant routes to — or as an agentic system, where the assistant has access to tools and the LLM decides which to call.\n\nTomasz (senior eng, now an advocate of evals after the week-6 conversation) has just argued for the agentic approach: 'It's more flexible, the framework handles the orchestration, and we won't need to keep adding new routes every time CS asks for a new capability.'\n\nThe room: Asha (eng lead), Tomasz, you, Linh (PO), Lewis (lead dev observing because he's interested in AI patterns). Asha is sitting back, watching.\n\nYou believe the agentic approach is wrong for this product, at this stage. The assistant has 4 main capabilities, all well-defined; the cost of an agentic loop (more tokens, slower responses, harder evals, easier to hallucinate tool calls) outweighs the flexibility. You've thought about this — but you also know that 'agentic' is the trade-press fashion right now and pushing back on it will sound like the AIE-who-doesn't-want-to-learn-new-things.\n\n## Your turn\n\nAnswer Tomasz.",
+  "objective": "Defend the feature-shaped choice without sounding like you're against agents in principle. Land the argument with specific reasoning Asha will respect. Don't make Tomasz wrong — make the trade-off visible.",
+  "curveball": "If you say 'agents aren't the right tool for this', you sound like the AIE refusing the modern pattern. If you say 'sure, let's try the agentic approach' you've conceded on something you think is wrong. The skill is being specific about the trade-offs: 'I'd push back on this one. We have four capabilities, all well-defined. An agentic version adds: ~2× tokens per response (the orchestration overhead), harder evals (the LLM's tool-choice becomes part of what we have to test), and a class of hallucination we don't currently have (the LLM calling the wrong tool, or inventing arguments). The flexibility benefit is real but kicks in around 10+ capabilities; we have 4. If we get to 8 and we're still adding more, the agentic refactor is the right call then. Right now, the feature shape is the right shape.' Tomasz, who has earned the 'real engineer' tag in past scenarios, will hear this as the calibration it is. Asha will mark this as an AIE who knows when to be conservative.",
+  "personas": [
+    {
+      "name": "Tomasz Wójcik",
+      "role": "Senior Engineer",
+      "position": "Agentic feels more future-proof. Convince me otherwise",
+      "fear": "Building a brittle feature-shaped system that we rebuild in six months",
+      "monogram": "TW",
+      "colour": "slate"
+    },
+    {
+      "name": "Asha Bhatt",
+      "role": "Engineering Lead",
+      "position": "Want the right call, not the trendy one",
+      "fear": "AIE who adopts every new pattern without weighing the trade-off",
+      "monogram": "AB",
+      "colour": "rose"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Made the trade-off specific in numbers / count — '~2× tokens', '4 capabilities not 10+', etc.",
+      "Named when the agentic refactor WOULD be the right call (8+ capabilities, more dynamic tool requirements)",
+      "Did NOT argue against agents in principle — argued against agents for THIS system at THIS stage",
+      "Acknowledged Tomasz's reasoning was real before pushing back ('the flexibility benefit is real but kicks in at scale we don't have')"
+    ],
+    "yellow": [
+      "Argued against agents in principle ('agents are over-hyped') — sounds anti-pattern not pro-calibration",
+      "Cited a paper or benchmark instead of the system's specific trade-offs",
+      "Conceded the agentic approach to avoid the argument — wrong call gets funded",
+      "Got into a long technical comparison of agent frameworks — Asha tunes out"
+    ],
+    "red": [
+      "Argued the team 'isn't ready' for an agentic system — Tomasz will rightly object",
+      "Made the argument about cost in a way that ignored the flexibility benefit — partial argument",
+      "Said 'we should A/B test it' — over-engineering for an architecture choice",
+      "Promised to write a research doc to defer the conversation — Asha wants the call now"
+    ]
+  },
+  "estimated_minutes": 15,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,23 @@
+{
+  "slug": "aie-w1-first-1on1",
+  "role": "aie",
+  "week": 1,
+  "sequence_in_week": 3,
+  "title": "Run your first 1:1 with your manager",
+  "why_matters": "AIE managers are typically technical, often the senior AIE on the team, and have strong views on what 'good calibration' looks like. Your first 1:1 is where you start learning what kind of calls they back you up on — particularly the conservative calls (saying no to an agentic refactor, holding a launch for one more eval) that AIE work is mostly about. AIEs whose first 1:1 establishes this calibration walk into their probation review knowing what they're being assessed on; those who don't are guessing.",
+  "steps": [
+    "Book a recurring weekly 30-minute 1:1 if one doesn't exist. Insist on weekly; AIEs without it discover they needed it after a launch-or-don't decision.",
+    "Draft a one-page agenda. Three sections: 'what I'm noticing about the team's AI surfaces in week 1' (observations); 'questions I have about how things are decided here'; 'what would help me from you'.",
+    "Ask the calibration question: 'when I want to hold a launch because an eval isn't ready, what's the bar you'd want me to clear before making that call alone — versus checking with you first?'. The answer tells you her appetite for you holding conservative positions independently.",
+    "If your manager is the senior AIE on the team, ask one technical question you've been curious about from reading the codebase. Don't pretend to know more than you do; show the curiosity. Managers who are AIEs themselves notice the absence of curiosity faster than the presence of expertise."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["aie-eval-rubric", "aie-prompt-versioning"],
+    "scenario_slugs": ["aie-probation-review", "aie-eval-driven-pushback"]
+  },
+  "success_criteria": "Meeting happened, recurring slot is in both calendars, you walked out with one concrete sentence on the bar your manager wants you to clear before holding a conservative-call independently.",
+  "reflection_prompt": "What surprised you in your manager's answer to the eval-bar calibration question? Two sentences.",
+  "estimated_minutes": 35,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

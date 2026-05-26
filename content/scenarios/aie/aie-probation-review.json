@@ -1,0 +1,43 @@
+{
+  "slug": "aie-probation-review",
+  "role": "aie",
+  "title": "The Probation Review",
+  "one_liner": "Day 88. Adisa opens with: 'tell me about a moment this quarter where you knew the answer was \"no, this isn't going to work\" — and you said it.'",
+  "brief": "## The room\n\nThirty minutes. Your hiring manager is Adisa Okafor (Director of Engineering, AI line). She's been in role for two years, hired you, and has been quietly tracking your decisions — the eval-driven pushback with Tomasz (week 6), the RAG-vs-fine-tune call in front of Yetunde (week 7), the Friday-hallucination incident response (week 10), the agentic-vs-feature defence (week 11). She has been kind throughout, has not signalled which way the conversation is going.\n\nYou submitted your pack on Monday. It lays out: the eval suite you built (12 new evals in 90 days), the cost-analysis work that landed Henrietta's number for the board, the Friday incident (contained inside 90 minutes; no further customer impact; written up cleanly), the RAG recommendation that the team is now executing on, the agentic-vs-feature decision that's now in the architecture decision record.\n\nWhat you don't know: Asha (your eng lead) told Adisa that you are the first junior AIE she's worked with who handles incident-pressure without panicking. Tomasz, who started the quarter sceptical of you, has said in writing that he 'underrated' you.\n\nAdisa opens with:\n\n> 'Tell me about a moment this quarter where you knew the answer was \"no, this isn't going to work\" — and you said it.'\n\n## Your turn\n\nAnswer.",
+  "objective": "Name a specific 'no' you held — the agentic-vs-feature defence is the cleanest one — and own the reasoning. Show Adisa you can be conservative without being stuck-in-the-mud. Don't oversell.",
+  "curveball": "Adisa is testing whether the user can calibrate against hype. The AI field rewards the loudest 'we should do X' voices; the working AIE is the one who can say 'no, not yet, here's why' without sounding like a brake. The right shape of the answer: lead with the agentic-vs-feature scenario (where the temptation to follow the trade-press pattern was real), name the specific reasoning you used (4 capabilities not 10+; the cost calculation), acknowledge that you might be wrong in 12 months if the capability surface grows, and name one specific thing about Tomasz's framing you actually learned from. The wrong shape: claim you were 'always confident' on the call (overclaim), OR present it as 'I had to fight to be heard' (makes Tomasz the villain).",
+  "personas": [
+    {
+      "name": "Adisa Okafor",
+      "role": "Director of Engineering, AI line (hiring manager)",
+      "position": "I need an AIE who can resist hype without being stuck in old patterns",
+      "fear": "Confirming an AIE who matches the trade press or, opposite failure, an AIE who's reflexively against new patterns",
+      "monogram": "AO",
+      "colour": "plum"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Opened with the agentic-vs-feature scenario specifically — the cleanest 'no, not yet' moment",
+      "Named the specific reasoning in numbers / counts — 4 capabilities, 2× token overhead",
+      "Acknowledged the revisit trigger you set ('if we get to 8+ capabilities, the agentic refactor becomes the right call')",
+      "Named one thing about Tomasz's framing you learned from — shows you weren't just defending, you were listening"
+    ],
+    "yellow": [
+      "Listed three 'no's instead of going deep on one — dilutes",
+      "Defended the call using 'best practice' or 'industry pattern' language — Adisa is testing for the opposite",
+      "Made Tomasz the villain — Adisa works with him, doesn't want that on your file",
+      "Couldn't name what you'd revisit — sounds like an absolute position rather than a calibrated one"
+    ],
+    "red": [
+      "Cited the friday hallucination incident as your example — that's a different test (incident response, not a deliberate 'no')",
+      "Said 'I just don't believe in agents' as the reasoning — Adisa will hear that as anti-pattern not pro-calibration",
+      "Couldn't name a 'no' you held — Adisa was specifically asking about this skill",
+      "Apologised for the conservatism — frames the right call as something you're not sure about"
+    ]
+  },
+  "estimated_minutes": 16,
+  "difficulty": 5,
+  "career_stage": "first_90_days",
+  "version": 1
+}

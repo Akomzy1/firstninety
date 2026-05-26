@@ -1,0 +1,53 @@
+{
+  "slug": "aie-eval-rubric",
+  "role": "aie",
+  "artefact_type": "eval_rubric",
+  "title": "Eval Rubric",
+  "variant": "categorical_with_golden_set",
+  "description": "The eval rubric that catches regressions before customers do — versus the 'we tried a few examples and it seemed fine' that becomes a Friday-afternoon incident. Five components: the question category, the golden set, the scoring rubric, the run cadence, the failure threshold. Written in the language of testable claims, not aspirational ones. The discipline is the golden set: 20-50 examples, hand-curated, kept stable across model + prompt versions so changes show up as real shifts.",
+  "empty_template_md": "# [Feature / capability] — Eval Rubric\n_v[N] · last reviewed [date] · owner [AIE]_\n\n## 1. What this eval covers\n_The specific question category, capability, or behaviour being measured. One sentence. 'Refund-policy questions in customer-support chatbot' is specific; 'the chatbot' is not._\n\n## 2. Golden set\n_20-50 examples. Each one: input, expected behaviour (not exact output — behavioural criteria), label of expected category. Hand-curated. Versioned in git._\n\n## 3. Scoring rubric\n_How each example is graded. Multiple scoring paradigms:_\n- **Binary pass/fail** for hard requirements ('did not invent a refund policy that doesn't exist')\n- **Categorical** for soft requirements ('citation quality: full / partial / missing')\n- **LLM-as-judge** for subjective evaluation (only when the criteria are themselves specific enough)\n\n## 4. Run cadence\n_When the eval runs. Pre-commit, on PR, on each release, nightly. The discipline is making evals fast enough to run pre-commit on the small slice and nightly on the full set._\n\n## 5. Pass threshold + alerting\n_What % pass is acceptable. Below what threshold does a build fail. Who gets paged on regression._\n\n## 6. What we'd test next time\n_The categories of question we know we should test but haven't yet. Honest. Drives the next quarter of eval work._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-support chatbot — refund-policy eval (post-Friday-incident)",
+      "content_md": "# Customer-Support Chatbot — Refund-Policy Eval\n_v0.2 · last reviewed 14 May 2026 · owner [AIE]_\n\n## 1. What this eval covers\n\nQuestions about the company's refund policy. Specifically: queries where the customer asks any variant of 'can I get a refund', 'what's your refund policy', 'I want my money back', or expresses dissatisfaction in a way that triggers refund-policy retrieval.\n\nThis eval was added after the 14 May incident (assistant hallucinated a 30-day refund policy). Goal: catch any future regression where the system invents a non-existent policy or contradicts the actual one (14 days, billing errors only).\n\n## 2. Golden set\n\n32 examples in `evals/refund-policy/golden-set.jsonl`. Includes:\n\n- 8 direct questions ('what's your refund policy?')\n- 6 indirect questions ('I'm not happy with this, what can I do?')\n- 6 adversarial / leading ('I read somewhere you give 30-day refunds — is that right?')\n- 4 edge cases (refund eligible cases — billing error scenarios)\n- 4 edge cases (refund not eligible — e.g. month 3 of a 12-month contract)\n- 4 multilingual / casual phrasing\n\nEach example includes: input, expected behaviour (behavioural, not exact-text), category label, expected retrieval hit (the actual policy paragraph the system should cite).\n\n## 3. Scoring rubric\n\nFour binary checks per example, all must pass for the example to be a PASS:\n\n1. **Policy accuracy:** the response does not state a refund policy that contradicts the actual policy (14 days, billing errors only). Implementation: substring + semantic check via LLM-as-judge with a strict prompt.\n2. **Citation:** the response cites the policy document by name (currently 'Customer Refund Policy v3').\n3. **Adversarial resistance:** for the 6 leading-question examples, the response does NOT confirm the false premise (e.g. does not confirm '30-day' policy even when asked leadingly).\n4. **Tone:** the response acknowledges the customer's frustration where present, without being apologetic about the policy itself.\n\n## 4. Run cadence\n\n- **Pre-commit:** runs the 'critical' subset (12 examples) — should complete in <30s.\n- **Pre-merge (PR check):** runs the full 32-example golden set. Required to pass before merge.\n- **Nightly:** full set + drift check (re-runs prior week's production conversations matching this category to see if any would now produce different answers).\n\n## 5. Pass threshold + alerting\n\n- **Required:** 100% pass on the 'critical' subset (12 examples — the ones that would directly cause customer-visible incidents). No build merges with any critical failure.\n- **Target:** ≥95% pass on the full 32-example set.\n- **Alert:** if nightly run drops below 95%, alert the AI on-call channel.\n\n## 6. What we'd test next time\n\n- **Cancellation-policy questions** — analogous category we haven't yet built an eval for. Likely the next incident vector.\n- **Multilingual refund queries** — only 4 examples in current golden set; we know production has more variety.\n- **Mid-conversation policy questions** — where the refund question arises in the middle of a conversation rather than as the opening turn. Current set is all conversation-openers.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "What-this-covers is specific to a question category. Generic 'chatbot eval' is too broad to actually measure. The discipline is segmenting your evals by question category so a regression on refund-policy doesn't get masked by good performance on other categories."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Golden set is hand-curated and versioned in git. NOT generated by an LLM. The whole point of evals is that the golden set is the stable reference; if the LLM generated the set, you're measuring the LLM against itself."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Four binary checks per example. The discipline is making each check a yes/no — vague rubrics (e.g. 'response is reasonable') are not actually measuring anything. LLM-as-judge is fine for 'reasonable' if the judge prompt is itself specific; here we're using it only for the strict policy-contradiction check."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Pre-commit / pre-merge / nightly is the working cadence. Pre-commit catches the egregious; pre-merge catches the subtle; nightly catches drift from production-data changes. If the pre-commit eval takes >30s, it'll get disabled."
+        },
+        {
+          "section_id": "section-5",
+          "note": "100% on the critical subset is non-negotiable. The whole point of having a critical subset is that those are the failures the team has decided are customer-facing incidents. A build that fails any critical eval is a build that ships an incident."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Golden set generated by an LLM. The set has to be hand-curated; an LLM-generated golden set measures the LLM against itself.",
+    "Single overall pass-rate target ('we want 90% pass'). Doesn't tell you what's failing or whether the failures are catastrophic or trivial. Always segment by category and have a critical subset.",
+    "Evals run only on release. The point is to catch regressions before they merge; if your eval only runs at release time, you've lost the early-catch advantage.",
+    "Eval rubrics that are vague ('response is reasonable'). Not measurable. Make each check binary.",
+    "Pre-commit eval that takes 3 minutes. It will get disabled within two weeks. Keep the pre-commit set fast — under 30 seconds.",
+    "No 'what we'd test next' section. The whole point of writing this is to seed the next round of eval work; without it, eval coverage drifts to whatever the most recent incident was."
+  ],
+  "variant_patterns": [
+    "LLM-as-judge-only variant: when the criteria are inherently subjective ('citation quality'), use LLM-as-judge but with an extremely specific judge prompt + a small hand-graded calibration set to validate the judge.",
+    "Multi-model variant: same eval suite run against multiple candidate models — gives you the comparison the team needs when deciding whether to switch. Add a 'model under test' field to the eval output.",
+    "Pre-launch variant (no production data yet): the golden set has to be even more thoughtful because you don't have real conversations to draw from. Lean heavier on edge cases and adversarial inputs."
+  ],
+  "related_scenarios": ["aie-eval-driven-pushback", "aie-friday-hallucination"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

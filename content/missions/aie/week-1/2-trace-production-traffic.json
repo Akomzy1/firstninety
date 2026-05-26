@@ -1,0 +1,24 @@
+{
+  "slug": "aie-w1-trace-production-traffic",
+  "role": "aie",
+  "week": 1,
+  "sequence_in_week": 2,
+  "title": "Trace the production traffic",
+  "why_matters": "The team's evals tell you what they think they should be testing. Production traffic tells you what users actually do. The gap between those two is where regressions hide, where features under-serve users, and where the next 'I should add an eval for X' realisation comes from. The hour you spend in week 1 reading real production conversations is the hour that makes your evals in week 3 genuinely useful instead of theoretical.",
+  "steps": [
+    "Find the production logging / tracing system (LangSmith, Langfuse, internal log store — whatever the team uses). Open it. Find the last 100 conversations across the team's AI features.",
+    "Read each one. Note: questions you didn't expect, response shapes that look off (too long, too short, confidently wrong), conversations that ended with the user dropping out mid-stream.",
+    "For each conversation that looked off, check: does the eval suite have a test that would have caught this? If not, that's a category to consider adding.",
+    "Find the cost surface — per-conversation token counts, per-feature daily cost. Get a feel for the magnitudes. The AIE who can quote the cost-per-query of each feature without checking is the AIE who'll be useful when finance asks.",
+    "Talk to one CS team member (or the equivalent — whoever fields the human-side of AI-feature complaints). Ask them: 'what's the most common wrong-answer pattern you've seen from the assistant in the last month?'. Their answer is the highest-signal week-1 data point you'll get."
+  ],
+  "resource_refs": {
+    "playbook_slugs": ["aie-hallucination-test-plan", "aie-cost-analysis"],
+    "scenario_slugs": ["aie-friday-hallucination"]
+  },
+  "success_criteria": "By end of week, you can name the top 3 patterns of question users actually ask each AI feature, the rough cost-per-conversation, and one specific category of failure that the current evals don't catch.",
+  "reflection_prompt": "Of the conversations you read, which one had a response that the model card would have predicted as a known limitation — but that users clearly didn't expect? Two sentences.",
+  "estimated_minutes": 60,
+  "prerequisites": [],
+  "career_stage": "first_90_days"
+}

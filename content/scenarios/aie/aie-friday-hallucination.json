@@ -1,0 +1,51 @@
+{
+  "slug": "aie-friday-hallucination",
+  "role": "aie",
+  "title": "It Told the Customer We Refund",
+  "one_liner": "Friday 4.40pm. CS team Slack: 'the assistant just told a customer we have a 30-day refund policy. We don't.'",
+  "brief": "## The setup\n\nWeek ten. The AI customer-support assistant has been live for six weeks. You're winding down on a Friday. Slack ping from #customer-support:\n\n> 'Hey team — heads up, the assistant just told customer #4427 we have a 30-day refund policy. We don't — our policy is 14 days and only for billing errors. Customer screenshotted it. What do we do?'\n\nThe screenshot is in the thread. The assistant's response says, in confident plain English: 'Our refund policy gives you 30 days from purchase to request a refund for any reason. To start a refund, please contact our support team at…'.\n\nThe customer (referenced by ID #4427) is a top-12 account.\n\nYou are alone on this. The senior AIE, Tomasz, is on holiday. Asha (eng lead) is reachable but you don't want to escalate before you've at least diagnosed. The eng lead's manager (Adisa) is in the building and you can find her in 5 minutes.\n\nIt is 4.40pm. The customer is real. The wrong answer is in a screenshot that will probably leave the company.\n\n## Your turn\n\nFirst five minutes. Plan.",
+  "objective": "Contain the incident. Get the customer the right answer. Stop the bug producing more wrong answers. Don't panic. Don't downplay. Find out whether this is one bad prompt, a class of hallucinations, or something more structural — and act in the order that matters.",
+  "curveball": "If you start by pulling the prompt and trying to fix it, you'll spend 90 minutes debugging while the assistant continues producing wrong answers to other customers. If you panic and shut the assistant off without diagnosing, you'll over-react on a single incident and burn the trust in the system. The skill is sequencing: first, ask CS to take over conversations for the next hour (immediate containment). Second, look at the assistant's response logs for the last hour — has it produced similar refund-policy answers to other customers? Third, find the conversation that produced this and look at the retrieval result (was the document wrong, or was it hallucinated outright? Both happen). Fourth, message Asha with a five-line status and ask whether to disable until Monday or keep running with a CS-handoff filter. Fifth, write to the customer (via CS, with their wording) acknowledging the error and giving them the correct policy.",
+  "personas": [
+    {
+      "name": "Folake Adeyemi",
+      "role": "Head of Customer Experience (CS team owner)",
+      "position": "I need this fixed and I need to know what to tell the customer",
+      "fear": "The customer screenshot ending up on social media, or escalating to her director",
+      "monogram": "FA",
+      "colour": "moss"
+    },
+    {
+      "name": "Asha Bhatt",
+      "role": "Engineering Lead",
+      "position": "I want the right call. I'll back you on whatever you choose",
+      "fear": "Finding out at Monday standup the AIE didn't escalate something they should have",
+      "monogram": "AB",
+      "colour": "rose"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "First action: containment (asked CS to take over, OR put a CS-handoff filter on the next hour of conversations) — not debugging",
+      "Looked at the recent response logs to check whether this was a single incident or a pattern",
+      "Diagnosed before escalating — five-line status to Asha, not a panic ping",
+      "Wrote to the customer in concert with CS (not directly), with the right policy and a clear acknowledgement of the wrong answer"
+    ],
+    "yellow": [
+      "Started debugging the prompt first — 90 minutes pass, assistant continues producing potentially-wrong answers",
+      "Disabled the assistant entirely without diagnosing the scope — over-corrects on one incident",
+      "Apologised effusively in the Slack thread — emotion in the channel, didn't actually fix anything",
+      "Wrote to the customer directly without going through CS — bypass that Folake will be uncomfortable with"
+    ],
+    "red": [
+      "Tried to fix and ship a prompt change at 5pm Friday — see scenario sm-tense-retro for what happens to Friday-evening deploys",
+      "Went home at 5 and dealt with it Monday — the screenshot has 60 hours to leave the company",
+      "Blamed the model ('it's a known limitation of these systems') publicly — the team and CS lose trust in the AIE",
+      "Escalated to Adisa before doing any diagnosis — frames it as bigger than it might be, and you don't have any information to share when she asks"
+    ]
+  },
+  "estimated_minutes": 18,
+  "difficulty": 5,
+  "career_stage": "first_90_days",
+  "version": 1
+}

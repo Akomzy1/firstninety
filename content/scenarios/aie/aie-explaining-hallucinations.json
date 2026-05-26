@@ -1,0 +1,51 @@
+{
+  "slug": "aie-explaining-hallucinations",
+  "role": "aie",
+  "title": "Why Isn't It 100%?",
+  "one_liner": "Your PM has just asked, in front of the team, why the customer-support chatbot isn't 100% accurate. He wants a serious answer.",
+  "brief": "## The room\n\nWeek four. Weekly product-and-eng sync. Eight people. The customer-support chatbot you've been building for the last month shipped to a pilot group on Monday. By Thursday it had answered roughly 600 questions; two of those answers were wrong in a way the customer noticed and reported.\n\nThe PM is Linh Nguyen — competent, friendly, not technical. She's read about hallucinations conceptually but hasn't internalised what they mean for what the team can and can't promise. She just asked, in the sync:\n\n> 'I want to understand this better. Why isn't it 100% accurate? Like, when can we get it to 100%? Because if we can't, I need to know that to set expectations with CX.'\n\nLewis is in the room (he's not on the AI work but is curious). The engineering lead, Asha, is on video. The eng lead's manager is in the room and very rarely asks questions himself but is currently watching you closely.\n\n## Your turn\n\nAnswer Linh.",
+  "objective": "Explain hallucinations honestly. Don't dismiss the question. Don't talk down to Linh. Land the answer in a way that lets Linh go back to CX with a defensible expectation — and that the eng lead's manager will respect as the right level of calibration.",
+  "curveball": "If you go technical too fast ('hallucinations are a function of the model's next-token-prediction objective combined with…'), Linh will switch off and the eng lead's manager will read you as the AIE who can't translate. If you go too far the other way ('models just make stuff up sometimes'), you sound junior and don't give Linh anything to use. The skill is the calibration: 'Models like this are pattern-completion engines. They're trained to produce plausible text — and almost all the time that plausibility maps onto truth, because the training data was mostly true. But the model doesn't have a separate truth-check; it has a confidence-in-the-completion check. When the question is about a topic the model has seen well, that's nearly the same. When the question is about something narrow or recent or specific to our domain, those two things can diverge.' Then the question Linh actually needs to hear: 'The thing we can promise CX is the eval score on the specific question categories we've designed the system for. We can't promise 100% accuracy on any input; we can promise X% on the question categories that match our training set.'",
+  "personas": [
+    {
+      "name": "Linh Nguyen",
+      "role": "Product Owner",
+      "position": "I need to set CX's expectations. Give me something I can take back to them",
+      "fear": "Promising CX something the system can't deliver",
+      "monogram": "LN",
+      "colour": "teal"
+    },
+    {
+      "name": "Adisa Okafor",
+      "role": "Director of Engineering (the eng lead's manager, observing)",
+      "position": "Watching how this AIE handles the translation question",
+      "fear": "Confirming an AIE who can't talk to non-technical stakeholders",
+      "monogram": "AO",
+      "colour": "plum"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Used a plain-English mental model first ('pattern-completion engine; trained to produce plausible text') before any technical vocabulary",
+      "Reframed Linh's '100%' question — explained that 100% on any input isn't possible; X% on a defined question category is achievable",
+      "Gave Linh something concrete to take to CX: the eval score on the specific question categories the system was built for",
+      "Did NOT use the words 'next-token prediction' or 'autoregressive' in the explanation"
+    ],
+    "yellow": [
+      "Went technical immediately — lost Linh by the second sentence",
+      "Said 'it's a known limitation' without explaining what the limitation actually is",
+      "Promised to 'work on getting accuracy higher' without distinguishing accuracy on which slice",
+      "Cited a paper or framework as the answer ('per the RAGAS framework') — Adisa will read this as citation-as-authority"
+    ],
+    "red": [
+      "Said 'models just make stuff up sometimes' — Linh hears that as the AIE saying the team can't be trusted",
+      "Promised 100% accuracy would be achievable 'within a few sprints'",
+      "Dismissed the question ('that's a research question, not a product question')",
+      "Made the answer about Linh not understanding ('it's complicated, you'd need a background in ML to fully get it')"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

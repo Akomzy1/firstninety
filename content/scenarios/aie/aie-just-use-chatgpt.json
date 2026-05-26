@@ -1,0 +1,43 @@
+{
+  "slug": "aie-just-use-chatgpt",
+  "role": "aie",
+  "title": "Why Not Just Use ChatGPT?",
+  "one_liner": "The director has just suggested, in front of the team, that we 'just plug ChatGPT into the product instead of building our own thing'.",
+  "brief": "## The room\n\nWeek five. Product-and-eng strategy review. The director is Bilqis Hassan (VP Product Strategy) — senior, smart, not an engineer. She's been reading about AI products in the trade press and has decided the build-vs-buy conversation needs to happen now.\n\nShe just said:\n\n> 'I keep reading about how easy it is to plug in ChatGPT — why are we building our own thing? Couldn't we just use the ChatGPT API and skip three months of work?'\n\nShe is conflating three things: ChatGPT-the-product (chat.openai.com), the OpenAI API (which the team COULD use, and partially already does), and the actual question of whether the team should build a feature using a third-party API vs. building the agent / RAG / prompting infrastructure around it.\n\nThe team is watching. Asha (eng lead) is sitting back. This isn't a hostile question; it's a real question, and Bilqis will respect a real answer.\n\n## Your turn\n\nAnswer Bilqis.",
+  "objective": "Disambiguate the three things Bilqis is conflating. Land the answer in a way she finds intellectually satisfying — not condescending. Show her the actual build-vs-buy decision the team is making, which is more interesting than the question she asked.",
+  "curveball": "If you say 'ChatGPT and GPT-4 are different things', you've corrected Bilqis in a way that puts her on the defensive. If you say 'yes good idea, let's look at that', you've abdicated the architectural reasoning. The skill is acknowledging the question's validity while gently surfacing the disambiguation: 'You're closer to the right question than the team usually frames it. There are three layers here — the API itself (which we already use), the chat interface (which is what people mean by \"ChatGPT\"), and the application logic around the API (retrieval, prompt construction, output validation, evals). We get the model for free; the application logic is what we're building. The reason we don't just point users at chat.openai.com is X. The reason we don't just wrap the API with a thin layer is Y.' Bilqis will follow this. She'll ask a sharper second question and the conversation gets useful.",
+  "personas": [
+    {
+      "name": "Bilqis Hassan",
+      "role": "VP Product Strategy",
+      "position": "Convince me the build is worth the three months",
+      "fear": "Funding internal AI work that turns out to be a wrapper around something we could've bought",
+      "monogram": "BH",
+      "colour": "teal"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Acknowledged Bilqis's question as a real question — did not correct her conflation in front of the room",
+      "Disambiguated the three layers (API, chat interface, application logic) gently",
+      "Named what the team is actually building (the application logic) and why it isn't covered by 'just plugging in the API'",
+      "Gave Bilqis one specific reason the build is worth the three months — something measurable, not 'control'"
+    ],
+    "yellow": [
+      "Opened with the disambiguation as a correction — 'well, ChatGPT and the API are different things' lands as condescending",
+      "Listed five reasons the build is worth it — Bilqis tunes out after two",
+      "Got into a 'build vs buy frameworks' explanation — too abstract",
+      "Promised to 'put together a write-up' to defer the conversation — Bilqis loses interest and the room thinks the AIE can't synthesise"
+    ],
+    "red": [
+      "Said 'we couldn't use ChatGPT for security reasons' as the headline answer — sounds defensive and isn't actually the reason",
+      "Got visibly annoyed at having to explain it — the room reads contempt",
+      "Capitulated — 'maybe we should look at that' — Bilqis nods and the team's three months of work is at risk",
+      "Asked Asha to answer — abdicates"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 3,
+  "career_stage": "first_90_days",
+  "version": 1
+}

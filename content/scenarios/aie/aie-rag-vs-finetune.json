@@ -1,0 +1,51 @@
+{
+  "slug": "aie-rag-vs-finetune",
+  "role": "aie",
+  "title": "RAG or Fine-Tune?",
+  "one_liner": "The CFO has just asked you to recommend RAG or fine-tuning by end of meeting. She has 20 minutes and zero patience for nuance.",
+  "brief": "## The room\n\nWeek seven. Architectural review for the customer-knowledge-base assistant project. Eight people. The CFO (Yetunde Mbeki) is sitting in because the work has a non-trivial cost implication; she's never been in one of these reviews before.\n\nThe technical question on the table: should the assistant use RAG against the existing documentation, or fine-tune a model on the same documentation. The team has been debating it for two sprints; the senior eng leans RAG, you've been arguing the question is more nuanced than either-or.\n\nYetunde has just said, with the tone of someone who has six other things to do today:\n\n> 'OK — I've heard about three minutes of this. Can someone just give me a recommendation? RAG or fine-tune? Pick one. I need to know what we're funding.'\n\nThe team turns to you because the architectural design is yours. Asha (eng lead) is sitting forward. You have a recommendation but it has three caveats; in twenty minutes you can't deliver the full nuance.\n\n## Your turn\n\nAnswer Yetunde.",
+  "objective": "Give Yetunde a clear recommendation she can fund. Don't dilute it with caveats she doesn't have time for. But don't hide the trade-off either — the team will be living with this decision for months.",
+  "curveball": "If you say 'it depends' or open with the trade-offs, you've lost Yetunde in the first 15 seconds. If you just say 'RAG' with no reasoning, Yetunde nods, funds RAG, and you've abdicated the architectural-defence work. The skill is a clean two-sentence answer with the single most important trade-off named: 'RAG. The docs change too often for fine-tuning to be cost-effective at our update cadence, and we can ship a working RAG version this quarter; a fine-tune approach would be a quarter on its own. The one thing we'd want to revisit is if the docs stabilise enough that the update cadence drops, fine-tuning becomes competitive — happy to set a six-month review on that.' Yetunde will hear what she needs in 20 seconds, nod, and the team will know you made the architectural call with a documented trade-off rather than ducking it.",
+  "personas": [
+    {
+      "name": "Yetunde Mbeki",
+      "role": "Chief Financial Officer",
+      "position": "Pick one. Tell me what I'm funding. I have to leave at 4",
+      "fear": "Funding an architecture the team will rebuild in three months",
+      "monogram": "YM",
+      "colour": "slate"
+    },
+    {
+      "name": "Tomasz Wójcik",
+      "role": "Senior Engineer (favours RAG too)",
+      "position": "I think we agree but watching how you frame it",
+      "fear": "The CFO funding the wrong thing because the AIE couldn't compress the argument",
+      "monogram": "TW",
+      "colour": "ochre"
+    }
+  ],
+  "rubric": {
+    "green": [
+      "Led with the recommendation (RAG) in the first sentence, not in the third",
+      "Named one specific reason in plain English (the docs-update cadence)",
+      "Surfaced one specific revisit-trigger (if doc cadence drops, revisit fine-tuning) without diluting the decision",
+      "Did NOT explain RAG vs fine-tuning conceptually — Yetunde didn't ask"
+    ],
+    "yellow": [
+      "Opened with 'well, it depends' — Yetunde's attention drops immediately",
+      "Listed three pros and three cons of each — Yetunde wanted a recommendation, not a comparison matrix",
+      "Took longer than 90 seconds to land the recommendation — meeting overruns or Yetunde leaves",
+      "Cited a paper or benchmark — citation-as-authority, not what the room needed"
+    ],
+    "red": [
+      "Couldn't compress the answer to two sentences — meeting ran out of time, Yetunde left without funding anything",
+      "Recommended fine-tuning because it 'sounded more sophisticated' — Yetunde will remember when it's six months late",
+      "Said 'we should do both' — funds neither cleanly",
+      "Deferred to Tomasz ('he's been more in the weeds on this') — Yetunde sees the AIE abdicating the architectural-decision role"
+    ]
+  },
+  "estimated_minutes": 12,
+  "difficulty": 4,
+  "career_stage": "first_90_days",
+  "version": 1
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "aie-agent-flow",
+  "role": "aie",
+  "artefact_type": "agent_flow_diagram",
+  "title": "Agent Flow Diagram",
+  "variant": "mcp_langgraph_capable",
+  "description": "The document that captures how an agentic system actually flows — for design review, debugging, and the inevitable 'wait, when does it call which tool?' question. Five sections, framework-agnostic at the description level, with concrete MCP and LangGraph variant notes. The discipline is being honest about where the LLM makes decisions and where deterministic code does; most rookie agent designs muddle this and become impossible to debug.",
+  "empty_template_md": "# [Feature] — Agent Flow\n_v[N] · owner [AIE] · framework: [LangGraph / MCP / CrewAI / custom]_\n\n## 1. Entry point + intent classification\n_How a user query enters the system. Where intent classification happens (deterministic vs LLM-driven). What the possible intent categories are._\n\n## 2. The tools / agents / functions\n_List of every tool the agent has access to. For each: name, what it does, what arguments it accepts, what it returns. The tool descriptions are part of the system prompt — they matter._\n\n## 3. The flow\n_Step-by-step walk through a typical query. Where the LLM is making decisions; where deterministic code is. Diagram if helpful._\n\n## 4. Failure handling\n_What happens when a tool call fails. When the LLM produces an invalid argument. When the agent loops without making progress. These are the modes that turn a working agent into a stuck agent._\n\n## 5. Observability hooks\n_What gets logged for every agent run. Trace structure. How to debug a failed run from the logs alone._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-support agent — agent flow (LangGraph variant)",
+      "content_md": "# Customer-Support Agent — Agent Flow\n_v0.4 · owner [AIE] · framework: LangGraph_\n\n## 1. Entry point + intent classification\n\nUser message enters via the `/chat` API. The first step is a deterministic regex + length filter: messages >500 chars get truncated with a UI message; messages that match clear FAQ patterns (~20% of traffic) get routed to a cached-FAQ-response path instead of the agent.\n\nFor messages that hit the agent, the LLM (Claude Sonnet 4.5) does intent classification as part of its initial reasoning. Intent categories:\n\n- `policy_question` (refund, cancellation, terms)\n- `account_data_request` (their data, their usage)\n- `troubleshooting` (something not working)\n- `escalation_signal` (frustrated, threatening to leave)\n- `general` (chat, off-topic)\n\nIntent classification is part of the system prompt's instruction, not a separate model call. We tried a separate small-model classifier in week 5; the latency + complexity weren't worth the marginal accuracy gain.\n\n## 2. Tools available to the agent\n\n| Tool name | What it does | Arguments | Returns |\n|-----------|--------------|-----------|---------|\n| `search_knowledge_base` | RAG retrieval over the customer-KB | `query: str, top_k: int = 5` | `list[{path, content, score}]` |\n| `get_account_data` | Fetches the authenticated user's account data | `fields: list[str]` | `dict` |\n| `escalate_to_cs` | Hands the conversation to a human CS agent | `reason: str, priority: 'normal' | 'urgent'` | `{queue_id, eta_seconds}` |\n| `log_unanswerable` | Records a question the agent decided it couldn't answer | `query: str, reason: str` | `void` |\n\nThe tool descriptions in the system prompt include: what the tool does, when to call it, when NOT to call it, and one example of correct usage. The 'when not to call it' part is what catches the rookie hallucination of calling tools speculatively.\n\n## 3. The flow\n\nTypical query (policy question) walkthrough:\n\n```\nuser message\n  ↓\nintent classification (LLM, in initial reasoning) → 'policy_question'\n  ↓\ntool call: search_knowledge_base(query=<paraphrased>)\n  ↓\nretrieval returns chunks → LLM evaluates relevance\n  ↓\nif chunks relevant → compose response with citations → return\nif chunks not relevant → tool call: log_unanswerable + tool call: escalate_to_cs\n  ↓\nresponse to user\n```\n\nAccount-data-request walkthrough is similar but uses `get_account_data` first. Escalation-signal queries bypass retrieval and go straight to `escalate_to_cs` with `priority: 'urgent'`.\n\nMaximum tool calls per response: 3 (configurable; this is the budget that prevents agent loops).\n\n## 4. Failure handling\n\n- **Tool call returns an error.** LLM is given the error message and asked to either retry once (max 1 retry, deterministic) or fall back to `escalate_to_cs` with the error as the reason. Logged.\n- **LLM produces invalid arguments.** Pydantic validation catches malformed arguments before the tool runs. LLM is given the validation error and asked to retry. Hard limit: 2 invalid-argument retries per response, after which the agent escalates.\n- **Agent loops without progress.** Tool-call budget (3 per response) is the hard stop. When the budget is exhausted, the agent must produce a final response (with whatever context it has) — if it tries another tool call, the deterministic wrapper rejects it and forces a response.\n- **Tool not in the declared list.** If the LLM tries to call a tool that doesn't exist (rare but happens), the wrapper returns 'tool not found' and the LLM retries; counted against the invalid-argument budget.\n\n## 5. Observability hooks\n\nEvery agent run produces a trace with:\n- Input message + intent classification result\n- Each tool call: tool name, arguments, return value (truncated), latency, status\n- Final LLM reasoning + final response\n- Total tokens, total cost, total latency\n\nTraces go to LangSmith for the first 30 days of any feature; after that we sample (10% of traces) to LangSmith and keep all traces in our internal log store. Debugging a failed run starts with the trace; the trace structure is enough to identify which tool call (or LLM step) caused the issue without needing to re-run.\n\n## Framework-specific notes\n\n### LangGraph variant (current)\n- Each tool is a node; the LLM is the routing node.\n- State carries the conversation + tool-call history.\n- StateGraph compiled with checkpoint persistence so we can resume failed runs.\n\n### MCP variant (alternative — not currently used)\n- Tools would be exposed via MCP servers; the agent uses the MCP client to discover and call them.\n- Useful when tools live in different deployments or are shared across multiple agents.\n- Did NOT choose for v1: our tools are tightly coupled to this agent; the MCP layer would be over-engineering. Revisit if we end up sharing tools across multiple AI features.\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "Note the deterministic-vs-LLM-driven distinction at the entry point. 20% of traffic gets routed by deterministic regex before the agent ever sees it. This is the kind of cost-and-latency optimisation rookie agent designs skip — and pays for in the cost analysis."
+        },
+        {
+          "section_id": "section-2",
+          "note": "The 'when NOT to call it' part of each tool description is what catches speculative tool-calls. Most rookie agent designs only describe when to use a tool; the 'when not' instructions are what prevent the agent calling get_account_data on a vague policy question."
+        },
+        {
+          "section_id": "section-3",
+          "note": "Maximum tool calls per response = 3, configurable. This is the budget that prevents runaway agent loops. The Coach in this project (FirstNinety) uses 3-4; agentic-system documentation should always name the budget explicitly."
+        },
+        {
+          "section_id": "section-4",
+          "note": "Failure modes named and handled. Tool error, invalid arguments, agent loop, tool not found — each one has a deterministic response. The agent never relies on the LLM's good behaviour to handle errors; the wrapper enforces."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Traces are the observability surface for agents. Without complete traces, an agent that misbehaves in production is impossible to debug. LangSmith / Langfuse / custom trace store — the structure matters more than the tool."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Not separating deterministic logic from LLM-driven decisions. The entire flow becomes 'the LLM decides everything' which is impossible to debug and expensive.",
+    "Tool descriptions missing 'when not to use this tool'. Agent calls tools speculatively; cost goes up, quality goes down.",
+    "No tool-call budget. Agent loops, spends $30 on a single query, comes back with nothing useful. Always set a hard ceiling.",
+    "Failure handling relies on the LLM behaving correctly. It won't. The wrapper enforces; the LLM is told the error and retries within bounds.",
+    "Observability through logs alone, not structured traces. Debugging an agent failure from grep-able logs is theoretically possible and practically impossible.",
+    "No documentation of WHY the framework was chosen (LangGraph vs MCP vs CrewAI vs custom). Six months later, the team can't explain the choice; refactors become litigated each time."
+  ],
+  "variant_patterns": [
+    "MCP-only variant: when tools genuinely live across multiple services and are reused across agents, MCP becomes the right choice. Document the tool-discovery flow and the latency of MCP-vs-direct.",
+    "Multi-agent variant (one orchestrator agent calling sub-agents): document the orchestration layer's loop budget separately from each sub-agent's. The aggregate budget is what bounds runaway cost.",
+    "Stateless-per-query variant: most internal-tool agents don't need session memory. The flow is simpler; the docs should explicitly say 'no state across queries' so future engineers don't assume otherwise."
+  ],
+  "related_scenarios": ["aie-agentic-vs-feature"],
+  "career_stage": "first_90_days",
+  "version": 1
+}

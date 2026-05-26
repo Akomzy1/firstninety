@@ -1,0 +1,53 @@
+{
+  "slug": "aie-model-card",
+  "role": "aie",
+  "artefact_type": "model_card",
+  "title": "Model Card",
+  "variant": "internal_lightweight",
+  "description": "The internal model card the team produces for every AI feature shipped to customers. Eight short sections — far lighter than the academic model-card papers, sized for an internal team that has 30 minutes to read it. The discipline is being honest in sections 5 (limitations) and 6 (known failure modes): if you skip those, the document is marketing not engineering.",
+  "empty_template_md": "# Model Card: [Feature name]\n_v[N] · last updated [date] · owner [AIE]_\n\n## 1. What this feature does (one paragraph)\n_The capability, in plain English. The user-facing thing._\n\n## 2. Models in use\n_Generation model + version. Embedding model + version. Any retrieval / reranker models. Last reviewed for upgrade [date]._\n\n## 3. Inputs / outputs\n_What the feature accepts as input (length, language, content type). What it produces (format, length, structure)._\n\n## 4. Training / evaluation data\n_Where the eval golden set comes from. Where any few-shot examples come from. Where the RAG corpus comes from (if applicable). Any data we explicitly do NOT use._\n\n## 5. Limitations\n_The honest limits. Languages, topics, edge cases the system isn't good at. The team and stakeholders need to know this; it's the section users skip and then regret skipping when CS lands the question this section would have answered._\n\n## 6. Known failure modes\n_The specific ways this can go wrong, with frequency estimates if known. The Friday-hallucination kind of detail._\n\n## 7. Performance + monitoring\n_Headline eval score on the golden set. What we monitor in production. What triggers a paging alert._\n\n## 8. Change history (link)\n_Link to the prompt versioning changelog + any model upgrades. Not the full history embedded in this doc; just a pointer._\n",
+  "worked_examples": [
+    {
+      "title": "Customer-knowledge-base assistant — model card",
+      "content_md": "# Model Card: Customer-KB Assistant\n_v0.3 · last updated 22 May 2026 · owner [AIE]_\n\n## 1. What this feature does\n\nThe Customer-KB Assistant lets internal CS team members ask natural-language questions of our customer-knowledge-base (3,200 markdown docs, updated weekly) and receive cited responses. Used for ~40 daily active CS users for ticket-context retrieval, account-policy lookup, and cross-product question answering.\n\n## 2. Models in use\n\n- **Generation:** Claude Sonnet 4.5 (anthropic.com)\n- **Embedding:** OpenAI text-embedding-3-large (3072 dim)\n- **Retrieval/rerank:** none (heuristic ranking only; cross-encoder reranker on the v2 roadmap)\n- Last reviewed for model upgrade: 18 April 2026 (ADR-014).\n\n## 3. Inputs / outputs\n\n- **Input:** free-text question. Max 500 characters in v1 (truncated with a UI message above that). English only at v1.\n- **Output:** ~200-500 token response in plain English, with citations by document H1/H2 path. Always cites at least one source, or says 'not found in the knowledge base' explicitly.\n- **Latency:** P95 <3s. Pages on >5s.\n\n## 4. Training / evaluation data\n\n- **Golden set:** 184 hand-curated question-answer pairs, sampled from real CS tickets (anonymised), versioned in `evals/customer-kb-assistant/golden-set.jsonl`. Originally seeded from 60 example tickets in week 4; expanded over time.\n- **RAG corpus:** the customer-knowledge-base markdown repo. Weekly snapshot, embeddings rebuilt on snapshot.\n- **Explicitly NOT used:** customer-specific data, ticket content, internal financial documents, employee handbooks.\n\n## 5. Limitations\n\n- **English only at v1.** ~12% of internal users are native non-English speakers; the system works in their case but is not validated for non-English query patterns.\n- **No multi-turn memory in v1.** Each query is independent; the system does not remember prior turns. Users sometimes assume otherwise.\n- **Recency.** The corpus updates weekly; a policy change made on Monday won't be retrievable until the next weekly snapshot (Friday).\n- **Coverage.** The corpus does not include sales-confidential pricing or HR handbooks; the system will say 'not found' for those topics rather than refuse, which can be confusing.\n\n## 6. Known failure modes\n\n- **Policy invention (rare, ~0.3% in beta):** the system occasionally invents a policy that doesn't exist when asked leading questions. The 14 May incident was an example. Mitigated in prompt v3 + the refund-policy eval; we believe the residual rate is <0.1% but cannot confirm without more production data.\n- **Citation drift (~2% in beta):** the system cites the right document but the wrong paragraph in it. Working hypothesis: chunking-boundary issues. Documented; will likely be fixed when the cross-encoder reranker is added.\n- **Over-cautious responses on legitimate questions (~5% in beta):** when the question is borderline (e.g. 'what should I do if a customer asks me X'), the system sometimes refuses to engage even when a clear KB answer exists. Tuning underway.\n\n## 7. Performance + monitoring\n\n- **Current eval score:** 31/32 on critical refund-policy subset; 152/184 (83%) on full set.\n- **Production monitoring:** P95 latency, error rate, eval-replay-on-production-conversations weekly.\n- **Paging triggers:** P95 >5s for 5 min; error rate >2%; nightly eval replay drops below 80% on full set.\n\n## 8. Change history\n\n- Prompt changelog: `prompts/customer-kb-assistant/changelog.md`\n- Architecture decisions: ADR-014 (initial RAG architecture), ADR-019 (May refund-policy prompt update post-incident).\n",
+      "annotations": [
+        {
+          "section_id": "section-1",
+          "note": "One paragraph. The team member who's never used the feature should understand what it does after reading just this. The user-facing capability — not the architecture."
+        },
+        {
+          "section_id": "section-2",
+          "note": "Models named with versions. 'Claude' is not enough; 'Claude Sonnet 4.5' is. The 'last reviewed for upgrade' date is the trigger for the next model-comparison conversation."
+        },
+        {
+          "section_id": "section-5",
+          "note": "Limitations honestly named. The 'English only' note isn't a feature gap, it's a usage-pattern caveat. Same for 'no multi-turn'. These are the limitations CS will run into and need to know about before they hit them."
+        },
+        {
+          "section_id": "section-6",
+          "note": "Known failure modes with quantified frequency. The 0.3% policy-invention rate is the kind of honest detail that builds trust with the eng lead and the manager — versus 'rare but possible' which is the unfalsifiable rookie phrase."
+        },
+        {
+          "section_id": "section-7",
+          "note": "Paging triggers explicit. The on-call AIE wakes up only for specific thresholds, not 'something feels off'. Clear thresholds prevent the team from getting woken up for noise + ensure real incidents get attention."
+        }
+      ]
+    }
+  ],
+  "common_mistakes": [
+    "Limitations section omitted because 'we don't want to undersell the feature'. Wrong audience — model cards are internal, not marketing. Be honest.",
+    "Known-failure-modes section omitted. Stakeholders find them in production instead of in the doc, and the doc loses credibility.",
+    "Model version not specified. 'Claude' is not a model. 'Claude Sonnet 4.5' is.",
+    "Eval scores quoted without saying 'on what'. '95% accurate' is meaningless without the golden set named.",
+    "Paging triggers vague ('on errors'). The team gets paged for noise and stops trusting alerts.",
+    "Change history embedded inline rather than linked. Model cards get long; link to the changelogs and ADRs."
+  ],
+  "variant_patterns": [
+    "Customer-facing model card variant: heavier on limitations, lighter on internal architecture. Designed to be read by customers / auditors / compliance.",
+    "Multi-model card variant: a system using two models for different layers (e.g. a small model for routing + a larger one for generation) gets one model card per model, plus an orchestration card describing how they compose.",
+    "Pre-launch model card variant: §5-7 written in expectations rather than measurements. Marked 'pre-launch' clearly; reviewed at week 4 of production with measurements."
+  ],
+  "related_scenarios": ["aie-explaining-hallucinations", "aie-friday-hallucination"],
+  "career_stage": "first_90_days",
+  "version": 1
+}
