@@ -4,9 +4,11 @@
  * Returns `{ skipped: true }` when RESEND_API_KEY is unset so cron routes
  * don't crash in dev. In production, an unset key is an outright bug —
  * surface it loudly via console.error.
+ *
+ * No `import "server-only"` here: the test script (scripts/test-emails.ts)
+ * imports this from tsx. The `resend` SDK is itself Node-only, so an
+ * accidental client import still fails at build time.
  */
-import "server-only";
-
 import { Resend } from "resend";
 
 let client: Resend | null = null;
