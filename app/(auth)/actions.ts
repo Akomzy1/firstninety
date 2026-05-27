@@ -82,9 +82,16 @@ export async function signUpAction(
     }
   }
 
-  // If email confirmation is enabled in the Supabase project, the user
-  // lands on the login page with a notice. If confirmations are disabled,
-  // a session is established immediately and the redirect takes effect.
+  // When email confirmation is on, Supabase returns the user row but
+  // no session. Show a "check your email" notice instead of bouncing
+  // them through to onboarding (which would redirect to login because
+  // there's no session yet).
+  if (!data?.session) {
+    return {
+      notice:
+        "Check your email — we sent a confirmation link. Click it to land in Day 1.",
+    };
+  }
   redirect("/onboarding/step-1");
 }
 
