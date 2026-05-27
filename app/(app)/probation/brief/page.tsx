@@ -252,7 +252,7 @@ function BriefDocument({
           className="font-mono text-mute-2 uppercase tracking-wider"
           style={{ fontSize: "11px" }}
         >
-          firstninety.com
+          tryfirst90.com
         </p>
       </footer>
     </article>

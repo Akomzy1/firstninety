@@ -70,7 +70,7 @@ export default function RefundPolicyPage() {
           We genuinely do read every support email. If something has
           gone meaningfully wrong — extended downtime that affected
           your access, a billing error on our side, an outright fraud
-          situation — write to us at hello@firstninety.com and
+          situation — write to us at support@tryfirst90.com and
           we&rsquo;ll work it out. We don&rsquo;t have a script for
           this; we have a person who reads the email.
         </p>
@@ -87,7 +87,7 @@ export default function RefundPolicyPage() {
 
       <Section title="Contact">
         <p>
-          Reach us at hello@firstninety.com. We aim to reply within
+          Reach us at support@tryfirst90.com. We aim to reply within
           one business day.
         </p>
       </Section>

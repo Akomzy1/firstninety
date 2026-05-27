@@ -71,7 +71,7 @@ export default function CookiesPage() {
 
       <Section title="How to clear them">
         <p>
-          You can clear cookies for firstninety.com (or whatever domain
+          You can clear cookies for tryfirst90.com (or whatever domain
           you accessed us on) through your browser&rsquo;s privacy
           settings at any time. Doing so will sign you out and reset
           your PostHog distinct-id; the next time you sign in, you
@@ -82,7 +82,7 @@ export default function CookiesPage() {
       <Section title="Contact">
         <p>
           Questions about our cookies approach: reply to any email
-          from us or write to privacy@firstninety.com.
+          from us or write to support@tryfirst90.com.
         </p>
       </Section>
     </article>

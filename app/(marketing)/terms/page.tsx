@@ -98,7 +98,7 @@ export default function TermsPage() {
       <Section title="Contact">
         <p>
           Questions or concerns: reply to any email from us, or write
-          to hello@firstninety.com. We read every message.
+          to support@tryfirst90.com. We read every message.
         </p>
       </Section>
     </article>

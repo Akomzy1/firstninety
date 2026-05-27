@@ -63,7 +63,7 @@ export default function PrivacyPage() {
 
       <Section title="Contact">
         <p>
-          Email privacy@firstninety.app. The data controller is AkomzyAi
+          Email support@tryfirst90.com. The data controller is AkomzyAi
           Consulting Ltd, registered in the United Kingdom.
         </p>
       </Section>

@@ -128,7 +128,7 @@ Currently we have a basic settings page; this is the production polish.
 **H1:** `"You made it."`
 **Credit line:** `"Written by FirstNinety. Read at your own pace. Yours to keep."`
 **Section eyebrow:** `"Here is what you actually did."`
-**Footer:** `"Survival Report for <Name>. Generated <date>. Edits not enabled — this is yours as written."` + `firstninety.com` domain stamp.
+**Footer:** `"Survival Report for <Name>. Generated <date>. Edits not enabled — this is yours as written."` + `tryfirst90.com` domain stamp.
 
 This is a long-form editorial document (not an app surface). Should be exportable to PDF.
 
