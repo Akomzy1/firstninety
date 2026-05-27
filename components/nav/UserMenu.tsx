@@ -64,12 +64,18 @@ export function UserMenu({ user }: { user: UserMenuUser | null }) {
   return (
     <details className="group relative">
       <summary
-        className="flex h-12 cursor-pointer list-none items-center gap-2 px-2 text-body-s hover:bg-paper-3 transition-colors"
-        style={{ borderRadius: "4px" }}
+        className="flex cursor-pointer list-none items-center gap-3 px-2 py-2 text-body-s hover:bg-paper-3 transition-colors"
+        style={{ borderRadius: "6px" }}
       >
         <span
-          className="grid size-8 shrink-0 place-items-center rounded-full font-body font-semibold tracking-wider text-paper"
-          style={{ background: "#6F7A86", fontSize: "11px", letterSpacing: "0.04em" }}
+          className="grid shrink-0 place-items-center rounded-full text-paper font-display"
+          style={{
+            background: "#6F7A86",
+            width: "36px",
+            height: "36px",
+            fontSize: "14px",
+            fontWeight: 400,
+          }}
         >
           {monogram(label).toUpperCase()}
         </span>
